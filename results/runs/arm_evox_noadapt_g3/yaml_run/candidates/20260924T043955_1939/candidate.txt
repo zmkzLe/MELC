@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your actual YAML structure description goes here.
+name: your_design_name
+doc: >
+  Explain what changed and why.
+# ... rest of the policy ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

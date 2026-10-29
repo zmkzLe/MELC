@@ -1,0 +1,2 @@
+Candidate 667c138109f8 FAILED at words_refused; it was not scored.
+Reason: check_bypass_accuracy, update_rdp_ema: already declared in this run with another definition; a word is never changed, so declare a new name

@@ -1,0 +1,25 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Concise explanation of what changed and the architectural reasoning.
+state:
+  # Full list of state fields
+victim:
+  # Victim selection specification
+signatures:
+  # Signature declarations
+tables:
+  # Predictor / saturating counter tables
+samplers:
+  # Shadow sampler caches
+procedures:
+  # Procedures for hit/fill/access
+on_access:
+  # Tag check hooks (optional)
+on_hit:
+  # Hit actions
+on_fill:
+  # Fill actions
+===== NEW_WORDS =====
+
+# YAML list of declared new words, or empty if none used

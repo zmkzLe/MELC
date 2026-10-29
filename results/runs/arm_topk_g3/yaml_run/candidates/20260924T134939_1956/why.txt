@@ -1,0 +1,5 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: expected '<document start>', but found '<scalar>'
+  in "<unicode string>", line 5, column 5:
+    ... (YOUR FULL YAML HERE) ...
+        ^

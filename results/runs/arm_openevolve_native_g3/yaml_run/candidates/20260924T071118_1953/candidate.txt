@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the COMPLETE YAML structure description here.
+# Include all necessary sections: name, doc, state, victim, on_hit, on_fill, etc.
+# DO NOT USE PLACEHOLDERS. Write out the ENTIRE policy.
+===== NEW_WORDS =====
+
+# Provide a YAML list of new words here, or leave empty if none.

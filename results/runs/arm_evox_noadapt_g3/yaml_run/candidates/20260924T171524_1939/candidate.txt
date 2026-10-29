@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+<your complete YAML description here>
+===== NEW_WORDS =====

@@ -1,0 +1,26 @@
+===== STRUCTURE_DESCRIPTION =====
+name: lru_example
+doc: >
+  Least recently used example.
+state:
+  - name: recency
+    scope: per_line
+    kind: counter
+    width: 64
+    init: ZERO
+  - name: clock
+    scope: global
+    kind: counter
+    width: 64
+    init: ZERO
+victim:
+  key: recency
+  extremum: min
+  tie_break: first
+  on_search: none
+on_fill:
+  - set: {recency: {tick: clock}}
+on_hit:
+  - when: {type_not_in: [WRITE]}
+    set: {recency: {tick: clock}}
+===== NEW_WORDS =====

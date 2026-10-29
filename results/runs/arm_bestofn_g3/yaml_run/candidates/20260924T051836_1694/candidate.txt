@@ -1,0 +1,2 @@
+===== STRUCTURE_DESCRIPTION =====`.
+Ensure valid YAML, zero placeholder text, full declaration of all fields, and staying under 48 KB metadata.

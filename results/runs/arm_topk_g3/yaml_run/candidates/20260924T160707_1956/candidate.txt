@@ -1,0 +1,143 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_duel
+doc: >
+  Mockingjay with set dueling for the absolute bypass threshold to balance
+  wrong_bypass and should_bypass. Category 0 sets use a threshold of 73,
+  category 1 sets use 95. A global 10-bit PSEL counter tracks misses to
+  arbitrate for the follower sets.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 4
+    init: 8
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 8
+    init: ZERO
+  - name: bypass_psel
+    scope: global
+    kind: saturating
+    width: 10
+    init: MID
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {dynamic_bypass: {table: rdp, index: pc_sig, psel: bypass_psel, thresh_a: 73, thresh_b: 95, psel_thresh: 512}}
+    - {table_exceeds_victim: {table: rdp, index: pc_sig, div: 8}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4
+    ways: 5
+    tag_bits: 10
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 8, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      set: {etr_clock: {const: 0}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {dynamic_bypass: {table: rdp, index: pc_sig, psel: bypass_psel, thresh_a: 73, thresh_b: 95, psel_thresh: 512}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: access
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - update_bypass_psel: {psel: bypass_psel}
+  - run: access
+===== NEW_WORDS =====
+
+- name: dynamic_bypass
+  place: condition
+  params:
+    table: table
+    index: signature
+    psel: state
+    thresh_a: {int: [0, 127]}
+    thresh_b: {int: [0, 127]}
+    psel_thresh: {int: [0, 1023]}
+  means: >
+    Determines a threshold T. If the set_sample_category of the current access's set is 0,
+    T is thresh_a. If the set_sample_category is 1, T is thresh_b. Otherwise, if the current
+    value of the psel state field is greater than or equal to psel_thresh, T is thresh_a; else
+    T is thresh_b. Returns true if the entry of the table at the index is present and its
+    value is strictly greater than T.
+
+- name: update_bypass_psel
+  place: step
+  params:
+    psel: state
+  means: >
+    Reads the set_sample_category of the current access's set.
+    If it is 0, subtracts 1 from the psel state field, clamping at 0.
+    If it is 1, adds 1 to the psel state field, clamping at its maximum.
+    Otherwise, does nothing.

@@ -1,0 +1,13 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_improved
+doc: >
+  Your explanation here.
+state:
+  - ...
+victim:
+  ...
+# [Include all necessary keys like signatures, tables, samplers, procedures, on_hit, on_fill]
+# Output the ACTUAL full YAML!
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing if none.

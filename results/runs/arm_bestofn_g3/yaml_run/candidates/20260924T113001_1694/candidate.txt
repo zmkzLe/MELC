@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your complete, valid YAML dictionary defining the policy goes here.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or [] if none.

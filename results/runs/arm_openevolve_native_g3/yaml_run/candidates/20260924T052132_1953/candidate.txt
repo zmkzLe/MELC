@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Start with one line saying what changed and why, followed by further details.
+# ... FULL VALID YAML DEFINING state, victim, on_fill, etc. ...
+===== NEW_WORDS =====
+
+# ... FULL VALID YAML LIST OF NEW WORDS, OR NOTHING ...

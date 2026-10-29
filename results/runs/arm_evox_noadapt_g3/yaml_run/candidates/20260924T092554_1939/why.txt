@@ -1,0 +1,32 @@
+Candidate 2a78d8d8b618: score 0.98750, the geometric mean over 17 traces of its IPC over Mockingjay's on the same trace (20M warm-up + 50M measured); Mockingjay, the seed and the design to beat, scores 1.0: behind.
+Closest earlier design: ea1b24a2ae2d (similarity 0.949, score 1.00030, change -0.01280). Parts changed: name, procedures.access, samplers, state.
+New words: none.
+
+Per trace. vs MJ: IPC over Mockingjay's on that trace. change: minus the closest design's.
+MPKI: LLC misses per 1000 instructions. memory: share of all cycles stalled on the memory
+hierarchy at any level; LLC: the part of it stalled on LLC hits; DRAM: the part stalled on
+DRAM. retire: share of all cycles spent retiring instructions, which no replacement policy
+changes. headroom: share of the sampled misses Belady's MIN avoids on this candidate's own
+stream. Then the sampled fills judged against MIN: kept a dead line, evicted a line reused
+sooner, should have bypassed, bypassed wrongly (change from the closest design in brackets).
+trace                      vs MJ   change   MPKI  memory   LLC   DRAM  retire headroom       kept_dead  evicted_sooner  should_bypass   wrong_bypass
+410.bwaves-1963B          0.9750  -0.0225  18.40   77.5%  0.1%  62.4%   20.1%     5.2%        62 (+62)          0 (+0)     795 (+793)    1863 (+309)
+429.mcf-192B              0.9997  -0.0005  51.98   90.3%  6.7%  73.4%    6.4%     0.5%       375 (+34)       115 (+60)      162 (+26)       33 (-73)
+433.milc-127B             0.9974  +0.0018  18.22   83.0%  0.0%  77.3%   12.5%    20.8%    9535 (+6080)       14 (-240)     2344 (-10)   136 (-12259)
+434.zeusmp-10B            1.0000  +0.0002   2.12   63.3%  0.0%  44.4%   33.3%     3.8%         60 (+2)          0 (+0)      171 (-34)         0 (+0)
+437.leslie3d-149B         0.9992  -0.0007   7.09   84.2%  0.0%  76.5%   14.0%    13.6%      1107 (+28)          0 (+0)     1819 (+49)        0 (-70)
+450.soplex-247B           0.9885  -0.0284  21.72   84.2%  3.9%  77.0%   11.9%    22.6%     3247 (-102)   15668 (+3574)    6407 (+813)     7546 (+26)
+459.GemsFDTD-1491B        0.9985  -0.0026  25.09   89.8%  0.8%  86.3%    9.0%    26.5%    8496 (+8368)          0 (+0)     343 (+342) 11971 (-16163)
+470.lbm-1274B             0.9698  -0.0242  28.51   87.3%  0.0%  87.2%   12.3%    27.3%  28828 (+11991)    7369 (-7413)   2061 (+1567)     4776 (-40)
+483.xalancbmk-127B        0.9474  -0.0444  20.62   85.8%  3.3%  80.1%   10.3%    19.0%    3764 (+2004)    9698 (+5284)   8559 (+4680)  16083 (-6493)
+603.bwaves_s-1740B        0.9960  -0.0001  19.47   78.5%  0.0%  55.5%   19.6%     7.1%        77 (+59)          0 (+0)    1075 (+964)   2233 (-1205)
+605.mcf_s-1644B           0.9199  -0.0801 132.73   88.8%  1.1%  61.0%    7.4%    42.5%  161240 (+144698)     2607 (-836)     386 (+356)54237 (-157305)
+619.lbm_s-2677B           0.9938  -0.0214  65.83   91.6%  0.0%  87.7%    8.0%    29.6%   59105 (-1489)      129 (+129) 12128 (+11985) 49249 (-54349)
+623.xalancbmk_s-10B       1.0127  +0.0085   4.56   71.4% 15.0%  49.8%   23.6%    20.4%      380 (-275)      1430 (-46)    4819 (-172)     2279 (+46)
+625.x264_s-20B            1.0000  +0.0000   1.41   42.1%  0.0%  25.3%   54.0%     4.7%         36 (+0)          0 (+0)       163 (+0)         0 (+0)
+627.cam4_s-573B           1.0000  +0.0000   0.16   23.6%  0.0%   0.8%   60.4%    52.4%         32 (+0)          0 (+0)        53 (+0)         0 (+0)
+654.roms_s-1390B          0.9924  -0.0009  30.10   90.9%  0.0%  88.3%    8.3%    17.7%   22938 (+2760)      495 (+344)  11983 (+1404)    759 (-7188)
+657.xz_s-2302B            1.0016  +0.0016   1.28   48.3%  1.8%  27.4%   33.7%    29.6%       913 (-78)         19 (-6)      334 (-37)       46 (-42)
+
+All traces, sampled fills: kept_dead 300195 (+174142), evicted_sooner 37544 (+850), should_bypass 53602 (+22726), wrong_bypass 151211 (-254806). The largest kind of mistake is kept_dead. Mistakes of every kind are addressed by changing what the policy remembers or how it decides, not by moving one threshold.
+Metadata: 47.75 KB SRAM, 0.0396 mm2 at 22 nm (reported, not scored).

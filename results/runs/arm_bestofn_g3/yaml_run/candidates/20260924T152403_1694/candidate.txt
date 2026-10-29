@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why, so feedback can be attributed.
+state:
+  # REQUIRED: List of state fields
+victim:
+  # REQUIRED: Victim selection logic
+# ... optional sections (signatures, tables, samplers, procedures, etc.) ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses. Leave empty if none.

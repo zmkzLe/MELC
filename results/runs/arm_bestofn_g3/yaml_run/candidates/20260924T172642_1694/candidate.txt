@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy_name
+doc: >
+  Summary of changes...
+# [rest of complete, valid YAML]
+===== NEW_WORDS =====
+
+# [list of new words or empty]

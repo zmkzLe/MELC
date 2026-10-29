@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  What changed and why.
+state:
+  # Provide actual state fields here
+victim:
+  # Provide actual victim definition here
+# Provide all other necessary sections (signatures, tables, samplers, procedures, etc.)
+===== NEW_WORDS =====
+
+# Provide actual new words list here, or leave empty if none

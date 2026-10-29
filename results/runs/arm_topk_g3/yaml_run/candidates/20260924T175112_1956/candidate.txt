@@ -1,0 +1,16 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_design
+doc: >
+  One line saying what changed and why.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  ... (COMPLETE YAML DESIGN, NO PLACEHOLDERS)
+victim:
+  key: etr
+  extremum: max_magnitude
+  ...
+===== NEW_WORDS =====

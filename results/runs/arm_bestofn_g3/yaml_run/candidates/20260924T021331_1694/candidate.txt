@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_improved_policy
+doc: >
+  Describe what changed and why here.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+  # ... (complete valid YAML defining all required fields including state, victim, on_hit, on_fill, etc.)
+===== NEW_WORDS =====
+
+# ... (YAML list of new words, or empty if none)

@@ -1,0 +1,2 @@
+Candidate 0ddc204da988 FAILED at words_refused; it was not scored.
+Reason: safe_bypass: already declared in this run with another definition; a word is never changed, so declare a new name

@@ -1,0 +1,17 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  [Provide your step-by-step reasoning here: what changed, why, and how it addresses the feedback]
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_state
+  extremum: max
+  tie_break: first
+  on_search: none
+# ... (Include all other necessary sections: signatures, tables, samplers, procedures, etc.)
+===== NEW_WORDS =====

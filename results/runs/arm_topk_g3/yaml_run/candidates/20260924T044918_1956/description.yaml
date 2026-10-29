@@ -1,0 +1,18 @@
+name: simple_example
+doc: >
+  Example documentation string.
+state:
+  - name: dummy
+    scope: per_line
+    kind: flag
+    width: 1
+    init: ZERO
+victim:
+  key: dummy
+  extremum: min
+  tie_break: first
+  on_search: none
+on_hit:
+  - set: {dummy: {const: 1}}
+on_fill:
+  - set: {dummy: {const: 1}}

@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Start with one line saying what changed and why.
+state:
+  # ... your valid YAML state definition (do not leave as None)
+victim:
+  # ... your valid YAML victim definition (do not leave as None)
+# ... rest of the structure description ...
+===== NEW_WORDS =====
+
+# ... a YAML list of the new words the description uses, or nothing

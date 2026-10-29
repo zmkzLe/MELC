@@ -1,0 +1,14 @@
+name: your_policy_name
+doc: >
+  Your reasoning and explanation...
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none

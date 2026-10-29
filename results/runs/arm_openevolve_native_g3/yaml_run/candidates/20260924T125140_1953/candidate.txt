@@ -1,0 +1,11 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  One line saying what changed and why, so the feedback can be attributed.
+state:
+  # ... COMPLETE VALID YAML FOR STRUCTURE DESCRIPTION ...
+  # (Do not omit required fields like state and victim)
+===== NEW_WORDS =====
+
+# ... COMPLETE VALID YAML LIST OF NEW WORDS ...
+# (Leave blank below the marker if there are no new words, but the marker MUST be present)

@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Start with one line explaining what changed and why.
+# [Your actual YAML structure description here]
+===== NEW_WORDS =====
+
+# [Your actual YAML list of new words here, or leave empty if none]

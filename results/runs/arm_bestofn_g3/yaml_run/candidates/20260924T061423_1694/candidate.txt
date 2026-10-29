@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: [design_name]
+doc: >
+  [1-line explanation of what changed and why, followed by details]
+state:
+  ... [FULL state definition]
+victim:
+  ... [FULL victim definition]
+... [ALL other required sections: signatures, tables, samplers, procedures, on_hit, on_fill]
+===== NEW_WORDS =====

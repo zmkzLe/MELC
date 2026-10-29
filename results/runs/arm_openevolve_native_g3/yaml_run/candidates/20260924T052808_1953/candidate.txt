@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the COMPLETE and VALID YAML dictionary here.
+# DO NOT use placeholders. Define ALL sections (name, doc, state, victim, on_hit, on_fill, tables, samplers, etc.) fully.
+===== NEW_WORDS =====
+
+# Provide your list of new words here, or leave empty if none.

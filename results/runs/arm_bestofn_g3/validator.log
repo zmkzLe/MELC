@@ -1,0 +1,12 @@
+validator: /home/user/oe_out/arm_bestofn_g3/yaml_run
+  tree /home/user/champsim_validate module validate_policy
+  33 traces at 50000000 + 100000000, 8 workers, sim timeout 18000 s
+  search stop 2026-09-25T00:00:00Z, deadline 2026-09-25T03:00:00Z, drain False, fake None
+waiting for /home/user/oe_out/arm_bestofn_g3/yaml_run/store
+[2026-09-24T02:00:02Z] started {"id": "c41837327dd0", "score": 1.0}
+[2026-09-24T05:02:29Z] validated {"id": "c41837327dd0", "score": {"all": 1.0, "training": 1.0, "held_out": 1.0}, "gap": {"difference": 0.0, "ratio": 1.0}, "seconds": 10947.5}
+[2026-09-24T10:21:36Z] below_min_gain {"id": "a0b5c9b97837", "score": 1.00092208480779}
+[2026-09-24T16:01:03Z] below_min_gain {"id": "c0f5d688d0be", "score": 1.0009320857112813}
+[2026-09-24T17:10:09Z] started {"id": "513928693de1", "score": 1.0010118991615093}
+[2026-09-24T18:04:14Z] below_min_gain {"id": "709a76033af1", "score": 1.0012472285532061}
+[2026-09-24T18:39:18Z] below_min_gain {"id": "f8e871100a70", "score": 1.0015563367462765}

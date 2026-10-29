@@ -1,0 +1,12 @@
+- name: smart_bypass
+  place: condition
+  params: {table: table, index: signature, div: {int: [1, 16]}, field: state, min_rd: {int: [0, 127]}, inf_rd: {int: [0, 127]}}
+  means: >
+    True when the entry of the table at the index is present, the per_line state
+    field at the way chosen by the victim search is greater than or equal to 0,
+    and either: its value is greater than or equal to the inf_rd parameter, or
+    (its value is greater than or equal to the min_rd parameter and its value
+    divided by the div parameter, using integer division rounding down, is
+    strictly greater than the current value of the per_line state field at the
+    way chosen by the victim search). False otherwise. Only valid inside
+    victim.bypass_when.

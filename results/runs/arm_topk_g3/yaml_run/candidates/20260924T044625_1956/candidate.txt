@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Start with one line saying what changed and why.
+state:
+  ... (full valid YAML, NO placeholders)
+victim:
+  ... (full valid YAML, NO placeholders)
+... (rest of the policy)
+===== NEW_WORDS =====

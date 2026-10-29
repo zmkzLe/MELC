@@ -1,0 +1,127 @@
+name: mockingjay_conf_v3
+doc: >
+  Addresses wrong_bypass by adding a bypass confidence table and evaluating
+  both absolute bypass and table_exceeds_victim against it. A 2-bit saturating
+  counter per PC signature tracks the probability of long reuse; any bypass
+  requires confidence >= 2. RDP is trained via EMA (shift 2) to adapt quickly,
+  and dead lines are penalized by +4. Wrong bypasses are heavily penalized by
+  decrementing confidence twice when a line is reused quickly.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 4
+    init: 8
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 8
+    init: ZERO
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {words: {confident_bypass: {rdp: rdp, conf: bypass_conf, index: pc_sig, rdp_thresh: 73, conf_thresh: 2}}}
+    - {words: {confident_table_exceeds_victim: {rdp: rdp, conf: bypass_conf, index: pc_sig, div: 8, conf_thresh: 2}}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95
+    unset: true
+  - name: bypass_conf
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 2
+    max: 3
+    init: MAX
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4
+    ways: 5
+    tag_bits: 10
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 8, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {counter: {counter: age, cmp: gt, threshold: 73}}
+        train: {table: bypass_conf, index: signature, op: increment}
+      - when: {counter: {counter: age, cmp: lte, threshold: 73}}
+        train: {table: bypass_conf, index: signature, op: decrement}
+      - when: {counter: {counter: age, cmp: lte, threshold: 73}}
+        train: {table: bypass_conf, index: signature, op: decrement}
+      - when: {type_in: [PREFETCH]}
+        words: {train_ema: {table: rdp, index: signature, sample: age, scale: 2, shift: 2}}
+        free: true
+        stop: true
+      - words: {train_ema: {table: rdp, index: signature, sample: age, scale: 1, shift: 2}}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: bypass_conf, index: signature, op: increment}
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        words: {train_penalty: {table: rdp, index: signature, penalty: 4}}
+        free: true
+    on_replace:
+      - train: {table: bypass_conf, index: signature, op: increment}
+      - words: {train_penalty: {table: rdp, index: signature, penalty: 4}}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      set: {etr_clock: {const: 0}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: access
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: access

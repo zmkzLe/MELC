@@ -1,0 +1,23 @@
+===== STRUCTURE_DESCRIPTION =====
+# CRITICAL: Output the COMPLETE, fully-specified YAML structure here.
+# DO NOT use placeholders like `<the structure description, YAML>`, `<complete YAML>`, or ellipses (`...`).
+# The `state` field MUST be a valid list, and the `victim` field MUST be a valid dictionary.
+name: your_design_name
+doc: >
+  One line saying what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+  # (Include all other state fields)
+victim:
+  key: example_field
+  extremum: max
+  tie_break: first
+  on_search: none
+# (Include all other necessary sections like signatures, tables, samplers, etc.)
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

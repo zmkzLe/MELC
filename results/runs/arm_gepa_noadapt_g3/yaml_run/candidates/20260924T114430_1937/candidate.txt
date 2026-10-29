@@ -1,0 +1,132 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_12way
+doc: >
+  High-fidelity Mockingjay: increases the sampler from 5 ways to 12 ways to match
+  the LLC associativity, drastically reducing conflict misses that cause false dead-line
+  training and wrong bypasses. To fit the 48 KB metadata budget, the sampler covers
+  32 sampled sets with 8 sampler sets each (extra_index_bits: 3). The set_clock is
+  reduced to 7 bits (safe since entries are freed at age 96), and etr_clock is reduced
+  to 3 bits (aging every 7 accesses, with RDP div 7).
+  Cold lines evicted from the sampler initialize the predictor to 64 instead of jumping
+  to 95, preventing premature bypassing of lines that might fit in the LLC due to
+  Mockingjay's early eviction of other dead lines.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 3
+    init: 7
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 7
+    init: ZERO
+  - name: init_rd
+    scope: global
+    kind: counter
+    width: 7
+    init: 64
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+    - {table_exceeds_victim: {table: rdp, index: pc_sig, div: 7}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 3
+    ways: 12
+    tag_bits: 10
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 7, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 6}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 6}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - when: {table: {table: rdp, index: signature, cmp: absent}}
+        train: {table: rdp, index: signature, op: toward, sample: init_rd}
+        stop: true
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  update_clocks:
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      set: {etr_clock: {const: 0}}
+    - set: {etr_clock: {add: 1}}
+
+  apply_prediction:
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 7}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - sample: sampled_cache
+  - run: update_clocks
+  - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+    set: {etr: {const: 0}}
+    stop: true
+  - run: apply_prediction
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - sample: sampled_cache
+  - run: update_clocks
+  - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+    set: {etr: {const: 0}}
+    stop: true
+  - run: apply_prediction
+===== NEW_WORDS =====

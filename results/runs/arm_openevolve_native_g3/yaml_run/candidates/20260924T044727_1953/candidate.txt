@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the complete, valid YAML dictionary for your structure description here.
+# DO NOT USE PLACEHOLDERS like "<the structure description, YAML>".
+# You MUST include required fields such as 'name', 'doc', 'state', and 'victim'.
+===== NEW_WORDS =====
+
+# Provide a YAML list of the new words the description uses, or leave empty if none.

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the COMPLETE, VALID YAML structure description here.
+# DO NOT use placeholder text like "<the structure description, YAML>".
+# Your YAML must be fully written out and contain no duplicate keys.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

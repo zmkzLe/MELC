@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+name: modified_mockingjay
+doc: >
+  [One line saying what changed and why]
+state:
+  ... [COMPLETE VALID YAML] ...
+===== NEW_WORDS =====

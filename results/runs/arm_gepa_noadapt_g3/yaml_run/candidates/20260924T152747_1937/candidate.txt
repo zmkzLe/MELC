@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# <the COMPLETE structure description, YAML>
+# DO NOT USE PLACEHOLDERS like `...` or omit sections. Provide the full working YAML.
+===== NEW_WORDS =====
+
+# <a YAML list of the new words the description uses, or nothing>

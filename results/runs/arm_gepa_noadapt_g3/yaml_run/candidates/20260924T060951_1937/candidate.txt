@@ -1,0 +1,120 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_4bit_etr
+doc: >
+  Trades ETR resolution for a 4x larger predictor table to reduce aliasing and wrong bypasses.
+  Reduces ETR from 5 bits to 4 bits (-7 to 7), saving 6 KB. Increases the RDP table from
+  2048 to 8192 entries, using 5.25 KB of the saved space. ETR aging granularity is scaled
+  from 8 to 12 accesses per tick to maintain a similar maximum representable reuse distance
+  (7 * 12 = 84 vs 11 * 8 = 88). Maintains the tuned bypass and unknown signature insertion logic.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 4
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 4
+    init: 12
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 8
+    init: ZERO
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 80}}
+    - {table_exceeds_victim: {table: rdp, index: pc_sig, div: 12}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 13
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 8192
+    width: 7
+    max: 95
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4
+    ways: 5
+    tag_bits: 10
+    fields:
+      - {name: signature, kind: counter, width: 13, init: ZERO}
+      - {name: timestamp, kind: counter, width: 8, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 8}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 8}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  update_clocks:
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 12}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 7, abs: true}}
+        set: {etr: {add: -1}}
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 12}}
+      set: {etr_clock: {const: 0}}
+    - set: {etr_clock: {add: 1}}
+
+  apply_prediction:
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 7}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 12}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - sample: sampled_cache
+  - run: update_clocks
+  - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+    set: {etr: {const: 0}}
+    stop: true
+  - run: apply_prediction
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -7}}
+    stop: true
+  - sample: sampled_cache
+  - run: update_clocks
+  - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+    set: {etr: {const: 3}}
+    stop: true
+  - run: apply_prediction
+===== NEW_WORDS =====

@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOUR FULL, COMPLETE YAML DESCRIPTION GOES HERE
+# Ensure all required sections are present.
+===== NEW_WORDS =====
+
+# A YAML LIST OF NEW WORDS GOES HERE, OR NOTHING

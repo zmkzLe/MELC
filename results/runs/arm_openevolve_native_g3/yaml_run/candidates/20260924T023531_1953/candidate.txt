@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+name: [policy_name]
+doc: >
+  [Explanation of the design and changes]
+state:
+  - name: my_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: my_field
+  extremum: max
+  tie_break: first
+# [Write the rest of the FULL configuration here. Do NOT use placeholders!]
+===== NEW_WORDS =====
+
+# [Write the actual YAML list of new words here, or leave empty if none]

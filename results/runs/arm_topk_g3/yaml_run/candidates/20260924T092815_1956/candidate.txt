@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your ENTIRE complete YAML structure description goes here.
+# DO NOT skip any sections (state, victim, signatures, etc.).
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or empty if none.
+# YOU MUST KEEP THIS MARKER LINE EVEN IF EMPTY.

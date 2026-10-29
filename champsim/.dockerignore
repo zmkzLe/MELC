@@ -1,0 +1,12 @@
+.csconfig/
+_configuration.mk
+absolute.options
+bin/
+**/*.o
+**/*.d
+# vcpkg is cloned in the image at the commit this repository pins, so a local
+# checkout of the submodule must not be copied over it.
+vcpkg/
+vcpkg_installed/
+**/__pycache__/
+*.pyc

@@ -1,0 +1,17 @@
+Guidance version 41, written after 422 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 2 scored design(s); best 0.99787 (-0.21% against the seed)
+- name: check_conf
+  place: condition
+  params:
+    index: signature
+    limit:
+      int: [0, 3]
+    table: table
+  means: True when the entry of the table at the index is greater than or equal to the limit.
+
+Refused among the last 10 candidates, and why: malformed 4 (candidate is missing section(s): NEW_WORDS; candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS). schema_rejected 5 (state Input should be a valid list (written: None) victim Field required (written: {'name': 'your_policy_nam... why.\n', 'state': None}); Input should be a valid dictionary or instance of StructureDescription (written: '<complete valid YAML description>'); Input should be a valid dictionary or instance of StructureDescription (written: None)). words_refused 1 (Input should be a valid dictionary or instance of NewWord (written: 'Your new words must go here'))
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 11 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<the complete structure ... YAML, NO placeholders>'); 11 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+
+Changes to victim.bypass_when, samplers, and tables paid off, while modifications to state, victim.tie_break, victim.key, victim.on_search, new_words, victim.extremum, on_fill, on_hit, procedures, and signatures lost. The trace with the most headroom is 627.cam4_s-573B at 52.4%, where the largest mistake is should_bypass, meaning the policy needs to remember which lines see no reuse and decide to bypass them. Conversely, wrong_bypass dominates 605.mcf_s-1644B (44.4%), 619.lbm_s-2677B (43.9%), 459.GemsFDTD-1491B (33.3%), and 433.milc-127B (28.4%), requiring the policy to remember accurate reuse histories to decide against bypassing lines that will be reused before resident ones. On 657.xz_s-2302B (32.2%), the largest mistake is kept_dead, requiring the state to track aging to decide to evict lines that will never be reused again. You must stop omitting the required STRUCTURE_DESCRIPTION and NEW_WORDS sections, stop submitting placeholder text like '<complete valid YAML description>' or None instead of the actual design, and stop leaving the state and victim fields empty. To balance the conflicting bypass decisions across these traces, you should declare a new word to express a dynamic bypass threshold based on table confidence, which the current vocabulary cannot natively express.

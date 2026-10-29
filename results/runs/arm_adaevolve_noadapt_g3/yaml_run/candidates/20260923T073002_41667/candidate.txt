@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+<the structure description, YAML>
+===== NEW_WORDS =====
+
+<a YAML list of the new words the description uses, or nothing>
+```
+Both marker lines must appear exactly as above, even if there are no new words.
+Write the design as a structure description (YAML), never as C++. A separate agent translates it. The description must be exact.

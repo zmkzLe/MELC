@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+   <complete YAML description of your policy>
+   ===== NEW_WORDS =====

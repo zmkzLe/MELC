@@ -1,0 +1,6 @@
+- name: trust_allows_bypass
+  place: condition
+  params: {trust_table: table, sig: signature}
+  means: >
+    Reads the entry of trust_table at the index sig. Returns true if the
+    entry's value is less than 6. False otherwise. Nothing is written.

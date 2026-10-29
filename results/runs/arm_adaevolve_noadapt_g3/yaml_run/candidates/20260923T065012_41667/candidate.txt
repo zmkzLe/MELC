@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <policy_name>
+doc: >
+  <explanation>
+...
+===== NEW_WORDS =====
+
+[]

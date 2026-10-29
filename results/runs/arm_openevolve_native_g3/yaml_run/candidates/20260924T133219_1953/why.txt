@@ -1,0 +1,17 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 5 validation errors for StructureDescription
+victim.bypass_when.0
+  Value error, 'confident_bypass': not a word of the grammar here, nor a declared condition word [type=value_error, input_value={'confident_bypass': {'co...rdp', 'rdp_thresh': 73}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error
+samplers.0.on_match.2
+  Value error, 'train_ema': not a word of the grammar here, nor a declared step word [type=value_error, input_value={'when': {'type_in': ['PR...ee': True, 'stop': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error
+samplers.0.on_match.3
+  Value error, 'train_ema': not a word of the grammar here, nor a declared step word [type=value_error, input_value={'train_ema': {'table': '...hift': 2}, 'free': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error
+samplers.0.sweep.1
+  Value error, 'train_penalty': not a word of the grammar here, nor a declared step word [type=value_error, input_value={'when': {'counter': {'co...alty': 2}, 'free': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error
+samplers.0.on_replace.1
+  Value error, 'train_penalty': not a word of the grammar here, nor a declared step word [type=value_error, input_value={'train_penalty': {'table...gnature', 'penalty': 4}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error

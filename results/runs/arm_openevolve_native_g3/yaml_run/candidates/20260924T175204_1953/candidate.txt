@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+<valid YAML structure description - NEVER write placeholder text>
+===== NEW_WORDS =====

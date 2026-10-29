@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  [1-line summary of changes]
+  [Step-by-step reasoning analyzing trace feedback and explaining design choices]
+<the rest of the structure description>
+===== NEW_WORDS =====

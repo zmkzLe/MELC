@@ -1,0 +1,72 @@
+Run so far: 503 candidates, 54 scored, 449 refused or failed (malformed 221, schema_rejected 206, too_much_storage 2, words_refused 20).
+Refusal kinds seen more than once this run (a pattern, not a one-off): 211 times, malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 151 times, schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>'); 11 times, schema_rejected: state Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}) victim Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}); 10 times, malformed: candidate is missing section(s): NEW_WORDS; 8 times, schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+Every refusal reason this run, one example per kind with its count (kinds are grouped by the message with names and numbers removed; merge any that are the same mistake):
+- 211 x malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+- 151 x schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>')
+- 11 x schema_rejected: state Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}) victim Field required (written: {'name': 'my_policy', 'do...on of your design...\n'})
+- 10 x malformed: candidate is missing section(s): NEW_WORDS
+- 8 x schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+- 7 x schema_rejected: victim Field required (written: {'name': 'your_policy_nam...'width': 5, 'init': 0}]})
+- 6 x schema_rejected: state Input should be a valid list (written: None) victim Field required (written: {'name': 'your_policy_nam... why.\n', 'state': None})
+- 4 x words_refused: name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '...') place Input should be 'condition', 'value', 'step', 'Extremum', 'TieBreak', 'SearchSideEffect', 'SignatureSource', 'FoldBit' or 'SignatureHash' (written: '...') para
+- 4 x words_refused: confident_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+- 3 x words_refused: penalize_wrong_bypass, train_penalty: already declared in this run with another definition; a word is never changed, so declare a new name
+- 3 x words_refused: Input should be a valid dictionary or instance of NewWord (written: 'Your YAML list of new words')
+- 3 x schema_rejected: while parsing a block node expected the node content, but found '<document end>' in "<unicode string>", line 1, column 1: ... ^
+The seed scored 1.00000.
+Best so far: f709921ff1a8 at 1.00222, +0.22% over Mockingjay.
+
+Parts of the design changed so far (candidates that changed it, how many beat their closest earlier design, best and mean change of the score):
+- samplers: 15 tried, 3 improved, best +0.00176, mean -0.00468
+- victim.bypass_when: 14 tried, 3 improved, best +0.00176, mean -0.00571
+- tables: 10 tried, 3 improved, best +0.00176, mean -0.00645
+- new_words: 16 tried, 2 improved, best +0.00176, mean -0.00131
+- on_fill: 5 tried, 1 improved, best +0.00162, mean -0.01098
+- victim.tie_break: 7 tried, 0 improved, best +0.00000, mean -0.00807
+- victim.on_search: 6 tried, 0 improved, best +0.00000, mean +0.00000
+- state: 5 tried, 0 improved, best +0.00000, mean -0.01225
+- on_hit: 4 tried, 0 improved, best +0.00000, mean -0.01412
+- victim.key: 4 tried, 0 improved, best +0.00000, mean -0.01412
+- procedures.access: 4 tried, 0 improved, best -0.00062, mean -0.00244
+- procedures: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- signatures: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- victim.extremum: 2 tried, 0 improved, best +0.00000, mean -0.02825
+
+The last 10 candidates, oldest first:
+494. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+495. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+496. refused (schema_rejected): state Input should be a valid list (written: None) victim Field required (written: {'name': 'your_design_nam... why.\n', 'state': None})
+497. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>')
+498. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+499. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+500. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<complete YAML specification of the policy>')
+501. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+502. scored f709921ff1a8 at 1.00222, changed 64 canonical lines in samplers, tables, victim.bypass_when, new_words, new words check_bypass_accuracy, update_rdp_ema, penalize_dead_line: a repeat of an earlier design
+503. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+
+The best design's traces with the most headroom, and its largest mistake on each:
+- 627.cam4_s-573B: headroom 52.4%, largest mistake should_bypass (53 of 550 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 0.2
+- 605.mcf_s-1644B: headroom 44.0%, largest mistake wrong_bypass (208642 of 428198 sampled fills), IPC over Mockingjay's 0.9998, LLC MPKI 136.7
+- 619.lbm_s-2677B: headroom 42.1%, largest mistake wrong_bypass (103253 of 250666 sampled fills), IPC over Mockingjay's 1.0214, LLC MPKI 80.0
+- 459.GemsFDTD-1491B: headroom 33.3%, largest mistake wrong_bypass (28206 of 86867 sampled fills), IPC over Mockingjay's 1.0023, LLC MPKI 27.6
+- 657.xz_s-2302B: headroom 33.0%, largest mistake kept_dead (990 of 3754 sampled fills), IPC over Mockingjay's 1.0032, LLC MPKI 1.4
+- 433.milc-127B: headroom 29.7%, largest mistake wrong_bypass (15151 of 64691 sampled fills), IPC over Mockingjay's 0.9996, LLC MPKI 20.6
+
+New words accepted this run, best-scoring first:
+- check_bypass_accuracy (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the acc table at the index (treating an absent entry as 0). Returns true if the rdp entry i [used 13, better 4, worse 5, same 2, failed 2]
+- update_rdp_ema (step): Calculates a target value as the sample multiplied by the scale, clamped to the table's maximum. Reads the entry of the table at the index. If it is absent, sets it to the target value. If present, co [used 13, better 4, worse 5, same 2, failed 2]
+- penalize_dead_line (step): Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If present, adds the penalty to the entry, clamping the result to the table's maximum. [used 13, better 4, worse 5, same 2, failed 2]
+- confident_bypass (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp entry  [used 25, better 13, worse 5, same 0, failed 7]
+- train_ema (step): Calculates a target value as the sample multiplied by the scale, clamped to the table's maximum. Reads the entry of the table at the index. If it is absent, sets it to the target value. If present, co [used 24, better 13, worse 6, same 0, failed 5]
+- train_penalty (step): Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If present, adds the penalty to the entry, clamping the result to the table's maximum. [used 25, better 13, worse 7, same 0, failed 5]
+- bypass_if_confident (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp entry  [used 2, better 0, worse 0, same 1, failed 1]
+- update_ema (step): Calculates a target value as the sample multiplied by the scale, clamped to the table's maximum. Reads the entry of the table at the index. If it is absent, sets it to the target value. If present, co [used 2, better 0, worse 0, same 1, failed 1]
+- apply_penalty (step): Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If present, adds the penalty to the entry, clamping the result to the table's maximum. [used 2, better 0, worse 0, same 1, failed 1]
+- check_acc_exceeds_victim (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the acc table at the index (treating an absent entry as 0). Returns true if the acc entry i [used 1, better 0, worse 1, same 0, failed 0]
+- penalize_wrong_bypass (step): Reads the entry of the table at the index. If it is present, greater than the threshold, and the sample is less than or equal to the threshold, subtracts the penalty from the entry, clamping the resul [used 4, better 0, worse 1, same 0, failed 3]
+- cap_value (step): Reads the entry of the table at the index. If it is present and strictly greater than the cap, sets it to the cap. [used 1, better 0, worse 1, same 0, failed 0]
+- safe_bypass (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp entry  [used 1, better 0, worse 1, same 0, failed 0]
+- safe_table_bypass (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Reads the entry of the conf table at the index (treating an absent entry as 0). If the conf entry is less than conf_thres [used 1, better 0, worse 1, same 0, failed 0]
+- conf_check (condition): Reads the entry of the conf table at the index (treating an absent entry as 0). Returns true if the entry is greater than or equal to conf_thresh. [used 1, better 0, worse 1, same 0, failed 0]
+- confident_table_exceeds_victim (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Divides the rdp entry by div (integer division). If this value is not strictly greater than the absolute value of the vic [used 2, better 0, worse 1, same 0, failed 1]
+- confident_exceeds_victim (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the conf table at the index (treating an absent entry as 0). Returns true if the conf entry [used 1, better 0, worse 1, same 0, failed 0]

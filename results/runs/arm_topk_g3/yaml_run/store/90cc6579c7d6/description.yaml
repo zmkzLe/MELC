@@ -1,0 +1,17 @@
+name: your_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+  # (You must write out ALL state fields completely. No placeholders.)
+victim:
+  key: example_field
+  extremum: max
+  tie_break: first
+  on_search: none
+  # (You must write out the FULL victim selector completely.)
+# (You must write out ALL OTHER REQUIRED SECTIONS completely: signatures, tables, samplers, procedures, on_access, on_hit, on_fill)

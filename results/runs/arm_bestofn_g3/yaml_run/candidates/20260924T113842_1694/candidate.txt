@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_new_policy
+doc: >
+  Added a new table to track bypass correctness.
+state:
+  - name: example_field
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# [REST OF YOUR ACTUAL VALID YAML DICTIONARY HERE]
+===== NEW_WORDS =====
+
+# [YOUR ACTUAL YAML LIST OF NEW WORDS HERE, OR EMPTY IF NONE]

@@ -1,0 +1,17 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 1
+    init: ZERO
+victim:
+  key: example_state
+  extremum: min
+# ... completely filled out sections for signatures, tables, samplers, etc. ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or [] if none.

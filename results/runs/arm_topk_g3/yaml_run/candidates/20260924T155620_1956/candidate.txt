@@ -1,0 +1,11 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your complete YAML structure description goes here.
+# DO NOT use placeholders. Define all required fields (e.g., state width, scope, victim extremum).
+name: your_design_name
+doc: >
+  One line saying what changed and why.
+state:
+  ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

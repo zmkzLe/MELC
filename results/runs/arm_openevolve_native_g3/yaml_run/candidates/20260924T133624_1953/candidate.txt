@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Start with one line saying what changed and why.
+state:
+  - name: my_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: my_field
+  extremum: max
+# (Continue fully defining all other needed sections like signatures, tables, samplers, etc.)
+# DO NOT use literal '...' in your output; write the actual full configuration.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+<YAML structure description>
+===== NEW_WORDS =====
+
+<A top-level YAML list of word mappings, or empty>

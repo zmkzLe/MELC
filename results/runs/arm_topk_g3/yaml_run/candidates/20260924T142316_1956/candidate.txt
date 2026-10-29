@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, valid YAML configuration here (name, doc, state, victim, signatures, tables, samplers, procedures, on_hit, on_fill).
+# DO NOT use placeholders. DO NOT omit any required sections.
+===== NEW_WORDS =====
+
+# Write your YAML list of new words here. If you have no new words, leave this section COMPLETELY BLANK. DO NOT write "None" or "[Your new words here]".

@@ -1,0 +1,15 @@
+===== STRUCTURE_DESCRIPTION =====
+<the structure description, YAML>
+===== NEW_WORDS =====
+
+<a YAML list of the new words the description uses, or nothing>
+```
+
+Both marker lines must appear, spelled exactly as above, even when there are no
+new words.
+
+Every candidate also reports its metadata, priced by CACTI at 22 nm from the
+state the description declares (metadata_kb, metadata_area_mm2,
+metadata_energy_uj); reported, not scored. The seed declares 47.4 KB of the
+48 KB budget, so new state has to be paid for
+by narrowing or removing state elsewhere; the metadata_kb figure in the feedback

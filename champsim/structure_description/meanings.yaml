@@ -1,0 +1,452 @@
+# What every word of a structure description means. The C++ is written from a
+# structure description and these meanings alone, so each says exactly what the
+# code does. Words are the keys of vocabulary.py's lists and validate.py's
+# grammar; test_meanings.py fails if one has no meaning here or one here is stale.
+
+machine: >
+  The policy replaces lines in one cache of NUM_SET sets and NUM_WAY ways (the
+  DPC4 LLC: 4096 sets, 12 ways, 64-byte lines) shared by NUM_CPUS cores (1). An
+  address's line address is the address without its 6 offset bits; the set index
+  is the low log2(NUM_SET) bits of the line address. ChampSim calls three hooks.
+  find_victim runs on a fill only when every way of the set is valid (ChampSim
+  itself fills the first invalid way without calling the policy, and such a fill
+  is never bypassed); it returns a way, or NUM_WAY to bypass, which ChampSim
+  forbids for a WRITE. update_replacement_state runs at every tag check, hit or
+  miss, with way == NUM_WAY on a miss. replacement_cache_fill runs at every fill,
+  with way == NUM_WAY when the fill was bypassed, and a bypassed fill still runs
+  all of on_fill (Event on_fill). Each hook is told the
+  triggering core, the set, the way, the address, the instruction address (ip)
+  and the access type. Every value a rule reads or writes belongs to the access
+  the hook describes: its set, its way, its core.
+
+definitions:
+  crc3: >
+    crc3(x): x as a 64-bit unsigned integer; three times, if x is odd then
+    x = (x >> 1) XOR 0xEDB88320, else x = x >> 1. Mockingjay's CRC_HASH.
+  set_sample_rate: >
+    ChampSim's get_set_sample_rate: 16 when 256 <= NUM_SET < 1024, otherwise 8
+    when NUM_SET >= 64, otherwise 4 when NUM_SET >= 8. 8 for the DPC4 LLC.
+  set_sample_category: >
+    ChampSim's get_set_sample_category(set): with r = set_sample_rate,
+    (r + (set mod r) - ((set >> log2 r) mod r)) mod r. It is 0 when the low
+    log2 r bits of the set equal the next log2 r bits; 1..r-1 otherwise.
+  mirror_sampled: >
+    Mockingjay's is_sampled_set for n sampled sets: with m = log2(NUM_SET) -
+    log2(n), set s is sampled when (s mod 2^m) == ((s >> log2 n) mod 2^m).
+
+grammar:
+  StructureDescription:
+    means: One replacement policy for one cache.
+    keys:
+      name: The policy's name. It does not name the C++ class; the build does.
+      doc: Prose for readers. It is not part of the policy; the C++ follows the other keys only.
+      state: The policy's own storage, a list of fields. Every field starts at its init.
+      victim: How find_victim chooses the way to evict, and when it bypasses instead.
+      duel: Optional set dueling between two insertion arms, used by a use_duel rule.
+      signatures: Indices computed from the current access, used to address tables and stored in samplers.
+      tables: Arrays of counters addressed by a signature, or inside a sampler by an entry field.
+      samplers: Shadow caches over some sets that watch reuse and train tables.
+      procedures: Named rule lists. An event runs one with a `run` rule; a procedure may not run another.
+      on_access: Rules run at every tag check, hit or miss (Event on_access).
+      on_hit: Rules run at a tag check that hit (Event on_hit).
+      on_fill: Rules run at every fill, bypassed or not; a bypass skips only per_line writes at its way (Event on_fill).
+
+  StateField:
+    means: One field of the policy's state.
+    keys:
+      name: The name rules use to read and write it.
+      scope: How many copies exist and which one an access uses (Scope).
+      kind: How its arithmetic behaves (FieldKind).
+      width: Its size in bits, 1 to 64.
+      init: The value every copy holds before the first access; a literal or an InitValue.
+
+  SamplerField:
+    means: One field of every entry of a sampler.
+    keys:
+      name: The name the sampler's rules use; it may not repeat a top-level name.
+      kind: How its arithmetic behaves (FieldKind).
+      width: Its size in bits, 1 to 64.
+      init: The value every entry holds before it is first installed.
+
+  ConstValue:
+    means: A value to write that does not depend on the access.
+    keys:
+      const: A literal integer, or an InitValue resolved against the target's width.
+
+  TickValue:
+    means: A timestamp from a clock.
+    keys:
+      tick: A 64-bit global state field. The target gets the clock's current value, then the clock adds one (target = clock++).
+
+  CounterGatedValue:
+    means: >
+      A value that is `default` except on every every_n-th use. Each time it is
+      written, `counter` adds one; if the counter then equals every_n it is reset
+      to 0 and `then` is written instead of `default` (DRRIP's BRRIP insertion).
+    keys:
+      default: The value written on most uses.
+      counter: The state field counting uses.
+      every_n: How many uses make one `then`, 2 to 1024.
+      then: The value written on the every_n-th use.
+
+  SignatureValue:
+    means: The current access's signature.
+    keys:
+      signature: A declared signature, computed for this access.
+
+  AddValue:
+    means: A step added to the target's current value.
+    keys:
+      add: >
+        The signed step, never 0. counter and signed targets wrap modulo 2^width;
+        saturating targets clamp at 0 and at their maximum.
+
+  ReadValue:
+    means: Another field's current value, copied into the target.
+    keys:
+      read: >
+        A per_set, per_cpu or global state field (the copy of this access's set or
+        core), or inside a sampler a field of the current entry or its age.
+
+  DeclaredValue:
+    means: A value computed by a declared value word, as its meaning says.
+    keys:
+      words: >
+        The one word, written as its own key with its parameters, {name: {parameter: value}}.
+
+  TableValue:
+    means: A table entry divided by `div`, integer division, rounding down. An absent entry reads 0.
+    keys:
+      table: The table to read.
+      index: A signature of this access, or inside a sampler a field of the current entry.
+      div: The divisor, 1 or more; 1 reads the entry as it is.
+
+  CounterPredicate:
+    means: >
+      A comparison of a field's current value with a threshold. The value is the
+      copy of this access's set, core or way; inside each_way it is the way being
+      visited; inside a sampler it may be a field of the current entry, or age.
+    keys:
+      cmp: The comparison (Comparison); never absent.
+      threshold: A literal, or a Threshold resolved against the field's width.
+      counter: The field compared.
+      abs: When true the absolute value is compared; signed fields only.
+
+  TablePredicate:
+    means: A comparison of a table entry with a threshold. Any comparison on an absent entry is false.
+    keys:
+      cmp: The comparison (Comparison); absent asks whether the entry was never written.
+      threshold: A literal, or a Threshold; omitted with absent.
+      table: The table to read.
+      index: A signature of this access, or inside a sampler a field of the current entry.
+
+  TableExceedsVictim:
+    means: >
+      True when table[index] / div (integer division) is greater than the absolute
+      value of the victim key of the way the victim search chose. False on an
+      absent entry. Only inside victim.bypass_when.
+    keys:
+      table: The table to read.
+      index: A signature of the access being filled (its hit bit is 0).
+      div: The divisor, 1 or more.
+
+  Condition:
+    means: A test on the current access. Every clause present must hold; with no clause it always holds.
+    keys:
+      type_in: The access type is one of these (AccessType).
+      type_not_in: The access type is none of these.
+      counter: A CounterPredicate that must hold.
+      table: A TablePredicate that must hold.
+      table_exceeds_victim: A TableExceedsVictim that must hold; bypass tests only.
+      sampled_set: When true, the access's set has set_sample_category 0.
+      words: >
+        Declared condition words, each written as its own key with its parameters,
+        {name: {parameter: value}}. Each must hold, as its meaning says.
+
+  Train:
+    means: Moves a table entry as `op` says (TrainOp).
+    keys:
+      table: The table trained.
+      index: A signature of this access, or inside a sampler a field of the current entry.
+      op: How the entry moves.
+      sample: toward only. The value moved toward, s; a state field, a field of the current sampler entry, or age.
+      scale: toward only. s is multiplied by this before clamping; 1 when omitted.
+      min_diff: toward only. The entry moves only when it differs from s by at least this; 1 when omitted.
+
+  EachWay:
+    means: Writes `set` into every way of the access's set whose `when` holds, visiting ways 0 to NUM_WAY-1.
+    keys:
+      when: Tested once per way; per_line fields are read at the way visited.
+      except_touched: When true, the access's own way is skipped. A miss or a bypassed fill has no way of its own, so every way is visited.
+      set: The per_line fields written at each selected way, and their values.
+
+  Rule:
+    means: >
+      One step of an event or procedure. Rules run in order. If `when` does not
+      hold the rule is skipped. Otherwise it does its one action, then `free`,
+      then `stop`.
+    keys:
+      when: The Condition under which the rule acts; always when omitted.
+      set: >
+        Writes each named field. per_line fields are written at the access's way,
+        and the write is skipped when there is none (a miss, or a bypassed fill);
+        other fields at this access's set, core, or the one global copy. Inside a
+        sampler it writes fields of the current entry, or state fields.
+      use_duel: Runs the duel (Duel) for this fill.
+      sample: Runs the named sampler on this access (Sampler).
+      train: Trains a table entry (Train).
+      run: Runs the named procedure's rules here, in order.
+      each_way: Writes into every way of the set whose condition holds (EachWay).
+      free: Inside a sampler's on_match or sweep, invalidates the current entry after the action.
+      stop: >
+        Ends the event: no later rule of the event, or of a procedure it runs,
+        acts. Inside a sampler, ends only that rule list for the current entry.
+      words: >
+        A declared step word as the rule's one action, written as its own key with
+        its parameters, {name: {parameter: value}}. It does what its meaning says.
+
+  VictimSelector:
+    means: >
+      find_victim. It runs only on a fill into a set whose ways are all valid. It
+      scans ways 0 to NUM_WAY-1 for the extremum of `key`, breaking ties by
+      tie_break; applies on_search; then, unless the access is a WRITE, returns
+      NUM_WAY (bypass) if any bypass_when condition holds, else the chosen way.
+    keys:
+      key: A per_line state field compared across the ways of the set.
+      extremum: Which value is evicted (Extremum).
+      tie_break: Which way wins among ways holding that value (TieBreak); first when omitted.
+      on_search: What the search does to the set besides choosing (SearchSideEffect); none when omitted.
+      bypass_when: Conditions tested after the choice; if any holds and the access is not a WRITE, no line is filled or evicted.
+
+  SamplerVictim:
+    means: How a sampler chooses the entry to replace in a sampler set.
+    keys:
+      key: A sampler field, or age.
+      extremum: Which value is replaced (Extremum).
+      tie_break: Which way wins among ways holding that value (TieBreak).
+      prefer_free: When true, the first invalid way is taken if there is one, and on_replace does not run.
+
+  DuelArm:
+    means: One insertion arm of a duel.
+    keys:
+      set: The fields the arm writes at the filled way, and their values, as a Rule's set.
+
+  Duel:
+    means: >
+      Set dueling between two insertion arms. A use_duel rule looks up the set's
+      set_sample_category c. If c == leader_a_category, the selector adds
+      leader_a_delta (saturating) and arm a is applied; if c ==
+      leader_b_category, the selector adds leader_b_delta and arm b is applied.
+      Any other set follows: arm b when follower_uses_b_when holds, else arm a.
+      The selector is the copy of the triggering core.
+    keys:
+      selector: A per_cpu saturating state field.
+      arm_a: The first arm.
+      arm_b: The second arm.
+      leader_a_category: The set category whose sets lead arm a.
+      leader_b_category: The set category whose sets lead arm b.
+      leader_a_delta: Added to the selector when a leader set of arm a runs the duel; -1, 0 or 1.
+      leader_b_delta: Added to the selector when a leader set of arm b runs the duel; -1, 0 or 1.
+      follower_uses_b_when: A CounterPredicate on the selector; followers use arm b when it holds.
+
+  Signature:
+    means: >
+      An index computed from the current access: x = source; for each fold bit in
+      order, x = (x << 1) | bit; x = hash(x); keep the low low_bits bits; then, if
+      modulo is given, x = x mod modulo. Everything is 64-bit unsigned.
+    keys:
+      name: The name tables, samplers and values use.
+      source: The starting value (SignatureSource).
+      fold: The bits shifted in, in order (FoldBit); none when omitted.
+      hash: The hash applied after folding (SignatureHash); none when omitted.
+      low_bits: How many low bits are kept, 1 to 64.
+      modulo: A final modulus, 2 to 2^20, applied after low_bits; none when omitted.
+
+  Table:
+    means: An array of `entries` unsigned counters, read and trained through an index.
+    keys:
+      name: The name rules use.
+      scope: global for one table; per_cpu for one table per core, the triggering core's used.
+      kind: counter (wraps) or saturating (clamps at 0 and max); never signed.
+      width: Bits per entry.
+      init: Every entry's first value; not with unset.
+      entries: How many entries; every index value must be below this.
+      unset: >
+        When true, every entry has a valid bit and starts absent: it reads 0, every
+        comparison on it except absent is false, and TrainOp says what training
+        writes into it.
+      max: The largest value an entry holds, at most 2^width - 1; 2^width - 1 when omitted. Saturating arithmetic clamps here.
+
+  MirrorSets:
+    means: Mockingjay's sampled sets.
+    keys:
+      mirror: How many sets are sampled, a power of two; set s is sampled when mirror_sampled(s) holds.
+
+  Age:
+    means: >
+      A sampler entry's age, (clock - stamp) mod 2^width, readable as `age` in the
+      sampler's rules, training and victim.
+    keys:
+      clock: A per_set, per_cpu or global unsigned state field, read at this access's set or core.
+      stamp: An unsigned sampler field of the same width as the clock.
+
+  Sampler:
+    means: >
+      A shadow cache. A `sample` rule on an access to a set that is not sampled
+      does nothing. On a sampled set: (1) the sampler set is chosen from the
+      access's set and extra_index_bits, and the tag is taken from the line
+      address; (2) if a valid entry has the tag, on_match runs on it; (3) sweep
+      runs on every valid entry, ways in order; (4) if no valid entry now has the
+      tag, a way is chosen by `victim`, on_replace runs on it if it is valid,
+      `install` is written into it and it becomes valid with the tag; (5) `after`
+      runs. Step 4 always leaves the tag installed, fresh.
+    keys:
+      name: The name a `sample` rule uses.
+      scope: global for one sampler; per_cpu for one per core, the triggering core's used.
+      sets: >
+        Which cache sets are sampled: category_zero (SampledSets) or {mirror: n}
+        (MirrorSets). For category_zero the sampler set is set / set_sample_rate.
+      extra_index_bits: >
+        n, 0 when omitted. Every sampled set has its own group of 2^n sampler sets,
+        shared with no other sampled set, so the sampler holds (number of sampled
+        sets) * 2^n sampler sets. An access uses its own sampled set's group, and in
+        it the sampler set numbered by the n line-address bits directly above the
+        set index, (line address >> log2(NUM_SET)) mod 2^n.
+      ways: Entries per sampler set.
+      tag_bits: >
+        An entry's tag is exactly tag_bits bits: (line address >> (log2(NUM_SET) +
+        extra_index_bits)) mod 2^tag_bits. Two lines with the same tag bits match.
+      fields: The fields of every entry besides its valid bit and tag.
+      age: The entry age readable as `age` (Age); none when omitted.
+      victim: How the entry to replace is chosen (SamplerVictim).
+      on_match: Rules run on the valid entry holding the access's tag.
+      sweep: Rules run on every valid entry after on_match.
+      on_replace: Rules run on a valid entry chosen for replacement, before it is overwritten.
+      install: The value written into every field of the new entry.
+      after: Rules run last; they may write only state fields.
+
+symbols:
+  Scope:
+    means: How many copies of a field exist, and which one an access uses.
+    members:
+      per_line: One per way of every set; an access uses its own way's copy (see EachWay for the others).
+      per_set: One per set; an access uses its set's copy.
+      per_cpu: One per core; an access uses the triggering core's copy.
+      global: One for the whole cache.
+
+  FieldKind:
+    means: How a field's arithmetic behaves.
+    members:
+      counter: Unsigned, width bits; adding wraps modulo 2^width.
+      saturating: Unsigned, width bits; adding clamps at 0 and at the maximum.
+      flag: One bit, 0 or 1.
+      signed: Two's complement, width bits, -2^(width-1) to 2^(width-1)-1; adding wraps. Values are written as literals.
+
+  InitValue:
+    means: A value named by its width; also usable in ConstValue. Integers are allowed too.
+    members:
+      ZERO: Zero, whatever the width.
+      MAX: 2^width - 1.
+      MAX_MINUS_1: 2^width - 2.
+      MID: 2^(width-1), e.g. 512 at width 10.
+
+  Threshold:
+    means: A comparison threshold named by the compared field's width. Integers are allowed too.
+    members:
+      ZERO: Zero, whatever the width.
+      MAX: 2^width - 1.
+      MAX_OVER_2: (2^width - 1) / 2 rounded down, e.g. 511 at width 10.
+
+  Extremum:
+    means: Which value a victim search picks.
+    members:
+      min: The smallest value.
+      max: The largest value.
+      max_magnitude: The largest absolute value; signed keys only.
+
+  TieBreak:
+    means: Which way wins when several ways hold the extreme value.
+    members:
+      first: The lowest-numbered way.
+      last: The highest-numbered way.
+      prefer_negative: >
+        For max_magnitude. Ways are scanned 0 to NUM_WAY-1 keeping a best way, which
+        starts as way 0 with magnitude 0; a way becomes the best when its absolute
+        value is greater, or equal and its value negative. So among equal
+        magnitudes the last negative wins, or the first way if none is negative.
+
+  SearchSideEffect:
+    means: What the victim search does to the set besides choosing.
+    members:
+      none: Nothing.
+      age_to_max: With extremum max, if the largest value found is v < 2^width - 1, every way's key gets (2^width - 1 - v) added; the chosen way stays the same.
+
+  Comparison:
+    means: How a value is compared with a threshold.
+    members:
+      gt: value > threshold.
+      gte: value >= threshold.
+      lt: value < threshold.
+      lte: value <= threshold.
+      eq: value == threshold.
+      is_max: value == 2^width - 1; the threshold must be written as MAX.
+      absent: A table entry was never written; tables with unset only, and no threshold.
+
+  AccessType:
+    means: ChampSim's access types.
+    members:
+      LOAD: A demand load.
+      RFO: A read for ownership, a store's miss.
+      PREFETCH: A prefetch.
+      WRITE: A writeback from the level above. It is never bypassed.
+      TRANSLATION: A page-table walk access.
+
+  Event:
+    means: >
+      When a list of rules runs. On a hit, on_access runs, then on_hit. On a miss,
+      on_access runs at the tag check and on_fill later, when the line arrives.
+      An event runs only the rules the description lists under it; an event the
+      description leaves out does nothing, and no event runs another's rules.
+    members:
+      on_access: Every tag check (update_replacement_state), hit or miss. On a miss there is no way, so per_line fields cannot be written.
+      on_hit: A tag check that hit; the access's way is the hit way.
+      on_fill: >
+        Every fill (replacement_cache_fill), bypassed or not; the access's way is
+        the filled way, or none when the fill was bypassed (way == NUM_WAY). A
+        bypassed fill still runs every on_fill rule, and every rule of a procedure
+        it runs, in order: samplers run and train, each_way visits every way, and
+        per_set, per_cpu and global fields and tables change as on any fill. Only
+        writes to per_line fields at the access's own way are skipped. A bypass is
+        never a reason to return from replacement_cache_fill early.
+
+  SignatureSource:
+    means: Where a signature starts.
+    members:
+      ip: The instruction address of the access, 64 bits.
+
+  FoldBit:
+    means: A bit shifted into a signature before hashing, x = (x << 1) | bit.
+    members:
+      hit: 1 during on_hit, otherwise 0 (on a fill, in the victim search and in bypass tests).
+      prefetch: 1 when the access type is PREFETCH.
+
+  SignatureHash:
+    means: The hash applied to a signature after folding.
+    members:
+      none: No hash.
+      crc3: crc3(x) (definitions).
+
+  TrainOp:
+    means: How training moves a table entry. `max` is the table's max.
+    members:
+      increment: Adds one, clamped at max. An absent entry becomes max.
+      decrement: Subtracts one, clamped at 0. An absent entry becomes 0.
+      toward: >
+        With s = min(sample * scale, max): an absent entry becomes s; otherwise,
+        if the entry differs from s by at least min_diff, it moves one step
+        toward s, staying within 0..max; otherwise it is unchanged.
+
+  SampledSets:
+    means: Rule-defined sampled sets.
+    members:
+      category_zero: The sets whose set_sample_category is 0, one in set_sample_rate.

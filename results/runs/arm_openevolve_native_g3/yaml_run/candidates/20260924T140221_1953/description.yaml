@@ -1,0 +1,15 @@
+name: your_policy_name
+doc: >
+  Detailed explanation of what changed and why.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  # (Include ALL state fields)
+victim:
+  key: etr
+  extremum: max_magnitude
+  # (Include FULL victim section)
+# (Include ALL other sections: signatures, tables, samplers, procedures, on_hit, on_fill completely)

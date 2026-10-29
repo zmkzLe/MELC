@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+# Replace this comment with your actual YAML structure description
+===== NEW_WORDS =====
+
+# Replace this comment with your actual YAML list of new words, or leave empty if none

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOUR FULL YAML STRUCTURE DESCRIPTION GOES HERE
+# (Must include name, doc, state, victim, on_fill, on_hit, etc.)
+===== NEW_WORDS =====
+
+# YOUR NEW WORDS YAML LIST GOES HERE
+# (Or leave empty below this line if none, but the header MUST be present)

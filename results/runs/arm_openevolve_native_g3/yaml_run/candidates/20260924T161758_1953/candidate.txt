@@ -1,0 +1,13 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation here...
+state:
+  # MUST include state definition
+victim:
+  # MUST include victim definition
+# ... rest of your complete, valid YAML structure ...
+# (DO NOT use placeholders like "<the complete structure description>". Write the actual complete YAML!)
+===== NEW_WORDS =====
+
+# List your new words here as a YAML list. If none, leave empty.

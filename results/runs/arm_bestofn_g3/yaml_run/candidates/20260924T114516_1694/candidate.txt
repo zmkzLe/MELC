@@ -1,0 +1,15 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  Summary of changes and rationale.
+state:
+  ...
+victim:
+  ...
+===== NEW_WORDS =====
+
+- name: my_word
+  place: condition
+  params: ...
+  means: >
+    ...

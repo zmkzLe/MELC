@@ -1,0 +1,24 @@
+===== STRUCTURE_DESCRIPTION =====
+    name: my_improved_policy
+    doc: >
+      Explain what changed and why.
+    state:
+      - name: etr
+        scope: per_line
+        kind: signed
+        width: 5
+        init: 0
+      # (YOU MUST INCLUDE ALL NECESSARY FULL DEFINITIONS HERE, DO NOT USE '...')
+    victim:
+      key: etr
+      extremum: max_magnitude
+      # (YOU MUST INCLUDE ALL NECESSARY FULL DEFINITIONS HERE)
+    # (YOU MUST INCLUDE ALL OTHER SECTIONS like signatures, tables, samplers, procedures, on_hit, on_fill FULLY DEFINED)
+    ===== NEW_WORDS =====
+
+    # A YAML list of new words, or empty if none, e.g.:
+    # - name: my_new_word
+    #   place: condition
+    #   params: {sig: signature}
+    #   means: >
+    #     Description of what it does...

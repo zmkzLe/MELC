@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your complete, fully-defined YAML structure description goes here.
+# DO NOT use placeholders like '<the structure description, YAML>'.
+# DO NOT submit the exact seed design unchanged.
+===== NEW_WORDS =====
+
+# Your YAML list of new words goes here. If none, leave blank.

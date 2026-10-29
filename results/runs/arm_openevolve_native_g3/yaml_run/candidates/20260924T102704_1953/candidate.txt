@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the FULL, COMPLETE structure description here in YAML.
+# DO NOT use placeholders like "<the structure description, YAML>" or "...rest of policy...".
+# You MUST include all required fields, especially `state` and `victim`.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

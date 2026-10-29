@@ -1,0 +1,146 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay
+doc: >
+  Mockingjay baseline: lines track signed ETR (-11..11), aged every 8 accesses to the set.
+  A 2048-entry RDP table predicts reuse distance based on folded PC signatures. Lines predicted
+  to have reuse distance > 73 or exceeding victim ETR are bypassed.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 4
+    init: 8
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 8
+    init: ZERO
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+    - {table_exceeds_victim: {table: rdp, index: pc_sig, div: 8}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4
+    ways: 5
+    tag_bits: 10
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 8, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      set: {etr_clock: {const: 0}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: access
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: access
+
+================================================================================
+ADDITIONAL REFERENCE PATTERNS FOR INSPIRATION
+================================================================================
+- LRU: `victim: {key: recency, extremum: min, tie_break: first}` with global tick clock.
+- SRRIP: 2-bit RRPV per line, insert at MAX_MINUS_1, promote to 0 on hit, `on_search: age_to_max`.
+- DRRIP: Set dueling with saturating PSEL counter, arm_a (SRRIP) vs arm_b (BRRIP with counter_gated).
+- SHiP: Signature table with saturating counter predicting dead lines; samplers train on match / replace.
+
+================================================================================
+GRAMMAR SPECIFICATION & ALLOWED WORDS
+================================================================================
+- Field Scopes: `per_line`, `per_set`, `per_cpu`, `global`.
+- Field Kinds: `counter` (wrapping), `saturating` (clamping), `flag` (1-bit), `signed` (2's complement).
+- Init/Const Values: `ZERO`, `MAX`, `MAX_MINUS_1`, `MID`, or explicit integer literal.
+- Value forms:
+  - `{const: <val>}`
+  - `{tick: <64-bit global counter>}`
+  - `{read: <field>}`
+  - `{add: <signed step>}`
+  - `{signature: <sig_name>}`
+  - `{table: <table_name>, index: <sig_or_field>, div: <int>}`
+  - `{counter_gated: {default: <val>, counter: <field>, every_n: <int>, then: <val>}}`
+- Comparisons: `gt`, `gte`, `lt`, `lte`, `eq`, `is_max`, `absent`.
+- Access Types: `LOAD`, `RFO`, `PREFETCH`, `WRITE`, `TRANSLATION`.
+- Training Ops: `increment`, `decrement`, `toward` (with `sample`, optional `scale`, `min_diff`).
+- Signature sources: `ip`; fold bits: `hit`, `prefetch`; hashes: `crc3`, `none`.
+
+================================================================================
+STEP-BY-STEP REASONING REQUIRED BEFORE OUTPUT
+================================================================================
+Before generating your candidate, reason carefully:
+1. Target bottleneck: Focus on wrong_bypass reduction (or kept_dead reduction) identified in the guidance.
+2. Concrete change: What specific condition, threshold, or state is being modified?
+3. Metadata budget verification: Calculate the exact bit budget. Ensure total state is <= 48.0 KB (Mockingjay uses 47.38 KB, leaving ~0.62 KB headroom, or you can shrink tables/counters to free space).
+4. Strict syntax check: Verify all keys exist, no placeholder text is included, both section markers are present, and the entire output is enclosed in ONE code block.
+
+Now, generate the complete replacement policy candidate.

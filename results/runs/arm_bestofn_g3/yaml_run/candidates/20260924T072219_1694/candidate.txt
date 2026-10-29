@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_new_policy
+doc: >
+  Added a bypass history table to address wrong_bypass.
+state:
+  ... (FULL valid YAML content for state)
+victim:
+  ... (FULL valid YAML content for victim)
+... (all other sections)
+===== NEW_WORDS =====

@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_v2
+doc: >
+  Added a dynamic bypass confidence threshold to balance wrong_bypass and should_bypass.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (rest of your valid YAML structure description) ...
+===== NEW_WORDS =====
+
+- name: dynamic_bypass_confidence
+  place: condition
+  params: {table: table, index: signature, threshold: {int: [0, 100]}}
+  means: >
+    True when the table entry at the index exceeds the dynamic threshold...

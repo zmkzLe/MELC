@@ -1,0 +1,4 @@
+===== STRUCTURE_DESCRIPTION =====` header.
+2. Name your policy and clearly document in `doc:` what architectural hypothesis you are testing (e.g. mitigating wrong_bypass via guarded bypass or duel, or bypass confidence filter).
+3. Ensure all declared state fits within 48 KB.
+4. Close with `===== NEW_WORDS =====

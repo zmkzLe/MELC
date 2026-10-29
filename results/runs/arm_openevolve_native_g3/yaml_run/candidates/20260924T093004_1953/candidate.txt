@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Start with one line saying what changed and why.
+# WRITE YOUR ENTIRE, COMPLETE YAML POLICY HERE. NO PLACEHOLDERS!
+===== NEW_WORDS =====
+
+# WRITE YOUR NEW WORDS HERE AS A YAML LIST, OR LEAVE EMPTY IF NONE.

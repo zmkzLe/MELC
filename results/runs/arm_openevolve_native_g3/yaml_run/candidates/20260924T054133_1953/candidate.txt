@@ -1,0 +1,17 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Start with one line saying what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+# ... include ALL other required sections for your complete policy (tables, samplers, on_hit, on_fill, etc.) ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

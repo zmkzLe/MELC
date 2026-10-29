@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+# WRITE YOUR COMPLETE, FULLY EXPANDED YAML DICTIONARY HERE.
+# DO NOT USE PLACEHOLDERS LIKE "<the structure description>".
+# MUST include `name`, `doc`, `state`, and `victim` at the top level.
+# All fields must be completely defined.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses.
+# If none, you MUST output an empty list: []

@@ -1,0 +1,26 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_improved
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 4
+    init: 8
+  # (Include ALL other state fields you need, fully defined)
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  # (Include bypass_when and ALL other victim fields, fully defined)
+# (Include ALL other sections: signatures, tables, samplers, procedures, on_hit, on_fill, fully defined)
+===== NEW_WORDS =====
+
+# (Your new words list here, or leave empty if none)

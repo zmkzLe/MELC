@@ -1,0 +1,4 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type

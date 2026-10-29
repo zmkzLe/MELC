@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation here...
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 5
+    init: 0
+# ... ALL other required sections (victim, tables, etc.) fully defined in valid YAML ...
+===== NEW_WORDS =====
+
+# ... Your new words list here, or blank if none ...

@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why.
+# [YOUR COMPLETE YAML DESIGN GOES HERE]
+# DO NOT output placeholder text like "<the complete structure description, YAML>".
+# You MUST provide the actual valid dictionary for the structure description!
+===== NEW_WORDS =====
+
+# [YOUR YAML LIST OF NEW WORDS GOES HERE, OR LEAVE EMPTY IF NONE]

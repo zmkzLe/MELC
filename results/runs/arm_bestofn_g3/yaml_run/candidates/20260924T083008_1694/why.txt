@@ -1,0 +1,2 @@
+Candidate ? FAILED at malformed; it was not scored.
+Reason: candidate is missing section(s): NEW_WORDS

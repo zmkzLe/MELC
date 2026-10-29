@@ -1,0 +1,19 @@
+validator: /home/user/oe_out/arm_adaevolve_noadapt_g3/yaml_run
+  tree /home/user/champsim_validate module validate_policy
+  33 traces at 50000000 + 100000000, 8 workers, sim timeout 18000 s
+  search stop 2026-09-23T22:00:00Z, deadline 2026-09-24T04:00:00Z, drain False, fake None
+waiting for /home/user/oe_out/arm_adaevolve_noadapt_g3/yaml_run/store
+[2026-09-23T05:57:24Z] started {"id": "c41837327dd0", "score": 1.0}
+[2026-09-23T07:27:29Z] superseded {"id": "d7c849319b40", "score": 1.0011754182161063, "by": "7a33ac317d80"}
+[2026-09-23T08:11:32Z] superseded {"id": "7a33ac317d80", "score": 1.00180505078938, "by": "90a333eded10"}
+[2026-09-23T09:02:03Z] validated {"id": "c41837327dd0", "score": {"all": 1.0, "training": 1.0, "held_out": 1.0}, "gap": {"difference": 0.0, "ratio": 1.0}, "seconds": 11079.1}
+[2026-09-23T09:02:35Z] started {"id": "90a333eded10", "score": 1.0025068371459267}
+[2026-09-23T09:37:37Z] below_min_gain {"id": "0db743fa2a63", "score": 1.0025559354847304}
+[2026-09-23T10:28:41Z] below_min_gain {"id": "b9653eafe529", "score": 1.0026670605485792}
+[2026-09-23T12:09:13Z] validated {"id": "90a333eded10", "score": {"all": 1.0026030256472456, "training": 1.0002362359423487, "held_out": 1.0051238763544872}, "gap": {"difference": -0.004887640412138516, "ratio": 0.9951372755865022}, "seconds": 11197.9}
+[2026-09-23T13:26:53Z] below_min_gain {"id": "ea93d87bccf2", "score": 1.0027918106272762}
+[2026-09-23T13:47:54Z] below_min_gain {"id": "a70aed63ede2", "score": 1.0029958770713636}
+[2026-09-23T15:04:00Z] below_min_gain {"id": "43c3cee53845", "score": 1.0030028117026326}
+[2026-09-23T18:09:15Z] started {"id": "429a3b77e242", "score": 1.004671327052142}
+[2026-09-23T21:18:09Z] validated {"id": "429a3b77e242", "score": {"all": 1.0007440801507541, "training": 1.0017119223695252, "held_out": 0.9997167723840794}, "gap": {"difference": 0.00199514998544581, "ratio": 1.0019957152271117}, "seconds": 11334.2}
+[2026-09-24T04:00:07Z] past the deadline with nothing running: done

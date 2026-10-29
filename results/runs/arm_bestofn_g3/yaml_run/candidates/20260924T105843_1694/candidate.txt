@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the COMPLETE structure description in valid YAML here.
+# DO NOT use placeholders. ALL required fields (name, doc, state, victim, etc.) must be fully specified with actual values.
+===== NEW_WORDS =====
+
+# Write the COMPLETE YAML list of new words here, or [] if none.
+# DO NOT use placeholders.

@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the complete, valid YAML for your replacement policy here.
+# DO NOT output placeholders like `...` or `<text>`. You must provide a FULL, valid YAML document containing all required sections.
+name: valid_name_under_32_chars
+doc: >
+  Your explanation here.
+# (Provide the FULL policy here. Do not skip any sections. Do not use literal `...`)
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

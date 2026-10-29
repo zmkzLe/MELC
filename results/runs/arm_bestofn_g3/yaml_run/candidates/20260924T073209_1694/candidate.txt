@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  A complete, valid YAML description goes here.
+  Do not use placeholders.
+state:
+  # MUST be fully defined
+victim:
+  # MUST be fully defined
+# ... all other necessary sections ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.
+# Even if empty, both marker lines MUST be present exactly as spelled above.

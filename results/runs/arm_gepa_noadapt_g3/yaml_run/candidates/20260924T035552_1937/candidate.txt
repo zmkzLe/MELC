@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your detailed explanation of what changed and why.
+state:
+  ... [your full, modified YAML policy definition goes here] ...
+===== NEW_WORDS =====

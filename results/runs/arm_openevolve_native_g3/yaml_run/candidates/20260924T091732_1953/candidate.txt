@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the FULL, COMPLETE structure description here in valid YAML.
+# Do NOT output placeholder text like '<the structure description, YAML>'.
+# You must provide the actual YAML keys and values for your policy.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.
+# Do NOT output placeholder text.

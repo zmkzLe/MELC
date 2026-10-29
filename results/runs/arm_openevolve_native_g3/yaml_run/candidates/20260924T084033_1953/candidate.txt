@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, COMPLETE valid YAML policy here.
+# DO NOT output partial snippets or use placeholders like "...".
+# You must include all necessary sections (name, doc, state, victim, on_fill, on_hit, etc.).
+===== NEW_WORDS =====
+
+# Write your YAML list of the new words the description uses here, or leave empty if none.

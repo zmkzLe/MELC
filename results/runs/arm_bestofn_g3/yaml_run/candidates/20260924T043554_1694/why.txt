@@ -1,0 +1,8 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...y...\n', 'state': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+<the structure description, YAML>
+===== NEW_WORDS =====
+
+<a YAML list of the new words the description uses, or nothing>
+```
+
+Both marker lines must appear inside this SAME code block, spelled exactly as above, even when there are no

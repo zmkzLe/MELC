@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+[Your FULL, valid YAML structure description goes here. NO PLACEHOLDERS. MUST include all sections like state, victim, on_hit, on_fill, etc.]
+===== NEW_WORDS =====
+
+[Your YAML list of new words, or nothing]

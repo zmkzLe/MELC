@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Detailed explanation of the policy changes.
+state:
+  - name: example_state
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# [Write ALL other required sections here fully defined: victim, signatures, tables, samplers, procedures, on_hit, on_fill, etc.]
+===== NEW_WORDS =====
+
+# [Write your YAML list of the new words here, or leave empty if none. The marker line must remain.]

@@ -1,0 +1,6 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: while parsing a block node
+expected the node content, but found '<document end>'
+  in "<unicode string>", line 1, column 1:
+    ...
+    ^

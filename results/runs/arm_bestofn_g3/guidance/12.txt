@@ -1,0 +1,35 @@
+Guidance version 12, written after 123 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: line_addr
+  place: SignatureSource
+  params: {}
+  means: 'The line address of the current access (the address without its 6 offset bits), as a 64-bit
+    unsigned integer.
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: is_bypassed
+  place: condition
+  params: {}
+  means: 'True if the current event is a fill and the fill was bypassed (i.e., way equals NUM_WAY).
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: is_not_bypassed
+  place: condition
+  params: {}
+  means: 'True if the current event is a fill and the fill was NOT bypassed (i.e., way is less than NUM_WAY).
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: filter_allows_bypass
+  place: condition
+  params: {filter_table: table, line_idx: signature}
+  means: True when the entry in filter_table at line_idx is equal to 0. False otherwise.
+
+Refused among the last 10 candidates, and why: malformed 3 (candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS). schema_rejected 4 (expected '<document start>', but found '[' in "<unicode string>", line 8, column 5: ... [ALL other required sections: si ... ^; Input should be a valid dictionary or instance of StructureDescription (written: None); Input should be a valid dictionary or instance of StructureDescription (written: '<complete, fully specified YAML for your design>'))
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 12 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 6 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<your complete, valid YA...cture description here>'); 2 times (schema_rejected): state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+
+No changes have paid off yet, leaving the seed Mockingjay as the best design at a score of 1.00000. Modifying state, victim.key, victim.bypass_when, new_words, on_fill, signatures, tables, procedures.access, on_hit, procedures, samplers, victim.extremum, victim.on_search, and victim.tie_break all lost or failed to improve the score. You must stop omitting the STRUCTURE_DESCRIPTION and NEW_WORDS sections, stop submitting placeholder text like '<the structure description, YAML>' or '<complete, fully specified YAML for your design>', and stop leaving required fields like state and victim empty or as None. On the traces with the most headroom, 605.mcf_s-1644B (44.4%), 619.lbm_s-2677B (43.9%), 459.GemsFDTD-1491B (33.3%), and 433.milc-127B (28.4%), the largest mistake is wrong_bypass. The largest mistake on 627.cam4_s-573B (52.4%) is should_bypass, and on 657.xz_s-2302B (32.2%) it is kept_dead. To address wrong_bypass, the policy state should remember the signatures of bypassed lines to detect if they are later requested, and the victim.bypass_when decision should insert rather than bypass them upon such reuse. To fix should_bypass and kept_dead, the policy must remember which signatures correlate with dead lines and decide to bypass or evict them sooner. You could declare a new word to express a bypass history table that tracks the reuse of bypassed lines, which the current vocabulary cannot natively describe.

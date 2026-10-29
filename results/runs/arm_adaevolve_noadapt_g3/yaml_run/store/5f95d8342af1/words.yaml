@@ -1,0 +1,10 @@
+- name: safe_bypass_v2
+  place: condition
+  params: {table: table, index: signature, div: {int: [1, 16]}, field: state, min_rd: {int: [0, 127]}}
+  means: >
+    True when the entry of the table at the index is present, its value is greater
+    than or equal to the min_rd parameter, its value divided by the div parameter
+    (integer division, rounding down) is strictly greater than the current value
+    of the per_line state field at the way chosen by the victim search, and that
+    field's value is greater than or equal to 0. False otherwise. Only valid inside
+    victim.bypass_when.

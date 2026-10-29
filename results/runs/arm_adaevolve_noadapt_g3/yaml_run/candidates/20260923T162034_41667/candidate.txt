@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+<the structure description, YAML>
+===== NEW_WORDS =====
+
+<a YAML list of declared new words, or empty if none are used>
+```
+
+Both marker lines must appear, spelled exactly as above. Only the first code block is evaluated.
+
+================================================================================
+METADATA BUDGET ARITHMETIC (48.0 KB Limit = 393,216 bits)
+================================================================================

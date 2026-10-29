@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the FULL, COMPLETE YAML structure description here.
+# It must include all required sections: name, doc, state, victim, signatures, tables, samplers, procedures, on_hit, on_fill, etc.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

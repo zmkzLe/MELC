@@ -1,0 +1,8 @@
+- name: check_conf
+  place: condition
+  params:
+    index: signature
+    limit:
+      int: [0, 3]
+    table: table
+  means: True when the entry of the table at the index is greater than or equal to the limit.

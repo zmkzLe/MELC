@@ -1,0 +1,42 @@
+{
+ "check_conf": {
+  "better": 1,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 3,
+  "worse": 1
+ },
+ "dynamic_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "train_bypass_conf_on_dead": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "train_bypass_conf_on_reuse": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "update_bypass_psel": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ }
+}

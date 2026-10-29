@@ -1,0 +1,20 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why.
+  Detailed explanation of your design...
+state:
+  # MUST BE DEFINED (list of state fields)
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  # MUST BE DEFINED (victim selection logic)
+  key: example_field
+  extremum: max
+# ... other components (signatures, tables, procedures, on_fill, etc.) ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

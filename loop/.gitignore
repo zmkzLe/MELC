@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+
+# Run output: logs, evolved candidates, per-run scratch. The measurements that
+# are worth keeping live in data/ and are committed deliberately.
+*.log
+loop_out/
+oe_out/
+ae_out/
+
+# Traces are hundreds of megabytes each and come from the DPC3 mirror.
+*.champsimtrace.xz
+
+# Credentials never belong here, whatever they are called.
+*key*.json
+.env

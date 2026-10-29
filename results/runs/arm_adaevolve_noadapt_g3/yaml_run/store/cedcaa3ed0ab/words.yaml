@@ -1,0 +1,31 @@
+- name: clamped_dec
+  place: value
+  params: {field: state, min: {int: [-16, 0]}}
+  means: >
+    Reads the per_line state field at the visited way. If its signed value
+    is greater than min, returns its value minus 1. Otherwise returns min.
+
+- name: duel_safe_bypass
+  place: condition
+  params: {table: table, index: signature, div: {int: [1, 16]}, field: state, min_rd: {int: [0, 127]}, force_rd: {int: [0, 127]}, selector: state}
+  means: >
+    Evaluates the core bypass condition: false if the entry of the table at the
+    index is absent or if the current value of the per_line state field at the
+    victim way is less than 0. Otherwise, true if either (its value >= force_rd)
+    OR (its value >= min_rd AND its value / div > the current value of the
+    per_line state field at the victim way).
+    The final result depends on ChampSim's get_set_sample_category(set) c:
+    If c == 1, returns false (Leader A: never bypass).
+    If c == 2, returns the core condition (Leader B: bypass enabled).
+    Otherwise, returns the core condition ONLY IF the global saturating selector
+    state field is >= its midpoint (e.g., 512 for a 10-bit counter).
+    Only valid inside victim.bypass_when.
+
+- name: update_bypass_duel
+  place: step
+  params: {selector: state}
+  means: >
+    Reads ChampSim's get_set_sample_category(set) c.
+    If c == 1, increments the global saturating selector state field (clamped at max).
+    If c == 2, decrements the selector field (clamped at 0).
+    Otherwise, does nothing.

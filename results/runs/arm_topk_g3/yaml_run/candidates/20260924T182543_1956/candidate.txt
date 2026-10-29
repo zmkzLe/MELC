@@ -1,0 +1,23 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <policy_name_max_31_chars>
+doc: >
+  <One line stating exactly what changed and why, followed by policy description>
+state:
+  <declared state fields>
+victim:
+  <key, extremum, tie_break, on_search, bypass_when>
+signatures:
+  <signatures used>
+tables:
+  <predictor tables>
+samplers:
+  <shadow cache samplers>
+procedures:
+  <named rule lists>
+on_access:
+  <tag check rules, if any>
+on_hit:
+  <hit rules>
+on_fill:
+  <fill rules>
+===== NEW_WORDS =====

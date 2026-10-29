@@ -1,0 +1,5 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 1 validation error for NewWord
+means
+  Field required [type=missing, input_value={'name': 'dynamic_bypass_...', 'place': 'condition'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

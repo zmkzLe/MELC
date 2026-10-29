@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explain what changed and the architectural rationale.
+<complete policy description>
+===== NEW_WORDS =====

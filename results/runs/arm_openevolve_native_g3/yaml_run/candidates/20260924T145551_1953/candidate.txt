@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  One line saying what changed and why.
+state:
+# [Write out the FULL YAML configuration here, including state, victim, signatures, tables, samplers, procedures, on_access, on_hit, on_fill, etc. DO NOT USE PLACEHOLDERS.]
+===== NEW_WORDS =====
+
+# [A YAML list of the new words the description uses, or nothing]

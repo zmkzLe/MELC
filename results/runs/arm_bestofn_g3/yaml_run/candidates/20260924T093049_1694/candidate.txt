@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# WRITE YOUR ENTIRE YAML STRUCTURE DESCRIPTION HERE.
+# YOU MUST INCLUDE EVERY SECTION (name, doc, state, victim, signatures, tables, samplers, procedures, on_hit, on_fill) IN FULL.
+# DO NOT TRUNCATE. DO NOT USE PLACEHOLDERS.
+===== NEW_WORDS =====
+
+# WRITE YOUR YAML LIST OF NEW WORDS HERE, OR [] IF NONE.

@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_improved_policy
+doc: >
+  Explanation of what changed and why...
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (Write your FULL, valid YAML policy here) ...
+===== NEW_WORDS =====
+
+# ... (Write your YAML list of new words here, or leave empty if none) ...

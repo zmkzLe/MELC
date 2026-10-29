@@ -1,0 +1,11 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Summary of changes and architectural intent.
+state:
+  ...
+victim:
+  ...
+===== NEW_WORDS =====
+
+- name: ...

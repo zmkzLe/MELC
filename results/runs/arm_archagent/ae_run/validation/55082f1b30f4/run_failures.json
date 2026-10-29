@@ -1,0 +1,6 @@
+{
+ "602.gcc_s-2226B": {
+  "timed_out": false,
+  "tail": "at CPU 0 instructions: 126500565 cycles: 1045136635 heartbeat IPC: 0.07339 cumulative IPC: 0.07424 (Simulation time: 02 hr 22 min 57 sec)\nHeartbeat CPU 0 instructions: 127000566 cycles: 1051848557 heartbeat IPC: 0.07449 cumulative IPC: 0.07424 (Simulation time: 02 hr 23 min 49 sec)\nHeartbeat CPU 0 instructions: 127500569 cycles: 1058783936 heartbeat IPC: 0.07209 cumulative IPC: 0.07423 (Simulation time: 02 hr 24 min 43 sec)\nHeartbeat CPU 0 instructions: 128000572 cycles: 1065702598 heartbeat IPC: 0.07227 cumulative IPC: 0.07422 (Simulation time: 02 hr 25 min 36 sec)\nHeartbeat CPU 0 instructions: 128500573 cycles: 1072528922 heartbeat IPC: 0.07325 cumulative IPC: 0.07421 (Simulation time: 02 hr 26 min 29 sec)\nHeartbeat CPU 0 instructions: 129000574 cycles: 1079448854 heartbeat IPC: 0.07226\n"
+ }
+}

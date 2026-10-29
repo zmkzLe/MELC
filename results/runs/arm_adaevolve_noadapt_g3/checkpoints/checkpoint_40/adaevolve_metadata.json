@@ -1,0 +1,354 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 39,
+  "global_best_score": 1.0030028117026326,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 50,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.06561029032607212,
+        "best_score": 1.0029958770713636,
+        "improvement_count": 5,
+        "total_evaluations": 15,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.04782985304814837,
+        "best_score": 1.0030028117026326,
+        "improvement_count": 7,
+        "total_evaluations": 14,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      15,
+      14
+    ],
+    "dimension_rewards": [
+      0.22984747953072512,
+      0.001115431762542825
+    ],
+    "decayed_visits": [
+      7.94108867905351,
+      7.7123207545039
+    ],
+    "global_best_score": 1.0030028117026326,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6",
+      "8cf8919d-f015-43ca-bc64-9ce04c892aec",
+      "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad",
+      "8f314353-7f26-4238-a0e2-122c60216c5d",
+      "05400196-2f8f-4ed5-a8e9-de9ce1825b0d",
+      "61abeba8-0682-4076-9716-4da7ca37c785",
+      "cc552f9b-1ebc-4186-a94f-9fb81abf4e36",
+      "eb5c7203-ac80-4cd4-bde3-677f497903b5",
+      "9c1e57aa-90f9-4517-afc4-b79539ec2139",
+      "fa8240fe-5bff-48fa-83e4-da062fc941a3",
+      "89c33f57-0cde-4aeb-a01d-a82f4860dd01",
+      "455b5d6b-4705-4fb7-918a-565322762771",
+      "fceba213-1c2b-4a84-8d7b-289844655de2",
+      "322a515b-44a3-4f93-9709-caa2cc3fbfd3",
+      "fd4104c6-dbc5-45f6-9ed4-a65913e06f97"
+    ],
+    [
+      "d0845f21-38af-436b-8f63-4c899221b772",
+      "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f",
+      "f81a6b29-39a5-41ae-8370-6ba22b2fa957",
+      "5ad06ad3-1a7e-43a3-9da5-7a8137f27b15",
+      "1edf716d-9877-4163-bda6-67e5f636eb45",
+      "c5aea107-535a-48a2-a492-7e7ac1187070",
+      "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e",
+      "bdadd04f-7d73-405d-ae13-758fb987a672",
+      "39d5768a-1efc-4342-82ad-4e7d5d7b8f97",
+      "1b430e4a-189b-4357-8ab0-c038796ae4b4",
+      "b96653ec-0a40-476f-84ad-235c67046a33",
+      "2ce250f5-737f-4e8f-8d3c-c84e311de9b6",
+      "e6981aa3-e60a-4b44-b6ca-3b3a16d1b3c6",
+      "61e2b571-656e-43be-b4e6-f7ffdc12103e",
+      "25bf88a3-c9a5-46b7-b3d1-e864e1a2a664"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6": [],
+        "8cf8919d-f015-43ca-bc64-9ce04c892aec": [
+          "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6"
+        ],
+        "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad": [
+          "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6"
+        ],
+        "8f314353-7f26-4238-a0e2-122c60216c5d": [
+          "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f"
+        ],
+        "05400196-2f8f-4ed5-a8e9-de9ce1825b0d": [
+          "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad"
+        ],
+        "61abeba8-0682-4076-9716-4da7ca37c785": [
+          "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f"
+        ],
+        "cc552f9b-1ebc-4186-a94f-9fb81abf4e36": [
+          "1edf716d-9877-4163-bda6-67e5f636eb45"
+        ],
+        "eb5c7203-ac80-4cd4-bde3-677f497903b5": [
+          "c5aea107-535a-48a2-a492-7e7ac1187070"
+        ],
+        "9c1e57aa-90f9-4517-afc4-b79539ec2139": [
+          "8cf8919d-f015-43ca-bc64-9ce04c892aec"
+        ],
+        "fa8240fe-5bff-48fa-83e4-da062fc941a3": [
+          "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e"
+        ],
+        "89c33f57-0cde-4aeb-a01d-a82f4860dd01": [
+          "d0845f21-38af-436b-8f63-4c899221b772"
+        ],
+        "455b5d6b-4705-4fb7-918a-565322762771": [
+          "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e"
+        ],
+        "fceba213-1c2b-4a84-8d7b-289844655de2": [
+          "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e"
+        ],
+        "322a515b-44a3-4f93-9709-caa2cc3fbfd3": [
+          "cc552f9b-1ebc-4186-a94f-9fb81abf4e36"
+        ],
+        "fd4104c6-dbc5-45f6-9ed4-a65913e06f97": [
+          "f81a6b29-39a5-41ae-8370-6ba22b2fa957"
+        ]
+      },
+      "children": {
+        "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6": [
+          "8cf8919d-f015-43ca-bc64-9ce04c892aec",
+          "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad"
+        ],
+        "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f": [
+          "8f314353-7f26-4238-a0e2-122c60216c5d",
+          "61abeba8-0682-4076-9716-4da7ca37c785"
+        ],
+        "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad": [
+          "05400196-2f8f-4ed5-a8e9-de9ce1825b0d"
+        ],
+        "1edf716d-9877-4163-bda6-67e5f636eb45": [
+          "cc552f9b-1ebc-4186-a94f-9fb81abf4e36"
+        ],
+        "c5aea107-535a-48a2-a492-7e7ac1187070": [
+          "eb5c7203-ac80-4cd4-bde3-677f497903b5"
+        ],
+        "8cf8919d-f015-43ca-bc64-9ce04c892aec": [
+          "9c1e57aa-90f9-4517-afc4-b79539ec2139"
+        ],
+        "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e": [
+          "fa8240fe-5bff-48fa-83e4-da062fc941a3",
+          "455b5d6b-4705-4fb7-918a-565322762771",
+          "fceba213-1c2b-4a84-8d7b-289844655de2"
+        ],
+        "d0845f21-38af-436b-8f63-4c899221b772": [
+          "89c33f57-0cde-4aeb-a01d-a82f4860dd01"
+        ],
+        "cc552f9b-1ebc-4186-a94f-9fb81abf4e36": [
+          "322a515b-44a3-4f93-9709-caa2cc3fbfd3"
+        ],
+        "f81a6b29-39a5-41ae-8370-6ba22b2fa957": [
+          "fd4104c6-dbc5-45f6-9ed4-a65913e06f97"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "d0845f21-38af-436b-8f63-4c899221b772": [],
+        "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f": [
+          "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6"
+        ],
+        "f81a6b29-39a5-41ae-8370-6ba22b2fa957": [
+          "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f"
+        ],
+        "5ad06ad3-1a7e-43a3-9da5-7a8137f27b15": [
+          "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6"
+        ],
+        "1edf716d-9877-4163-bda6-67e5f636eb45": [
+          "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad"
+        ],
+        "c5aea107-535a-48a2-a492-7e7ac1187070": [
+          "8cf8919d-f015-43ca-bc64-9ce04c892aec"
+        ],
+        "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e": [
+          "61abeba8-0682-4076-9716-4da7ca37c785"
+        ],
+        "bdadd04f-7d73-405d-ae13-758fb987a672": [
+          "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6"
+        ],
+        "39d5768a-1efc-4342-82ad-4e7d5d7b8f97": [
+          "8f314353-7f26-4238-a0e2-122c60216c5d"
+        ],
+        "1b430e4a-189b-4357-8ab0-c038796ae4b4": [
+          "61abeba8-0682-4076-9716-4da7ca37c785"
+        ],
+        "b96653ec-0a40-476f-84ad-235c67046a33": [
+          "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f"
+        ],
+        "2ce250f5-737f-4e8f-8d3c-c84e311de9b6": [
+          "fa8240fe-5bff-48fa-83e4-da062fc941a3"
+        ],
+        "e6981aa3-e60a-4b44-b6ca-3b3a16d1b3c6": [
+          "2ce250f5-737f-4e8f-8d3c-c84e311de9b6"
+        ],
+        "61e2b571-656e-43be-b4e6-f7ffdc12103e": [
+          "5ad06ad3-1a7e-43a3-9da5-7a8137f27b15"
+        ],
+        "25bf88a3-c9a5-46b7-b3d1-e864e1a2a664": [
+          "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad"
+        ]
+      },
+      "children": {
+        "0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6": [
+          "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f",
+          "5ad06ad3-1a7e-43a3-9da5-7a8137f27b15",
+          "bdadd04f-7d73-405d-ae13-758fb987a672"
+        ],
+        "14edb7ea-b8d9-4b94-b0ab-90ea0a81792f": [
+          "f81a6b29-39a5-41ae-8370-6ba22b2fa957",
+          "b96653ec-0a40-476f-84ad-235c67046a33"
+        ],
+        "8a9b1ac9-243e-4b7a-8396-a79dbb8779ad": [
+          "1edf716d-9877-4163-bda6-67e5f636eb45",
+          "25bf88a3-c9a5-46b7-b3d1-e864e1a2a664"
+        ],
+        "8cf8919d-f015-43ca-bc64-9ce04c892aec": [
+          "c5aea107-535a-48a2-a492-7e7ac1187070"
+        ],
+        "61abeba8-0682-4076-9716-4da7ca37c785": [
+          "6eb53b59-29cf-4bd9-9ea8-7de52b3b853e",
+          "1b430e4a-189b-4357-8ab0-c038796ae4b4"
+        ],
+        "8f314353-7f26-4238-a0e2-122c60216c5d": [
+          "39d5768a-1efc-4342-82ad-4e7d5d7b8f97"
+        ],
+        "fa8240fe-5bff-48fa-83e4-da062fc941a3": [
+          "2ce250f5-737f-4e8f-8d3c-c84e311de9b6"
+        ],
+        "2ce250f5-737f-4e8f-8d3c-c84e311de9b6": [
+          "e6981aa3-e60a-4b44-b6ca-3b3a16d1b3c6"
+        ],
+        "5ad06ad3-1a7e-43a3-9da5-7a8137f27b15": [
+          "61e2b571-656e-43be-b4e6-f7ffdc12103e"
+        ]
+      }
+    }
+  ],
+  "use_dynamic_islands": true,
+  "max_islands": 5,
+  "last_spawn_iteration": -30,
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 10,
+    "improvement_threshold": 0.12,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 10,
+    "num_paradigms_to_generate": 3,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Confidence-Gated Bypassing Predictor",
+        "description": "Address the massive 'wrong_bypass' penalty by introducing a confidence mechanism for the Reuse Distance Predictor (RDP). Create a secondary table indexed by the same PC signature. Define a new condition word to check if the sampled age matches the predicted RD within a tolerance. In the sampler, increment the confidence table when predictions are accurate and decrement when they are not. Finally, modify the bypass_when condition to require a high value in the confidence table before allowing a bypass.",
+        "what_to_optimize": "Minimize 'wrong_bypass' mistakes by only bypassing when the reuse distance prediction is stable and reliable.",
+        "cautions": "Adding a new table consumes metadata budget. You may need to slightly reduce the size of the RDP table or the number of sampler sets to ensure the total metadata stays strictly under the 48 KB limit.",
+        "approach_type": "confidence-gating"
+      },
+      {
+        "idea": "Absolute Expected Reuse Timestamps",
+        "description": "Replace the relative countdown 'etr' mechanism with absolute expected reuse timestamps. Instead of decrementing 'etr' on every access, calculate 'expected_reuse = set_clock + predicted_rd' upon insertion and store this timestamp directly. Define a new word that joins the 'Extremum' list, which computes the modulo distance between each line's timestamp and the current 'set_clock' to find the line furthest in the future. This eliminates the 'etr_clock' and the per-access 'each_way' update overhead.",
+        "what_to_optimize": "Reduce 'kept_dead' mistakes by ensuring aging is perfectly linear and not dependent on access frequency to the set.",
+        "cautions": "Timestamp arithmetic must handle wrap-around gracefully. The custom Extremum word must precisely define how to compute the modulo distance from the clock to find the true maximum distance.",
+        "approach_type": "absolute-timestamp-prediction"
+      },
+      {
+        "idea": "Dynamic Bypass Arbitration via Set Dueling",
+        "description": "Bypassing is highly beneficial for some workloads but disastrous for others. Implement a Set Dueling mechanism to dynamically decide whether to allow bypassing globally. Use a global saturating counter. Dedicate leader sets that never bypass and leader sets that always bypass when RDP is high. For follower sets, add a condition in 'bypass_when' that only allows bypassing if the counter favors the bypass arm.",
+        "what_to_optimize": "Global adaptability across diverse traces, specifically eliminating 'wrong_bypass' on hostile traces while preserving benefits on friendly ones.",
+        "cautions": "ChampSim's native 'use_duel' rule is designed for insertion values, so you must carefully wire the dueling logic manually using 'sampled_set' or 'set_sample_category' conditions to update the counter on misses.",
+        "approach_type": "set-dueling-adaptation"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2,
+      "2": 2
+    },
+    "current_paradigm_index": 2,
+    "tried_paradigms": [
+      {
+        "idea": "Chain-of-Thought for Adaptive Set Dueling Design",
+        "description": "Prompt the LLM to explicitly reason step-by-step about 'wrong_bypass' errors before generating code. Instruct it to: 1) Analyze why the static 'safe_bypass' threshold fails on dynamic workloads like milc. 2) Design an adaptive mechanism using the 'duel' vocabulary feature to arbitrate between an aggressive bypass arm and a safe insertion arm. 3) Define the required 'psel' state counter and 'use_duel' rules. This structured reasoning ensures the LLM implements dynamic adaptation rather than just tweaking static thresholds.",
+        "what_to_optimize": "Adaptive bypass logic to minimize wrong_bypass mistakes",
+        "cautions": "The LLM must keep the reasoning text outside the '===== STRUCTURE_DESCRIPTION =====' block to avoid breaking the YAML parser. The duel selector state must be properly sized to fit in the 48 KB budget.",
+        "approach_type": "chain-of-thought",
+        "uses": 2,
+        "starting_score": 1.0026670605485792,
+        "ending_score": 1.0026670605485792,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Few-Shot Demonstration of Probabilistic Insertion",
+        "description": "Augment the LLM's prompt with a few-shot snippet demonstrating how to use 'CounterGatedValue' for bimodal insertion. Show how to define a global counter and use 'every_n' to insert most unknown lines at ETR 11, but 1-in-16 at ETR 8. Instruct the LLM to integrate this pattern to test unknown lines for reuse without causing cold-line pollution, directly targeting the 'kept_dead' metric without replacing the entire policy.",
+        "what_to_optimize": "Insertion policy to reduce kept_dead errors and cache thrashing",
+        "cautions": "Ensure the few-shot snippet uses exactly the valid vocabulary (e.g., 'default', 'counter', 'every_n', 'then') so the LLM does not hallucinate invalid YAML structures.",
+        "approach_type": "few-shot",
+        "uses": 2,
+        "starting_score": 1.0026670605485792,
+        "ending_score": 1.0026670605485792,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Explicit Constraint for Multidimensional Signatures",
+        "description": "Apply a strict structural constraint in the prompt requiring the LLM to modify the 'signatures' block to be multidimensional. Constrain it to fold at least one additional feature (like the 'prefetch' bit) into the 'pc_sig' before the 'crc3' hash. This forces the LLM to address signature aliasing in the reuse distance predictor, which is a root cause of incorrect predictions and 'wrong_bypass' mistakes.",
+        "what_to_optimize": "Signature precision and predictor aliasing to reduce wrong_bypass",
+        "cautions": "The LLM must carefully manage the 'low_bits' and table 'entries' to ensure the expanded signature space does not blow up the metadata size beyond the 48 KB limit.",
+        "approach_type": "format-constraint",
+        "uses": 2,
+        "starting_score": 1.0026670605485792,
+        "ending_score": 1.0026670605485792,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0026670605485792,
+    "best_score_during_paradigm": 1.0030028117026326
+  }
+}

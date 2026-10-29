@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+(Your actual, complete YAML description goes here. No placeholders! Must include state, victim, etc.)
+===== NEW_WORDS =====

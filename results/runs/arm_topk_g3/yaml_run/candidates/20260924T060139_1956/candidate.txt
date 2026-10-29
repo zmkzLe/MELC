@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOUR COMPLETE YAML CODE HERE (must include name, doc, state, victim, etc.)
+===== NEW_WORDS =====
+
+# YOUR NEW WORDS YAML LIST HERE (or leave empty if none)

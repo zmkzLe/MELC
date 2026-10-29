@@ -1,0 +1,11 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Summary of what changed and why.
+state:
+  ...
+victim:
+  ...
+===== NEW_WORDS =====
+
+- name: ... (if any new words are used; or leave this section empty if none)

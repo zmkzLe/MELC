@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the COMPLETE structure description in YAML here.
+# Do NOT use placeholders. Required fields like `state` and `victim` MUST NOT be empty or None.
+name: your_policy_name
+doc: >
+  Explanation of changes.
+# ... (all required sections: state, victim, signatures, tables, samplers, procedures, etc.) ...
+===== NEW_WORDS =====
+
+# Write a YAML list of new words here, or leave empty if none.

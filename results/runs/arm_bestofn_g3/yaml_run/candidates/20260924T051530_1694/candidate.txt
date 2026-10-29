@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+state:
+  ... (complete state definition)
+victim:
+  ... (complete victim definition)
+... (all other required sections for your complete policy, NO PLACEHOLDERS)
+===== NEW_WORDS =====

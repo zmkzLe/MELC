@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+# [Your actual YAML structure description here]
+===== NEW_WORDS =====
+
+# [Your actual YAML list of new words here, or leave empty if none]

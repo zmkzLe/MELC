@@ -1,0 +1,15 @@
+name: my_policy
+doc: >
+  Detailed explanation of changes...
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  # ... ALL OTHER STATE FIELDS ...
+victim:
+  key: etr
+  extremum: max_magnitude
+  # ... COMPLETE VICTIM DEFINITION ...
+# ... ALL OTHER REQUIRED SECTIONS (signatures, tables, samplers, procedures, on_hit, on_fill) ...

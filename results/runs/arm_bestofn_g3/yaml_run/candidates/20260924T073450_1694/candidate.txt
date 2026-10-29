@@ -1,0 +1,15 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_improved
+doc: >
+  Added a bypass history table to address wrong_bypass on high-headroom traces.
+state:
+  - name: etr
+    scope: per_line
+    # ... (fully define all state fields here)
+victim:
+  key: etr
+  # ... (fully define victim selector here)
+# ... (include ALL other required sections: signatures, tables, samplers, etc.)
+===== NEW_WORDS =====
+
+# (Include your YAML list of new words here, or leave blank if none, but keep this marker!)

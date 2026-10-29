@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# [YOUR COMPLETE YAML POLICY GOES HERE]
+# It must be a full, valid policy (like the Mockingjay or SHiP examples provided later), not a stub.
+===== NEW_WORDS =====
+
+# [YOUR NEW WORDS GO HERE, OR LEAVE BLANK IF NONE]

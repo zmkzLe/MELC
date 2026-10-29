@@ -1,0 +1,13 @@
+name: your_policy_name
+doc: >
+  Explanation of your design...
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+# ... (rest of your valid YAML design: tables, samplers, on_hit, on_fill, etc.)

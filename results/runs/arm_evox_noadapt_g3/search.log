@@ -1,0 +1,1295 @@
+LLM: google/gemini-3.1-pro-preview (weight 0.7), google/gemini-3.8-flash (weight 0.3) via Vertex (project-bf06ec8f-158e-49cc-ae2, global); usage bills that project's credit, token refreshed per request
+seed written to /home/user/oe_out/arm_evox_noadapt_g3/seed_candidate.txt (4139 B); evaluator design_evaluator.py
+candidate taken from its markers in: utils.code_utils, search.default_discovery_controller, adaevolve.controller, gepa_native.controller
+effective config: search evox (co-evolves the search strategy beside the solutions), iterations 100000, evaluator timeout 10800s, parallel 2, diff_based_generation False, cascade False, temperature 0.7, max_tokens 64000, llm timeout 900s, retries 2, proposers [('google/gemini-3.1-pro-preview', 0.7), ('google/gemini-3.8-flash', 0.3)], database EvoxDatabaseConfig{}
+running evox for 100000 iterations
+01:28:05 [search.utils] Logging to /home/user/oe_out/arm_evox_noadapt_g3/logs/evox_20260924_012805.log
+01:28:05 [runner] Runner ready: search=evox, program=/home/user/oe_out/arm_evox_noadapt_g3/seed_candidate.txt
+01:28:05 [llm] OpenAI LLM: google/gemini-3.1-pro-preview
+01:28:05 [llm] OpenAI LLM: google/gemini-3.8-flash
+01:28:05 [llm] Pool weights: google/gemini-3.1-pro-preview=0.70, google/gemini-3.8-flash=0.30
+01:28:06 [evaluator] Initialized evaluator with /home/user/chia_native/design_evaluator.py
+01:28:06 [default_discovery_controller] DiscoveryController initialized: num_context_programs=4
+01:28:06 [llm] OpenAI LLM: gpt-5
+01:28:06 [llm] OpenAI LLM: gpt-5-mini
+01:28:06 [builder] Initialized guide LLM inside EvoxContextBuilder: gpt-5-mini
+01:28:06 [builder] Templates set: system=None, user=search_evolution_user_message
+01:28:06 [evaluator] Initialized evaluator with /home/user/evolve-flows/skydiscover/skydiscover/search/evox/database/search_strategy_evaluator.py
+01:28:06 [default_discovery_controller] DiscoveryController initialized: num_context_programs=2
+01:28:06 [search.evox] ======================================================================
+01:28:06 [search.evox] [EVOX CO-EVOLUTION SETUP]
+01:28:06 [search.evox] ----------------------------------------------------------------------
+01:28:06 [search.evox]   [SOLUTION EVOLUTION]
+01:28:06 [search.evox]     Initial search strategy file : /home/user/evolve-flows/skydiscover/skydiscover/search/evox/database/initial_search_strategy.py
+01:28:06 [search.evox]     Solution database class      : EvolvedProgramDatabase
+01:28:06 [search.evox]   [META EVOLUTION OF SEARCH STRATEGY]
+01:28:06 [search.evox]     Search strategy database class: SearchStrategyDatabase
+01:28:06 [search.evox]     Search strategy evaluator     : /home/user/evolve-flows/skydiscover/skydiscover/search/evox/database/search_strategy_evaluator.py
+01:28:06 [search.evox]     Search strategy config        : /home/user/evolve-flows/skydiscover/skydiscover/search/evox/config/search.yaml
+01:28:06 [search.evox] ======================================================================
+01:28:06 [runner] Adding initial program to database
+02:02:28 [evaluator] Evaluated program b338c6c9-7f4d-41c5-a25c-e07df8824377 in 2061.98s: combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+02:02:28 [registry] Using search strategy from: /home/user/evolve-flows/skydiscover/skydiscover/search/evox/database/initial_search_strategy.py
+02:02:28 [base_database] Database has 1 programs, best program score is combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+02:02:28 [search.evox] Switch if 10000 iterations of stagnation detected
+02:02:28 [search.evox] Label generation: using guide_model = [gpt-5-mini]
+02:02:28 WARNING [search.evox] Could not read pyproject.toml (tomllib/tomli not available), falling back to uv pip list
+02:02:28 WARNING [search.evox] Could not fetch package list: [Errno 2] No such file or directory: 'uv'
+02:02:31 WARNING [llm] Error attempt 1/4: Connection error., retrying...
+02:02:39 WARNING [llm] Error attempt 2/4: Connection error., retrying...
+02:02:47 WARNING [llm] Error attempt 3/4: Connection error., retrying...
+02:02:55 ERROR [search.evox] Label generation failed: Connection error., setting labels to empty strings
+02:05:07 [evaluator] Evaluated program 13e264b4-16fd-49a7-9b74-dd2b37ae874a in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:05:07 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:05:07 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+02:06:55 [evaluator] Evaluated program 69cc2469-d9bc-40fb-b06f-f96b9a6c607b in 0.00s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'improved_policy', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'improved_policy', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+02:06:55 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'improved_policy', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'improved_policy', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+02:06:55 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+02:08:13 [evaluator] Evaluated program 3dad2cbd-2eae-453c-b8d7-b11abd2afa76 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:08:13 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:08:13 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:08:13 WARNING [search.evox] Iteration 1 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:08:48 [evaluator] Evaluated program 299207ad-f2a7-490f-8c70-d93afdbc206b in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:08:48 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:08:48 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+02:10:17 [evaluator] Evaluated program 2c31b22c-d39c-46a1-8ada-4c1a8a32935c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:10:17 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:10:17 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+02:10:48 [evaluator] Evaluated program df321a20-96df-4848-a583-3a586790cd64 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:10:48 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:10:48 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:10:48 WARNING [search.evox] Iteration 4 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:11:21 [evaluator] Evaluated program f74fe3ba-9aff-4d1c-b808-0fadc0481e92 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:11:21 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:11:21 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+02:11:54 [evaluator] Evaluated program cb75a4bf-0754-46f8-a4cc-586594498500 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:11:54 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+02:11:54 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+02:12:28 [evaluator] Evaluated program 5ef38f7d-d860-4c85-8161-d2c075fde0c7 in 0.09s: combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+02:12:28 [default_discovery_controller] Iteration 7: Program 5ef38f7d-d860-4c85-8161-d2c075fde0c7 (parent: b338c6c9-7f4d-41c5-a25c-e07df8824377) completed in 99.08s (llm: 33.76s, eval: 0.09s)
+02:12:28 [default_discovery_controller] Metrics: combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+02:14:01 [evaluator] Evaluated program fd7bccbd-8660-4566-99af-5bc0c47dd37d in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:14:01 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:14:01 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+02:54:09 [evaluator] Evaluated program 8abdb7c0-077a-4a8e-92db-b0d5e0593f85 in 2299.98s: combined_score=0.9972, status=ok, metadata_kb=45.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.5000, metadata_area_mm2=0.0364, metadata_energy_uj=6356.4173, cacti_node_nm=22.0000
+02:54:09 [default_discovery_controller] Iteration 10: Program 8abdb7c0-077a-4a8e-92db-b0d5e0593f85 (parent: 5ef38f7d-d860-4c85-8161-d2c075fde0c7) completed in 2501.48s (llm: 108.24s, eval: 2299.98s)
+02:54:09 [default_discovery_controller] [CHECKPOINT] Checkpoint interval reached at iteration 10
+02:54:09 [base_database] Database has 3 programs, best program score is combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+02:54:09 [search.utils] [CHECKPOINT] Saved database with 3 programs to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_10
+02:54:09 [runner] Checkpoint 10: best=combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+02:54:09 [runner] Checkpoint saved to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_10
+02:54:09 [default_discovery_controller] Metrics: combined_score=0.9972, status=ok, metadata_kb=45.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.5000, metadata_area_mm2=0.0364, metadata_energy_uj=6356.4173, cacti_node_nm=22.0000
+02:56:49 [evaluator] Evaluated program ea0825f5-7457-49eb-a97d-68e7618d29a2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:56:49 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:56:49 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+02:58:41 [evaluator] Evaluated program 1f86f9be-6267-4332-9df2-8b9cd4315172 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:58:41 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+02:58:41 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+03:01:06 [evaluator] Evaluated program 8017b1cc-2f91-416d-af1e-ba134a0c9dbd in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:01:06 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:01:06 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:01:06 WARNING [search.evox] Iteration 12 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:03:26 [evaluator] Evaluated program 5f8b3ccd-ac3b-47f5-85dd-3fa340de4f33 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:03:26 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:03:26 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+03:43:15 [evaluator] Evaluated program aff13b95-350a-47a4-bdf7-0b2253f4b949 in 2236.26s: combined_score=0.9979, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6614.4217, cacti_node_nm=22.0000
+03:43:15 [default_discovery_controller] Iteration 15: Program aff13b95-350a-47a4-bdf7-0b2253f4b949 (parent: 8abdb7c0-077a-4a8e-92db-b0d5e0593f85) completed in 2529.53s (llm: 152.41s, eval: 2236.26s)
+03:43:15 [default_discovery_controller] Metrics: combined_score=0.9979, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6614.4217, cacti_node_nm=22.0000
+03:45:11 [evaluator] Evaluated program be8e72d3-feb1-4894-9ce5-2bd27668239b in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:45:11 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+03:45:11 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+03:46:00 [evaluator] Evaluated program 486d9f17-f136-4fee-aa54-b1a6ae4005f2 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+03:46:00 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+03:46:00 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:24:59 [evaluator] Evaluated program 778de5d8-0179-400f-8c93-702b69f6fff6 in 2162.56s: combined_score=0.9980, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6614.7408, cacti_node_nm=22.0000
+04:24:59 [default_discovery_controller] Iteration 17: Program 778de5d8-0179-400f-8c93-702b69f6fff6 (parent: 8abdb7c0-077a-4a8e-92db-b0d5e0593f85) completed in 2503.73s (llm: 176.58s, eval: 2162.56s)
+04:24:59 [default_discovery_controller] Metrics: combined_score=0.9980, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6614.7408, cacti_node_nm=22.0000
+04:26:57 [evaluator] Evaluated program 2d109abb-a1d6-46a0-86ef-4d721695ecf3 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:26:57 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:26:57 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:28:48 [evaluator] Evaluated program 90183167-ae19-4fb7-bb06-2d2c4f71305c in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:28:48 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:28:48 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:31:36 [evaluator] Evaluated program 01283756-042b-4078-a0e2-1ad0c65ef50d in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:31:36 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:31:36 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:31:36 WARNING [search.evox] Iteration 20 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:32:34 [evaluator] Evaluated program 4e2b0bd8-b99e-4ff6-a709-3c17ee7c0d0f in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:32:34 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:32:34 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:34:21 [evaluator] Evaluated program afc45326-8606-487e-8aca-b78c56309c1a in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:34:21 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:34:21 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:34:48 [evaluator] Evaluated program f0be2819-eb16-4030-bb18-6822fcc69267 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+04:34:48 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+04:34:48 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+04:34:48 WARNING [search.evox] Iteration 23 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+04:36:04 [evaluator] Evaluated program 093cfda6-7971-4b2f-8324-07125f398ed1 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:36:04 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:36:04 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:38:37 [evaluator] Evaluated program 47744db5-537b-4640-8ad9-cdcfb34e1fe8 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:38:37 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:38:37 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:39:55 [evaluator] Evaluated program c5aab133-5254-495f-b3ac-d0a7589db683 in 0.00s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+04:39:55 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+04:39:55 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+04:39:55 WARNING [search.evox] Iteration 26 failed (used 3 attempts): Evaluator failed after 3 attempts: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+04:41:18 [evaluator] Evaluated program 75506657-01a6-42e4-a367-b7b95ec4e99d in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:41:18 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:41:18 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:43:18 [evaluator] Evaluated program 5a593705-a06a-43fb-8b19-e01fe1d8eda6 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:43:18 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:43:18 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:43:49 [evaluator] Evaluated program c86a963e-cc3b-4627-bce6-6cbbb6c0290c in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML describing the policy>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:43:49 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML describing the policy>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:43:49 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML describing the policy>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:43:49 WARNING [search.evox] Iteration 29 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML describing the policy>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:47:16 [evaluator] Evaluated program 4d843ab5-4315-460e-98f8-27b9c98c7527 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:47:16 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:47:16 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:49:52 [evaluator] Evaluated program fc1a2668-f9ab-4ed0-b3e4-e4ddde3d1eec in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:49:52 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:49:52 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:52:01 [evaluator] Evaluated program c088368f-7f84-4f4b-ba8a-f62b14190713 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:52:01 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:52:01 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:52:01 WARNING [search.evox] Iteration 32 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:52:39 [evaluator] Evaluated program f10f1a36-338f-490a-8244-36a3997b4362 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:52:39 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:52:39 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:53:22 [evaluator] Evaluated program 9cb6a268-5624-4aab-9e29-ebc0abdaedcf in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+04:53:22 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+04:53:22 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+04:54:55 [evaluator] Evaluated program c3ef0a4d-15a7-405b-833d-abc2556afe26 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:54:55 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:54:55 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:54:55 WARNING [search.evox] Iteration 35 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:57:05 [evaluator] Evaluated program 9a497e18-6308-4c5e-8b3a-6f7dab55e049 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:57:05 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:57:05 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+04:59:42 [evaluator] Evaluated program 6c18c5bb-3536-45d7-8e38-b2af03976a9f in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:59:42 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+04:59:42 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+05:00:19 [evaluator] Evaluated program b5633be8-3609-49e8-a7f4-f891c629cd45 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+05:00:19 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+05:00:19 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+05:00:19 WARNING [search.evox] Iteration 38 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+05:02:07 [evaluator] Evaluated program d847e4e6-764d-45b2-9222-67677af97d25 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:02:07 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:02:07 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+05:03:50 [evaluator] Evaluated program b96cebff-f848-431a-99f3-a8ad9a3a5683 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:03:50 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:03:50 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+05:06:15 [evaluator] Evaluated program 56d8a64e-657e-4adb-b9ec-33d0030d7df6 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:06:15 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:06:15 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:06:15 WARNING [search.evox] Iteration 41 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+05:44:38 [evaluator] Evaluated program ca65c549-22f3-438e-9ba2-45f96c10b5c5 in 2203.41s: combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+05:44:38 [default_discovery_controller] Iteration 44: Program ca65c549-22f3-438e-9ba2-45f96c10b5c5 (parent: 5ef38f7d-d860-4c85-8161-d2c075fde0c7) completed in 2302.72s (llm: 99.32s, eval: 2203.41s)
+05:44:38 [default_discovery_controller] Metrics: combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+05:44:38 [default_discovery_controller] 🌟 New best solution found at iteration 44
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+06:25:48 [evaluator] Evaluated program 41b27698-61bd-4008-b39b-2736e31be2f9 in 2312.81s: combined_score=0.9947, status=ok, metadata_kb=44.6875, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.4479, metadata_area_mm2=0.0377, metadata_energy_uj=6809.6534, cacti_node_nm=22.0000
+06:25:48 [default_discovery_controller] Iteration 45: Program 41b27698-61bd-4008-b39b-2736e31be2f9 (parent: aff13b95-350a-47a4-bdf7-0b2253f4b949) completed in 2470.60s (llm: 157.79s, eval: 2312.81s)
+06:25:48 [default_discovery_controller] Metrics: combined_score=0.9947, status=ok, metadata_kb=44.6875, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.4479, metadata_area_mm2=0.0377, metadata_energy_uj=6809.6534, cacti_node_nm=22.0000
+06:27:41 [evaluator] Evaluated program 99db8f64-6b18-4dda-90eb-a6632313a760 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:27:41 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:27:41 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+06:28:16 [evaluator] Evaluated program 383a411b-2d02-4d6e-a0dc-21c5aafa6315 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): NEW_WORDS
+06:28:16 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): NEW_WORDS
+06:28:16 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+06:30:13 [evaluator] Evaluated program 55cd5dac-4d2c-4eb0-af47-d22e899fea47 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:30:13 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:30:13 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:30:13 WARNING [search.evox] Iteration 46 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:32:06 [evaluator] Evaluated program 10a40718-2d20-401c-ba5b-9aaed5511aaa in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:32:06 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:32:06 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+06:33:20 [evaluator] Evaluated program d666759e-36a7-4b38-ab51-3bbea30f1f3f in 0.01s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...itectural rationale.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...itectural rationale.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+06:33:20 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...itectural rationale.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...itectural rationale.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+06:33:20 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+06:34:58 [evaluator] Evaluated program ab54b89c-9d92-45e6-bdac-0fb9637236ab in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:34:58 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:34:58 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:34:58 WARNING [search.evox] Iteration 49 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+06:36:55 [evaluator] Evaluated program 99522fb1-b9c0-41b2-89fc-ac4aacf76e66 in 0.21s: combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+06:36:55 [default_discovery_controller] Iteration 52: Program 99522fb1-b9c0-41b2-89fc-ac4aacf76e66 (parent: 8abdb7c0-077a-4a8e-92db-b0d5e0593f85) completed in 116.49s (llm: 116.28s, eval: 0.21s)
+06:36:55 [default_discovery_controller] Metrics: combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+06:38:56 [evaluator] Evaluated program 67f9a870-0423-4a21-a6a7-7f9aca679809 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:38:56 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:38:56 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+06:40:38 [evaluator] Evaluated program cd35762b-5809-4e7c-a5d4-4a00e368e9dc in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:40:38 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:40:38 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+06:43:02 [evaluator] Evaluated program 1916e604-98eb-4517-add9-d69d15db9e13 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:43:02 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:43:02 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:43:02 WARNING [search.evox] Iteration 53 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:44:56 [evaluator] Evaluated program 3fb7e8fd-76ae-472e-84ea-bc2a5b0eb0c1 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:44:56 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:44:56 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+07:24:43 [evaluator] Evaluated program 4512988e-b170-4609-8576-e09c60e8db28 in 2255.79s: combined_score=0.9965, status=ok, metadata_kb=47.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8333, metadata_area_mm2=0.0380, metadata_energy_uj=6618.8023, cacti_node_nm=22.0000
+07:24:43 [default_discovery_controller] Iteration 56: Program 4512988e-b170-4609-8576-e09c60e8db28 (parent: 778de5d8-0179-400f-8c93-702b69f6fff6) completed in 2500.92s (llm: 130.57s, eval: 2255.79s)
+07:24:43 [default_discovery_controller] Metrics: combined_score=0.9965, status=ok, metadata_kb=47.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8333, metadata_area_mm2=0.0380, metadata_energy_uj=6618.8023, cacti_node_nm=22.0000
+07:26:26 [evaluator] Evaluated program be9c3610-3762-4d72-8d3d-a9b28ae41d23 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+07:26:26 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+07:26:26 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+07:28:10 [evaluator] Evaluated program f72d98b8-764b-4f39-9896-478d7f8730a4 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+07:28:10 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+07:28:10 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+07:29:02 [evaluator] Evaluated program acb63876-bbbc-4956-b756-6b6e3bca48c3 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): NEW_WORDS
+07:29:02 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): NEW_WORDS
+07:29:02 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): NEW_WORDS
+07:29:02 WARNING [search.evox] Iteration 58 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): NEW_WORDS
+07:30:51 [evaluator] Evaluated program e438f374-c753-4f45-ae20-18b4cc6e3906 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+07:30:51 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+07:30:51 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+07:33:22 [evaluator] Evaluated program 1aff35eb-b413-4e93-a72a-260bff456c62 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+07:33:22 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+07:33:22 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+08:17:57 [evaluator] Evaluated program 38254cd7-4967-488d-9d14-66bba0db0e87 in 2544.02s: combined_score=0.9989, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6687.6286, cacti_node_nm=22.0000
+08:17:57 [default_discovery_controller] Iteration 61: Program 38254cd7-4967-488d-9d14-66bba0db0e87 (parent: 41b27698-61bd-4008-b39b-2736e31be2f9) completed in 2934.64s (llm: 131.19s, eval: 2544.02s)
+08:17:57 [default_discovery_controller] Metrics: combined_score=0.9989, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6687.6286, cacti_node_nm=22.0000
+08:19:43 [evaluator] Evaluated program d09812fa-c892-44ad-b358-628d39d1ff85 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:19:43 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:19:43 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+08:20:39 [evaluator] Evaluated program e8be60e7-d40b-486c-bfc6-b9d5c0d6bc92 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete YAML structure description here>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:20:39 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete YAML structure description here>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:20:39 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+08:21:11 [evaluator] Evaluated program 22695645-c5a3-46de-ac12-9af27b3d43a4 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+08:21:11 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+08:21:11 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+08:21:11 WARNING [search.evox] Iteration 64 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+08:22:02 [evaluator] Evaluated program 830da91a-febf-4f5a-9c1c-6977826549c7 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+08:22:02 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+08:22:02 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+08:22:46 [evaluator] Evaluated program 97cadde3-9583-4eb4-ad7c-d0fc14a06955 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:22:46 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:22:46 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+08:23:18 [evaluator] Evaluated program d8119e76-1b66-4e6c-96e9-704f50ab8a8d in 0.34s: combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+08:23:18 [default_discovery_controller] Iteration 67: Program d8119e76-1b66-4e6c-96e9-704f50ab8a8d (parent: 41b27698-61bd-4008-b39b-2736e31be2f9) completed in 126.77s (llm: 31.27s, eval: 0.34s)
+08:23:18 [default_discovery_controller] Metrics: combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+08:25:33 [evaluator] Evaluated program f956d8da-a36f-4ef6-bbf5-d45185efb240 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:25:33 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+08:25:33 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+09:03:58 [evaluator] Evaluated program 44e17501-b13a-48d1-930a-bdd477f8ff47 in 2193.29s: combined_score=0.9989, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6687.5850, cacti_node_nm=22.0000
+09:03:58 [default_discovery_controller] Iteration 70: Program 44e17501-b13a-48d1-930a-bdd477f8ff47 (parent: 4512988e-b170-4609-8576-e09c60e8db28) completed in 2440.45s (llm: 111.80s, eval: 2193.29s)
+09:03:58 [default_discovery_controller] [CHECKPOINT] Checkpoint interval reached at iteration 70
+09:03:58 [base_database] Database has 12 programs, best program score is combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+09:03:58 [search.utils] [CHECKPOINT] Saved database with 12 programs to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_70
+09:03:58 [runner] Checkpoint 70: best=combined_score=1.0003, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6680.8463, cacti_node_nm=22.0000
+09:03:58 [runner] Checkpoint saved to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_70
+09:03:58 [default_discovery_controller] Metrics: combined_score=0.9989, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0390, metadata_energy_uj=6687.5850, cacti_node_nm=22.0000
+09:05:23 [evaluator] Evaluated program 6503ec89-9035-4726-bddc-c0d68c6fe008 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:05:23 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:05:23 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+09:07:04 [evaluator] Evaluated program 647151e0-d461-4fb2-b809-483417ecc6f5 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:07:04 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:07:04 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+09:07:46 [evaluator] Evaluated program 3a480f66-cbc3-49c5-abef-e68d96852e98 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:07:46 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:07:46 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:07:46 WARNING [search.evox] Iteration 72 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:09:26 [evaluator] Evaluated program 1816c859-add8-4cea-8878-5e9ae010a633 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:09:26 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:09:26 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+09:12:08 [evaluator] Evaluated program 00214452-67b0-45a2-a965-4ec9ee1aff66 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:12:08 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:12:08 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+09:12:46 [evaluator] Evaluated program 9c821e7f-5d8a-4637-aa19-6405319b9e13 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:12:46 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:12:46 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:12:46 WARNING [search.evox] Iteration 75 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:14:40 [evaluator] Evaluated program d26ecd09-6006-4188-9077-7c7607501cb3 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:14:40 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:14:40 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+09:15:12 [evaluator] Evaluated program d2c2847b-87d1-408d-a7a5-e1ec46dcfb2b in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:15:12 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:15:12 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+09:15:43 [evaluator] Evaluated program f32acf7d-3d1c-4ee7-9780-7ed624c2ff92 in 0.01s: combined_score=0.0000, status=schema_rejected, error=while scanning a simple key
+  in "<unicode string>", line 4, column 1:
+    <rest of YAML structure description>
+    ^
+could not find expected ':'
+  in "<unicode string>", line 5, column 1:
+    
+    ^
+09:15:43 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=while scanning a simple key
+  in "<unicode string>", line 4, column 1:
+    <rest of YAML structure description>
+    ^
+could not find expected ':'
+  in "<unicode string>", line 5, column 1:
+    
+    ^
+09:15:43 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: while scanning a simple key
+  in "<unicode string>", line 4, column 1:
+    <rest of YAML structure description>
+    ^
+could not find expected ':'
+  in "<unicode string>", line 5, column 1:
+    
+    ^
+09:15:43 WARNING [search.evox] Iteration 78 failed (used 3 attempts): Evaluator failed after 3 attempts: while scanning a simple key
+  in "<unicode string>", line 4, column 1:
+    <rest of YAML structure description>
+    ^
+could not find expected ':'
+  in "<unicode string>", line 5, column 1:
+    
+    ^
+09:18:25 [evaluator] Evaluated program 54301829-f3d6-48a0-89e3-42c2f030b2be in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:18:25 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:18:25 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+09:20:05 [evaluator] Evaluated program 8092ec38-58a2-4374-9c5f-476d5912d6ae in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:20:05 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:20:05 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+09:22:17 [evaluator] Evaluated program 14d5b834-bd57-4820-b668-38ae98a9776b in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:22:17 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:22:17 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:22:17 WARNING [search.evox] Iteration 81 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:23:00 [evaluator] Evaluated program d8cd0f85-668e-4e03-a047-7be1aaa0a6c8 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:23:00 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:23:00 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+09:23:59 [evaluator] Evaluated program 44be43ba-1b0d-4109-b811-640b68e8258e in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<full valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:23:59 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<full valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+09:23:59 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:05:09 [evaluator] Evaluated program 36088571-c790-4108-aff7-c493aa594633 in 2355.08s: combined_score=0.9875, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6883.5741, cacti_node_nm=22.0000
+10:05:09 [default_discovery_controller] Iteration 84: Program 36088571-c790-4108-aff7-c493aa594633 (parent: 5ef38f7d-d860-4c85-8161-d2c075fde0c7) completed in 2571.99s (llm: 115.46s, eval: 2355.08s)
+10:05:09 [default_discovery_controller] Metrics: combined_score=0.9875, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6883.5741, cacti_node_nm=22.0000
+10:07:04 [evaluator] Evaluated program 2089403b-3c94-4287-9dac-f71a852aa4c9 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:07:04 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:07:04 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:08:07 [evaluator] Evaluated program 70c0e4d7-3144-4e15-9c72-6120fd3f36cd in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:08:07 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<complete YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:08:07 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:10:02 [evaluator] Evaluated program d694ff29-3aaf-4534-b85b-a143cb2df0b2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:10:02 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:10:02 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:10:02 WARNING [search.evox] Iteration 87 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:11:34 [evaluator] Evaluated program 83cd908d-9b87-46c4-a861-6c7f299bb4f2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:11:34 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:11:34 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:13:45 [evaluator] Evaluated program 89ec0d7c-b752-467f-ace8-b8e67e80dc3c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:13:45 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:13:45 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:15:02 [evaluator] Evaluated program ae87f6cc-6433-402b-a4b6-972225c814c7 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:15:02 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:15:02 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:15:02 WARNING [search.evox] Iteration 90 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:15:53 [evaluator] Evaluated program 3bebdc6c-54fe-442c-955e-42534e1daefe in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:15:53 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:15:53 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:17:24 [evaluator] Evaluated program 7533f677-dd97-4ab4-b7a7-f127057c8708 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:17:24 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:17:24 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:17:56 [evaluator] Evaluated program 85f4b6b9-b2bd-498d-90bb-9f478905c15f in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:17:56 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:17:56 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:17:56 WARNING [search.evox] Iteration 93 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:19:26 [evaluator] Evaluated program ed1875c4-6cb7-4f2c-9cdf-011d4533625f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:19:26 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:19:26 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:23:04 [evaluator] Evaluated program 8a170998-189e-4c59-a343-77a9c677aa32 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:23:04 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:23:04 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:25:28 [evaluator] Evaluated program fe2b0749-2f1d-415e-ae7c-e66fb8c5d602 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:25:28 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:25:28 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:25:28 WARNING [search.evox] Iteration 96 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:27:22 [evaluator] Evaluated program 871ed299-76d6-46fc-b26a-cba4b705f20f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:27:22 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:27:22 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:28:48 [evaluator] Evaluated program dd5d6a6f-f2c0-4726-80ce-15f54d84f9af in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:28:48 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:28:48 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:29:37 [evaluator] Evaluated program 38e6dd8f-b749-4b37-8a4a-8db1b5a63ba3 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:29:37 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:29:37 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:29:37 WARNING [search.evox] Iteration 99 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:32:01 [evaluator] Evaluated program ecf358ec-f1e7-48ff-9bb7-fb42b53a8d73 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:32:01 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:32:01 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:33:48 [evaluator] Evaluated program 6125e007-6f8e-4838-bc3d-7071e440bf3d in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:33:48 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:33:48 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:35:37 [evaluator] Evaluated program d860d3f7-e080-4598-8baf-6672fc5d8a24 in 0.01s: combined_score=0.0000, status=schema_rejected, error=expected '<document start>', but found '<scalar>'
+  in "<unicode string>", line 4, column 5:
+    ... (the rest of the structure descr ... 
+        ^
+10:35:37 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=expected '<document start>', but found '<scalar>'
+  in "<unicode string>", line 4, column 5:
+    ... (the rest of the structure descr ... 
+        ^
+10:35:37 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: expected '<document start>', but found '<scalar>'
+  in "<unicode string>", line 4, column 5:
+    ... (the rest of the structure descr ... 
+        ^
+10:35:37 WARNING [search.evox] Iteration 102 failed (used 3 attempts): Evaluator failed after 3 attempts: expected '<document start>', but found '<scalar>'
+  in "<unicode string>", line 4, column 5:
+    ... (the rest of the structure descr ... 
+        ^
+10:37:48 [evaluator] Evaluated program 42571b2d-6a27-4b97-becd-328badc610ee in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:37:48 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:37:48 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+10:39:25 [evaluator] Evaluated program 1fb5645e-142a-4045-9e76-c9f0df99a40f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:39:25 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:39:25 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+10:41:17 [evaluator] Evaluated program e38bc35a-014c-4927-bc26-d0f02a2397b5 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:41:17 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:41:17 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:41:17 WARNING [search.evox] Iteration 105 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:42:25 [evaluator] Evaluated program 2bd0a6f6-f693-4625-8ef0-95dd8397c475 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:42:25 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+10:42:25 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+11:20:11 [evaluator] Evaluated program f4cd025a-5198-4951-9e4b-e3e2e42dfa5d in 2174.09s: combined_score=1.0019, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6738.5473, cacti_node_nm=22.0000
+11:20:11 [default_discovery_controller] Iteration 108: Program f4cd025a-5198-4951-9e4b-e3e2e42dfa5d (parent: 36088571-c790-4108-aff7-c493aa594633) completed in 2333.50s (llm: 91.81s, eval: 2174.09s)
+11:20:11 [default_discovery_controller] Metrics: combined_score=1.0019, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6738.5473, cacti_node_nm=22.0000
+11:20:11 [default_discovery_controller] 🌟 New best solution found at iteration 108
+11:21:50 [evaluator] Evaluated program d5c7747d-269b-46f6-89c2-a6af8ce04e4c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:21:50 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:21:50 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+11:24:11 [evaluator] Evaluated program cbd01117-835f-4337-9de7-612f6161a916 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:24:11 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:24:11 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+11:26:28 [evaluator] Evaluated program 6059d95b-d48a-4b97-9188-d868e18359fa in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+11:26:28 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+11:26:28 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+11:26:28 WARNING [search.evox] Iteration 110 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+11:29:11 [evaluator] Evaluated program fa33b43b-251c-4cd6-8b2d-37595f4118b9 in 0.08s: combined_score=0.0000, status=schema_rejected, error=duplicate key 'train' at line 84, column 9. yaml would silently keep the last one and the structure description would not mean what it appears to say.
+11:29:11 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=duplicate key 'train' at line 84, column 9. yaml would silently keep the last one and the structure description would not mean what it appears to say.
+11:29:11 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+11:31:44 [evaluator] Evaluated program bc8b78d2-5abc-4aab-bba1-04c39e188cc6 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:31:44 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:31:44 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+11:32:19 [evaluator] Evaluated program 649a8730-a3c0-45ea-a190-df3837aa1be0 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:32:19 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:32:19 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:32:19 WARNING [search.evox] Iteration 113 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:34:16 [evaluator] Evaluated program 8fe82f23-8e89-4f09-8bb9-82d3cf149856 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:34:16 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:34:16 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+11:35:09 [evaluator] Evaluated program f97da18f-3906-4ecd-9aff-1db488f0af84 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): NEW_WORDS
+11:35:09 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): NEW_WORDS
+11:35:09 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+11:37:30 [evaluator] Evaluated program 6c361fac-36f3-4b98-9b76-0cb77e211f1a in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<replace this with the a...ture description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:37:30 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<replace this with the a...ture description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:37:30 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<replace this with the a...ture description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:37:30 WARNING [search.evox] Iteration 116 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<replace this with the a...ture description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+12:16:37 [evaluator] Evaluated program 2215559b-f9ef-4ad0-9e01-3fdaea05026f in 2208.12s: combined_score=1.0012, status=ok, metadata_kb=47.7188, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9531, metadata_area_mm2=0.0402, metadata_energy_uj=6811.5919, cacti_node_nm=22.0000
+12:16:37 [default_discovery_controller] Iteration 119: Program 2215559b-f9ef-4ad0-9e01-3fdaea05026f (parent: 99522fb1-b9c0-41b2-89fc-ac4aacf76e66) completed in 2346.54s (llm: 138.42s, eval: 2208.12s)
+12:16:37 [default_discovery_controller] Metrics: combined_score=1.0012, status=ok, metadata_kb=47.7188, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9531, metadata_area_mm2=0.0402, metadata_energy_uj=6811.5919, cacti_node_nm=22.0000
+12:18:19 [evaluator] Evaluated program c7b899e5-65ef-4272-ade4-2f4bdc505dac in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+12:18:19 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+12:18:19 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+12:20:11 [evaluator] Evaluated program dcda96f0-2d78-47ed-b677-7ab0622cccb7 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+12:20:11 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+12:20:11 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+12:59:38 [evaluator] Evaluated program 86c54b98-33c8-4bde-8e63-471f3ac994f8 in 2224.05s: combined_score=0.9985, status=ok, metadata_kb=47.7188, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9531, metadata_area_mm2=0.0402, metadata_energy_uj=6826.9188, cacti_node_nm=22.0000
+12:59:38 [default_discovery_controller] Iteration 120: Program 86c54b98-33c8-4bde-8e63-471f3ac994f8 (parent: 8abdb7c0-077a-4a8e-92db-b0d5e0593f85) completed in 2581.68s (llm: 143.30s, eval: 2224.05s)
+12:59:38 [default_discovery_controller] [CHECKPOINT] Checkpoint interval reached at iteration 120
+12:59:38 [base_database] Database has 16 programs, best program score is combined_score=1.0019, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6738.5473, cacti_node_nm=22.0000
+12:59:38 [search.utils] [CHECKPOINT] Saved database with 16 programs to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_120
+12:59:38 [runner] Checkpoint 120: best=combined_score=1.0019, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6738.5473, cacti_node_nm=22.0000
+12:59:38 [runner] Checkpoint saved to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_120
+12:59:38 [default_discovery_controller] Metrics: combined_score=0.9985, status=ok, metadata_kb=47.7188, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9531, metadata_area_mm2=0.0402, metadata_energy_uj=6826.9188, cacti_node_nm=22.0000
+13:02:20 [evaluator] Evaluated program e51e883f-bda9-4308-88be-c1d1637290ab in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:02:20 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:02:20 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+13:04:52 [evaluator] Evaluated program 2c28ae65-1695-4bb3-9e4a-df4d9257b060 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:04:52 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:04:52 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+13:07:19 [evaluator] Evaluated program b14f58ca-f3bd-4970-bd87-aa2f5e570ada in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:07:19 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:07:19 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:07:19 WARNING [search.evox] Iteration 123 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:08:45 [evaluator] Evaluated program c4790287-b63a-4300-a9e7-805768f05bad in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:08:45 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:08:45 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+13:10:22 [evaluator] Evaluated program e389a827-4501-45e8-a19d-634fca5452b9 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:10:22 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:10:22 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+13:48:41 [evaluator] Evaluated program 2ea49d6d-9818-491d-b137-d25a34eecb67 in 2177.76s: combined_score=1.0016, status=ok, metadata_kb=47.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8333, metadata_area_mm2=0.0393, metadata_energy_uj=6706.9997, cacti_node_nm=22.0000
+13:48:41 [default_discovery_controller] Iteration 126: Program 2ea49d6d-9818-491d-b137-d25a34eecb67 (parent: 36088571-c790-4108-aff7-c493aa594633) completed in 2481.69s (llm: 121.37s, eval: 2177.76s)
+13:48:41 [default_discovery_controller] Metrics: combined_score=1.0016, status=ok, metadata_kb=47.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8333, metadata_area_mm2=0.0393, metadata_energy_uj=6706.9997, cacti_node_nm=22.0000
+13:51:05 [evaluator] Evaluated program 2ea2d538-6651-474a-a84c-fe6127a8e390 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:51:05 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:51:05 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+13:53:31 [evaluator] Evaluated program 9f62566b-95fd-4925-8e65-2296e450dd6a in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:53:31 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:53:31 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+13:55:09 [evaluator] Evaluated program 38f12bb6-9ec4-4f89-b2f6-4fe489842e8f in 0.01s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+13:55:09 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+13:55:09 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+13:55:09 WARNING [search.evox] Iteration 129 failed (used 3 attempts): Evaluator failed after 3 attempts: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+13:56:22 [evaluator] Evaluated program de2c69d0-a1d4-420c-8401-6739256a1371 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:56:22 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:56:22 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+13:58:28 [evaluator] Evaluated program 61ec7321-c6e6-401f-a879-bf63f01d3614 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:58:28 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:58:28 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+14:00:53 [evaluator] Evaluated program 4151cbe9-7707-4309-b061-d5259e722be0 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:00:53 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:00:53 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:00:53 WARNING [search.evox] Iteration 132 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:03:44 [evaluator] Evaluated program 10d5b460-62ad-4997-8349-85312e987417 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:03:44 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:03:44 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+14:04:21 [evaluator] Evaluated program 7159af6a-84d4-4462-86fd-6ca32630975a in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+14:04:21 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+14:04:21 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+14:04:24 WARNING [llm] Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+14:53:18 [evaluator] Evaluated program 5dd4c5af-f252-4a32-a1fb-a3bf9ca2582f in 2745.40s: combined_score=0.9406, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0400, metadata_energy_uj=7758.9055, cacti_node_nm=22.0000
+14:53:18 [default_discovery_controller] Iteration 135: Program 5dd4c5af-f252-4a32-a1fb-a3bf9ca2582f (parent: 2ea49d6d-9818-491d-b137-d25a34eecb67) completed in 3144.26s (llm: 191.11s, eval: 2745.40s)
+14:53:18 [default_discovery_controller] Metrics: combined_score=0.9406, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0400, metadata_energy_uj=7758.9055, cacti_node_nm=22.0000
+14:55:55 [evaluator] Evaluated program c3423366-556e-427b-8643-ba19aa71a5e7 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:55:55 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+14:55:55 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+14:55:58 WARNING [llm] Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+15:32:48 [evaluator] Evaluated program 001c6d50-c002-4518-8e18-8b42a7dca66c in 2125.44s: combined_score=1.0018, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6739.6939, cacti_node_nm=22.0000
+15:32:48 [default_discovery_controller] Iteration 138: Program 001c6d50-c002-4518-8e18-8b42a7dca66c (parent: 41b27698-61bd-4008-b39b-2736e31be2f9) completed in 2370.79s (llm: 87.96s, eval: 2125.44s)
+15:32:48 [default_discovery_controller] Metrics: combined_score=1.0018, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6739.6939, cacti_node_nm=22.0000
+15:34:41 [evaluator] Evaluated program dd155898-dd86-4510-b37d-65364b6d3c60 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+15:34:41 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+15:34:41 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+15:36:01 [evaluator] Evaluated program 9cae863d-74c5-456e-9308-3e533609c7b7 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<real YAML structure description here>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+15:36:01 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<real YAML structure description here>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+15:36:01 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+16:15:04 [evaluator] Evaluated program 629dfa8c-3774-4744-a8d8-c1f84546b8f1 in 2203.71s: combined_score=1.0000, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0391, metadata_energy_uj=6866.7030, cacti_node_nm=22.0000
+16:15:04 [default_discovery_controller] Iteration 140: Program 629dfa8c-3774-4744-a8d8-c1f84546b8f1 (parent: 38254cd7-4967-488d-9d14-66bba0db0e87) completed in 2535.73s (llm: 139.62s, eval: 2203.71s)
+16:15:04 [default_discovery_controller] [CHECKPOINT] Checkpoint interval reached at iteration 140
+16:15:04 [base_database] Database has 20 programs, best program score is combined_score=1.0019, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6738.5473, cacti_node_nm=22.0000
+16:15:04 [search.utils] [CHECKPOINT] Saved database with 20 programs to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_140
+16:15:04 [runner] Checkpoint 140: best=combined_score=1.0019, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6738.5473, cacti_node_nm=22.0000
+16:15:04 [runner] Checkpoint saved to /home/user/oe_out/arm_evox_noadapt_g3/checkpoints/checkpoint_140
+16:15:04 [default_discovery_controller] Metrics: combined_score=1.0000, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0391, metadata_energy_uj=6866.7030, cacti_node_nm=22.0000
+16:16:21 [evaluator] Evaluated program 13de95d4-0ecf-4bd4-911d-40c7e1d76114 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:16:21 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:16:21 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+16:17:47 [evaluator] Evaluated program 5641498a-b435-4815-8098-ccc349a7419f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:17:47 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:17:47 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+16:17:50 WARNING [llm] Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+16:19:19 [evaluator] Evaluated program a550ba49-a162-4579-937b-2e1f08baa796 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:19:19 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:19:19 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:19:19 WARNING [search.evox] Iteration 143 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:21:16 [evaluator] Evaluated program 014c8078-a2aa-4988-9652-cda884cf4354 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:21:16 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:21:16 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+16:22:56 [evaluator] Evaluated program e4e950ff-b97d-4254-8ecd-a333545e7e4d in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:22:56 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+16:22:56 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+17:02:06 [evaluator] Evaluated program 9e2e7e75-f6d3-434b-9d82-8c381f329fa9 in 2219.51s: combined_score=1.0029, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6732.8481, cacti_node_nm=22.0000
+17:02:06 [default_discovery_controller] Iteration 146: Program 9e2e7e75-f6d3-434b-9d82-8c381f329fa9 (parent: 4512988e-b170-4609-8576-e09c60e8db28) completed in 2566.78s (llm: 130.28s, eval: 2219.51s)
+17:02:06 [default_discovery_controller] Metrics: combined_score=1.0029, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6732.8481, cacti_node_nm=22.0000
+17:02:06 [default_discovery_controller] 🌟 New best solution found at iteration 146
+17:03:18 [evaluator] Evaluated program e8f2c5bf-2c52-4b76-8294-56aaf8e5b889 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:03:18 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:03:18 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+17:04:24 [evaluator] Evaluated program e16f1b0c-dfef-4bba-be56-ee9d082d8116 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<actual YAML structure d...ion, fully written out>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:04:24 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<actual YAML structure d...ion, fully written out>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:04:24 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+17:05:57 [evaluator] Evaluated program e2a90431-badd-4ec7-9651-83a6b15e1f15 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:05:57 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:05:57 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:05:57 WARNING [search.evox] Iteration 149 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:07:31 [evaluator] Evaluated program 6383fe8e-84c4-444e-9f88-143304c31672 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:07:31 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:07:31 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+17:08:02 [evaluator] Evaluated program 514fdda0-0447-43f3-8d52-55a8eeb90062 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<actual YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:08:02 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<actual YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:08:02 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+17:10:13 [evaluator] Evaluated program 120b8694-6adc-44ec-8414-821e26a6e68e in 0.01s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+17:10:13 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+17:10:13 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+17:10:13 WARNING [search.evox] Iteration 152 failed (used 3 attempts): Evaluator failed after 3 attempts: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...lanation of changes.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+17:10:58 [evaluator] Evaluated program b6c69b22-b222-4af4-a377-e8265d75398f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:10:58 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:10:58 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+17:12:42 [evaluator] Evaluated program ff1fe5e2-21a2-4ed9-9410-a2647a361c05 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:12:42 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:12:42 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+17:13:13 [evaluator] Evaluated program 04089125-a24f-465d-acf0-e44c17933d66 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:13:13 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:13:13 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:13:13 WARNING [search.evox] Iteration 155 failed (used 3 attempts): Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:14:13 [evaluator] Evaluated program a551f4cc-5d5d-4c2d-bada-e8e01b58c70d in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:14:13 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:14:13 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+17:15:24 [evaluator] Evaluated program 91f62be4-b170-4373-8c95-c1e58cf222dc in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML description here>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:15:24 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML description here>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:15:24 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+17:55:22 [evaluator] Evaluated program ed86df7d-3d5c-44b1-8a3b-e49c6d5f3d1e in 2184.99s: combined_score=1.0022, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6736.4060, cacti_node_nm=22.0000
+17:55:22 [default_discovery_controller] Iteration 158: Program ed86df7d-3d5c-44b1-8a3b-e49c6d5f3d1e (parent: 001c6d50-c002-4518-8e18-8b42a7dca66c) completed in 2528.95s (llm: 213.21s, eval: 2184.99s)
+17:55:22 [default_discovery_controller] Metrics: combined_score=1.0022, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6736.4060, cacti_node_nm=22.0000
+17:57:55 [evaluator] Evaluated program 1fd3742f-d113-4dd5-8662-59bfd876d8b0 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:57:55 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+17:57:55 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+18:01:26 [evaluator] Evaluated program f6af7b68-afdd-4a84-b1e5-c307e0507d9d in 0.48s: combined_score=1.0018, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6739.6939, cacti_node_nm=22.0000
+18:01:26 [default_discovery_controller] Iteration 161: Program f6af7b68-afdd-4a84-b1e5-c307e0507d9d (parent: 778de5d8-0179-400f-8c93-702b69f6fff6) completed in 363.51s (llm: 210.33s, eval: 0.48s)
+18:01:26 [default_discovery_controller] Metrics: combined_score=1.0018, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0396, metadata_energy_uj=6739.6939, cacti_node_nm=22.0000
+18:02:00 [evaluator] Evaluated program a98a67c0-dc6c-47f6-ad32-0bce8b1420d5 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+18:02:00 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+18:02:00 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+18:03:27 [evaluator] Evaluated program e62b2e41-9290-47c5-8f38-fbc3d4fbcb80 in 0.54s: combined_score=0.0000, status=too_much_storage, error=this design declares 48.2 KB of replacement metadata at this LLC; the budget is 48 KB (the seed declares 47.4 KB): pay for new state by narrowing or removing state elsewhere
+18:03:27 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=this design declares 48.2 KB of replacement metadata at this LLC; the budget is 48 KB (the seed declares 47.4 KB): pay for new state by narrowing or removing state elsewhere
+18:03:27 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+18:05:48 [evaluator] Evaluated program 536751c6-c194-43d3-a65f-5615f46185c2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:05:48 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:05:48 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:05:48 WARNING [search.evox] Iteration 163 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:43:13 [evaluator] Evaluated program a59f5347-5340-48ba-904b-0f0c57112037 in 2113.16s: combined_score=1.0013, status=ok, metadata_kb=48.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=8.0000, metadata_area_mm2=0.0398, metadata_energy_uj=6777.8236, cacti_node_nm=22.0000
+18:43:13 [default_discovery_controller] Iteration 166: Program a59f5347-5340-48ba-904b-0f0c57112037 (parent: 5ef38f7d-d860-4c85-8161-d2c075fde0c7) completed in 2244.96s (llm: 131.80s, eval: 2113.16s)
+18:43:13 [default_discovery_controller] Metrics: combined_score=1.0013, status=ok, metadata_kb=48.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=8.0000, metadata_area_mm2=0.0398, metadata_energy_uj=6777.8236, cacti_node_nm=22.0000
+18:45:28 [evaluator] Evaluated program 4b8f1643-762e-4188-9259-b3abe9c36450 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:45:28 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:45:28 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+18:47:19 [evaluator] Evaluated program 0b888f5a-b0c0-42dc-b8ad-f2daac3a852e in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:47:19 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:47:19 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+18:48:15 [evaluator] Evaluated program 8992c9f4-4ba3-4328-92b8-71672b05963c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<full, valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:48:15 WARNING [default_discovery_controller] Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<full, valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:48:15 ERROR [default_discovery_controller] All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<full, valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:48:15 WARNING [search.evox] Iteration 167 failed (used 3 attempts): Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<full, valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:50:27 [evaluator] Evaluated program da711583-485c-46e2-ae4a-dba2ac9d3a65 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:50:27 WARNING [default_discovery_controller] Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:50:27 [default_discovery_controller] Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+18:52:54 [evaluator] Evaluated program 6c525a80-408b-4d3b-8b92-16db1abdefed in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+18:52:54 WARNING [default_discovery_controller] Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+18:52:54 [default_discovery_controller] Retry 3/3: rebuilding prompt with 2 failed attempt(s)

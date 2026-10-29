@@ -1,0 +1,7 @@
+validator: /home/user/oe_out/arm_topk_g3/yaml_run
+  tree /home/user/champsim_validate module validate_policy
+  33 traces at 50000000 + 100000000, 8 workers, sim timeout 18000 s
+  search stop 2026-09-25T00:00:00Z, deadline 2026-09-25T03:00:00Z, drain False, fake None
+waiting for /home/user/oe_out/arm_topk_g3/yaml_run/store
+[2026-09-24T02:03:30Z] started {"id": "c41837327dd0", "score": 1.0}
+[2026-09-24T05:06:46Z] validated {"id": "c41837327dd0", "score": {"all": 1.0, "training": 1.0, "held_out": 1.0}, "gap": {"difference": 0.0, "ratio": 1.0}, "seconds": 10996.5}

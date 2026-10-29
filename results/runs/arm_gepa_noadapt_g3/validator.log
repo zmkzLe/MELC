@@ -1,0 +1,13 @@
+validator: /home/user/oe_out/arm_gepa_noadapt_g3/yaml_run
+  tree /home/user/champsim_validate module validate_policy
+  33 traces at 50000000 + 100000000, 8 workers, sim timeout 18000 s
+  search stop 2026-09-25T00:00:00Z, deadline 2026-09-25T03:00:00Z, drain False, fake None
+waiting for /home/user/oe_out/arm_gepa_noadapt_g3/yaml_run/store
+[2026-09-24T02:02:51Z] started {"id": "c41837327dd0", "score": 1.0}
+[2026-09-24T05:01:30Z] validated {"id": "c41837327dd0", "score": {"all": 1.0, "training": 1.0, "held_out": 1.0}, "gap": {"difference": 0.0, "ratio": 1.0}, "seconds": 10719.0}
+[2026-09-24T05:27:03Z] started {"id": "1972ddbef63c", "score": 1.0019091864824468}
+[2026-09-24T08:26:52Z] validated {"id": "1972ddbef63c", "score": {"all": 1.000271182320104, "training": 0.9975098685842193, "held_out": 1.0032134540789737}, "gap": {"difference": -0.00570358549475436, "ratio": 0.9943146840071132}, "seconds": 10789.5}
+[2026-09-24T09:04:17Z] below_min_gain {"id": "cd5103069b52", "score": 1.0022261564624142}
+[2026-09-24T12:58:32Z] started {"id": "52a2ea11ebce", "score": 1.0037933532650032}
+[2026-09-24T13:41:35Z] below_min_gain {"id": "113bbbeeb050", "score": 1.0038917328302654}
+[2026-09-24T15:54:50Z] validated {"id": "52a2ea11ebce", "score": {"all": 1.0031255739503409, "training": 0.9981440936846981, "held_out": 1.0084456401501896}, "gap": {"difference": -0.010301546465491418, "ratio": 0.9897847280454728}, "seconds": 10578.1}

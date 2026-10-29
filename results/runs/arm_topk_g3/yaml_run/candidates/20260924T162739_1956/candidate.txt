@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOUR FULL VALID YAML DESIGN GOES HERE. DO NOT USE PLACEHOLDERS.
+# (e.g., name:, doc:, state:, victim:, etc.)
+===== NEW_WORDS =====
+
+# YOUR NEW WORDS YAML LIST GOES HERE, OR NOTHING.

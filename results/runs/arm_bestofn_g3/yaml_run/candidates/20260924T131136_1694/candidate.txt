@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+   <valid YAML structure description - NEVER USE PLACEHOLDER TEXT LIKE '<the structure description>'>
+   ===== NEW_WORDS =====

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Brief explanation of your policy changes and reasoning.
+state:
+... [YOUR COMPLETE, VALID, CONCRETE YAML DICTIONARY GOES HERE. NO PLACEHOLDERS!]
+===== NEW_WORDS =====

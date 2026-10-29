@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the FULL, complete, valid YAML for your policy here.
+# Include all necessary keys: name, doc, state, victim, on_hit, on_fill, etc.
+# DO NOT use placeholders.
+===== NEW_WORDS =====
+
+# Write a YAML list of the new words the description uses, or leave empty if none.
+# Both marker lines MUST appear exactly as shown, even if this section is empty.

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# REPLACE THIS LINE WITH YOUR ACTUAL YAML STRUCTURE DESCRIPTION.
+# (Do not output literal placeholder text like "<the structure description, YAML>")
+===== NEW_WORDS =====
+
+# REPLACE THIS LINE WITH YOUR YAML LIST OF NEW WORDS.
+# (Leave empty if you are not defining any new words)

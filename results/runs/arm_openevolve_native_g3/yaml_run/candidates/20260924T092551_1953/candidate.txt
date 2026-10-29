@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <a short, unique name for your design>
+doc: >
+  <One line saying what changed and why>
+<the COMPLETE structure description, fully defined in YAML, including all unmodified parts from the seed>
+===== NEW_WORDS =====

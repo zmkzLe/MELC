@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation of changes.
+state:
+  # YOU MUST INCLUDE THE FULL STATE LIST HERE
+victim:
+  # YOU MUST INCLUDE THE FULL VICTIM DICTIONARY HERE
+# ... INCLUDE ALL OTHER REQUIRED SECTIONS (signatures, tables, samplers, etc.) ...
+===== NEW_WORDS =====
+
+# YOU MUST INCLUDE YOUR NEW WORDS LIST HERE, OR [] IF NONE

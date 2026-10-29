@@ -1,0 +1,60 @@
+Run so far: 235 candidates, 31 scored, 204 refused or failed (malformed 116, schema_rejected 85, words_refused 3).
+Refusal kinds seen more than once this run (a pattern, not a one-off): 106 times, malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 44 times, schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>'); 11 times, schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None); 10 times, malformed: candidate is missing section(s): NEW_WORDS; 7 times, schema_rejected: state Field required (written: {'name': 'your_policy_nam...4: Implementation...\n'}) victim Field required (written: {'name': 'your_policy_nam...4: Implementation...\n'})
+Every refusal reason this run, one example per kind with its count (kinds are grouped by the message with names and numbers removed; merge any that are the same mistake):
+- 106 x malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+- 44 x schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>')
+- 11 x schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+- 10 x malformed: candidate is missing section(s): NEW_WORDS
+- 7 x schema_rejected: state Field required (written: {'name': 'your_policy_nam...4: Implementation...\n'}) victim Field required (written: {'name': 'your_policy_nam...4: Implementation...\n'})
+- 6 x schema_rejected: victim Field required (written: {'name': 'my_improved_pol...h': 2, 'init': 'ZERO'}]})
+- 3 x schema_rejected: state Input should be a valid list (written: None) victim Field required (written: {'name': 'your_policy_nam...cy...\n', 'state': None})
+- 2 x schema_rejected: name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '<policy_name>')
+- 1 x words_refused: place Field required (written: {'name': 'my_new_word'}) means Field required (written: {'name': 'my_new_word'})
+- 1 x words_refused: name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '... (if any new words ar... section empty if none)') place Field required (written: {'name': '... (if any new...section empty if none)'}) means Field required (written: {'
+- 1 x words_refused: means Field required (written: {'name': 'my_new_word', 'place': 'condition'})
+- 1 x schema_rejected: while scanning a simple key in "<unicode string>", line 17, column 1: <signatures, tables, samplers, p ... ^ could not find expected ':' in "<unicode string>", line 18, column 1: ^
+The seed scored 1.00000.
+Best so far: c41837327dd0 at 1.00000, +0.00% over Mockingjay.
+
+Parts of the design changed so far (candidates that changed it, how many beat their closest earlier design, best and mean change of the score):
+- state: 8 tried, 0 improved, best +0.00000, mean -0.00706
+- victim.key: 6 tried, 0 improved, best +0.00000, mean -0.00942
+- victim.bypass_when: 4 tried, 0 improved, best -0.00216, mean -0.01601
+- new_words: 4 tried, 0 improved, best +0.00000, mean -0.01491
+- on_fill: 3 tried, 0 improved, best +0.00000, mean -0.01988
+- victim.tie_break: 3 tried, 0 improved, best +0.00000, mean -0.01883
+- signatures: 2 tried, 0 improved, best -0.00314, mean -0.02981
+- tables: 2 tried, 0 improved, best -0.00314, mean -0.02981
+- victim.extremum: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- victim.on_search: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- procedures.access: 1 tried, 0 improved, best -0.00225, mean -0.00225
+- on_hit: 1 tried, 0 improved, best -0.05649, mean -0.05649
+- procedures: 1 tried, 0 improved, best -0.05649, mean -0.05649
+- samplers: 1 tried, 0 improved, best -0.05649, mean -0.05649
+
+The last 10 candidates, oldest first:
+226. refused (schema_rejected): state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+227. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+228. refused (schema_rejected): state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+229. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+230. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+231. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+232. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+233. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<the complete structure ... YAML, NO PLACEHOLDERS>')
+234. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+235. refused (schema_rejected): state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+
+The best design's traces with the most headroom, and its largest mistake on each:
+- 627.cam4_s-573B: headroom 52.4%, largest mistake should_bypass (53 of 550 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 0.2
+- 605.mcf_s-1644B: headroom 44.4%, largest mistake wrong_bypass (213210 of 430741 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 137.6
+- 619.lbm_s-2677B: headroom 43.9%, largest mistake wrong_bypass (109263 of 258760 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 82.6
+- 459.GemsFDTD-1491B: headroom 33.3%, largest mistake wrong_bypass (28218 of 86909 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 27.6
+- 657.xz_s-2302B: headroom 32.2%, largest mistake kept_dead (991 of 3706 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 1.3
+- 433.milc-127B: headroom 28.4%, largest mistake wrong_bypass (14351 of 63506 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 20.2
+
+New words accepted this run, best-scoring first:
+- line_addr (SignatureSource): The line address of the current access (the address without its 6 offset bits), as a 64-bit unsigned integer. [used 1, better 0, worse 1, same 0, failed 0]
+- is_bypassed (condition): True if the current event is a fill and the fill was bypassed (i.e., way equals NUM_WAY). [used 1, better 0, worse 1, same 0, failed 0]
+- is_not_bypassed (condition): True if the current event is a fill and the fill was NOT bypassed (i.e., way is less than NUM_WAY). [used 1, better 0, worse 1, same 0, failed 0]
+- filter_allows_bypass (condition): True when the entry in filter_table at line_idx is equal to 0. False otherwise. [used 1, better 0, worse 1, same 0, failed 0]
+- bypass_is_safe (condition): Reads the entry of the reject_table at the index sig. Returns true if the entry's value is less than 2, and false otherwise. Nothing is written.

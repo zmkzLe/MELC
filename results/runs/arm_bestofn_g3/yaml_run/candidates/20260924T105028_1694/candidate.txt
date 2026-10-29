@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <short_name>
+doc: >
+  <Explain exactly what changed from the previous design, why, and how it addresses specific feedback metrics (wrong_bypass, kept_dead, etc.).>
+<COMPLETE, VALID YAML DICTIONARY - NO PLACEHOLDERS>
+===== NEW_WORDS =====

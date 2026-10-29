@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your full YAML structure description goes here
+name: improved_policy
+doc: >
+  ...
+===== NEW_WORDS =====
+
+# Your YAML list of new words goes here, or leave empty if none

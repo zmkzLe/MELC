@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation of what changed and why...
+# YOUR FULL YAML DICTIONARY GOES HERE
+# DO NOT USE PLACEHOLDERS! Include state, victim, signatures, tables, etc.
+===== NEW_WORDS =====
+
+# YOUR NEW WORDS LIST GOES HERE, OR LEAVE EMPTY

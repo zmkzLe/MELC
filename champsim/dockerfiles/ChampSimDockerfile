@@ -1,0 +1,110 @@
+# The ChampSim worker image for the CHIA loop.
+#
+# CHIA's own ChampSim image cannot run this search. It clones upstream
+# DPC4-ChampSim, which has neither the profiling counters nor the OPT log, and
+# configures a next-line prefetcher at L2C, so a worker built from it measures
+# a different machine and can place no replacement policy. This image is built
+# from this repository instead, and carries CACTI and the feedback code as
+# well, so a worker can produce the whole feedback without shipping a
+# multi-megabyte OPT log anywhere.
+#
+# Build, from a clone of this repository, with CHIA's source beside it:
+#
+#   docker buildx build -f dockerfiles/ChampSimDockerfile \
+#       --build-context chia=../chia \
+#       -t chia-champsim:latest .
+#
+# The build context is this repository, so nothing is cloned from it inside the
+# image and the private remote needs no credentials here; `chia` is a second
+# context holding the CHIA source that is pip-installed at the end. The base
+# image and the CHIA revision must match the head node's, or Ray will refuse
+# the worker.
+#
+# The image is not rebuilt for free: it freezes this repository at whatever the
+# build context held, so it has to be rebuilt whenever the ChampSim changes,
+# the feedback changes, or the node adapter changes.
+#
+# syntax=docker/dockerfile:1
+
+FROM rayproject/ray:2.54.0-cpu
+
+USER root
+ENV DEBIAN_FRONTEND=noninteractive
+
+# build-essential and cmake build ChampSim, its vcpkg dependencies and CACTI;
+# config.sh is a Python script; xz-utils and the vcpkg bootstrap need the rest.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        cmake \
+        git \
+        python3 \
+        curl \
+        zip \
+        unzip \
+        pkg-config \
+        xz-utils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Everything lives under /home/ray so the runtime user owns the build tree and
+# can write binaries, logs and git diffs.
+USER ray
+ENV HOME=/home/ray
+WORKDIR /home/ray
+SHELL ["/bin/bash", "-cl"]
+
+ENV CHAMPSIM_ROOT=/home/ray/champsim
+# A @ChiaFunction body resolves its helpers by import on the worker, so the
+# node adapter and the feedback code have to be importable there.
+ENV PYTHONPATH=/home/ray/champsim
+
+# vcpkg first, and cloned at the commit this repository pins rather than taken
+# from the build context, so editing our code does not rebuild the C++
+# dependencies. Keep VCPKG_REF equal to `git ls-tree HEAD vcpkg`.
+ARG VCPKG_REF=1de2026f28ead93ff1773e6e680387643e914ea1
+RUN git clone https://github.com/microsoft/vcpkg.git "$CHAMPSIM_ROOT/vcpkg" \
+    && git -C "$CHAMPSIM_ROOT/vcpkg" checkout "$VCPKG_REF"
+
+COPY --chown=ray:ray vcpkg.json requirements.txt /home/ray/champsim/
+RUN cd "$CHAMPSIM_ROOT" \
+    && vcpkg/bootstrap-vcpkg.sh \
+    && vcpkg/vcpkg install \
+    && pip install --no-cache-dir -r requirements.txt
+
+# This repository: ChampSim with the profiling counters and the OPT log, the
+# Mockingjay port, the DPC4 configs, the structure descriptions, the feedback
+# code, CACTI's source and the node adapter.
+COPY --chown=ray:ray . /home/ray/champsim/
+
+# CACTI, from the vendored source. Building it here is also the first proof
+# that the vendored build recipe works on Linux; it has only ever been built on
+# macOS.
+RUN cd "$CHAMPSIM_ROOT/tools/cacti" && make -j"$(nproc)"
+
+# The smoke trace is CHIA's; this repository carries no traces.
+COPY --chown=ray:ray --from=chia chia/simulators/tests/traces/smoke.champsimtrace.gz \
+    /home/ray/champsim/test/traces/
+
+# Build a replacement policy through the node adapter, run it with the OPT log
+# on, and profile the result with CACTI. An image that cannot do this is an
+# image the loop cannot use, and that has to fail here rather than in the
+# middle of a run.
+# The object files are dropped afterwards: every candidate build starts with
+# `make clean`, so keeping them only makes the image bigger.
+RUN cd "$CHAMPSIM_ROOT" && python3 dockerfiles/smoke_test.py && make clean
+
+# CHIA last, so a new revision of it does not rebuild anything above.
+COPY --chown=ray:ray --from=chia . /tmp/chia
+RUN pip install --no-cache-dir /tmp/chia && rm -rf /tmp/chia
+
+# The node class exists only where Ray and CHIA are importable, which is the
+# one thing the smoke test above cannot check.
+RUN python3 -c "from chia_node.champsim import DPC4ChampSimNode; print('node adapter ready')"
+
+# What this image carries. It freezes this repository, so a worker has to be able
+# to answer which commit it is running: `cat $CHAMPSIM_ROOT/.image_revision`. Taken
+# from the build context's own git rather than a --build-arg nobody remembers.
+RUN git -C "$CHAMPSIM_ROOT" rev-parse HEAD > "$CHAMPSIM_ROOT/.image_revision" 2>/dev/null \
+    || echo "unknown - built from a tree with no git history" > "$CHAMPSIM_ROOT/.image_revision"
+
+ARG CHIA_REVISION=unknown
+ENV CHIA_REVISION=${CHIA_REVISION}

@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_modified
+doc: >
+  I modified the baseline by...
+state:
+  - name: etr
+... [Provide the FULL configuration here. Do not truncate!]
+===== NEW_WORDS =====
+
+- name: dynamic_bypass_confidence

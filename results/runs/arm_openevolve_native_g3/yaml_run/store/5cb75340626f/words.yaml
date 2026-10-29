@@ -1,0 +1,15 @@
+- name: confident_bypass
+  place: condition
+  params: {rdp: table, conf: table, index: signature, rdp_thresh: {int: [0, 127]}, conf_thresh: {int: [0, 3]}}
+  means: >
+    Reads the entry of the rdp table at the index. If it is absent, returns false.
+    Otherwise, reads the entry of the conf table at the index (treating an absent
+    entry as 0). Returns true if the rdp entry is greater than rdp_thresh and the
+    conf entry is greater than or equal to conf_thresh.
+
+- name: cap_value
+  place: step
+  params: {table: table, index: signature, cap: {int: [0, 127]}}
+  means: >
+    Reads the entry of the table at the index. If it is present and strictly
+    greater than the cap, sets it to the cap.

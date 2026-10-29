@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why.
+state:
+  # Fully define all state fields here (REQUIRED)
+victim:
+  # Fully define victim selection here (REQUIRED)
+# Fully define all other necessary sections (tables, samplers, on_hit, on_fill, etc.) (REQUIRED)
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

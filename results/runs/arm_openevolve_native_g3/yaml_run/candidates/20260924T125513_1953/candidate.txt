@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why, so the feedback can be attributed.
+state:
+  - name: example_field
+# [WRITE OUT THE ENTIRE YAML HERE. NO PLACEHOLDERS.]
+===== NEW_WORDS =====
+
+# [A YAML list of the new words the description uses, or nothing]

@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  A detailed explanation of your specific logic changes and why you made them.
+state:
+  ... (fully defined state fields, no placeholders)
+victim:
+  ... (fully defined victim logic, no placeholders)
+... (rest of your fully defined YAML, no placeholders)
+===== NEW_WORDS =====

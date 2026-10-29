@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+<YAML structure description>
+===== NEW_WORDS =====
+
+<YAML list of new word declarations, or []>
+```

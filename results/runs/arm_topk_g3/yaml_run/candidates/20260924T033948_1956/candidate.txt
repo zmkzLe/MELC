@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_design_name
+doc: >
+  One sentence explaining what changed and why.
+# [Include ALL required sections: state, victim, signatures, tables, etc.]
+# [DO NOT USE PLACEHOLDERS. PROVIDE THE FULL YAML.]
+===== NEW_WORDS =====
+
+# [List of new words, or leave empty if none]

@@ -1,0 +1,2 @@
+Candidate 9890d9c8c5fa FAILED at words_refused; it was not scored.
+Reason: penalize_wrong_bypass, train_penalty: already declared in this run with another definition; a word is never changed, so declare a new name

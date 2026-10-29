@@ -1,0 +1,1 @@
+===== STRUCTURE_DESCRIPTION =====`, the complete YAML (no placeholders, no ellipses), `===== NEW_WORDS =====

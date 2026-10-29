@@ -1,0 +1,11 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 3 validation errors for StructureDescription
+state.0.width
+  Field required [type=missing, input_value={'name': 'your_state_field'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+state.0.scope
+  Field required [type=missing, input_value={'name': 'your_state_field'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim.extremum
+  Field required [type=missing, input_value={'key': 'your_key'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

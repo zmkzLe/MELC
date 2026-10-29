@@ -1,0 +1,2 @@
+Candidate a7dd5530984f FAILED at words_refused; it was not scored.
+Reason: dynamic_bypass_eval, dynamic_bypass_update: already declared in this run with another definition; a word is never changed, so declare a new name

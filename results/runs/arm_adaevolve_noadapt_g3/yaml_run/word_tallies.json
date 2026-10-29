@@ -1,0 +1,202 @@
+{
+ "bypass_duel_enabled": {
+  "better": 1,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "can_age": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "clamped_dec": {
+  "better": 4,
+  "failed": 1,
+  "same": 2,
+  "unknown": 0,
+  "used": 11,
+  "worse": 4
+ },
+ "conf_gated_rdp_gt": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "confident_high_rd": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "duel_bypass": {
+  "better": 7,
+  "failed": 2,
+  "same": 2,
+  "unknown": 0,
+  "used": 19,
+  "worse": 8
+ },
+ "duel_bypass_v2": {
+  "better": 0,
+  "failed": 0,
+  "same": 1,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "duel_safe_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "dyn_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 1,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "dynamic_bypass_eval": {
+  "better": 2,
+  "failed": 2,
+  "same": 2,
+  "unknown": 0,
+  "used": 6,
+  "worse": 0
+ },
+ "dynamic_bypass_update": {
+  "better": 2,
+  "failed": 2,
+  "same": 2,
+  "unknown": 0,
+  "used": 6,
+  "worse": 0
+ },
+ "get_is_pref": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "guarded_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "rfo": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "safe_bypass": {
+  "better": 10,
+  "failed": 6,
+  "same": 0,
+  "unknown": 0,
+  "used": 22,
+  "worse": 6
+ },
+ "safe_bypass_v2": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "seesaw_damped_age": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "smart_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "train_conf": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "train_expired": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "update_bypass_duel": {
+  "better": 8,
+  "failed": 2,
+  "same": 2,
+  "unknown": 0,
+  "used": 21,
+  "worse": 9
+ },
+ "update_bypass_duel_v2": {
+  "better": 0,
+  "failed": 0,
+  "same": 1,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "update_conf": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "update_duel": {
+  "better": 0,
+  "failed": 0,
+  "same": 1,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "victim_not_overdue": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ }
+}

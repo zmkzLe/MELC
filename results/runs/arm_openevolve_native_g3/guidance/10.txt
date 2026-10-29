@@ -1,0 +1,52 @@
+Guidance version 10, written after 106 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 1 scored design(s); best 1.00046 (+0.05% against the seed)
+- name: confident_bypass
+  place: condition
+  params:
+    conf: table
+    conf_thresh:
+      int: [0, 3]
+    index: signature
+    rdp: table
+    rdp_thresh:
+      int: [0, 127]
+  means: 'Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads
+    the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp
+    entry is greater than rdp_thresh and the conf entry is greater than or equal to conf_thresh.
+
+    '
+# used by 1 scored design(s); best 1.00046 (+0.05% against the seed)
+- name: train_ema
+  place: step
+  params:
+    index: signature
+    sample: state
+    scale:
+      int: [1, 4]
+    shift:
+      int: [0, 7]
+    table: table
+  means: 'Calculates a target value as the sample multiplied by the scale, clamped to the table''s maximum.
+    Reads the entry of the table at the index. If it is absent, sets it to the target value. If present,
+    computes the signed difference (target - entry), divides it by 2 to the power of shift (integer division
+    rounding towards zero), and adds the result to the entry. The final value is clamped to the table''s
+    minimum (0) and maximum.
+
+    '
+# used by 1 scored design(s); best 1.00046 (+0.05% against the seed)
+- name: train_penalty
+  place: step
+  params:
+    index: signature
+    penalty:
+      int: [1, 127]
+    table: table
+  means: Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If
+    present, adds the penalty to the entry, clamping the result to the table's maximum.
+
+Refused among the last 10 candidates, and why: malformed 5 (candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; candidate is missing section(s): NEW_WORDS). schema_rejected 5 (Input should be a valid dictionary or instance of StructureDescription (written: None); Input should be a valid dictionary or instance of StructureDescription (written: '<the COMPLETE structure ...e full, actual policy.>'); state Input should be a valid list (written: None) victim Field required (written: {'name': 'your_policy_nam... why.\n', 'state': None}))
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 14 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 9 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<the COMPLETE structure ... YAML, NO PLACEHOLDERS>'); 2 times (schema_rejected): victim Field required (written: {'name': 'my_design', 'do...h': 2, 'init': 'ZERO'}]}); 2 times (malformed): candidate is missing section(s): NEW_WORDS
+
+Changes to samplers, tables, victim.bypass_when, and new_words paid off, while altering state, victim.key, victim.tie_break, on_fill, on_hit, procedures, signatures, victim.extremum, and victim.on_search lost. You must stop submitting malformed candidates that omit the STRUCTURE_DESCRIPTION and NEW_WORDS sections, stop providing placeholder strings like '<the structure description, YAML>' instead of valid dictionaries, and stop omitting required fields like state and victim. On 627.cam4_s-573B, which has the most headroom at 52.4%, the largest mistake is should_bypass; address this by having the policy remember which signatures historically see no reuse and decide to bypass them. On 605.mcf_s-1644B, 619.lbm_s-2677B, 459.GemsFDTD-1491B, and 433.milc-127B, the largest mistake is wrong_bypass, meaning the policy must remember when bypassed lines are prematurely requested and decide to insert them instead. On 657.xz_s-2302B, the primary mistake is kept_dead, requiring the policy to remember long-term reuse patterns in its state to decide to evict dead lines sooner. To achieve these better decisions, declare a new word to express a dynamic confidence threshold for bypassing that adapts to wrong bypasses, which the existing vocabulary cannot currently express.

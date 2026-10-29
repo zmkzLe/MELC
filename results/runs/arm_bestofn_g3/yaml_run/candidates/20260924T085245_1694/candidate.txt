@@ -1,0 +1,21 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation of changes.
+state:
+  # You MUST define at least one state field here
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: 0
+victim:
+  # You MUST define the victim selection logic here
+  key: example_field
+  extremum: max
+  tie_break: first
+  on_search: none
+# ... include the rest of your complete YAML policy (signatures, tables, samplers, etc.) ...
+===== NEW_WORDS =====
+
+# Your YAML list of new words the description uses, or an empty list `[]` if none

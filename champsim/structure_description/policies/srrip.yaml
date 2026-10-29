@@ -1,0 +1,25 @@
+# Textbook SRRIP. ChampSim's srrip module (archived) never receives fill events,
+# so it does not match this description.
+name: srrip
+doc: >
+  Static RRIP: a 2-bit RRPV per line; evict the first way at the maximum, aging
+  the set by the shortfall if none has reached it. Insert at MAX-1, promote to 0.
+
+state:
+  - name: rrpv
+    scope: per_line
+    kind: counter
+    width: 2
+    init: MAX
+
+victim:
+  key: rrpv
+  extremum: max
+  tie_break: first
+  on_search: age_to_max
+
+on_fill:
+  - set: {rrpv: {const: MAX_MINUS_1}}
+
+on_hit:
+  - set: {rrpv: {const: ZERO}}

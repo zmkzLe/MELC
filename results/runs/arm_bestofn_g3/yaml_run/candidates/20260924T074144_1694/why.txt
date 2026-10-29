@@ -1,0 +1,14 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 4 validation errors for StructureDescription
+name
+  Field required [type=missing, input_value={'<Write the FULL and COM...ures, on_hit, on_fill>'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+state
+  Field required [type=missing, input_value={'<Write the FULL and COM...ures, on_hit, on_fill>'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'<Write the FULL and COM...ures, on_hit, on_fill>'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+`<Write the FULL and COMPLETE YAML here. NO PLACEHOLDERS. Include all fields`
+  Extra inputs are not permitted [type=extra_forbidden, input_value='name, doc, state, victim...dures, on_hit, on_fill>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden

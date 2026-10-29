@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# [Write your actual complete YAML structure description here. Do not use placeholders.]
+# Ensure all required fields (name, doc, state, victim, etc.) are fully defined and functional.
+===== NEW_WORDS =====
+
+# [Write your actual YAML list of new words here, or leave empty if none]

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, complete YAML structure description here.
+# Provide the actual working configuration (state, victim, tables, samplers, on_fill, etc.).
+# DO NOT use placeholders like "<the structure description, YAML>" or "...".
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

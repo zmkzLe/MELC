@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  One line saying what changed and why, so the feedback can be attributed.
+state:
+  ... [YOUR FULL VALID YAML HERE - NO PLACEHOLDERS] ...
+===== NEW_WORDS =====

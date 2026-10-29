@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+state:
+  # Fully define all state fields here
+victim:
+  # Fully define victim selection here
+# ... fully define all other necessary sections (signatures, tables, samplers, procedures, etc.) ...
+===== NEW_WORDS =====
+
+# List of new words your description uses, or empty if none.

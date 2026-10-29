@@ -1,0 +1,74 @@
+# Reference: DPC4-ChampSim/replacement/ship. Sizes are for the DPC4 LLC, 4096 x 12.
+name: ship
+doc: >
+  SHiP: a per-CPU table of 3-bit saturating counters, indexed by the instruction
+  address, predicts whether a filled line will be reused. A shadow LRU sampler on
+  the sampled sets trains it: a matched entry counts its signature down, and an
+  entry replaced before it was ever matched counts it up. A fill whose counter is
+  at its maximum goes in at MAX, any other at MAX-1, a writeback always at MAX-1;
+  a hit resets to 0; the victim is RRIP's.
+
+state:
+  - name: rrpv
+    scope: per_line
+    kind: counter
+    width: 2
+    init: MAX
+  - name: access_count
+    scope: global
+    kind: counter
+    width: 64
+    init: ZERO
+
+victim:
+  key: rrpv
+  extremum: max
+  tie_break: first
+  on_search: age_to_max
+
+signatures:
+  - name: pc_sig
+    source: ip
+    low_bits: 32
+    modulo: 16381
+
+tables:
+  - name: shct
+    scope: per_cpu
+    kind: saturating
+    entries: 16384
+    width: 3
+    init: ZERO
+
+samplers:
+  - name: sampler
+    scope: per_cpu
+    sets: category_zero
+    ways: 12
+    tag_bits: 46              # the line address above the LLC set index
+    fields:
+      - {name: used, kind: flag, width: 1, init: ZERO}
+      - {name: sig, kind: counter, width: 14, init: ZERO}   # ChampSim keeps the IP; only its signature is read
+      - {name: last_used, kind: counter, width: 64, init: ZERO}
+    victim: {key: last_used, extremum: min, tie_break: first}
+    on_match:
+      - train: {table: shct, index: sig, op: decrement}
+      - set: {used: {const: 1}, last_used: {tick: access_count}}
+    on_replace:
+      - when: {counter: {counter: used, cmp: eq, threshold: ZERO}}
+        train: {table: shct, index: sig, op: increment}
+    install: {used: {const: ZERO}, sig: {signature: pc_sig}, last_used: {tick: access_count}}
+
+on_access:
+  - sample: sampler
+
+on_hit:
+  - set: {rrpv: {const: ZERO}}
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {rrpv: {const: MAX_MINUS_1}}
+    stop: true
+  - set: {rrpv: {const: MAX_MINUS_1}}
+  - when: {table: {table: shct, index: pc_sig, cmp: is_max, threshold: MAX}}
+    set: {rrpv: {const: MAX}}

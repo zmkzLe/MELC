@@ -1,0 +1,154 @@
+{
+ "apply_penalty": {
+  "better": 0,
+  "failed": 1,
+  "same": 1,
+  "unknown": 0,
+  "used": 2,
+  "worse": 0
+ },
+ "bypass_if_confident": {
+  "better": 0,
+  "failed": 1,
+  "same": 1,
+  "unknown": 0,
+  "used": 2,
+  "worse": 0
+ },
+ "cap_value": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "check_acc_exceeds_victim": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "check_bypass_accuracy": {
+  "better": 6,
+  "failed": 2,
+  "same": 4,
+  "unknown": 0,
+  "used": 18,
+  "worse": 6
+ },
+ "conf_check": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "confident_bypass": {
+  "better": 13,
+  "failed": 7,
+  "same": 0,
+  "unknown": 0,
+  "used": 25,
+  "worse": 5
+ },
+ "confident_exceeds_victim": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "confident_table_exceeds_victim": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 2,
+  "worse": 1
+ },
+ "penalize_dead_line": {
+  "better": 6,
+  "failed": 2,
+  "same": 4,
+  "unknown": 0,
+  "used": 18,
+  "worse": 6
+ },
+ "penalize_premature": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "penalize_wrong_bypass": {
+  "better": 0,
+  "failed": 3,
+  "same": 0,
+  "unknown": 0,
+  "used": 4,
+  "worse": 1
+ },
+ "punish_wrong_bypass": {
+  "better": 0,
+  "failed": 1,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 0
+ },
+ "safe_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "safe_table_bypass": {
+  "better": 0,
+  "failed": 0,
+  "same": 0,
+  "unknown": 0,
+  "used": 1,
+  "worse": 1
+ },
+ "train_ema": {
+  "better": 13,
+  "failed": 5,
+  "same": 0,
+  "unknown": 0,
+  "used": 24,
+  "worse": 6
+ },
+ "train_penalty": {
+  "better": 13,
+  "failed": 5,
+  "same": 0,
+  "unknown": 0,
+  "used": 25,
+  "worse": 7
+ },
+ "update_ema": {
+  "better": 0,
+  "failed": 1,
+  "same": 1,
+  "unknown": 0,
+  "used": 2,
+  "worse": 0
+ },
+ "update_rdp_ema": {
+  "better": 6,
+  "failed": 2,
+  "same": 4,
+  "unknown": 0,
+  "used": 18,
+  "worse": 6
+ }
+}

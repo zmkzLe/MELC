@@ -1,0 +1,1 @@
+===== STRUCTURE_DESCRIPTION =====` followed by the complete, valid YAML policy, and `===== NEW_WORDS =====

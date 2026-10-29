@@ -1,0 +1,20 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  One line saying what changed and why.
+  Further details...
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+  # (Define all other state fields here)
+victim:
+  key: example_field
+  extremum: max
+  # (Define all other victim properties here)
+# ... (Include all other required sections like signatures, tables, samplers, on_hit, on_fill, etc.)
+===== NEW_WORDS =====
+
+# (Define any new words here. If none, leave empty but keep the marker.)

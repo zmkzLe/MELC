@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, valid YAML code here. Do NOT output placeholder text.
+# You MUST provide the ENTIRE YAML description including name, doc, state, victim, 
+# signatures, tables, samplers, procedures, on_hit, and on_fill.
+===== NEW_WORDS =====
+
+# Write your actual YAML list of new words here, or leave empty if none.

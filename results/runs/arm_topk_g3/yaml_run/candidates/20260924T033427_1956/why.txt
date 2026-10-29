@@ -1,0 +1,8 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'mockingjay_mod_...ption of the policy.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'mockingjay_mod_...ption of the policy.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

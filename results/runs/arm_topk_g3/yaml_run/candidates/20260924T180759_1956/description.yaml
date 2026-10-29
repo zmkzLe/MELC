@@ -1,0 +1,16 @@
+name: mockingjay_mod
+doc: >
+  Explanation of your changes.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  # ... (other state fields)
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  # ... (other victim fields)
+# ... (rest of your COMPLETE valid YAML design: signatures, tables, samplers, procedures, on_hit, on_fill)

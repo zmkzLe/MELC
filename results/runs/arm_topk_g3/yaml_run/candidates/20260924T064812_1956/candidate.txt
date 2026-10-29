@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Explanation of your design...
+state:
+  ... (fully defined state)
+victim:
+  ... (fully defined victim)
+... (ALL other sections fully written out)
+===== NEW_WORDS =====

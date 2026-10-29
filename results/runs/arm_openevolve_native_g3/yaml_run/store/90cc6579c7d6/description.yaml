@@ -1,0 +1,15 @@
+name: your_policy_name
+doc: >
+  Start with one line saying what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+  tie_break: first
+  on_search: none
+# [YOU MUST INCLUDE ALL OTHER REQUIRED SECTIONS FOR A COMPLETE POLICY HERE: tables, samplers, on_hit, on_fill, etc.]

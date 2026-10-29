@@ -1,0 +1,32 @@
+Candidate 4cd110fa27d4: score 1.00189, the geometric mean over 17 traces of its IPC over Mockingjay's on the same trace (20M warm-up + 50M measured); Mockingjay, the seed and the design to beat, scores 1.0: ahead.
+Closest earlier design: 1972ddbef63c (similarity 0.974, score 1.00191, change -0.00002). Parts changed: name, samplers.
+New words: none.
+
+Per trace. vs MJ: IPC over Mockingjay's on that trace. change: minus the closest design's.
+MPKI: LLC misses per 1000 instructions. memory: share of all cycles stalled on the memory
+hierarchy at any level; LLC: the part of it stalled on LLC hits; DRAM: the part stalled on
+DRAM. retire: share of all cycles spent retiring instructions, which no replacement policy
+changes. headroom: share of the sampled misses Belady's MIN avoids on this candidate's own
+stream. Then the sampled fills judged against MIN: kept a dead line, evicted a line reused
+sooner, should have bypassed, bypassed wrongly (change from the closest design in brackets).
+trace                      vs MJ   change   MPKI  memory   LLC   DRAM  retire headroom       kept_dead  evicted_sooner  should_bypass   wrong_bypass
+410.bwaves-1963B          1.0003  +0.0010  17.88   76.7%  1.2%  60.0%   20.7%     2.6%          5 (+5)          0 (+0)         0 (+0)    1426 (-128)
+429.mcf-192B              1.0004  -0.0003  51.98   90.3%  6.7%  73.4%    6.4%     0.4%       311 (+14)         57 (-3)       123 (+8)       199 (-6)
+433.milc-127B             1.0008  -0.0068  21.07   82.9%  0.0%  77.2%   12.6%    31.3%    5022 (+1022)    1870 (+1557)   2813 (+1077)  12252 (-2221)
+434.zeusmp-10B            1.0006  -0.0005   2.40   63.3%  0.0%  44.4%   33.3%    15.5%      396 (+111)          0 (+0)     610 (+224)      71 (-537)
+437.leslie3d-149B         1.0094  -0.0024   7.36   84.0%  0.2%  76.2%   14.1%    16.5%     1673 (+167)          0 (+0)    2113 (+333)      53 (-745)
+450.soplex-247B           1.0255  +0.0146  20.13   83.8%  4.6%  75.9%   12.4%    16.6%    1779 (-1441)    12307 (-300)    7627 (+858)    7179 (-601)
+459.GemsFDTD-1491B        1.0019  +0.0016  27.62   89.8%  0.8%  86.3%    9.0%    33.2%          2 (-3)          0 (+0)         0 (+0)    28218 (+13)
+470.lbm-1274B             0.9958  -0.0119  26.70   86.9%  0.0%  86.9%   12.6%    22.2%   14930 (+7338)   16002 (-5534)    1102 (+678)    4118 (+431)
+483.xalancbmk-127B        1.0019  +0.0085  19.07   85.0%  4.7%  77.7%   10.9%    12.5%     1803 (+210)    3278 (-1041)   3136 (-1259)  21917 (+2310)
+603.bwaves_s-1740B        1.0052  +0.0069  19.18   78.4%  0.2%  54.8%   19.7%     5.7%        47 (+47)          0 (+0)       26 (+26)    2454 (-991)
+605.mcf_s-1644B           1.0005  -0.0003 137.27   87.8%  1.3%  67.8%    8.1%    44.2%    17155 (+621)      3237 (-43)        35 (+2) 210914 (-1207)
+619.lbm_s-2677B           1.0026  +0.0028  82.40   91.5%  0.0%  87.4%    8.1%    43.8%     62437 (-84)          0 (+0)     157 (+100)  109104 (-244)
+623.xalancbmk_s-10B       0.9845  +0.0000   4.82   72.0% 15.5%  49.9%   23.0%    23.5%        814 (+0)       2078 (+0)      7585 (+0)       794 (+0)
+625.x264_s-20B            1.0007  -0.0009   1.58   42.1%  0.0%  25.2%   54.1%    15.3%        256 (+0)          0 (+0)       438 (+0)         0 (+0)
+627.cam4_s-573B           0.9987  -0.0000   0.24   23.7%  0.0%   1.0%   60.4%    67.1%         49 (+0)          0 (+0)        43 (+1)         0 (+0)
+654.roms_s-1390B          0.9958  -0.0125  35.58   90.9%  0.0%  88.3%    8.3%    30.3%   33174 (+7081)      165 (+149)  11341 (+4622)  8607 (-13007)
+657.xz_s-2302B            1.0079  +0.0000   1.32   48.0%  1.9%  26.9%   33.9%    31.5%       1028 (+0)         20 (+0)       352 (+0)        18 (+0)
+
+All traces, sampled fills: kept_dead 140881 (+15088), evicted_sooner 39014 (-5215), should_bypass 37501 (+6670), wrong_bypass 407324 (-16933). The largest kind of mistake is wrong_bypass. Mistakes of every kind are addressed by changing what the policy remembers or how it decides, not by moving one threshold.
+Metadata: 47.38 KB SRAM, 0.0379 mm2 at 22 nm (reported, not scored).

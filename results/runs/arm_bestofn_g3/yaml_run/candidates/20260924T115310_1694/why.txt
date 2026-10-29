@@ -1,0 +1,5 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: mapping values are not allowed here
+  in "<unicode string>", line 2, column 26:
+    - Then the delimiter line:
+                             ^

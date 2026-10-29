@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, valid, competitive YAML structure description here.
+# Include all sections: name, doc, state, victim, signatures, tables, samplers, procedures, on_hit, on_fill, etc.
+# DO NOT output literal placeholders, ellipses, or generic template names. Provide the actual working configuration.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

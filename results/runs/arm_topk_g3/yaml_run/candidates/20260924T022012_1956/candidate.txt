@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+# REPLACE THIS COMMENT WITH YOUR FULL, COMPLETE, AND VALID YAML DESCRIPTION.
+# DO NOT output placeholder text like "<the structure description, YAML>".
+# DO NOT output a partial patch. You MUST include all required fields 
+# (e.g., name, doc, state, victim, on_hit, on_fill).
+# Start from the Mockingjay seed design (or another complete design) and apply your full changes.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

@@ -1,0 +1,17 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, complete YAML structure description here.
+# DO NOT output placeholder text like "<the structure description, YAML>".
+# You MUST define all required sections such as 'name', 'doc', 'state', and 'victim'.
+name: your_policy_name
+doc: >
+  Explain your changes here...
+state:
+  # Define your state fields...
+victim:
+  # Define your victim selection logic...
+# Include signatures, tables, samplers, procedures, etc. as needed.
+===== NEW_WORDS =====
+
+# Write a YAML list of the new words the description uses here.
+# If you have no new words, leave this section empty but KEEP the marker line below.
+# DO NOT output placeholders.

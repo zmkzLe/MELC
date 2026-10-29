@@ -1,0 +1,2 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 'max_distance': a member of Extremum takes no parameters

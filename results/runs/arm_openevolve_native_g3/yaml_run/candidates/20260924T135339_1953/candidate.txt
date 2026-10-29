@@ -1,0 +1,13 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Explanation of what changed and why.
+state:
+  # ... valid state definition ...
+victim:
+  # ... valid victim definition ...
+# ... other required YAML sections ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.
+# Even if empty, the marker line MUST be present.

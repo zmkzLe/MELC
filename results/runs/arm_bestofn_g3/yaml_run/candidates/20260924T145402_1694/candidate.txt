@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_new_policy
+doc: >
+  Added a bypass reject table.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (rest of the valid YAML structure description) ...
+===== NEW_WORDS =====
+
+- name: bypass_is_safe
+  place: condition
+  params: {reject_table: table, sig: signature}
+  means: >
+    Reads the entry of the reject_table...

@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, complete YAML structure description here.
+name: my_policy
+doc: >
+  Explanation of the policy...
+state:
+  - name: my_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: my_field
+  extremum: max
+# ... INCLUDE all other logic (tables, samplers, on_hit, on_fill, etc.). NO PLACEHOLDERS!
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

@@ -1,0 +1,2 @@
+Candidate 50da604ec790 FAILED at words_refused; it was not scored.
+Reason: duel_bypass: already declared in this run with another definition; a word is never changed, so declare a new name

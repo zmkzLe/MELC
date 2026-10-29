@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your complete and fully defined YAML structure goes here.
+# No placeholders. All keys like name, doc, state, victim, etc. must be fully specified.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the COMPLETE valid YAML dictionary here. 
+# NO PLACEHOLDERS. Do NOT omit required fields like 'state' or 'victim'.
+# You MUST provide the full policy specification.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or an empty list [] if none.

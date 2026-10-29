@@ -1,0 +1,32 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 10 validation errors for StructureDescription
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<policy_name_max_31_chars>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+state
+  Input should be a valid list [type=list_type, input_value='<declared state fields>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Input should be a valid dictionary or instance of VictimSelector [type=model_type, input_value='<key, extremum, tie_brea...on_search, bypass_when>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+signatures
+  Input should be a valid list [type=list_type, input_value='<signatures used>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+tables
+  Input should be a valid list [type=list_type, input_value='<predictor tables>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+samplers
+  Input should be a valid list [type=list_type, input_value='<shadow cache samplers>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+procedures
+  Input should be a valid dictionary [type=dict_type, input_value='<named rule lists>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+on_access
+  Input should be a valid list [type=list_type, input_value='<tag check rules, if any>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+on_hit
+  Input should be a valid list [type=list_type, input_value='<hit rules>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+on_fill
+  Input should be a valid list [type=list_type, input_value='<fill rules>', input_type=str]
+    For further information visit https://e

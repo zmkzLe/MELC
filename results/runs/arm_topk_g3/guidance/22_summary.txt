@@ -1,0 +1,54 @@
+Run so far: 229 candidates, 22 scored, 207 refused or failed (malformed 130, schema_rejected 76, words_refused 1).
+Refusal kinds seen more than once this run (a pattern, not a one-off): 122 times, malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 42 times, schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>'); 8 times, schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None); 8 times, malformed: candidate is missing section(s): NEW_WORDS; 5 times, schema_rejected: state Field required (written: {'name': 'my_new_design',...hanged and why here.\n'}) victim Field required (written: {'name': 'my_new_design',...hanged and why here.\n'})
+Every refusal reason this run, one example per kind with its count (kinds are grouped by the message with names and numbers removed; merge any that are the same mistake):
+- 122 x malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+- 42 x schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>')
+- 8 x schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+- 8 x malformed: candidate is missing section(s): NEW_WORDS
+- 5 x schema_rejected: state Field required (written: {'name': 'my_new_design',...hanged and why here.\n'}) victim Field required (written: {'name': 'my_new_design',...hanged and why here.\n'})
+- 4 x schema_rejected: state Input should be a valid list (written: None) victim Field required (written: {'name': 'my_new_policy',...hy...\n', 'state': None})
+- 2 x schema_rejected: victim Field required (written: {'name': 'my_new_policy',...'width': 5, 'init': 0}]})
+- 1 x words_refused: means Field required (written: {'name': 'dynamic_bypass_...', 'place': 'condition'})
+- 1 x schema_rejected: while scanning a simple key in "<unicode string>", line 3, column 1: <fully complete YAML structure d ... ^ could not find expected ':' in "<unicode string>", line 4, column 1: ^
+- 1 x schema_rejected: while scanning a simple key in "<unicode string>", line 14, column 1: <... rest of your complete YAML ... ^ could not find expected ':' in "<unicode string>", line 15, column 1: ^
+- 1 x schema_rejected: state.0.name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '...') state.0.width Field required (written: {'name': '...'}) state.0.scope Field required (written: {'name': '...'}) victim Field required (written: {'name': 'you
+- 1 x schema_rejected: state.0 Input should be a valid dictionary or instance of StateField (written: 'Fully define all state fields') victim Input should be a valid dictionary or instance of VictimSelector (written: ['Fully define the victim selector'])
+The seed scored 1.00000.
+Best so far: c41837327dd0 at 1.00000, +0.00% over Mockingjay.
+
+Parts of the design changed so far (candidates that changed it, how many beat their closest earlier design, best and mean change of the score):
+- state: 7 tried, 0 improved, best +0.00000, mean -0.01614
+- victim.key: 7 tried, 0 improved, best +0.00000, mean -0.01614
+- victim.tie_break: 5 tried, 0 improved, best +0.00000, mean -0.02260
+- on_fill: 4 tried, 0 improved, best +0.00000, mean -0.02825
+- victim.extremum: 4 tried, 0 improved, best +0.00000, mean -0.02825
+- new_words: 4 tried, 0 improved, best +0.00000, mean -0.02825
+- on_hit: 3 tried, 0 improved, best +0.00000, mean -0.03766
+- victim.on_search: 3 tried, 0 improved, best +0.00000, mean -0.01883
+- procedures: 2 tried, 0 improved, best -0.05649, mean -0.05649
+- samplers: 2 tried, 0 improved, best -0.05649, mean -0.05649
+- signatures: 2 tried, 0 improved, best -0.05649, mean -0.05649
+- tables: 2 tried, 0 improved, best -0.05649, mean -0.05649
+- victim.bypass_when: 2 tried, 0 improved, best -0.05649, mean -0.05649
+
+The last 10 candidates, oldest first:
+220. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+221. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+222. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+223. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+224. refused (schema_rejected): state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+225. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+226. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+227. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+228. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+229. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+
+The best design's traces with the most headroom, and its largest mistake on each:
+- 627.cam4_s-573B: headroom 52.4%, largest mistake should_bypass (53 of 550 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 0.2
+- 605.mcf_s-1644B: headroom 44.4%, largest mistake wrong_bypass (213210 of 430741 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 137.6
+- 619.lbm_s-2677B: headroom 43.9%, largest mistake wrong_bypass (109263 of 258760 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 82.6
+- 459.GemsFDTD-1491B: headroom 33.3%, largest mistake wrong_bypass (28218 of 86909 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 27.6
+- 657.xz_s-2302B: headroom 32.2%, largest mistake kept_dead (991 of 3706 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 1.3
+- 433.milc-127B: headroom 28.4%, largest mistake wrong_bypass (14351 of 63506 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 20.2
+
+New words accepted this run: none yet.

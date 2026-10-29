@@ -1,0 +1,2 @@
+Candidate 87840b1f3690 FAILED at too_much_storage; it was not scored.
+Reason: this design declares 48.2 KB of replacement metadata at this LLC; the budget is 48 KB (the seed declares 47.4 KB): pay for new state by narrowing or removing state elsewhere

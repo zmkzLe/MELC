@@ -1,0 +1,2 @@
+===== STRUCTURE_DESCRIPTION =====`. Ensure the YAML is complete, fully formed,
+   and contains ZERO placeholders or ellipses.

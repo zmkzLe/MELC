@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the complete, valid YAML structure description here.
+name: my_policy
+doc: >
+  My policy explanation.
+state:
+  # ... fully specify all required fields of the policy ...
+===== NEW_WORDS =====
+
+# Write the complete YAML list of new words here, or [] if none.

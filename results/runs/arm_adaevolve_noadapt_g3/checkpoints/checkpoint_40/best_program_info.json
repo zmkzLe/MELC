@@ -1,0 +1,19 @@
+{
+  "id": "25bf88a3-c9a5-46b7-b3d1-e864e1a2a664",
+  "generation": 2,
+  "iteration": 40,
+  "current_iteration": 40,
+  "metrics": {
+    "combined_score": 1.0030028117026326,
+    "status": "ok",
+    "metadata_kb": 47.9375,
+    "metadata_flipflop_bits": 10,
+    "metadata_bits_per_line": 7.989583333333333,
+    "metadata_area_mm2": 0.03906966784392,
+    "metadata_energy_uj": 6781.492753077956,
+    "cacti_node_nm": 22
+  },
+  "language": "text",
+  "timestamp": 1790175822.883428,
+  "saved_at": 1790175822.8970993
+}

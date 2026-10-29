@@ -1,0 +1,6 @@
+- name: bypass_is_safe
+  place: condition
+  params: {reject_table: table, sig: signature}
+  means: >
+    Reads the entry of the reject_table at the index sig. Returns true if the
+    entry's value is less than 2, and false otherwise. Nothing is written.

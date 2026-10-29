@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Start the doc with one line saying what changed and why.
+# [Provide the COMPLETE YAML for the policy. NO PLACEHOLDERS. NO `...`]
+===== NEW_WORDS =====
+
+# [Provide a YAML list of new words, or leave empty if none. NO PLACEHOLDERS.]

@@ -1,0 +1,32 @@
+Candidate 379c02d55cb1: score 1.00161, the geometric mean over 17 traces of its IPC over Mockingjay's on the same trace (20M warm-up + 50M measured); Mockingjay, the seed and the design to beat, scores 1.0: ahead.
+Closest earlier design: 2a78d8d8b618 (similarity 0.979, score 0.98750, change +0.01410). Parts changed: name, samplers, state.
+New words: none.
+
+Per trace. vs MJ: IPC over Mockingjay's on that trace. change: minus the closest design's.
+MPKI: LLC misses per 1000 instructions. memory: share of all cycles stalled on the memory
+hierarchy at any level; LLC: the part of it stalled on LLC hits; DRAM: the part stalled on
+DRAM. retire: share of all cycles spent retiring instructions, which no replacement policy
+changes. headroom: share of the sampled misses Belady's MIN avoids on this candidate's own
+stream. Then the sampled fills judged against MIN: kept a dead line, evicted a line reused
+sooner, should have bypassed, bypassed wrongly (change from the closest design in brackets).
+trace                      vs MJ   change   MPKI  memory   LLC   DRAM  retire headroom       kept_dead  evicted_sooner  should_bypass   wrong_bypass
+410.bwaves-1963B          0.9968  +0.0218  17.99   76.8%  1.1%  60.2%   20.7%     3.2%         7 (-55)          0 (+0)      12 (-783)    1557 (-306)
+429.mcf-192B              1.0002  +0.0005  51.96   90.3%  6.7%  73.4%    6.4%     0.4%       355 (-20)        64 (-51)      139 (-23)      103 (+70)
+433.milc-127B             0.9975  +0.0001  19.90   83.0%  0.0%  77.3%   12.6%    27.2%    3549 (-5986)      254 (+240)     2369 (+25) 11835 (+11699)
+434.zeusmp-10B            1.0003  +0.0003   2.12   63.3%  0.0%  44.4%   33.3%     4.1%         55 (-5)          0 (+0)      198 (+27)         0 (+0)
+437.leslie3d-149B         1.0001  +0.0009   7.11   84.2%  0.0%  76.5%   14.0%    13.9%      1129 (+22)          0 (+0)     1870 (+51)         0 (+0)
+450.soplex-247B           1.0227  +0.0341  20.57   83.9%  4.5%  76.1%   12.4%    18.2%      3213 (-34)   11325 (-4343)   5402 (-1005)    8046 (+500)
+459.GemsFDTD-1491B        1.0030  +0.0045  27.62   89.8%  0.8%  86.2%    9.1%    33.3%      15 (-8481)          0 (+0)       0 (-343) 28223 (+16252)
+470.lbm-1274B             1.0033  +0.0335  26.12   86.8%  0.0%  86.8%   12.7%    20.7%   9694 (-19134)  19639 (+12270)    408 (-1653)    4446 (-330)
+483.xalancbmk-127B        0.9916  +0.0442  19.54   85.2%  4.3%  78.3%   10.8%    14.5%    1781 (-1983)    4439 (-5259)   3813 (-4746)  22911 (+6828)
+603.bwaves_s-1740B        0.9963  +0.0003  19.51   78.5%  0.0%  55.3%   19.6%     7.3%        23 (-54)          0 (+0)     129 (-946)   3431 (+1198)
+605.mcf_s-1644B           1.0001  +0.0802 137.33   87.8%  1.3%  67.8%    8.1%    44.3%  16633 (-144607)     3418 (+811)      28 (-358)211602 (+157365)
+619.lbm_s-2677B           1.0207  +0.0269  80.46   91.4%  0.0%  87.3%    8.2%    42.4%   60247 (+1142)        59 (-70)   123 (-12005)105561 (+56312)
+623.xalancbmk_s-10B       1.0018  -0.0109   4.64   71.7% 16.9%  48.2%   23.2%    21.5%      609 (+229)     1624 (+194)    5486 (+667)    2058 (-221)
+625.x264_s-20B            1.0000  +0.0000   1.41   42.1%  0.0%  25.3%   54.0%     4.7%         36 (+0)          0 (+0)       163 (+0)         0 (+0)
+627.cam4_s-573B           1.0000  +0.0000   0.16   23.6%  0.0%   0.8%   60.4%    52.4%         32 (+0)          0 (+0)        53 (+0)         0 (+0)
+654.roms_s-1390B          0.9933  +0.0009  30.95   90.9%  0.0%  88.3%    8.3%    19.9%   20017 (-2921)      270 (-225)  10745 (-1238)   7811 (+7052)
+657.xz_s-2302B            1.0000  -0.0016   1.34   48.4%  1.8%  27.6%   33.6%    32.2%       991 (+78)         25 (+6)      371 (+37)       88 (+42)
+
+All traces, sampled fills: kept_dead 118386 (-181809), evicted_sooner 41117 (+3573), should_bypass 31309 (-22293), wrong_bypass 407672 (+256461). The largest kind of mistake is wrong_bypass. Mistakes of every kind are addressed by changing what the policy remembers or how it decides, not by moving one threshold.
+Metadata: 47.00 KB SRAM, 0.0393 mm2 at 22 nm (reported, not scored).

@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====` must transition directly to concrete YAML keys (`name:`, `doc:`, `state:`), eliminating the ambiguity that led to literal placeholder generation.
+
+2. **Targeted Guidance on Dominant Benchmark Weaknesses**:
+   - Analyzed trace feedback to identify the highest leverage point: **`wrong_bypass`** is by far the biggest failure mode on Mockingjay across traces like `433.milc-127B`, `450.soplex-247B`, `605.mcf_s-1644B`, and `459.GemsFDTD-1491B`.
+   - Explicitly instructs the LLM on why Mockingjay suffers from wrong bypass (over-aggressive bypass rules using noisy RDP thresholds / division) and outlines concrete strategies to solve it (e.g. bypass damping, threshold adjustment, set dueling, access-type qualification).
+
+3. **Elimination of Schema and Budget Pitfalls**:
+   - Re-emphasized the strict hardware budget (<= 48 KB).
+   - Re-emphasized the ChampSim restriction prohibiting WRITE fills from being bypassed.
+   - Cleaned up formatting guidelines to guarantee a single code block containing both required section headers.

@@ -1,0 +1,35 @@
+Run so far: 45 candidates, 1 scored, 44 refused or failed (malformed 24, schema_rejected 20).
+Refusal kinds seen more than once this run (a pattern, not a one-off): 24 times, malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 11 times, schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>'); 4 times, schema_rejected: state Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}) victim Field required (written: {'name': 'my_policy', 'do...on of your design...\n'})
+Every refusal reason this run, one example per kind with its count (kinds are grouped by the message with names and numbers removed; merge any that are the same mistake):
+- 24 x malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+- 11 x schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>')
+- 4 x schema_rejected: state Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}) victim Field required (written: {'name': 'my_policy', 'do...on of your design...\n'})
+- 1 x schema_rejected: victim Field required (written: {'name': 'your_policy_nam...'width': 5, 'init': 0}]})
+- 1 x schema_rejected: state Input should be a valid list (written: '...') victim Input should be a valid dictionary or instance of VictimSelector (written: '...') signatures Input should be a valid list (written: '...') tables Input should be a valid list (writt
+- 1 x schema_rejected: name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '<policy_name_under_32_chars>') state Input should be a valid list (written: '...') victim Input should be a valid dictionary or instance of VictimSelector (written: '...')
+- 1 x schema_rejected: name Input should be a valid string (written: ['policy_name'])
+- 1 x schema_rejected: expected '<document start>', but found '<scalar>' in "<unicode string>", line 4, column 5: ... (rest of the YAML structure desc ... ^
+The seed scored 1.00000.
+Best so far: c41837327dd0 at 1.00000, +0.00% over Mockingjay.
+
+The last 10 candidates, oldest first:
+36. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+37. refused (schema_rejected): name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '<policy_name_under_32_chars>') state Input should be a valid list (written: '...') victim Input should be a valid dictionary or ins
+38. refused (schema_rejected): state Field required (written: {'name': 'valid_name_unde...ur explanation here.\n'}) victim Field required (written: {'name': 'valid_name_unde...ur explanation here.\n'})
+39. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+40. refused (schema_rejected): victim Field required (written: {'name': 'your_policy_nam...'width': 5, 'init': 0}]})
+41. refused (schema_rejected): state Field required (written: {'name': 'your_design_nam...hat changed and why.\n'}) victim Field required (written: {'name': 'your_design_nam...hat changed and why.\n'})
+42. refused (schema_rejected): name Input should be a valid string (written: ['policy_name'])
+43. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<the FULL structure desc... YAML, no placeholders>')
+44. refused (schema_rejected): state Field required (written: {'name': 'your_policy_nam...ur explanation here.\n'}) victim Field required (written: {'name': 'your_policy_nam...ur explanation here.\n'})
+45. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+
+The best design's traces with the most headroom, and its largest mistake on each:
+- 627.cam4_s-573B: headroom 52.4%, largest mistake should_bypass (53 of 550 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 0.2
+- 605.mcf_s-1644B: headroom 44.4%, largest mistake wrong_bypass (213210 of 430741 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 137.6
+- 619.lbm_s-2677B: headroom 43.9%, largest mistake wrong_bypass (109263 of 258760 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 82.6
+- 459.GemsFDTD-1491B: headroom 33.3%, largest mistake wrong_bypass (28218 of 86909 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 27.6
+- 657.xz_s-2302B: headroom 32.2%, largest mistake kept_dead (991 of 3706 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 1.3
+- 433.milc-127B: headroom 28.4%, largest mistake wrong_bypass (14351 of 63506 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 20.2
+
+New words accepted this run: none yet.

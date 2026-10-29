@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  A complete description of the policy...
+state:
+  - name: example_state
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (ALL other sections MUST be fully written out here, NO PLACEHOLDERS)
+===== NEW_WORDS =====
+
+# ... (Your new words or nothing)

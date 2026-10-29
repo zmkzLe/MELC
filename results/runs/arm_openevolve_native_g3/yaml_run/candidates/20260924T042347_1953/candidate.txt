@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====`
+2. Full valid YAML structure description (complete, no placeholders).
+3. `===== NEW_WORDS =====

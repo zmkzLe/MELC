@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: adaptive_mockingjay
+doc: >
+  Your explanation of the policy changes goes here.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (Provide the REST of the full, complete YAML structure description here) ...
+===== NEW_WORDS =====
+
+# ... (Provide your YAML list of new words here, or leave empty if none) ...

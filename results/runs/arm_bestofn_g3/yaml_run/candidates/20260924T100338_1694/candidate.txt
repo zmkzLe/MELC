@@ -1,0 +1,19 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  Start with one line saying what changed and why.
+state:
+  - name: my_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: my_field
+  extremum: max
+  tie_break: first
+  on_search: none
+# ... (include all other necessary sections like signatures, tables, samplers, procedures, on_hit, on_fill, etc.)
+===== NEW_WORDS =====
+
+# ... (list your new words here, or use an empty list [] if none)

@@ -1,0 +1,2 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: duplicate key 'train' at line 84, column 9. yaml would silently keep the last one and the structure description would not mean what it appears to say.

@@ -1,0 +1,4 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 1 validation error for StructureDescription
+  Value error, on_fill[1]: add -1 to 'hit_rate', which holds 0..127; a step of 0 or one outside the range is not a step [type=value_error, input_value={'name': 'mockingjay', 'd...}}}, {'run': 'access'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error

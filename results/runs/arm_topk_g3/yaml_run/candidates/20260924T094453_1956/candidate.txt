@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  A short description of the policy.
+state:
+  - name: my_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: 0
+victim:
+  key: my_field
+  extremum: max
+# ... (rest of your valid YAML policy) ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or leave empty if none.
+# DO NOT put placeholders here. Write the actual new words or nothing.

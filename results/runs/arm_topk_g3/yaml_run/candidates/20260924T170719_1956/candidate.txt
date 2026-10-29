@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why.
+state:
+  ...
+victim:
+  ...
+[rest of your complete structure description]
+===== NEW_WORDS =====
+
+[a YAML list of the new words the description uses, or nothing]

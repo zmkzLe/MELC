@@ -1,0 +1,11 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One line saying what changed and why.
+  (Include your reasoning and metadata budget calculations here.)
+# DO NOT output placeholders. Provide your actual, complete, valid YAML structure description below.
+state:
+  ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

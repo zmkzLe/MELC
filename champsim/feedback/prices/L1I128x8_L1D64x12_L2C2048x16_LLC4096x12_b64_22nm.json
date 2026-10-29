@@ -1,0 +1,126 @@
+{
+ "geometry": "L1I128x8_L1D64x12_L2C2048x16_LLC4096x12_b64_22nm",
+ "node_nm": 22,
+ "levels": {
+  "L1I": {
+   "sets": 128,
+   "ways": 8,
+   "block_bytes": 64,
+   "tag_bits_per_way": 44,
+   "data": {
+    "depth": 1024,
+    "width_bits": 512,
+    "block_bytes": 64,
+    "size_bytes": 65536,
+    "node_nm": 22,
+    "area_um2": 48746.092005000006,
+    "read_energy_nj": 0.0127077,
+    "write_energy_nj": 0.0395667,
+    "leakage_mw": 18.9158,
+    "access_ns": 0.37059
+   },
+   "tag": {
+    "depth": 128,
+    "width_bits": 352,
+    "block_bytes": 44,
+    "size_bytes": 5632,
+    "node_nm": 22,
+    "area_um2": 7117.73466068,
+    "read_energy_nj": 0.00358552,
+    "write_energy_nj": 0.0058025,
+    "leakage_mw": 1.84563,
+    "access_ns": 0.112399
+   }
+  },
+  "L1D": {
+   "sets": 64,
+   "ways": 12,
+   "block_bytes": 64,
+   "tag_bits_per_way": 44,
+   "data": {
+    "depth": 768,
+    "width_bits": 512,
+    "block_bytes": 64,
+    "size_bytes": 49152,
+    "node_nm": 22,
+    "area_um2": 38192.553308,
+    "read_energy_nj": 0.0109898,
+    "write_energy_nj": 0.0310962,
+    "leakage_mw": 14.2314,
+    "access_ns": 0.287842
+   },
+   "tag": {
+    "depth": 64,
+    "width_bits": 528,
+    "block_bytes": 66,
+    "size_bytes": 4224,
+    "node_nm": 22,
+    "area_um2": 9640.417504199999,
+    "read_energy_nj": 0.00660055,
+    "write_energy_nj": 0.00818508,
+    "leakage_mw": 1.41843,
+    "access_ns": 0.11783
+   }
+  },
+  "L2C": {
+   "sets": 2048,
+   "ways": 16,
+   "block_bytes": 64,
+   "tag_bits_per_way": 44,
+   "data": {
+    "depth": 32768,
+    "width_bits": 512,
+    "block_bytes": 64,
+    "size_bytes": 2097152,
+    "node_nm": 22,
+    "area_um2": 1469798.08155,
+    "read_energy_nj": 0.0936123,
+    "write_energy_nj": 0.309187,
+    "leakage_mw": 598.169,
+    "access_ns": 6.76089
+   },
+   "tag": {
+    "depth": 2048,
+    "width_bits": 704,
+    "block_bytes": 88,
+    "size_bytes": 180224,
+    "node_nm": 22,
+    "area_um2": 125228.634315,
+    "read_energy_nj": 0.0293065,
+    "write_energy_nj": 0.103377,
+    "leakage_mw": 49.4111,
+    "access_ns": 0.803082
+   }
+  },
+  "LLC": {
+   "sets": 4096,
+   "ways": 12,
+   "block_bytes": 64,
+   "tag_bits_per_way": 44,
+   "data": {
+    "depth": 49152,
+    "width_bits": 512,
+    "block_bytes": 64,
+    "size_bytes": 3145728,
+    "node_nm": 22,
+    "area_um2": 2154834.9145199996,
+    "read_energy_nj": 0.121033,
+    "write_energy_nj": 0.444651,
+    "leakage_mw": 896.422,
+    "access_ns": 13.538
+   },
+   "tag": {
+    "depth": 4096,
+    "width_bits": 528,
+    "block_bytes": 66,
+    "size_bytes": 270336,
+    "node_nm": 22,
+    "area_um2": 180053.10708,
+    "read_energy_nj": 0.034464,
+    "write_energy_nj": 0.145727,
+    "leakage_mw": 76.8682,
+    "access_ns": 2.07921
+   }
+  }
+ }
+}

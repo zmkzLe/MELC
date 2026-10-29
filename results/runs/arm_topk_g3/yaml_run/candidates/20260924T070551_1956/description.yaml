@@ -1,0 +1,15 @@
+name: your_policy_name
+doc: >
+  Your explanation here...
+state:
+  - name: example_field
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+victim:
+  key: example_field
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+# ... all other required fields ...

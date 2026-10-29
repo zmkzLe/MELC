@@ -1,0 +1,141 @@
+name: mockingjay_committee_v1
+doc: >
+  Micro-Architectural Persona Committee Debate & Resolution:
+  - Scan-Resister: "Our highest error source is kept_dead (7,230 on milc, 2,733
+    on leslie3d). In Mockingjay, lines inserted with high reuse distance (etr=11)
+    never aged because the condition 'abs(etr) < 11' evaluates to false for +11!
+    They remain stuck at +11 indefinitely, blocking fresh insertions."
+  - Thrash-Resister: "We must prevent premature eviction of lines that will be
+    reused soon. However, lines stuck at +11 also cause evicted_sooner because
+    they displace lines with actual near-term reuse. Fixing aging to properly
+    decrement from +11 down to -11 restores intended ETR aging order."
+  - Bypass-Auditor: "Wrong_bypass remains a hazard (13k on milc). We must retain
+    dynamic set dueling for bypassing with conservative thresholds (force_rd=74,
+    min_rd=40), ensuring follower sets only bypass when Leader B proves fewer misses."
+  - Committee Compromise: Retain set-dueled dynamic bypass arbitration while
+    replacing the flawed abs-check aging with clamped_dec, enabling all lines
+    from +11 down to -11 to age monotonically.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5                  # holds -11..11
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 3
+    init: 7                   # GRANULARITY: the first access to a set ages it
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 7                  # TIMESTAMP_BITS; wraps at 128
+    init: ZERO
+  - name: bypass_sel
+    scope: global
+    kind: saturating
+    width: 10
+    init: MID
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {duel_bypass: {table: rdp, index: pc_sig, div: 8, field: etr, min_rd: 40, force_rd: 74, selector: bypass_sel}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95                   # INF_RD
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4       # 16 sampler sets per sampled set
+    ways: 5
+    tag_bits: 16
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 7, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  hit_access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        set: {etr: {clamped_dec: {field: etr, min: -11}}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+  fill_access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        set: {etr: {clamped_dec: {field: etr, min: -11}}}
+    - set: {etr_clock: {add: 1}}
+    - when: {type_in: [PREFETCH], table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 11}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 8}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: hit_access
+
+on_fill:
+  - when: {type_not_in: [WRITE]}
+    words: {update_bypass_duel: {selector: bypass_sel}}
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: fill_access

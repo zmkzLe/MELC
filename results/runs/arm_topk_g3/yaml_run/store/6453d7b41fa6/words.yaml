@@ -1,0 +1,4 @@
+# A YAML list of the new words the description uses, or nothing. Example:
+# - name: dynamic_threshold
+#   place: condition
+#   ...

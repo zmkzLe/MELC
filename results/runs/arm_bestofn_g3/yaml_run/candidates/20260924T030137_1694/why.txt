@@ -1,0 +1,9 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: while scanning a simple key
+  in "<unicode string>", line 17, column 1:
+    <signatures, tables, samplers, p ... 
+    ^
+could not find expected ':'
+  in "<unicode string>", line 18, column 1:
+    
+    ^

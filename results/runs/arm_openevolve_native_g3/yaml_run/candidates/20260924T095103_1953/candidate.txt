@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: improved_mockingjay_v2
+doc: >
+  Added confidence table to address wrong_bypass mistakes.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... [YOUR FULL YAML CODE CONTINUES HERE, DEFINING EVERY REQUIRED SECTION] ...
+===== NEW_WORDS =====
+
+# ... [YOUR NEW WORDS DEFINITIONS GO HERE, OR NOTHING IF NONE] ...

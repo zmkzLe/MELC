@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <your actual design name, max 31 chars, lowercase/digits/underscores>
+doc: <your actual doc string>
+<fully complete YAML structure description with state, victim, etc.>
+===== NEW_WORDS =====

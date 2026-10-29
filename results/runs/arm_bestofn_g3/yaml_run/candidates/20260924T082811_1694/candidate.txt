@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  [One line saying what changed and why, so the feedback can be attributed]
+  [Further explanation of the policy]
+# COMPLETE, VALID YAML GOES HERE. NO PLACEHOLDERS.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

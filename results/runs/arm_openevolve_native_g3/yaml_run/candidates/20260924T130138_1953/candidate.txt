@@ -1,0 +1,18 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+# ... include ALL other required sections for a complete valid policy ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.
+# NEVER redefine a word from previous runs. Invent a NEW name instead.

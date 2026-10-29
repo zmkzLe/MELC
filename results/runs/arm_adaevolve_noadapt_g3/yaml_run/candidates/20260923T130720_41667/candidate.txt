@@ -1,0 +1,150 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_abs_time
+doc: >
+  Replaces the relative countdown 'etr' mechanism with absolute expected reuse
+  timestamps to eliminate the per-access each_way update overhead and ensure
+  perfectly linear aging. The max_distance extremum finds the line furthest in
+  the future or longest overdue. safe_bypass_abs prevents bypassing dead lines.
+  Unknown fills get expected reuse +8, prefetch +11.
+
+state:
+  - name: expected_reuse
+    scope: per_line
+    kind: counter
+    width: 5                  # wraps at 32, max expected distance 11
+    init: ZERO
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 7                  # wraps at 128, safe since max RD is 95
+    init: ZERO
+
+victim:
+  key: expected_reuse
+  extremum: max_distance
+  tie_break: first
+  on_search: none
+  bypass_when:
+    - {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+    - {safe_bypass_abs: {table: rdp, index: pc_sig, div: 8, field: expected_reuse, clock: set_clock, min_rd: 36}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95                   # INF_RD
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4       # 16 sampler sets per sampled set
+    ways: 5
+    tag_bits: 16
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 7, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true            # too old to be a reuse distance; the sweep detrains it
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+
+procedures:
+  hit_access:
+    - sample: sampled_cache
+    - set: {set_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {expected_reuse: {clock_plus_const: {clock: set_clock, offset: 0}}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {expected_reuse: {clock_plus_const: {clock: set_clock, offset: 11}}}
+      stop: true
+    - set: {expected_reuse: {clock_plus_table: {clock: set_clock, table: rdp, index: pc_sig, div: 8}}}
+
+  fill_access:
+    - sample: sampled_cache
+    - set: {set_clock: {add: 1}}
+    - when: {type_in: [PREFETCH], table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {expected_reuse: {clock_plus_const: {clock: set_clock, offset: 11}}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {expected_reuse: {clock_plus_const: {clock: set_clock, offset: 8}}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {expected_reuse: {clock_plus_const: {clock: set_clock, offset: 11}}}
+      stop: true
+    - set: {expected_reuse: {clock_plus_table: {clock: set_clock, table: rdp, index: pc_sig, div: 8}}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: hit_access
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {expected_reuse: {clock_plus_const: {clock: set_clock, offset: 16}}}
+    stop: true
+  - run: fill_access
+===== NEW_WORDS =====
+
+- name: max_distance
+  place: Extremum
+  params: {clock: state}
+  means: >
+    Evaluates each way by computing diff = (key - clock) modulo 2^width, where width
+    is the width of the key field. The clock value is truncated to this width.
+    If diff >= 2^(width-1), the line is overdue, and its score is 2^width + ((clock - key) modulo 2^width).
+    If diff < 2^(width-1), the line is not overdue, and its score is diff.
+    The extremum is the way with the maximum score.
+
+- name: clock_plus_table
+  place: value
+  params: {clock: state, table: table, index: signature, div: {int: [1, 16]}}
+  means: >
+    Reads the table entry at the index, divides it by div (integer division, rounding down),
+    adds the current value of the clock state field, and returns the result modulo 2^width
+    of the target field.
+
+- name: clock_plus_const
+  place: value
+  params: {clock: state, offset: {int: [0, 127]}}
+  means: >
+    Adds the offset parameter to the current value of the clock state field,
+    and returns the result modulo 2^width of the target field.
+
+- name: safe_bypass_abs
+  place: condition
+  params: {table: table, index: signature, div: {int: [1, 16]}, field: state, clock: state, min_rd: {int: [0, 127]}}
+  means: >
+    True when the entry of the table at the index is present, its value is greater
+    than or equal to the min_rd parameter, and its value divided by the div parameter
+    (integer division, rounding down) is strictly greater than the score of the per_line
+    state field at the way chosen by the victim search. The victim's score is computed as:
+    diff = (field - clock) modulo 2^width (where width is the field's width and clock is truncated).
+    If diff >= 2^(width-1), the victim is overdue and its score is 2^width + ((clock - field) modulo 2^width).
+    If diff < 2^(width-1), its score is diff.
+    False otherwise. Only valid inside victim.bypass_when.

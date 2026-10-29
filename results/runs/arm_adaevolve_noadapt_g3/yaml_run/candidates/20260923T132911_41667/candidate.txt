@@ -1,0 +1,172 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_conf_bypass
+doc: >
+  Mockingjay with confidence-gated bypass to minimize wrong_bypass mistakes.
+  Adds a 2-bit confidence table (rdp_conf) updated in the sampler by comparing
+  the predicted RD with the actual age. Bypassing is only allowed when the
+  confidence is high (>= 2). Reduced sampler tag bits to 15 to fit the extra
+  table within the 48 KB budget.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 3
+    init: 7
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 7
+    init: ZERO
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {conf_gated_rdp_gt: {table: rdp, conf_table: rdp_conf, index: pc_sig, threshold: 73, min_conf: 2}}
+    - {safe_bypass: {table: rdp, conf_table: rdp_conf, index: pc_sig, div: 8, field: etr, min_rd: 34, min_conf: 2}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95
+    unset: true
+  - name: rdp_conf
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 2
+    max: 3
+    init: ZERO
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4
+    ways: 5
+    tag_bits: 15
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 7, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - update_conf: {conf_table: rdp_conf, rdp_table: rdp, index: signature, age: age, tolerance: 16, is_reuse: 1}
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        update_conf: {conf_table: rdp_conf, rdp_table: rdp, index: signature, age: age, tolerance: 16, is_reuse: 0}
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - update_conf: {conf_table: rdp_conf, rdp_table: rdp, index: signature, age: age, tolerance: 16, is_reuse: 0}
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  hit_access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {conf_gated_rdp_gt: {table: rdp, conf_table: rdp_conf, index: pc_sig, threshold: 73, min_conf: 2}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+  fill_access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - set: {etr_clock: {add: 1}}
+    - when: {type_in: [PREFETCH], table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 11}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 8}}
+      stop: true
+    - when: {conf_gated_rdp_gt: {table: rdp, conf_table: rdp_conf, index: pc_sig, threshold: 73, min_conf: 2}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: hit_access
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: fill_access
+===== NEW_WORDS =====
+
+- name: safe_bypass
+  place: condition
+  params: {table: table, conf_table: table, index: signature, div: {int: [1, 16]}, field: state, min_rd: {int: [0, 127]}, min_conf: {int: [0, 7]}}
+  means: >
+    True when the entry of the table at the index is present, its value is greater
+    than or equal to the min_rd parameter, the entry of the conf_table at the index
+    is greater than or equal to the min_conf parameter, the table's value divided
+    by the div parameter (integer division, rounding down) is strictly greater than
+    the current value of the per_line state field at the way chosen by the victim
+    search, and that field's value is greater than or equal to 0. False otherwise.
+    Only valid inside victim.bypass_when.
+
+- name: conf_gated_rdp_gt
+  place: condition
+  params: {table: table, conf_table: table, index: signature, threshold: {int: [0, 127]}, min_conf: {int: [0, 7]}}
+  means: >
+    True when the entry of the table at the index is present and its value is strictly
+    greater than the threshold parameter, and the entry of the conf_table at the index
+    is greater than or equal to the min_conf parameter. False otherwise.
+
+- name: update_conf
+  place: step
+  params: {conf_table: table, rdp_table: table, index: signature, age: state, tolerance: {int: [0, 127]}, is_reuse: {int: [0, 1]}}
+  means: >
+    Reads the rdp_table at the index; if absent, does nothing.
+    If is_reuse is 1, it is a match if the absolute difference between the rdp_table
+    value and the age parameter is less than or equal to the tolerance parameter.
+    If is_reuse is 0, it is a match if the rdp_table value plus the tolerance
+    parameter is greater than or equal to 95.
+    If it is a match, increments the conf_table at the index (clamped at max).
+    Otherwise, decrements the conf_table at the index (clamped at 0).

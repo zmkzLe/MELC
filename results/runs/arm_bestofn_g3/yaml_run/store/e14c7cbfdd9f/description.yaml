@@ -1,0 +1,14 @@
+name: your_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 1
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+# ... provide the COMPLETE, actual YAML configuration for your policy ...
+# Do NOT output literal placeholders like '<the structure description, YAML>' or '...'.

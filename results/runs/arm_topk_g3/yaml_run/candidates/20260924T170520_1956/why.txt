@@ -1,0 +1,2 @@
+Candidate 4e8f8672541d FAILED at words_refused; it was not scored.
+Reason: check_conf: already declared in this run with another definition; a word is never changed, so declare a new name

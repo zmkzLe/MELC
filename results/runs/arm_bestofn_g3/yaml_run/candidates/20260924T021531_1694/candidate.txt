@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your detailed explanation of the policy...
+state:
+  # You MUST include the full state definition here
+victim:
+  # You MUST include the full victim definition here
+# ... (Include all other necessary logic like on_fill, on_hit, etc. entirely written out) ...
+===== NEW_WORDS =====
+
+# a YAML list of the new words the description uses, or nothing

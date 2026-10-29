@@ -1,0 +1,4 @@
+===== STRUCTURE_DESCRIPTION =====
+  ===== NEW_WORDS =====
+
+- NEVER emit placeholders, ellipses (`...`), or template brackets (`<...>`). Every structure description must be complete, syntactically valid YAML.

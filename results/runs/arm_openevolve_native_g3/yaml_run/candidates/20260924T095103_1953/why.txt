@@ -1,0 +1,5 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 1 validation error for StructureDescription
+victim
+  Field required [type=missing, input_value={'name': 'improved_mockin...'width': 5, 'init': 0}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

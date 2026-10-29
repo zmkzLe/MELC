@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+<YAML structure description>
+===== NEW_WORDS =====
+
+<YAML list of declared new words, or empty>
+```
+
+Design an improved policy addressing the diagnostic bottlenecks above to achieve a score > 1.0000.

@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explain your changes and reasoning here...
+state:
+  - name: your_state_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+# ... INCLUDE ALL OTHER NECESSARY SECTIONS (victim, signatures, tables, etc.) ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

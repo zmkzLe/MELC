@@ -1,0 +1,8 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 2 validation errors for StructureDescription
+state.0.width
+  Field required [type=missing, input_value={'name': 'etr', 'scope': 'per_line'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim.extremum
+  Field required [type=missing, input_value={'key': 'etr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

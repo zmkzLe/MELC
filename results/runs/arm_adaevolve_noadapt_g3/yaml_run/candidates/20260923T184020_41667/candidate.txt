@@ -1,0 +1,177 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_seesaw_v1
+doc: >
+  Pareto Seesaw-Damping Eviction Balancing:
+  Resolves the empirical seesaw where reducing kept_dead inflated evicted_sooner.
+  In Mockingjay's max_magnitude victim selection, overdue lines lingering at
+  small negative ETR (-1..-3) have smaller magnitudes than active working-set
+  lines with positive ETR (+4..+8), causing premature eviction of lines waiting
+  for reuse. Meanwhile, lines inserted at +11 that aged downward pretended their
+  reuse was approaching, displacing valid lines.
+  This introduces three-zone seesaw-damped aging:
+  1. Overdue purging: Lines reaching ETR <= 0 immediately become -11 (max
+     magnitude, negative), ensuring immediate eviction priority over all positive lines.
+  2. Retention deceleration: Active positive lines (0 < ETR < 11) age monotonically
+     toward 0, increasing retention as their predicted reuse nears.
+  3. Streaming isolation: Lines at +11 (INF_RD) remain at +11, remaining prime victim
+     candidates without polluting the positive retention zones.
+  Dynamic set dueling bypass is retained with conservative thresholds.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5                  # holds -11..11
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 3
+    init: 7                   # GRANULARITY: the first access to a set ages it
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 7                  # TIMESTAMP_BITS; wraps at 128
+    init: ZERO
+  - name: bypass_sel
+    scope: global
+    kind: saturating
+    width: 10
+    init: MID
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {duel_bypass: {table: rdp, index: pc_sig, div: 8, field: etr, min_rd: 40, force_rd: 74, selector: bypass_sel}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95                   # INF_RD
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4       # 16 sampler sets per sampled set
+    ways: 5
+    tag_bits: 16
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 7, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  hit_access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        set: {etr: {seesaw_damped_age: {field: etr, min: -11}}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+  fill_access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        set: {etr: {seesaw_damped_age: {field: etr, min: -11}}}
+    - set: {etr_clock: {add: 1}}
+    - when: {type_in: [PREFETCH], table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 11}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 8}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: hit_access
+
+on_fill:
+  - when: {type_not_in: [WRITE]}
+    words: {update_bypass_duel: {selector: bypass_sel}}
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: fill_access
+===== NEW_WORDS =====
+
+
+- name: seesaw_damped_age
+  place: value
+  params: {field: state, min: {int: [-16, 0]}}
+  means: >
+    Reads the signed per_line state field at the visited way.
+    If the value is less than or equal to 0, returns min (-11).
+    Otherwise, if the value is greater than or equal to 11, returns 11.
+    Otherwise, returns the value minus 1.
+
+- name: duel_bypass
+  place: condition
+  params: {table: table, index: signature, div: {int: [1, 16]}, field: state, min_rd: {int: [0, 127]}, force_rd: {int: [0, 127]}, selector: state}
+  means: >
+    Evaluates the core bypass condition: true if the table entry at the index is
+    present, AND either (its value >= force_rd) OR (its value >= min_rd AND
+    its value / div > the current value of the per_line state field at the
+    victim way AND that field's value >= 0).
+    The final result depends on ChampSim's get_set_sample_category(set) c:
+    If c == 1, returns false (Leader A: never bypass).
+    If c == 2, returns the core condition (Leader B: bypass enabled).
+    Otherwise, returns the core condition ONLY IF the global saturating selector
+    state field is >= its midpoint (e.g., 512 for a 10-bit counter).
+    Only valid inside victim.bypass_when.
+
+- name: update_bypass_duel
+  place: step
+  params: {selector: state}
+  means: >
+    Reads ChampSim's get_set_sample_category(set) c.
+    If c == 1, increments the global saturating selector state field (clamped at max).
+    If c == 2, decrements the selector field (clamped at 0).
+    Otherwise, does nothing.

@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  Explain what changed and why.
+# [YOUR COMPLETE YAML DICTIONARY GOES HERE. INCLUDE ALL SECTIONS: state, victim, signatures, tables, samplers, procedures, on_hit, on_fill]
+===== NEW_WORDS =====
+
+# [YOUR COMPLETE YAML LIST GOES HERE, OR [] IF NONE]

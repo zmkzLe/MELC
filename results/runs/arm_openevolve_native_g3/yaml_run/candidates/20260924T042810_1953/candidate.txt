@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your reasoning and explanation of what changed and why.
+state:
+# ... COMPLETE YAML for state, victim, signatures, tables, samplers, procedures, on_hit, on_fill ...
+===== NEW_WORDS =====
+
+# ... COMPLETE YAML list of new words, or empty if none ...

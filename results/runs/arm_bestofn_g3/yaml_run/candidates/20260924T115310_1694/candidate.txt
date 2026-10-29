@@ -1,0 +1,4 @@
+===== STRUCTURE_DESCRIPTION =====
+followed by the complete, valid YAML description.
+- Then the delimiter line:
+===== NEW_WORDS =====

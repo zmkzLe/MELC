@@ -1,0 +1,4 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 1 validation error for NewWord
+  Input should be a valid dictionary or instance of NewWord [type=model_type, input_value='A YAML list of the new w...ds the description uses', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type

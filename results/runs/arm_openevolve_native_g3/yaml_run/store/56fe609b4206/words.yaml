@@ -1,0 +1,58 @@
+- name: confident_bypass
+  place: condition
+  params:
+    conf: table
+    conf_thresh:
+      int: [0, 3]
+    index: signature
+    rdp: table
+    rdp_thresh:
+      int: [0, 127]
+  means: 'Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads
+    the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp
+    entry is greater than rdp_thresh and the conf entry is greater than or equal to conf_thresh.
+
+    '
+- name: train_ema
+  place: step
+  params:
+    index: signature
+    sample: state
+    scale:
+      int: [1, 4]
+    shift:
+      int: [0, 7]
+    table: table
+  means: 'Calculates a target value as the sample multiplied by the scale, clamped to the table''s maximum.
+    Reads the entry of the table at the index. If it is absent, sets it to the target value. If present,
+    computes the signed difference (target - entry), divides it by 2 to the power of shift (integer division
+    rounding towards zero), and adds the result to the entry. The final value is clamped to the table''s
+    minimum (0) and maximum.
+
+    '
+- name: train_penalty
+  place: step
+  params:
+    index: signature
+    penalty:
+      int: [1, 127]
+    table: table
+  means: Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If
+    present, adds the penalty to the entry, clamping the result to the table's maximum.
+
+- name: confident_table_exceeds_victim
+  place: condition
+  params:
+    conf: table
+    conf_thresh:
+      int: [0, 3]
+    div:
+      int: [1, 127]
+    index: signature
+    rdp: table
+  means: >
+    Reads the entry of the rdp table at the index. If it is absent, returns false.
+    Divides the rdp entry by div (integer division). If this value is not strictly
+    greater than the absolute value of the victim key of the chosen way, returns false.
+    Otherwise, reads the entry of the conf table at the index (treating an absent
+    entry as 0). Returns true if the conf entry is greater than or equal to conf_thresh.

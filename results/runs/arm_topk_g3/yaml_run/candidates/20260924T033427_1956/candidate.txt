@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_mod_1
+doc: >
+  One line saying what changed and why.
+  Detailed description of the policy.
+# [FULL YAML DEFINITION HERE - DO NOT OMIT REQUIRED FIELDS OR USE PLACEHOLDERS]
+===== NEW_WORDS =====
+
+# [A YAML list of the new words the description uses, or nothing]

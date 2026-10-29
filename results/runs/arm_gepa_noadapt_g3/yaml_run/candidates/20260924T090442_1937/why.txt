@@ -1,0 +1,32 @@
+Candidate cd5103069b52: score 1.00223, the geometric mean over 17 traces of its IPC over Mockingjay's on the same trace (20M warm-up + 50M measured); Mockingjay, the seed and the design to beat, scores 1.0: ahead.
+Closest earlier design: 4cd110fa27d4 (similarity 0.975, score 1.00189, change +0.00034). Parts changed: name, samplers, state.
+New words: none.
+
+Per trace. vs MJ: IPC over Mockingjay's on that trace. change: minus the closest design's.
+MPKI: LLC misses per 1000 instructions. memory: share of all cycles stalled on the memory
+hierarchy at any level; LLC: the part of it stalled on LLC hits; DRAM: the part stalled on
+DRAM. retire: share of all cycles spent retiring instructions, which no replacement policy
+changes. headroom: share of the sampled misses Belady's MIN avoids on this candidate's own
+stream. Then the sampled fills judged against MIN: kept a dead line, evicted a line reused
+sooner, should have bypassed, bypassed wrongly (change from the closest design in brackets).
+trace                      vs MJ   change   MPKI  memory   LLC   DRAM  retire headroom       kept_dead  evicted_sooner  should_bypass   wrong_bypass
+410.bwaves-1963B          1.0001  -0.0002  17.87   76.7%  1.1%  60.0%   20.7%     2.6%         12 (+7)          0 (+0)         0 (+0)     1407 (-19)
+429.mcf-192B              1.0007  +0.0003  51.96   90.3%  6.7%  73.3%    6.4%     0.4%        308 (-3)         52 (-5)       128 (+5)       203 (+4)
+433.milc-127B             1.0012  +0.0003  21.20   82.9%  0.0%  77.2%   12.6%    31.7%     4115 (-907)    2911 (+1041)    2564 (-249)   12834 (+582)
+434.zeusmp-10B            1.0012  +0.0005   2.47   63.3%  0.0%  44.3%   33.3%    17.7%       386 (-10)          0 (+0)     484 (-126)     407 (+336)
+437.leslie3d-149B         1.0099  +0.0005   7.43   84.0%  0.2%  76.1%   14.1%    17.3%      1584 (-89)          0 (+0)    1841 (-272)     640 (+587)
+450.soplex-247B           1.0277  +0.0022  20.10   83.8%  4.6%  75.8%   12.4%    16.3%      1796 (+17)     12219 (-88)    7022 (-605)     7200 (+21)
+459.GemsFDTD-1491B        1.0013  -0.0006  27.62   89.8%  0.8%  86.3%    9.0%    33.3%          2 (+0)          0 (+0)         0 (+0)     28227 (+9)
+470.lbm-1274B             1.0004  +0.0046  26.40   86.8%  0.0%  86.8%   12.7%    21.4%   12441 (-2489)   17684 (+1682)     1198 (+96)     4032 (-86)
+483.xalancbmk-127B        0.9933  -0.0086  19.26   85.1%  4.5%  78.1%   10.8%    13.2%     1226 (-577)    4329 (+1051)    3978 (+842)  19199 (-2718)
+603.bwaves_s-1740B        1.0015  -0.0037  19.41   78.4%  0.1%  55.1%   19.7%     6.9%        74 (+27)          0 (+0)        21 (-5)    3175 (+721)
+605.mcf_s-1644B           1.0003  -0.0003 137.23   87.8%  1.3%  67.8%    8.1%    44.2%    17302 (+147)      3200 (-37)        30 (-5)  210781 (-133)
+619.lbm_s-2677B           1.0013  -0.0012  82.46   91.5%  0.0%  87.3%    8.1%    43.8%    62240 (-197)          0 (+0)     262 (+105)   109031 (-73)
+623.xalancbmk_s-10B       0.9894  +0.0049   4.55   71.7% 16.4%  48.7%   23.3%    19.7%      419 (-395)     1249 (-829)   4964 (-2621)    1174 (+380)
+625.x264_s-20B            1.0011  +0.0003   1.58   42.1%  0.0%  25.2%   54.1%    15.3%        256 (+0)          0 (+0)       438 (+0)         0 (+0)
+627.cam4_s-573B           0.9987  +0.0000   0.24   23.7%  0.0%   1.0%   60.4%    67.1%         49 (+0)          0 (+0)        43 (+0)         0 (+0)
+654.roms_s-1390B          1.0022  +0.0065  36.11   90.8%  0.0%  88.1%    8.4%    31.4%    32910 (-264)       17 (-148)   10429 (-912)  10784 (+2177)
+657.xz_s-2302B            1.0081  +0.0002   1.32   48.0%  1.9%  26.8%   33.9%    31.6%       1030 (+2)         20 (+0)       352 (+0)        19 (+1)
+
+All traces, sampled fills: kept_dead 136150 (-4731), evicted_sooner 41681 (+2667), should_bypass 33754 (-3747), wrong_bypass 409113 (+1789). The largest kind of mistake is wrong_bypass. Mistakes of every kind are addressed by changing what the policy remembers or how it decides, not by moving one threshold.
+Metadata: 47.38 KB SRAM, 0.0379 mm2 at 22 nm (reported, not scored).

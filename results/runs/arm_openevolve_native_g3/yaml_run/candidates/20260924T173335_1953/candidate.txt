@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  One line saying what changed and why.
+state:
+  # ... your YAML description ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses.
+# If no new words are needed, leave this section empty, but KEEP the marker line above.

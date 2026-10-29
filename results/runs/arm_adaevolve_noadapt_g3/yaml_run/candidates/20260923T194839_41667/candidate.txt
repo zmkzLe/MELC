@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+<YAML description>
+===== NEW_WORDS =====
+
+<YAML list of new words, or empty>
+```
+
+Both marker lines must appear exactly as shown.
+
+================================================================================

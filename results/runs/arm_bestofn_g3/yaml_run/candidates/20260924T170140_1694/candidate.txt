@@ -1,0 +1,28 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <policy_name_under_32_chars>
+doc: >
+  <One line summarizing what changed and why, followed by architectural details.>
+
+state:
+  ...
+victim:
+  ...
+signatures:
+  ...
+tables:
+  ...
+samplers:
+  ...
+procedures:
+  ...
+on_hit:
+  ...
+on_fill:
+  ...
+===== NEW_WORDS =====
+
+- name: <declared_word_if_any>
+  place: <condition|value|step|Extremum|TieBreak|SearchSideEffect|SignatureSource|FoldBit|SignatureHash>
+  params: {<param_name>: <param_type>}
+  means: >
+    <Precise implementation description of at least 8 words.>

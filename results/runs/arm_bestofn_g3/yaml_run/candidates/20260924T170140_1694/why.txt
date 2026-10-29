@@ -1,0 +1,11 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 3 validation errors for NewWord
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<declared_word_if_any>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+place
+  Input should be 'condition', 'value', 'step', 'Extremum', 'TieBreak', 'SearchSideEffect', 'SignatureSource', 'FoldBit' or 'SignatureHash' [type=enum, input_value='<condition|value|step|Ex...|FoldBit|SignatureHash>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+params
+  Value error, parameter name '<param_name>' does not match ^[a-z][a-z0-9_]{0,30}$ [type=value_error, input_value={'<param_name>': '<param_type>'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error

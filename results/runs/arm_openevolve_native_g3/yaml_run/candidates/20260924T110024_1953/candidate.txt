@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the FULL, COMPLETE YAML for your replacement policy here.
+# DO NOT USE PLACEHOLDERS. DO NOT OMIT SECTIONS.
+===== NEW_WORDS =====
+
+# Provide a YAML list of the new words the description uses, or nothing.

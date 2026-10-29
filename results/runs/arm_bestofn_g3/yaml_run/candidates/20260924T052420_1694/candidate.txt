@@ -1,0 +1,24 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the COMPLETE, valid YAML structure description here.
+# DO NOT output placeholder text like "<the structure description, YAML>".
+# You MUST include 'name', 'doc', 'state', and 'victim' at the top level.
+# All state fields MUST have 'width' and 'scope' defined.
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_state
+  extremum: max
+  tie_break: first
+# ... (rest of your actual valid YAML configuration, NO placeholders) ...
+===== NEW_WORDS =====
+
+# Write a YAML list of the new words the description uses.
+# If there are no new words, you MUST output an empty list: []
+[]

@@ -1,0 +1,2 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 'bypass_is_safe': a meaning of 6 words cannot say exactly what the code does; write at least 8

@@ -1,0 +1,2 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: the new words must be a YAML list of words

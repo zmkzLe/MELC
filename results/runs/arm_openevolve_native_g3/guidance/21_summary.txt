@@ -1,0 +1,58 @@
+Run so far: 218 candidates, 16 scored, 202 refused or failed (malformed 106, schema_rejected 91, too_much_storage 1, words_refused 4).
+Refusal kinds seen more than once this run (a pattern, not a one-off): 102 times, malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 64 times, schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>'); 6 times, schema_rejected: state Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}) victim Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}); 5 times, schema_rejected: victim Field required (written: {'name': 'your_policy_nam...'width': 5, 'init': 0}]}); 4 times, malformed: candidate is missing section(s): NEW_WORDS
+Every refusal reason this run, one example per kind with its count (kinds are grouped by the message with names and numbers removed; merge any that are the same mistake):
+- 102 x malformed: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+- 64 x schema_rejected: Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>')
+- 6 x schema_rejected: state Field required (written: {'name': 'my_policy', 'do...on of your design...\n'}) victim Field required (written: {'name': 'my_policy', 'do...on of your design...\n'})
+- 5 x schema_rejected: victim Field required (written: {'name': 'your_policy_nam...'width': 5, 'init': 0}]})
+- 4 x malformed: candidate is missing section(s): NEW_WORDS
+- 3 x schema_rejected: state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None)
+- 2 x words_refused: name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '...') place Input should be 'condition', 'value', 'step', 'Extremum', 'TieBreak', 'SearchSideEffect', 'SignatureSource', 'FoldBit' or 'SignatureHash' (written: '...') para
+- 1 x words_refused: confident_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+- 1 x words_refused: Input should be a valid dictionary or instance of NewWord (written: 'Your YAML list of new words')
+- 1 x too_much_storage: this design declares 384.0 KB of replacement metadata at this LLC; the budget is 48 KB (the seed declares 47.4 KB): pay for new state by narrowing or removing state elsewhere
+- 1 x schema_rejected: while scanning a simple key in "<unicode string>", line 7, column 1: [FULL POLICY YAML CONTINUES HERE...] ^ could not find expected ':' in "<unicode string>", line 8, column 1: ^
+- 1 x schema_rejected: state.0.name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '...') state.0.width Field required (written: {'name': '...'}) state.0.scope Field required (written: {'name': '...'}) victim.extremum Field required (written: {'ke
+The seed scored 1.00000.
+Best so far: bde2555733aa at 1.00046, +0.05% over Mockingjay.
+
+Parts of the design changed so far (candidates that changed it, how many beat their closest earlier design, best and mean change of the score):
+- samplers: 3 tried, 1 improved, best +0.00046, mean -0.01989
+- tables: 3 tried, 1 improved, best +0.00046, mean -0.01989
+- victim.bypass_when: 3 tried, 1 improved, best +0.00046, mean -0.01989
+- new_words: 3 tried, 1 improved, best +0.00046, mean +0.00015
+- victim.tie_break: 5 tried, 0 improved, best +0.00000, mean -0.01130
+- state: 3 tried, 0 improved, best +0.00000, mean -0.01883
+- victim.key: 3 tried, 0 improved, best +0.00000, mean -0.01883
+- victim.on_search: 3 tried, 0 improved, best +0.00000, mean +0.00000
+- on_fill: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- on_hit: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- victim.extremum: 2 tried, 0 improved, best +0.00000, mean -0.02825
+- procedures: 1 tried, 0 improved, best -0.05649, mean -0.05649
+- signatures: 1 tried, 0 improved, best -0.05649, mean -0.05649
+- procedures.access: 1 tried, 0 improved, best -0.00365, mean -0.00365
+
+The last 10 candidates, oldest first:
+209. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+210. scored 8e2ebbef8447 at 0.94351, changed 10 canonical lines in on_fill, on_hit, victim.on_search, victim.tie_break: +0.00000 against its closest earlier design
+211. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: None)
+212. scored bde2555733aa at 1.00046, changed 145 canonical lines in samplers, tables, victim.bypass_when, new_words, new words confident_bypass, train_ema, train_penalty: a repeat of an earlier design
+213. refused (malformed): candidate is missing section(s): NEW_WORDS
+214. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+215. refused (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+216. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: None)
+217. refused (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: None)
+218. refused (schema_rejected): victim Field required (written: {'name': 'your_policy', '...'width': 5, 'init': 0}]})
+
+The best design's traces with the most headroom, and its largest mistake on each:
+- 627.cam4_s-573B: headroom 52.4%, largest mistake should_bypass (53 of 550 sampled fills), IPC over Mockingjay's 1.0000, LLC MPKI 0.2
+- 605.mcf_s-1644B: headroom 44.0%, largest mistake wrong_bypass (208707 of 428198 sampled fills), IPC over Mockingjay's 0.9992, LLC MPKI 136.7
+- 619.lbm_s-2677B: headroom 44.0%, largest mistake wrong_bypass (109572 of 259355 sampled fills), IPC over Mockingjay's 0.9995, LLC MPKI 82.7
+- 459.GemsFDTD-1491B: headroom 33.3%, largest mistake wrong_bypass (28206 of 86867 sampled fills), IPC over Mockingjay's 1.0023, LLC MPKI 27.6
+- 657.xz_s-2302B: headroom 33.0%, largest mistake kept_dead (990 of 3754 sampled fills), IPC over Mockingjay's 1.0032, LLC MPKI 1.4
+- 433.milc-127B: headroom 29.7%, largest mistake wrong_bypass (15151 of 64691 sampled fills), IPC over Mockingjay's 0.9996, LLC MPKI 20.6
+
+New words accepted this run, best-scoring first:
+- confident_bypass (condition): Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp entry  [used 7, better 5, worse 1, same 0, failed 1]
+- train_ema (step): Calculates a target value as the sample multiplied by the scale, clamped to the table's maximum. Reads the entry of the table at the index. If it is absent, sets it to the target value. If present, co [used 6, better 5, worse 1, same 0, failed 0]
+- train_penalty (step): Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If present, adds the penalty to the entry, clamping the result to the table's maximum. [used 6, better 5, worse 1, same 0, failed 0]

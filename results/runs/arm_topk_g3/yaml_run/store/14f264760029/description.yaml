@@ -1,0 +1,15 @@
+name: my_policy
+doc: >
+  Explanation of my policy...
+state:
+  - name: example_state
+    scope: per_line
+    kind: flag
+    width: 1
+    init: 0
+victim:
+  key: example_state
+  extremum: min
+  tie_break: first
+  on_search: none
+# (You must write out the FULL complete YAML here, do not use comments to abbreviate)

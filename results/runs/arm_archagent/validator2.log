@@ -1,0 +1,5 @@
+validator: /home/user/oe_out/arm_archagent/ae_run
+  tree /home/user/champsim_validate module validate_policy
+  33 traces at 50000000 + 100000000, 46 workers, sim timeout 18000 s
+  search stop 2026-09-24T20:00:00Z, deadline 2026-09-25T06:00:00Z, drain False, fake None
+[2026-09-24T19:05:06Z] started {"id": "55082f1b30f4", "score": 1.0}

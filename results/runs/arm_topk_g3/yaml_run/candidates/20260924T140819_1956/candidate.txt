@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Explanation of the design...
+... [YOUR FULL YAML STRUCTURE HERE, NO PLACEHOLDERS] ...
+===== NEW_WORDS =====

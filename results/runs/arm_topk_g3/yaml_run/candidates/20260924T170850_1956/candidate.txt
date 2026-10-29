@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  <One line saying what changed and why>
+state:
+  <Complete state definition - REQUIRED>
+victim:
+  <Complete victim definition - REQUIRED>
+<The rest of the complete YAML>
+===== NEW_WORDS =====

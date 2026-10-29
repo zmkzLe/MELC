@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+<your complete structure description in YAML format, NO PLACEHOLDERS>
+===== NEW_WORDS =====

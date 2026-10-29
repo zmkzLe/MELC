@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  One-line explanation of what changed and why.
+state: 
+  - name: example_field
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# (Provide ALL other required sections FULLY DEFINED. No placeholders!)
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

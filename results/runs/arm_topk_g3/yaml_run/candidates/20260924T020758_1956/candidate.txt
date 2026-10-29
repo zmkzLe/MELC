@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_new_design
+doc: >
+  Explain what you changed and why here.
+# ... your ACTUAL valid YAML structure description goes here ...
+===== NEW_WORDS =====
+
+# ... your YAML list of new words, or leave empty if none ...

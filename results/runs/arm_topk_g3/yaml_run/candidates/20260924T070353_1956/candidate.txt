@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Replace this comment with your complete YAML structure description.
+# Do NOT use placeholder text. Fully define 'state', 'victim', etc.
+===== NEW_WORDS =====
+
+# Replace this comment with your YAML list of new words, or leave blank if none.

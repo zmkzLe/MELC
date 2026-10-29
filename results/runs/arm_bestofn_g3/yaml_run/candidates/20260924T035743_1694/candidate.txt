@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your complete, valid YAML structure description goes here.
+# Do not use placeholders. Write the full configuration.
+name: my_policy
+# ... rest of the complete configuration ...
+===== NEW_WORDS =====
+
+# Your YAML list of new words goes here, or leave empty if none.

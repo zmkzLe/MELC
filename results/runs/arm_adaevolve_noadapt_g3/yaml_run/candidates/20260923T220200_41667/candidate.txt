@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Your explanation of the changes and how they address the feedback.
+# ... your complete YAML structure description goes here ...
+===== NEW_WORDS =====
+
+# ... your YAML list of new words goes here, or leave empty if none ...

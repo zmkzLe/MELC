@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your actual complete YAML structure description goes here
+name: my_design
+doc: >
+  ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

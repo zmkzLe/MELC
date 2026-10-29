@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_improved_design
+doc: >
+  Explanation of what I changed and why...
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (INCLUDE THE ENTIRE ACTUAL YAML DICTIONARY HERE) ...
+===== NEW_WORDS =====
+
+# ... (INCLUDE THE ACTUAL YAML LIST HERE, OR LEAVE EMPTY IF NONE) ...

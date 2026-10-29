@@ -1,0 +1,8 @@
+--std=c++17
+-O3
+-g3
+-Wall
+-Wextra
+-Wshadow
+-Wpedantic
+-Wconversion

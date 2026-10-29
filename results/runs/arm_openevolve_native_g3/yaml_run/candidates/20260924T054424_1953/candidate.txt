@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write the ACTUAL complete valid YAML structure description here.
+# DO NOT output placeholders like "<the structure description, YAML>", "<policy_name>", or "<list of state fields>".
+# You must write the full, working YAML code without laziness.
+===== NEW_WORDS =====
+
+# Write the ACTUAL YAML list of new words here, or leave empty if none.
+# DO NOT output placeholders.

@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+<Output the ACTUAL YAML CODE of your design here. Start with "name:", then "doc:", then "state:", and include ALL required sections fully written out.>
+===== NEW_WORDS =====

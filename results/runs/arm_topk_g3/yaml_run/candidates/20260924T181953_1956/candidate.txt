@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your COMPLETE, fully-defined YAML structure description here.
+# CRITICAL: DO NOT use placeholders (e.g., "<the structure description, YAML>").
+# You MUST provide the full, valid YAML code for your design.
+===== NEW_WORDS =====
+
+# Write a YAML list of the new words the description uses here.
+# Leave empty below this line if there are no new words, but the marker line MUST remain.

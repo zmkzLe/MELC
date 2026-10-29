@@ -1,0 +1,16 @@
+===== STRUCTURE_DESCRIPTION =====
+    name: your_policy_name
+    doc: >
+      One line saying what changed and why.
+    state:
+      - name: etr
+        scope: per_line
+        kind: signed
+        width: 5
+        init: 0
+    # [WRITE YOUR FULL, VALID, CONCRETE YAML HERE. NO PLACEHOLDERS. DO NOT OMIT ANY SECTIONS.]
+    ===== NEW_WORDS =====
+
+    # [WRITE YOUR YAML LIST OF NEW WORDS HERE, OR LEAVE EMPTY IF NONE]
+
+### HOW TO PROPOSE & ANALYZE FEEDBACK

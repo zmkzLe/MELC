@@ -1,0 +1,41 @@
+Guidance version 24, written after 245 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 1 scored design(s); best 1.00092 (+0.09% against the seed)
+- name: bypass_is_safe
+  place: condition
+  params: {reject_table: table, sig: signature}
+  means: Reads the entry of the reject_table at the index sig. Returns true if the entry's value is less
+    than 2, and false otherwise. Nothing is written.
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: line_addr
+  place: SignatureSource
+  params: {}
+  means: 'The line address of the current access (the address without its 6 offset bits), as a 64-bit
+    unsigned integer.
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: is_bypassed
+  place: condition
+  params: {}
+  means: 'True if the current event is a fill and the fill was bypassed (i.e., way equals NUM_WAY).
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: is_not_bypassed
+  place: condition
+  params: {}
+  means: 'True if the current event is a fill and the fill was NOT bypassed (i.e., way is less than NUM_WAY).
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: filter_allows_bypass
+  place: condition
+  params: {filter_table: table, line_idx: signature}
+  means: True when the entry in filter_table at line_idx is equal to 0. False otherwise.
+
+Refused among the last 10 candidates, and why: malformed 6 (candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS). schema_rejected 2 (Input should be a valid dictionary or instance of StructureDescription (written: '<your complete structure...ription in YAML format>'); Input should be a valid dictionary or instance of StructureDescription (written: ['Insert your COMPLETE', ...this placeholder text.']))
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 19 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 3 times (schema_rejected): state Input should be a valid list (written: None) victim Input should be a valid dictionary or instance of VictimSelector (written: None); 2 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<the complete structure ... YAML, NO PLACEHOLDERS>')
+
+Changes to samplers, tables, victim.bypass_when, and new_words paid off, yielding a new best score of 1.00092 over Mockingjay through the new bypass_is_safe condition. Conversely, modifications to state, victim.key, on_fill, victim.tie_break, signatures, victim.extremum, victim.on_search, procedures.access, on_hit, and procedures lost or merely tied. You must stop omitting the STRUCTURE_DESCRIPTION and NEW_WORDS sections, stop submitting placeholder text like '<the structure description, YAML>' instead of valid dictionaries, and stop providing null or missing values for the required state and victim fields. On the traces with the most headroom, the largest mistake remains wrong_bypass for 605.mcf_s-1644B (44.2%), 619.lbm_s-2677B (42.1%), 459.GemsFDTD-1491B (33.3%), and 433.milc-127B (28.4%), while 627.cam4_s-573B (52.4%) suffers most from should_bypass and 657.xz_s-2302B (32.2%) from kept_dead. To address wrong_bypass, the policy should remember which signatures are frequently reused after being bypassed, and the victim.bypass_when decision should use this history to insert rather than bypass them. To fix should_bypass and kept_dead, the policy must remember which signatures correlate with dead lines to bypass or evict them sooner. You could declare a new word to express a custom table update procedure that increments a counter specifically when a bypassed line is subsequently requested, which the current vocabulary cannot natively describe.

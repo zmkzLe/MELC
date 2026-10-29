@@ -1,0 +1,5 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 1 validation error for StructureDescription
+name
+  Input should be a valid string [type=string_type, input_value=['policy_name'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type

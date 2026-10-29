@@ -1,0 +1,13 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, valid YAML structure description here.
+# DO NOT output placeholder text like "<the structure description>".
+# You MUST provide the fully expanded YAML, including all required fields.
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+state:
+  ...
+===== NEW_WORDS =====
+
+# Write a YAML list of the new words the description uses here.
+# If there are no new words, write `[]`.

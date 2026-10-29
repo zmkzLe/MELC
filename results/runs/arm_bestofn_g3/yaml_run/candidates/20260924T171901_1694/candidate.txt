@@ -1,0 +1,36 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy_name
+doc: >
+  1 line describing what changed and why.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  ...
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  bypass_when:
+    ...
+signatures:
+  ...
+tables:
+  ...
+samplers:
+  ...
+procedures:
+  ...
+on_hit:
+  ...
+on_fill:
+  ...
+===== NEW_WORDS =====
+
+- name: my_new_word
+  place: condition
+  params: {table: table, sig: signature}
+  means: >
+    Exact description of logic with no ambiguities.

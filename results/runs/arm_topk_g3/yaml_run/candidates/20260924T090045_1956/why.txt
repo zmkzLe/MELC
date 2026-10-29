@@ -1,0 +1,32 @@
+Candidate 36406a86298e: score 0.99568, the geometric mean over 17 traces of its IPC over Mockingjay's on the same trace (20M warm-up + 50M measured); Mockingjay, the seed and the design to beat, scores 1.0: behind.
+Closest earlier design: c41837327dd0 (similarity 0.990, score 1.00000, change -0.00432). Parts changed: name, victim.bypass_when.
+New words: none.
+
+Per trace. vs MJ: IPC over Mockingjay's on that trace. change: minus the closest design's.
+MPKI: LLC misses per 1000 instructions. memory: share of all cycles stalled on the memory
+hierarchy at any level; LLC: the part of it stalled on LLC hits; DRAM: the part stalled on
+DRAM. retire: share of all cycles spent retiring instructions, which no replacement policy
+changes. headroom: share of the sampled misses Belady's MIN avoids on this candidate's own
+stream. Then the sampled fills judged against MIN: kept a dead line, evicted a line reused
+sooner, should have bypassed, bypassed wrongly (change from the closest design in brackets).
+trace                      vs MJ   change   MPKI  memory   LLC   DRAM  retire headroom       kept_dead  evicted_sooner  should_bypass   wrong_bypass
+410.bwaves-1963B          1.0001  +0.0001  17.92   76.8%  1.2%  60.0%   20.7%     2.8%          0 (+0)          0 (+0)         0 (+0)      1554 (-8)
+429.mcf-192B              0.9895  -0.0105  52.54   90.4%  6.5%  73.8%    6.3%     1.6%       57 (-241)        14 (-31)   2298 (+2198)       0 (-332)
+433.milc-127B             1.0026  +0.0026  20.13   82.9%  0.0%  77.1%   12.6%    28.2%  14776 (+12125)       239 (-11)    2029 (+298)  1723 (-12628)
+434.zeusmp-10B            1.0000  -0.0000   2.27   63.3%  0.0%  44.4%   33.3%    10.1%      265 (+240)          0 (+0)     432 (+369)       0 (-606)
+437.leslie3d-149B         1.0010  +0.0010   6.99   84.2%  0.0%  76.5%   14.0%    12.2%       844 (+42)          0 (+0)    1404 (+446)     319 (-478)
+450.soplex-247B           0.9841  -0.0159  20.95   84.5%  4.1%  77.2%   11.9%    20.2%    6132 (+2580)    12065 (+393) 28703 (+24707)   1438 (-9142)
+459.GemsFDTD-1491B        0.9988  -0.0012  26.91   89.8%  0.8%  86.3%    9.0%    31.5%  22609 (+22571)          0 (+0)   3504 (+3504)     0 (-28218)
+470.lbm-1274B             0.9967  -0.0033  26.43   86.9%  0.0%  86.9%   12.7%    21.6%    8634 (-1980)   14500 (-4942)   9152 (+8576)    3397 (-335)
+483.xalancbmk-127B        0.9863  -0.0137  19.43   85.3%  4.3%  78.5%   10.7%    13.9%    8490 (+7441)  15111 (+12376) 22141 (+19085)    68 (-23370)
+603.bwaves_s-1740B        1.0000  +0.0000  19.43   78.5%  0.1%  55.2%   19.7%     7.0%      122 (+115)          0 (+0)   1765 (+1765)   1508 (-1931)
+605.mcf_s-1644B           1.0013  +0.0013 137.10   87.8%  1.3%  67.1%    8.1%    44.2%  83391 (+66961)   10193 (+7596)     127 (+102)136858 (-76352)
+619.lbm_s-2677B           1.0014  +0.0014  83.01   91.5%  0.0%  87.5%    8.1%    44.2%  45619 (-16860)          0 (+0) 17322 (+17268)  109894 (+631)
+623.xalancbmk_s-10B       0.9703  -0.0297   5.02   72.5% 16.1%  49.9%   22.6%    27.1%     1246 (+467)    2782 (+1201)  10495 (+4843)    191 (-1918)
+625.x264_s-20B            1.0000  +0.0000   1.41   42.1%  0.0%  25.3%   54.0%     4.7%         36 (+0)          0 (+0)       162 (+0)         0 (+0)
+627.cam4_s-573B           1.0000  +0.0000   0.16   23.6%  0.0%   0.8%   60.4%    52.4%         32 (+0)          0 (+0)        53 (+0)         0 (+0)
+654.roms_s-1390B          0.9952  -0.0048  33.48   90.9%  0.0%  88.3%    8.3%    26.0%   21221 (+3446)       281 (-13)  10998 (+4991)  14133 (-7981)
+657.xz_s-2302B            0.9997  -0.0003   1.34   48.4%  1.8%  27.6%   33.6%    32.3%      1052 (+61)         25 (+0)      395 (+24)        8 (-80)
+
+All traces, sampled fills: kept_dead 214526 (+96968), evicted_sooner 55210 (+16569), should_bypass 110980 (+88176), wrong_bypass 271091 (-162748). The largest kind of mistake is wrong_bypass. Mistakes of every kind are addressed by changing what the policy remembers or how it decides, not by moving one threshold.
+Metadata: 47.38 KB SRAM, 0.0379 mm2 at 22 nm (reported, not scored).

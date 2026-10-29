@@ -1,0 +1,20 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Detailed explanation of what changed and why.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  # (Include ALL state fields)
+victim:
+  key: etr
+  extremum: max_magnitude
+  # (Include FULL victim section)
+# (Include ALL other sections: signatures, tables, samplers, procedures, on_hit, on_fill completely)
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing. 
+# Ensure you define any used new words here. If you reuse words from the guidance (like confident_bypass, train_ema, train_penalty), copy their exact definitions verbatim. Do not alter them.

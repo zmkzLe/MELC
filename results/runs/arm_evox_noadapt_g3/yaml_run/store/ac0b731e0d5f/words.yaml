@@ -1,0 +1,11 @@
+- name: train_fast_toward
+  place: step
+  params: {table: table, index: signature, sample: state, scale: {int: [1, 4]}, shift: {int: [0, 7]}, min_diff: {int: [0, 31]}}
+  means: >
+    Reads the entry of the table at the index. Let s be the minimum of
+    (sample * scale) and the table's maximum. If the entry is absent, it is set
+    to s. Otherwise, let diff be the absolute difference between the entry and s.
+    If diff is less than min_diff, the entry is unchanged. Otherwise, let step
+    be the maximum of 1 and (diff >> shift). If the entry is less than s, the
+    entry is increased by step; if the entry is greater than s, the entry is
+    decreased by step.

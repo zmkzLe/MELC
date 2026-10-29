@@ -1,0 +1,16 @@
+- name: confident_bypass
+  place: condition
+  params: {rdp_table: table, conf_table: table, index: signature, rdp_thresh: {int: [0, 127]}, conf_thresh: {int: [0, 3]}}
+  means: >
+    True when the entry of rdp_table at the index is greater than rdp_thresh,
+    and the entry of conf_table at the index is greater than or equal to conf_thresh.
+    An absent entry reads as 0.
+
+- name: confident_exceeds_victim
+  place: condition
+  params: {rdp_table: table, conf_table: table, index: signature, div: {int: [1, 32]}, conf_thresh: {int: [0, 3]}}
+  means: >
+    True when the entry of rdp_table at the index divided by div (integer division)
+    is greater than the absolute value of the victim key of the way the victim search chose,
+    and the entry of conf_table at the index is greater than or equal to conf_thresh.
+    An absent entry reads as 0. Only valid inside victim.bypass_when.

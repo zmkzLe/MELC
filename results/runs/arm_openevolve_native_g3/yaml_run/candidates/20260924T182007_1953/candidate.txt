@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 64
+    init: ZERO
+# [Rest of your FULL, valid YAML structure here]
+===== NEW_WORDS =====
+
+# [Your YAML list of new words here, or empty if none]

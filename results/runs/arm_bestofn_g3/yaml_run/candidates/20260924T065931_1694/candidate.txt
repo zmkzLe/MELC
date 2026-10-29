@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+# WRITE YOUR COMPLETE, FULLY SPECIFIED YAML DESIGN HERE.
+# Start from the seed Mockingjay design and apply your changes.
+# Ensure `state` and `victim` are fully defined.
+name: my_design
+doc: >
+  Single line stating what changed and why, followed by policy details.
+state:
+# ... full YAML ...
+===== NEW_WORDS =====
+
+# Write your YAML list of new words here, or leave empty if none.

@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: mockingjay_improved
+doc: >
+  Your explanation here...
+state:
+  - name: etr
+# ... (rest of the complete YAML description)
+===== NEW_WORDS =====
+
+- name: my_new_word
+  place: condition
+  # ... (rest of the new word definition, or leave empty if none)

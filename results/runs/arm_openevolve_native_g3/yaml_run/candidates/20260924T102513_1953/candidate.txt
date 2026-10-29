@@ -1,0 +1,2 @@
+===== STRUCTURE_DESCRIPTION =====`. Include doc, state, victim, signatures, tables, samplers, procedures, on_hit, and on_fill.
+3. Provide the exact definitions of all custom words in `===== NEW_WORDS =====

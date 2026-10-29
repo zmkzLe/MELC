@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+<YAML structure description>
+===== NEW_WORDS =====
+
+<YAML list of new words, or empty if none are used>
+```
+
+#### CRITICAL SYNTAX RULES FOR `===== NEW_WORDS =====`:

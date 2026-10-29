@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+<Write the FULL and COMPLETE YAML here. NO PLACEHOLDERS. Include all fields: name, doc, state, victim, signatures, tables, samplers, procedures, on_hit, on_fill>
+===== NEW_WORDS =====

@@ -1,0 +1,478 @@
+===== STRUCTURE_DESCRIPTION =====
+# Reference: DPC4-ChampSim/replacement/mockingjay, single-core build. Sizes are for
+# the DPC4 LLC, 4096 x 12: INF_RD 95, INF_ETR 11, MAX_RD 73, 11-bit signatures,
+# 32 sampled sets. The multi-core build folds the core id instead of the hit bit,
+# inserts an unknown signature at INF_ETR, and scales prefetch samples by less.
+name: mockingjay
+doc: >
+  Mockingjay: each line holds an estimated time to reuse (ETR), counted down every
+  8 accesses to its set; the victim is the line with the largest |ETR|, an overdue
+  (negative) one on ties. A predictor table keyed by the hit-or-miss PC signature
+  gives the ETR on insertion, and a fill predicted to be reused after every line in
+  the set is bypassed. A sampled shadow cache on 32 sets measures reuse distances
+  with an 8-bit per-set clock and trains the predictor one step at a time; entries
+  older than INF_RD train it up as scans. Writebacks are inserted at -INF_ETR and
+  train nothing.
+
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5                  # holds -11..11
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 4
+    init: 8                   # GRANULARITY: the first access to a set ages it
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 8                  # TIMESTAMP_BITS; wraps by design
+    init: ZERO
+
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:                # the incoming line is predicted to be reused after every resident
+    - {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+    - {table_exceeds_victim: {table: rdp, index: pc_sig, div: 8}}
+
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 11
+
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 2048
+    width: 7
+    max: 95                   # INF_RD
+    unset: true
+
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 32}
+    extra_index_bits: 4       # 16 sampler sets per sampled set
+    ways: 5
+    tag_bits: 10
+    fields:
+      - {name: signature, kind: counter, width: 11, init: ZERO}
+      - {name: timestamp, kind: counter, width: 8, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true            # too old to be a reuse distance; the sweep detrains it
+      - when: {type_in: [PREFETCH]}
+        train: {table: rdp, index: signature, op: toward, sample: age, scale: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train: {table: rdp, index: signature, op: toward, sample: age, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train: {table: rdp, index: signature, op: increment}
+        free: true
+    on_replace:
+      - train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+
+procedures:
+  access:                     # mockingjay.cc access(): the update body shared by hits and fills
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 8}}
+      set: {etr_clock: {const: 0}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: access
+
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: access
+
+===== HEADER =====
+#ifndef REPLACEMENT_@MODULE@_H_GUARD_H
+#define REPLACEMENT_@MODULE@_H_GUARD_H
+
+// Mockingjay (Shah, Jain, Lin, HPCA 2022), ported from the authors' CRC2 code
+// (github.com/ishanashah/Mockingjay, Apache-2.0). One change: a prefetch-inflated
+// reuse-distance sample saturates at INF_RD, as the paper says (Sec. III-D).
+
+#include <cstdint>
+#include <unordered_map>
+#include <vector>
+
+#include "cache.h"
+#include "modules.h"
+#include "msl/bits.h"
+
+struct @MODULE@ : public champsim::modules::replacement {
+  static constexpr int HISTORY = 8;
+  static constexpr int GRANULARITY = 8;
+  static constexpr int SAMPLED_CACHE_WAYS = 5;
+  static constexpr int LOG2_SAMPLED_CACHE_SETS = 4;
+  static constexpr int TIMESTAMP_BITS = 8;
+  static constexpr double TEMP_DIFFERENCE = 1.0 / 16.0;
+
+  struct sampled_cache_line {
+    bool valid = false;
+    uint64_t tag = 0;
+    uint64_t signature = 0;
+    int timestamp = 0;
+  };
+
+  long NUM_SET, NUM_WAY;
+
+  // The CRC2 code's compile-time constants, derived from this cache's geometry.
+  int log2_llc_set, log2_llc_size, log2_sampled_sets;
+  int inf_rd, inf_etr, max_rd;
+  int sampled_cache_tag_bits, pc_signature_bits;
+  double flexmin_penalty;
+
+  std::vector<int> etr;
+  std::vector<int> etr_clock;
+  std::vector<int> current_timestamp;
+  std::unordered_map<uint32_t, int> rdp;
+  std::unordered_map<uint32_t, std::vector<sampled_cache_line>> sampled_cache;
+
+  uint64_t bypassed_fills = 0;
+
+  explicit @MODULE@(CACHE* cache);
+
+  long find_victim(uint32_t triggering_cpu, uint64_t instr_id, long set, const champsim::cache_block* current_set, champsim::address ip,
+                   champsim::address full_addr, access_type type);
+  void update_replacement_state(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip, champsim::address victim_addr,
+                                access_type type, uint8_t hit);
+  void replacement_cache_fill(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip, champsim::address victim_addr,
+                              access_type type);
+  void replacement_final_stats();
+
+private:
+  int& get_etr(long set, long way);
+  [[nodiscard]] bool is_sampled_set(long set) const;
+  [[nodiscard]] uint64_t get_pc_signature(uint64_t pc, bool hit, bool prefetch, uint32_t core) const;
+  [[nodiscard]] uint32_t get_sampled_cache_index(uint64_t full_addr) const;
+  [[nodiscard]] uint64_t get_sampled_cache_tag(uint64_t x) const;
+  int search_sampled_cache(uint64_t tag, uint32_t index);
+  void detrain(uint32_t index, int way);
+  [[nodiscard]] int temporal_difference(int init, int sample) const;
+  [[nodiscard]] static int increment_timestamp(int input);
+  [[nodiscard]] static int time_elapsed(int global, int local);
+
+  // The CRC2 llc_update_replacement_state body, called once per access.
+  void access(uint32_t cpu, long set, long way, uint64_t full_addr, uint64_t pc, access_type type, bool hit);
+};
+
+#endif
+
+===== SOURCE =====
+#include "@MODULE@.h"
+
+#include <algorithm>
+#include <cmath>
+#include <cstdlib>
+#include <fmt/core.h>
+
+#include "champsim.h"
+
+namespace
+{
+uint64_t CRC_HASH(uint64_t _blockAddress)
+{
+  static const unsigned long long crcPolynomial = 3988292384ULL;
+  unsigned long long _returnVal = _blockAddress;
+  for (unsigned int i = 0; i < 3; i++)
+    _returnVal = ((_returnVal & 1) == 1) ? ((_returnVal >> 1) ^ crcPolynomial) : (_returnVal >> 1);
+  return _returnVal;
+}
+} // namespace
+
+@MODULE@::@MODULE@(CACHE* cache)
+    : replacement(cache), NUM_SET(cache->NUM_SET), NUM_WAY(cache->NUM_WAY), log2_llc_set(static_cast<int>(champsim::lg2(NUM_SET))),
+      log2_llc_size(log2_llc_set + static_cast<int>(champsim::lg2(NUM_WAY)) + static_cast<int>(LOG2_BLOCK_SIZE)), log2_sampled_sets(log2_llc_size - 16),
+      inf_rd(static_cast<int>(NUM_WAY) * HISTORY - 1), inf_etr(static_cast<int>(NUM_WAY) * HISTORY / GRANULARITY - 1), max_rd(inf_rd - 22),
+      sampled_cache_tag_bits(31 - log2_llc_size), pc_signature_bits(log2_llc_size - 10),
+      flexmin_penalty(2.0 - std::log2(static_cast<double>(NUM_CPUS)) / 4.0), etr(static_cast<std::size_t>(NUM_SET * NUM_WAY), 0),
+      etr_clock(static_cast<std::size_t>(NUM_SET), GRANULARITY), current_timestamp(static_cast<std::size_t>(NUM_SET), 0)
+{
+  for (long set = 0; set < NUM_SET; set++) {
+    if (is_sampled_set(set)) {
+      long modifier = 1L << log2_llc_set;
+      long limit = 1L << LOG2_SAMPLED_CACHE_SETS;
+      for (long i = 0; i < limit; i++)
+        sampled_cache.emplace(static_cast<uint32_t>(set + modifier * i), std::vector<sampled_cache_line>(SAMPLED_CACHE_WAYS));
+    }
+  }
+}
+
+int& @MODULE@::get_etr(long set, long way) { return etr.at(static_cast<std::size_t>(set * NUM_WAY + way)); }
+
+bool @MODULE@::is_sampled_set(long set) const
+{
+  int mask_length = log2_llc_set - log2_sampled_sets;
+  long mask = (1L << mask_length) - 1;
+  return (set & mask) == ((set >> (log2_llc_set - mask_length)) & mask);
+}
+
+uint64_t @MODULE@::get_pc_signature(uint64_t pc, bool hit, bool prefetch, uint32_t core) const
+{
+  auto shamt = static_cast<unsigned>(64 - pc_signature_bits);
+  if (NUM_CPUS == 1) {
+    pc = pc << 1;
+    if (hit)
+      pc = pc | 1;
+    pc = pc << 1;
+    if (prefetch)
+      pc = pc | 1;
+    pc = CRC_HASH(pc);
+    pc = (pc << shamt) >> shamt;
+  } else {
+    pc = pc << 1;
+    if (prefetch)
+      pc = pc | 1;
+    pc = pc << 2;
+    pc = pc | core;
+    pc = CRC_HASH(pc);
+    pc = (pc << shamt) >> shamt;
+  }
+  return pc;
+}
+
+// ChampSim's module address keeps bit positions (offset zeroed), so the shift still applies.
+uint32_t @MODULE@::get_sampled_cache_index(uint64_t full_addr) const
+{
+  auto shamt = static_cast<unsigned>(64 - (LOG2_SAMPLED_CACHE_SETS + log2_llc_set));
+  full_addr = full_addr >> LOG2_BLOCK_SIZE;
+  full_addr = (full_addr << shamt) >> shamt;
+  return static_cast<uint32_t>(full_addr);
+}
+
+uint64_t @MODULE@::get_sampled_cache_tag(uint64_t x) const
+{
+  auto shamt = static_cast<unsigned>(64 - sampled_cache_tag_bits);
+  x >>= static_cast<unsigned>(log2_llc_set) + LOG2_BLOCK_SIZE + LOG2_SAMPLED_CACHE_SETS;
+  x = (x << shamt) >> shamt;
+  return x;
+}
+
+int @MODULE@::search_sampled_cache(uint64_t tag, uint32_t index)
+{
+  const auto& sampled_set = sampled_cache.at(index);
+  for (int way = 0; way < SAMPLED_CACHE_WAYS; way++) {
+    if (sampled_set[static_cast<std::size_t>(way)].valid && sampled_set[static_cast<std::size_t>(way)].tag == tag)
+      return way;
+  }
+  return -1;
+}
+
+void @MODULE@::detrain(uint32_t index, int way)
+{
+  auto& line = sampled_cache.at(index).at(static_cast<std::size_t>(way));
+  if (!line.valid)
+    return;
+
+  auto signature = static_cast<uint32_t>(line.signature);
+  if (auto it = rdp.find(signature); it != rdp.end())
+    it->second = std::min(it->second + 1, inf_rd);
+  else
+    rdp[signature] = inf_rd;
+  line.valid = false;
+}
+
+int @MODULE@::temporal_difference(int init, int sample) const
+{
+  if (sample > init) {
+    int diff = sample - init;
+    diff = static_cast<int>(diff * TEMP_DIFFERENCE);
+    diff = std::min(1, diff);
+    return std::min(init + diff, inf_rd);
+  } else if (sample < init) {
+    int diff = init - sample;
+    diff = static_cast<int>(diff * TEMP_DIFFERENCE);
+    diff = std::min(1, diff);
+    return std::max(init - diff, 0);
+  } else {
+    return init;
+  }
+}
+
+int @MODULE@::increment_timestamp(int input)
+{
+  input++;
+  input = input % (1 << TIMESTAMP_BITS);
+  return input;
+}
+
+int @MODULE@::time_elapsed(int global, int local)
+{
+  if (global >= local)
+    return global - local;
+  global = global + (1 << TIMESTAMP_BITS);
+  return global - local;
+}
+
+long @MODULE@::find_victim(uint32_t triggering_cpu, uint64_t, long set, const champsim::cache_block* current_set, champsim::address ip,
+                             champsim::address, access_type type)
+{
+  for (long way = 0; way < NUM_WAY; way++) {
+    if (!current_set[way].valid)
+      return way;
+  }
+
+  int max_etr = 0;
+  long victim_way = 0;
+  for (long way = 0; way < NUM_WAY; way++) {
+    int value = get_etr(set, way);
+    if (std::abs(value) > max_etr || (std::abs(value) == max_etr && value < 0)) {
+      max_etr = std::abs(value);
+      victim_way = way;
+    }
+  }
+
+  // Bypass (return NUM_WAY) when the incoming line is predicted to be reused after every line in the set.
+  auto pc_signature = static_cast<uint32_t>(get_pc_signature(ip.to<uint64_t>(), false, type == access_type::PREFETCH, triggering_cpu));
+  if (auto it = rdp.find(pc_signature);
+      type != access_type::WRITE && it != rdp.end() && (it->second > max_rd || it->second / GRANULARITY > max_etr)) {
+    ++bypassed_fills;
+    return NUM_WAY;
+  }
+
+  return victim_way;
+}
+
+// Each access is handled once: hits here, misses at their fill or bypass.
+// ChampSim also calls this on the miss itself (way == NUM_WAY); that call is ignored.
+void @MODULE@::update_replacement_state(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip, champsim::address,
+                                          access_type type, uint8_t hit)
+{
+  if (hit)
+    access(triggering_cpu, set, way, full_addr.to<uint64_t>(), ip.to<uint64_t>(), type, true);
+}
+
+void @MODULE@::replacement_cache_fill(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip, champsim::address,
+                                        access_type type)
+{
+  access(triggering_cpu, set, way, full_addr.to<uint64_t>(), ip.to<uint64_t>(), type, false);
+}
+
+void @MODULE@::access(uint32_t cpu, long set, long way, uint64_t full_addr, uint64_t pc, access_type type, bool hit)
+{
+  if (type == access_type::WRITE) {
+    if (!hit)
+      get_etr(set, way) = -inf_etr;
+    return;
+  }
+
+  pc = get_pc_signature(pc, hit, type == access_type::PREFETCH, cpu);
+  auto set_idx = static_cast<std::size_t>(set);
+
+  if (is_sampled_set(set)) {
+    uint32_t sampled_cache_index = get_sampled_cache_index(full_addr);
+    uint64_t sampled_cache_tag = get_sampled_cache_tag(full_addr);
+    int sampled_cache_way = search_sampled_cache(sampled_cache_tag, sampled_cache_index);
+    auto& sampled_set = sampled_cache.at(sampled_cache_index);
+
+    if (sampled_cache_way > -1) {
+      auto& hit_line = sampled_set[static_cast<std::size_t>(sampled_cache_way)];
+      auto last_signature = static_cast<uint32_t>(hit_line.signature);
+      int sample = time_elapsed(current_timestamp[set_idx], hit_line.timestamp);
+
+      if (sample <= inf_rd) {
+        if (type == access_type::PREFETCH) {
+          // Paper Sec. III-D: the inflated sample saturates at INF_RD.
+          sample = std::min(static_cast<int>(sample * flexmin_penalty), inf_rd);
+        }
+        if (auto it = rdp.find(last_signature); it != rdp.end())
+          it->second = temporal_difference(it->second, sample);
+        else
+          rdp[last_signature] = sample;
+
+        hit_line.valid = false;
+      }
+    }
+
+    int lru_way = -1;
+    int lru_rd = -1;
+    for (int w = 0; w < SAMPLED_CACHE_WAYS; w++) {
+      const auto& line = sampled_set[static_cast<std::size_t>(w)];
+      if (!line.valid) {
+        lru_way = w;
+        lru_rd = inf_rd + 1;
+        continue;
+      }
+
+      int sample = time_elapsed(current_timestamp[set_idx], line.timestamp);
+      if (sample > inf_rd) {
+        lru_way = w;
+        lru_rd = inf_rd + 1;
+        detrain(sampled_cache_index, w);
+      } else if (sample > lru_rd) {
+        lru_way = w;
+        lru_rd = sample;
+      }
+    }
+    detrain(sampled_cache_index, lru_way);
+
+    for (auto& line : sampled_set) {
+      if (!line.valid) {
+        line.valid = true;
+        line.signature = pc;
+        line.tag = sampled_cache_tag;
+        line.timestamp = current_timestamp[set_idx];
+        break;
+      }
+    }
+
+    current_timestamp[set_idx] = increment_timestamp(current_timestamp[set_idx]);
+  }
+
+  if (etr_clock[set_idx] == GRANULARITY) {
+    for (long w = 0; w < NUM_WAY; w++) {
+      if (w != way && std::abs(get_etr(set, w)) < inf_etr)
+        get_etr(set, w)--;
+    }
+    etr_clock[set_idx] = 0;
+  }
+  etr_clock[set_idx]++;
+
+  // A bypassed fill arrives with way == NUM_WAY: nothing was inserted.
+  if (way < NUM_WAY) {
+    auto signature = static_cast<uint32_t>(pc);
+    if (auto it = rdp.find(signature); it == rdp.end())
+      get_etr(set, way) = (NUM_CPUS == 1) ? 0 : inf_etr;
+    else if (it->second > max_rd)
+      get_etr(set, way) = inf_etr;
+    else
+      get_etr(set, way) = it->second / GRANULARITY;
+  }
+}
+
+void @MODULE@::replacement_final_stats() { fmt::print("Mockingjay bypassed fills: {}\n", bypassed_fills); }
+

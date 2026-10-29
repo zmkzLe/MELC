@@ -1,0 +1,8 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 2 validation errors for NewWord
+place
+  Field required [type=missing, input_value={'name': 'dynamic_bypass_confidence'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+means
+  Field required [type=missing, input_value={'name': 'dynamic_bypass_confidence'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

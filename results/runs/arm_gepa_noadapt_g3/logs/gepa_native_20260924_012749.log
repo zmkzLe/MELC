@@ -1,0 +1,1209 @@
+2026-09-24 01:27:49,747 - skydiscover.search.utils.logging_utils - INFO - Logging to /home/user/oe_out/arm_gepa_noadapt_g3/logs/gepa_native_20260924_012749.log
+2026-09-24 01:27:49,748 - skydiscover.runner - INFO - Runner ready: search=gepa_native, program=/home/user/oe_out/arm_gepa_noadapt_g3/seed_candidate.txt
+2026-09-24 01:27:49,797 - skydiscover.llm - INFO - OpenAI LLM: google/gemini-3.1-pro-preview
+2026-09-24 01:27:49,803 - skydiscover.llm - INFO - OpenAI LLM: google/gemini-3.8-flash
+2026-09-24 01:27:49,803 - skydiscover.llm - INFO - Pool weights: google/gemini-3.1-pro-preview=0.70, google/gemini-3.8-flash=0.30
+2026-09-24 01:27:49,852 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with /home/user/chia_native/design_evaluator.py
+2026-09-24 01:27:49,852 - skydiscover.search.default_discovery_controller - INFO - DiscoveryController initialized: num_context_programs=4
+2026-09-24 01:27:49,854 - skydiscover.search.gepa_native.controller - INFO - GEPANativeController initialized: acceptance_gating=True, use_merge=True, merge_after_stagnation=15, max_merge_attempts=10
+2026-09-24 01:27:49,854 - skydiscover.runner - INFO - Adding initial program to database
+2026-09-24 02:02:25,178 - skydiscover.evaluation.evaluator - INFO - Evaluated program 42616351-8e5b-4039-8ead-8d72ed73bfd4 in 2075.32s: combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+2026-09-24 02:02:25,178 - skydiscover.search.base_database - INFO - Database has 1 programs, best program score is combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+2026-09-24 02:04:28,829 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:04:29,692 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9d8a6d23-c2d7-4412-9df3-5049ec4d06f4 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:04:29,692 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:04:29,693 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 02:06:12,378 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:06:13,231 - skydiscover.evaluation.evaluator - INFO - Evaluated program 37d90e52-475f-4903-8a98-7f4867f0328f in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:06:13,231 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:06:13,232 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 02:07:58,501 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:07:58,577 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3c0d25dc-8137-4c88-977b-298d1286ebf7 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:07:58,577 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:07:58,577 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:07:58,578 - skydiscover.search.gepa_native.controller - WARNING - Iteration 1 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:08:31,597 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:08:31,693 - skydiscover.evaluation.evaluator - INFO - Evaluated program 39eefac1-eba8-4654-8090-748d054a8d3b in 0.09s: combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+2026-09-24 02:08:31,693 - skydiscover.search.gepa_native.controller - INFO - Iteration 2: REJECTED child (child_score=1.0000 <= parent_score=1.0000)
+2026-09-24 02:10:21,695 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:10:22,538 - skydiscover.evaluation.evaluator - INFO - Evaluated program efda6285-17e2-478f-a8d3-1c86ba83ce80 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:10:22,538 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:10:22,538 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 02:11:59,087 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:11:59,194 - skydiscover.evaluation.evaluator - INFO - Evaluated program 834a887e-ad8d-48a0-8f56-bc2b68c52e4e in 0.00s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 02:11:59,194 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 02:11:59,194 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 02:12:34,468 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:12:34,472 - skydiscover.evaluation.evaluator - INFO - Evaluated program d6916878-b11f-4c55-ae82-263cc3353f78 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:12:34,472 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:12:34,473 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:12:34,473 - skydiscover.search.gepa_native.controller - WARNING - Iteration 3 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:13:45,418 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:13:46,010 - skydiscover.evaluation.evaluator - INFO - Evaluated program fbb1f315-ef03-4d89-b5b9-c2d8a165c18b in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:13:46,010 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:13:46,010 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 02:15:50,485 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:15:50,602 - skydiscover.evaluation.evaluator - INFO - Evaluated program f07174c4-b7be-41ac-8bae-648eabcf26b6 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:15:50,602 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:15:50,603 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 02:16:44,572 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:16:44,621 - skydiscover.evaluation.evaluator - INFO - Evaluated program db1926e6-a012-410f-812f-f5fc4e81f013 in 0.00s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 02:16:44,622 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 02:16:44,622 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 02:16:44,622 - skydiscover.search.gepa_native.controller - WARNING - Iteration 4 failed: Evaluator failed after 3 attempts: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...hat changed and why.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 02:18:36,321 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:18:37,262 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7defabed-1615-4d52-ab01-68ed1d3d266c in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:18:37,262 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:18:37,262 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 02:19:09,294 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:55:08,170 - skydiscover.evaluation.evaluator - INFO - Evaluated program e7999771-47fd-445f-bdc6-d4626b81db54 in 2158.87s: combined_score=0.9971, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6622.0772, cacti_node_nm=22.0000
+2026-09-24 02:55:08,170 - skydiscover.search.gepa_native.controller - INFO - Iteration 5: REJECTED child (child_score=0.9971 <= parent_score=1.0000)
+2026-09-24 02:56:47,654 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:56:48,581 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0773b62a-9aa3-4a24-a173-7915154e32af in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:56:48,581 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 02:56:48,581 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 02:57:28,946 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:57:28,975 - skydiscover.evaluation.evaluator - INFO - Evaluated program aff1c27d-8057-44c9-8b01-019495575c54 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:57:28,975 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:57:28,975 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 02:57:58,060 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:57:58,065 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3af24bd6-edf0-4641-83c0-eb92e0b96b1b in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:57:58,065 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:57:58,065 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:57:58,065 - skydiscover.search.gepa_native.controller - WARNING - Iteration 6 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:59:18,481 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 02:59:18,525 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5cbfb234-9cd5-436f-bb79-14410e180ea9 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:59:18,525 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 02:59:18,526 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 03:01:36,775 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:37:01,346 - skydiscover.evaluation.evaluator - INFO - Evaluated program 744094fe-de07-4218-98e6-dd0afbf4b117 in 2124.56s: combined_score=0.9979, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6616.4974, cacti_node_nm=22.0000
+2026-09-24 03:37:01,347 - skydiscover.search.gepa_native.controller - INFO - Iteration 7: REJECTED child (child_score=0.9979 <= parent_score=1.0000)
+2026-09-24 03:38:29,613 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:38:30,574 - skydiscover.evaluation.evaluator - INFO - Evaluated program 57770d23-1da1-4329-b76d-c3800250e83f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:38:30,574 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:38:30,575 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 03:39:50,476 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:39:50,584 - skydiscover.evaluation.evaluator - INFO - Evaluated program c3b036bc-fbf5-41b9-b0db-22041f9e564c in 0.00s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'my_design', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'my_design', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:39:50,584 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'my_design', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'my_design', 'doc': '...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:39:50,585 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 03:40:36,490 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:40:36,495 - skydiscover.evaluation.evaluator - INFO - Evaluated program cebe3ace-479f-4d52-a327-678fff5b6689 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:40:36,495 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:40:36,495 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:40:36,495 - skydiscover.search.gepa_native.controller - WARNING - Iteration 8 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:41:20,909 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:41:20,914 - skydiscover.evaluation.evaluator - INFO - Evaluated program 77c39cce-4a72-4db3-babe-80cba13f230a in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:41:20,914 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:41:20,915 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 03:42:57,130 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:42:58,061 - skydiscover.evaluation.evaluator - INFO - Evaluated program 78ca7dce-47b1-4aac-b145-87c8f99d7cb3 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:42:58,061 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:42:58,062 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 03:44:10,721 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:44:10,796 - skydiscover.evaluation.evaluator - INFO - Evaluated program b7fb5a6c-1f7a-476f-8f8a-7d8db5c3db24 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:44:10,796 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:44:10,796 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:44:10,796 - skydiscover.search.gepa_native.controller - WARNING - Iteration 9 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:45:43,387 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:45:44,331 - skydiscover.evaluation.evaluator - INFO - Evaluated program 17b6c0c0-8edc-461e-be7e-f37de8a9d079 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:45:44,331 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:45:44,332 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 03:46:49,914 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:46:50,061 - skydiscover.evaluation.evaluator - INFO - Evaluated program 13b8f4c5-5d34-401c-a9a8-00ac11a3d728 in 0.01s: combined_score=0.0000, status=words_refused, error=3 validation errors for NewWord
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+place
+  Field required [type=missing, input_value={'name': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+means
+  Field required [type=missing, input_value={'name': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:46:50,061 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=3 validation errors for NewWord
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+place
+  Field required [type=missing, input_value={'name': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+means
+  Field required [type=missing, input_value={'name': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:46:50,062 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 03:47:58,146 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:47:58,645 - skydiscover.evaluation.evaluator - INFO - Evaluated program e802f79a-69d6-4f55-9b6c-5e7bf7c425b4 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:47:58,645 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:47:58,646 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:47:58,646 - skydiscover.search.gepa_native.controller - WARNING - Iteration 10 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:49:32,224 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:49:33,151 - skydiscover.evaluation.evaluator - INFO - Evaluated program d6781e93-a524-47e4-a1c3-4b505734ce0d in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:49:33,151 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:49:33,152 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 03:50:54,781 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:50:55,705 - skydiscover.evaluation.evaluator - INFO - Evaluated program 8551a421-e0d5-4561-8e31-a9938034fbb8 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:50:55,705 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:50:55,705 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 03:51:31,272 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:51:31,277 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5154126b-a2d7-409c-9917-f0b23244a228 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:51:31,277 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:51:31,277 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:51:31,277 - skydiscover.search.gepa_native.controller - WARNING - Iteration 11 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 03:52:59,745 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:53:00,685 - skydiscover.evaluation.evaluator - INFO - Evaluated program d818b321-b89d-468b-bd44-fe08321e26ab in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:53:00,685 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:53:00,686 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 03:54:28,334 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:54:28,450 - skydiscover.evaluation.evaluator - INFO - Evaluated program d29f8094-bdbd-43e7-851d-2902b78a681b in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:54:28,450 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:54:28,450 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 03:55:51,987 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:55:52,077 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9febfb8d-5d59-4fe9-abca-bb543b8dbeae in 0.00s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='... [your full, modified...finition goes here] ...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...inition goes here] ...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:55:52,077 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='... [your full, modified...finition goes here] ...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...inition goes here] ...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:55:52,077 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='... [your full, modified...finition goes here] ...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...inition goes here] ...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:55:52,077 - skydiscover.search.gepa_native.controller - WARNING - Iteration 12 failed: Evaluator failed after 3 attempts: 2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='... [your full, modified...finition goes here] ...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...inition goes here] ...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 03:57:11,593 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:57:12,542 - skydiscover.evaluation.evaluator - INFO - Evaluated program 76dbb32e-3b39-4ce9-acd1-bf3ae80ca187 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:57:12,543 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 03:57:12,543 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 04:00:50,521 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:42:16,422 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4b5f1ddb-4851-4db4-810b-41edb70083b6 in 2485.89s: combined_score=0.9995, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6613.8397, cacti_node_nm=22.0000
+2026-09-24 04:42:16,422 - skydiscover.search.gepa_native.controller - INFO - Iteration 13: REJECTED child (child_score=0.9995 <= parent_score=1.0000)
+2026-09-24 04:44:52,921 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:44:53,750 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7ea732a8-2658-42c5-adcc-c744401948f5 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 04:44:53,750 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 04:44:53,751 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 04:45:22,132 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:45:22,157 - skydiscover.evaluation.evaluator - INFO - Evaluated program 80cbed07-e535-4251-bbdb-e6cee4efee9e in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): NEW_WORDS
+2026-09-24 04:45:22,158 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): NEW_WORDS
+2026-09-24 04:45:22,158 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 04:47:15,400 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:47:16,322 - skydiscover.evaluation.evaluator - INFO - Evaluated program b558b320-5d87-4d42-bd24-7ffc0e78a248 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 04:47:16,322 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 04:47:16,322 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 04:47:16,322 - skydiscover.search.gepa_native.controller - WARNING - Iteration 14 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 04:48:09,914 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:26:07,302 - skydiscover.evaluation.evaluator - INFO - Evaluated program d5441ddb-065b-4054-af95-23b0c3d8f86c in 2277.39s: combined_score=1.0019, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6594.6983, cacti_node_nm=22.0000
+2026-09-24 05:26:07,303 - skydiscover.search.default_discovery_controller - INFO - Iteration 15: Program d5441ddb-065b-4054-af95-23b0c3d8f86c (parent: 42616351-8e5b-4039-8ead-8d72ed73bfd4) completed in 2330.98s (llm: 53.59s, eval: 2277.39s)
+2026-09-24 05:26:07,303 - skydiscover.search.default_discovery_controller - INFO - Metrics: combined_score=1.0019, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6594.6983, cacti_node_nm=22.0000
+2026-09-24 05:26:07,303 - skydiscover.search.default_discovery_controller - INFO - 🌟 New best solution found at iteration 15
+2026-09-24 05:26:07,303 - skydiscover.search.gepa_native.controller - INFO - Iteration 16: Attempting merge (stagnation=0, attempt=1/10, scores: 1.0019, 1.0000)
+2026-09-24 05:26:35,401 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:26:35,589 - skydiscover.evaluation.evaluator - INFO - Evaluated program d1f49095-39f2-4dc8-b588-0aa0758713d8 in 0.19s: combined_score=1.0019, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6594.6983, cacti_node_nm=22.0000
+2026-09-24 05:26:35,589 - skydiscover.search.gepa_native.controller - INFO - Iteration 16: Merge completed (llm: 28.10s, eval: 0.19s)
+2026-09-24 05:26:35,589 - skydiscover.search.gepa_native.controller - INFO - Merge ACCEPTED: score=1.0019 (>= max(1.0019, 1.0000))
+2026-09-24 05:29:42,279 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:05:02,363 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3aa7b523-e4ac-4ae9-837d-d24de3bd568b in 2120.08s: combined_score=1.0018, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6595.0010, cacti_node_nm=22.0000
+2026-09-24 06:05:02,363 - skydiscover.search.gepa_native.controller - INFO - Iteration 16: REJECTED child (child_score=1.0018 <= parent_score=1.0019)
+2026-09-24 06:06:27,001 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:06:27,951 - skydiscover.evaluation.evaluator - INFO - Evaluated program 933618f8-8f68-42f1-90b1-d2d2ffcad58a in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:06:27,951 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:06:27,952 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 06:08:12,889 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:08:13,836 - skydiscover.evaluation.evaluator - INFO - Evaluated program fe6626ea-2e3c-4490-b95f-3a829144d856 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:08:13,836 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:08:13,837 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 06:09:51,057 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:45:57,292 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4a768daf-f2dd-4ee1-adb9-3264a5b5dc93 in 2166.23s: combined_score=0.9976, status=ok, metadata_kb=48.0000, metadata_flipflop_bits=0.0000, metadata_bits_per_line=8.0000, metadata_area_mm2=0.0374, metadata_energy_uj=6759.2482, cacti_node_nm=22.0000
+2026-09-24 06:45:57,292 - skydiscover.search.gepa_native.controller - INFO - Iteration 17: REJECTED child (child_score=0.9976 <= parent_score=1.0019)
+2026-09-24 06:47:44,485 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:47:45,473 - skydiscover.evaluation.evaluator - INFO - Evaluated program d9cde1a7-32e9-48be-a996-dc7c92916da9 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:47:45,473 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:47:45,474 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 06:49:42,007 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:49:42,957 - skydiscover.evaluation.evaluator - INFO - Evaluated program b695102e-7c47-4ebb-a695-02c099994bd3 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:49:42,957 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:49:42,958 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 06:51:47,356 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:51:47,724 - skydiscover.evaluation.evaluator - INFO - Evaluated program efabe137-da34-49f7-9941-6c760cd37f9b in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:51:47,724 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:51:47,724 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:51:47,724 - skydiscover.search.gepa_native.controller - WARNING - Iteration 18 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:53:25,619 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:53:26,589 - skydiscover.evaluation.evaluator - INFO - Evaluated program e917dd25-24e7-4512-83fa-b8b287403f13 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:53:26,589 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:53:26,589 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 06:55:10,510 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:55:11,469 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9541f6d6-59b9-44f9-8002-9cfdc7260b1e in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:55:11,469 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:55:11,469 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 06:56:59,231 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:57:00,194 - skydiscover.evaluation.evaluator - INFO - Evaluated program bb34fd58-135b-4360-8fc5-630bf518a4e2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:57:00,194 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:57:00,194 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:57:00,195 - skydiscover.search.gepa_native.controller - WARNING - Iteration 19 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:58:56,008 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:58:56,944 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0db1239b-b36d-4fb9-a5f1-d88b628942d6 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:58:56,944 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 06:58:56,945 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 07:02:02,484 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:38:06,771 - skydiscover.evaluation.evaluator - INFO - Evaluated program 096a43ee-b7d8-4309-96ee-c75cae63a490 in 2164.28s: combined_score=1.0019, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6590.5517, cacti_node_nm=22.0000
+2026-09-24 07:38:06,771 - skydiscover.search.gepa_native.controller - INFO - Iteration 20: REJECTED child (child_score=1.0019 <= parent_score=1.0019)
+2026-09-24 07:40:06,606 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:16:06,853 - skydiscover.evaluation.evaluator - INFO - Evaluated program f0ea1389-6add-4ea7-8e3f-df8bbabad94c in 2160.24s: combined_score=0.9998, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6609.1816, cacti_node_nm=22.0000
+2026-09-24 08:16:06,853 - skydiscover.search.gepa_native.controller - INFO - Iteration 21: REJECTED child (child_score=0.9998 <= parent_score=1.0019)
+2026-09-24 08:18:44,767 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:18:45,710 - skydiscover.evaluation.evaluator - INFO - Evaluated program 074d95a4-9bb7-4132-90f6-c68196159c31 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:18:45,710 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:18:45,711 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 08:20:20,175 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:20:21,131 - skydiscover.evaluation.evaluator - INFO - Evaluated program 042f5506-846c-4b5f-be07-bdba7447a72f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:20:21,131 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:20:21,132 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 08:21:56,093 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:21:57,008 - skydiscover.evaluation.evaluator - INFO - Evaluated program 6d4f3b36-ec33-4d8b-8bf2-c3ff6fc8a168 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:21:57,008 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:21:57,008 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:21:57,008 - skydiscover.search.gepa_native.controller - WARNING - Iteration 22 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:23:15,610 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:23:16,025 - skydiscover.evaluation.evaluator - INFO - Evaluated program d9029865-9a09-4f29-aee7-cee2fcf6e7d2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:23:16,025 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:23:16,025 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 08:25:50,766 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:25:50,886 - skydiscover.evaluation.evaluator - INFO - Evaluated program c19c2187-03f5-4368-931c-d58146f29132 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:25:50,887 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 08:25:50,887 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 08:28:17,022 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:04:09,206 - skydiscover.evaluation.evaluator - INFO - Evaluated program 756e8858-ba5f-4d2d-8968-cbf674f4284c in 2152.18s: combined_score=1.0022, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6591.3275, cacti_node_nm=22.0000
+2026-09-24 09:04:09,206 - skydiscover.search.default_discovery_controller - INFO - Iteration 23: Program 756e8858-ba5f-4d2d-8968-cbf674f4284c (parent: d5441ddb-065b-4054-af95-23b0c3d8f86c) completed in 2532.20s (llm: 146.14s, eval: 2152.18s)
+2026-09-24 09:04:09,206 - skydiscover.search.default_discovery_controller - INFO - Metrics: combined_score=1.0022, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6591.3275, cacti_node_nm=22.0000
+2026-09-24 09:04:09,206 - skydiscover.search.default_discovery_controller - INFO - 🌟 New best solution found at iteration 23
+2026-09-24 09:04:09,206 - skydiscover.search.gepa_native.controller - INFO - Iteration 24: Attempting merge (stagnation=0, attempt=2/10, scores: 1.0022, 1.0000)
+2026-09-24 09:04:42,545 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:04:42,851 - skydiscover.evaluation.evaluator - INFO - Evaluated program cb25340f-5790-4d37-80af-6ebcc0655041 in 0.30s: combined_score=1.0022, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6591.3275, cacti_node_nm=22.0000
+2026-09-24 09:04:42,851 - skydiscover.search.gepa_native.controller - INFO - Iteration 24: Merge completed (llm: 33.34s, eval: 0.30s)
+2026-09-24 09:04:42,851 - skydiscover.search.gepa_native.controller - INFO - Merge ACCEPTED: score=1.0022 (>= max(1.0022, 1.0000))
+2026-09-24 09:05:42,443 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:05:42,452 - skydiscover.evaluation.evaluator - INFO - Evaluated program f6e90ef6-350b-4802-915e-3934f5bf520d in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 09:05:42,452 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 09:05:42,453 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 09:08:41,504 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:44:52,629 - skydiscover.evaluation.evaluator - INFO - Evaluated program c8b6525d-fc23-443c-a664-4226e3649087 in 2171.12s: combined_score=1.0020, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6593.0675, cacti_node_nm=22.0000
+2026-09-24 09:44:52,629 - skydiscover.search.gepa_native.controller - INFO - Iteration 24: REJECTED child (child_score=1.0020 <= parent_score=1.0022)
+2026-09-24 09:46:43,322 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:46:44,179 - skydiscover.evaluation.evaluator - INFO - Evaluated program a4ab98e7-60bf-4437-82ac-a689a418807a in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 09:46:44,179 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 09:46:44,180 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 09:49:18,002 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:25:11,764 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4668b16b-1bd8-4baf-be89-f7bd0b019b1b in 2153.76s: combined_score=1.0020, status=ok, metadata_kb=46.8750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8125, metadata_area_mm2=0.0394, metadata_energy_uj=6582.5159, cacti_node_nm=22.0000
+2026-09-24 10:25:11,765 - skydiscover.search.gepa_native.controller - INFO - Iteration 25: REJECTED child (child_score=1.0020 <= parent_score=1.0022)
+2026-09-24 10:27:13,280 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:27:14,240 - skydiscover.evaluation.evaluator - INFO - Evaluated program 23b9df7c-84f9-4505-8fcb-8267fdec7b22 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:27:14,240 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:27:14,241 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:30:06,761 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:30:06,891 - skydiscover.evaluation.evaluator - INFO - Evaluated program 89e77a62-b236-43b6-9490-2c661f48ea90 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:30:06,891 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:30:06,892 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:31:53,009 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:31:53,756 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7a5dc515-db7e-46dc-9fd0-799d6b1ea326 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:31:53,757 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:31:53,757 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:31:53,757 - skydiscover.search.gepa_native.controller - WARNING - Iteration 26 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:33:31,782 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:33:32,704 - skydiscover.evaluation.evaluator - INFO - Evaluated program 6ac011f6-e239-469b-82c2-cc4f81b743b2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:33:32,704 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:33:32,705 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:34:23,133 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:34:23,151 - skydiscover.evaluation.evaluator - INFO - Evaluated program d35e9fd7-ac89-4167-9ca0-dbdff052440d in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:34:23,152 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:34:23,152 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:36:37,408 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:36:37,485 - skydiscover.evaluation.evaluator - INFO - Evaluated program f666bab7-c557-4cf1-9215-af3e32dd9798 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:36:37,485 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:36:37,485 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:36:37,486 - skydiscover.search.gepa_native.controller - WARNING - Iteration 27 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:37:24,381 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:37:24,418 - skydiscover.evaluation.evaluator - INFO - Evaluated program c7d5f454-85be-484e-8bde-e60efc50d78e in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): NEW_WORDS
+2026-09-24 10:37:24,418 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): NEW_WORDS
+2026-09-24 10:37:24,419 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:39:57,536 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:39:58,367 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4541a37d-a48a-4b37-b943-d188f781c49c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:39:58,368 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:39:58,368 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:42:27,945 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:42:28,896 - skydiscover.evaluation.evaluator - INFO - Evaluated program 1f324833-4544-4383-b939-f609103f810b in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:42:28,896 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:42:28,896 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:42:28,896 - skydiscover.search.gepa_native.controller - WARNING - Iteration 28 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:43:51,536 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:43:52,479 - skydiscover.evaluation.evaluator - INFO - Evaluated program 46b65bdc-6e7d-4107-b40f-761d9c019f3c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:43:52,479 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:43:52,480 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:45:35,692 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:45:36,634 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4ea0689a-4b6c-4b8a-b6d0-9480e4d1ef2d in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:45:36,634 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:45:36,635 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:47:04,896 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:47:05,807 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4ec61e55-5e00-4eff-b7aa-bdce1ebd18b8 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:47:05,807 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:47:05,807 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:47:05,808 - skydiscover.search.gepa_native.controller - WARNING - Iteration 29 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:47:59,800 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:47:59,911 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0009b129-11f2-44ff-87ed-4ae7e0b0d606 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:47:59,911 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:47:59,912 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:48:38,281 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:48:38,292 - skydiscover.evaluation.evaluator - INFO - Evaluated program 62446886-7880-4898-934c-a2bd664d372b in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:48:38,292 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:48:38,293 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:50:24,014 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:50:24,957 - skydiscover.evaluation.evaluator - INFO - Evaluated program 33df7487-bea5-487f-a9e4-1e4836c0a908 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:50:24,958 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:50:24,958 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:50:24,958 - skydiscover.search.gepa_native.controller - WARNING - Iteration 30 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:52:31,691 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:52:31,770 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9744654c-f69b-410e-812a-31e709607b00 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:52:31,770 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:52:31,771 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:54:47,436 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:54:48,373 - skydiscover.evaluation.evaluator - INFO - Evaluated program d4653f0c-309a-48ae-a37e-756a336ca68f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:54:48,374 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:54:48,374 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:56:18,541 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:56:18,620 - skydiscover.evaluation.evaluator - INFO - Evaluated program c2c669da-9d52-4dd4-a96e-1e951480727a in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:56:18,620 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:56:18,620 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:56:18,620 - skydiscover.search.gepa_native.controller - WARNING - Iteration 31 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 10:56:56,651 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 10:56:56,652 - openai._base_client - INFO - Retrying request to /chat/completions in 0.472376 seconds
+2026-09-24 10:57:42,256 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:57:42,340 - skydiscover.evaluation.evaluator - INFO - Evaluated program f3c53eba-0a15-4dbb-8e16-f23d472b7eec in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:57:42,340 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:57:42,341 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 10:58:40,669 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:58:40,928 - skydiscover.evaluation.evaluator - INFO - Evaluated program b74b3054-3031-4fd2-9aa2-535fa1653736 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<actual valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:58:40,928 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<actual valid YAML structure description>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 10:58:40,929 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 10:58:44,508 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 10:58:44,509 - openai._base_client - INFO - Retrying request to /chat/completions in 0.476961 seconds
+2026-09-24 11:00:32,299 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:37:01,741 - skydiscover.evaluation.evaluator - INFO - Evaluated program 81484834-ab74-4b10-a351-60612cf1073a in 2189.44s: combined_score=0.9983, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6612.1348, cacti_node_nm=22.0000
+2026-09-24 11:37:01,741 - skydiscover.search.gepa_native.controller - INFO - Iteration 32: REJECTED child (child_score=0.9983 <= parent_score=1.0022)
+2026-09-24 11:38:01,410 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:38:01,704 - skydiscover.evaluation.evaluator - INFO - Evaluated program e9e7796e-507b-4198-87a0-d922567c7bf6 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 11:38:01,704 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 11:38:01,705 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 11:40:04,923 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:40:05,869 - skydiscover.evaluation.evaluator - INFO - Evaluated program abc923e0-9edd-4bfc-a69d-6c332bd69200 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 11:40:05,870 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 11:40:05,870 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 11:40:33,400 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:40:33,414 - skydiscover.evaluation.evaluator - INFO - Evaluated program 73c69d20-a8c2-4432-8669-3a8650057a19 in 0.01s: combined_score=0.0000, status=schema_rejected, error=8 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Input should be a valid dictionary or instance of VictimSelector [type=model_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+signatures
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+tables
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+samplers
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+procedures
+  Input should be a valid dictionary [type=dict_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+on_hit
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+on_fill
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+2026-09-24 11:40:33,415 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=8 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Input should be a valid dictionary or instance of VictimSelector [type=model_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+signatures
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+tables
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+samplers
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+procedures
+  Input should be a valid dictionary [type=dict_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+on_hit
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+on_fill
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+2026-09-24 11:40:33,415 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 8 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Input should be a valid dictionary or instance of VictimSelector [type=model_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+signatures
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+tables
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+samplers
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+procedures
+  Input should be a valid dictionary [type=dict_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+on_hit
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+on_fill
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+2026-09-24 11:40:33,415 - skydiscover.search.gepa_native.controller - WARNING - Iteration 33 failed: Evaluator failed after 3 attempts: 8 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Input should be a valid dictionary or instance of VictimSelector [type=model_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+signatures
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+tables
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+samplers
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+procedures
+  Input should be a valid dictionary [type=dict_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+on_hit
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+on_fill
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+2026-09-24 11:42:01,720 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:42:02,433 - skydiscover.evaluation.evaluator - INFO - Evaluated program 76c6c9b8-cfde-4064-84ab-22a7cf407c99 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 11:42:02,434 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 11:42:02,434 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 11:44:30,291 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:21:00,982 - skydiscover.evaluation.evaluator - INFO - Evaluated program f1b24a49-a323-4169-a6c3-bf1f2cbd6c8d in 2190.69s: combined_score=0.9997, status=ok, metadata_kb=47.8750, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9792, metadata_area_mm2=0.0413, metadata_energy_uj=6797.3879, cacti_node_nm=22.0000
+2026-09-24 12:21:00,982 - skydiscover.search.gepa_native.controller - INFO - Iteration 34: REJECTED child (child_score=0.9997 <= parent_score=1.0022)
+2026-09-24 12:22:45,783 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:58:15,664 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9f01179b-00c6-4134-bb73-92de8c666935 in 2129.88s: combined_score=1.0038, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6715.5231, cacti_node_nm=22.0000
+2026-09-24 12:58:15,664 - skydiscover.search.default_discovery_controller - INFO - Iteration 35: Program 9f01179b-00c6-4134-bb73-92de8c666935 (parent: 756e8858-ba5f-4d2d-8968-cbf674f4284c) completed in 2234.68s (llm: 104.80s, eval: 2129.88s)
+2026-09-24 12:58:15,664 - skydiscover.search.default_discovery_controller - INFO - Metrics: combined_score=1.0038, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6715.5231, cacti_node_nm=22.0000
+2026-09-24 12:58:15,664 - skydiscover.search.default_discovery_controller - INFO - 🌟 New best solution found at iteration 35
+2026-09-24 12:58:15,664 - skydiscover.search.gepa_native.controller - INFO - Iteration 36: Attempting merge (stagnation=0, attempt=3/10, scores: 1.0038, 1.0000)
+2026-09-24 12:58:42,998 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:58:43,415 - skydiscover.evaluation.evaluator - INFO - Evaluated program 074e5599-ec17-491d-b0cf-7a894a811e94 in 0.41s: combined_score=1.0038, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6715.5231, cacti_node_nm=22.0000
+2026-09-24 12:58:43,415 - skydiscover.search.gepa_native.controller - INFO - Iteration 36: Merge completed (llm: 27.34s, eval: 0.42s)
+2026-09-24 12:58:43,415 - skydiscover.search.gepa_native.controller - INFO - Merge ACCEPTED: score=1.0038 (>= max(1.0038, 1.0000))
+2026-09-24 13:00:19,902 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:00:20,855 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5d253150-0b21-43a7-8a09-b47b129328ac in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 13:00:20,855 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 13:00:20,856 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 13:00:57,724 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:00:57,743 - skydiscover.evaluation.evaluator - INFO - Evaluated program 23e161d1-e878-4053-8942-6e17168b62e4 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 13:00:57,743 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 13:00:57,744 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 13:04:05,671 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:41:13,855 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0f8520e6-0d76-49ff-924c-ccb9ca821ff1 in 2228.18s: combined_score=1.0039, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6714.7822, cacti_node_nm=22.0000
+2026-09-24 13:41:13,856 - skydiscover.search.default_discovery_controller - INFO - Iteration 36: Program 0f8520e6-0d76-49ff-924c-ccb9ca821ff1 (parent: 9f01179b-00c6-4134-bb73-92de8c666935) completed in 2550.44s (llm: 187.93s, eval: 2228.18s)
+2026-09-24 13:41:13,856 - skydiscover.search.default_discovery_controller - INFO - Metrics: combined_score=1.0039, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6714.7822, cacti_node_nm=22.0000
+2026-09-24 13:41:13,856 - skydiscover.search.default_discovery_controller - INFO - 🌟 New best solution found at iteration 36
+2026-09-24 13:41:13,856 - skydiscover.search.gepa_native.controller - INFO - Iteration 37: Attempting merge (stagnation=0, attempt=4/10, scores: 1.0039, 1.0022)
+2026-09-24 13:41:33,543 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:41:34,031 - skydiscover.evaluation.evaluator - INFO - Evaluated program f4a4bdc8-616b-47ac-a8a7-5e1dcf493344 in 0.49s: combined_score=1.0039, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6714.7822, cacti_node_nm=22.0000
+2026-09-24 13:41:34,031 - skydiscover.search.gepa_native.controller - INFO - Iteration 37: Merge completed (llm: 19.69s, eval: 0.49s)
+2026-09-24 13:41:34,031 - skydiscover.search.gepa_native.controller - INFO - Merge ACCEPTED: score=1.0039 (>= max(1.0039, 1.0022))
+2026-09-24 13:42:09,326 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:42:09,480 - skydiscover.evaluation.evaluator - INFO - Evaluated program 1fe29521-af53-4f65-88ef-a238ffde37e7 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 13:42:09,480 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 13:42:09,481 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 13:43:57,094 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:43:58,032 - skydiscover.evaluation.evaluator - INFO - Evaluated program 27bcf039-524f-44b9-949a-3f3de5337b97 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 13:43:58,033 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 13:43:58,033 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 13:45:58,870 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 14:22:49,452 - skydiscover.evaluation.evaluator - INFO - Evaluated program 93d23cbc-06de-4852-83be-53e0e8450186 in 2210.58s: combined_score=1.0039, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6715.8426, cacti_node_nm=22.0000
+2026-09-24 14:22:49,452 - skydiscover.search.gepa_native.controller - INFO - Iteration 37: REJECTED child (child_score=1.0039 <= parent_score=1.0039)
+2026-09-24 14:24:16,907 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 14:24:17,583 - skydiscover.evaluation.evaluator - INFO - Evaluated program ca5657aa-1562-44de-b6c4-4c0dd9d9b819 in 0.02s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 14:24:17,583 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 14:24:17,584 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 14:25:49,520 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 14:25:50,480 - skydiscover.evaluation.evaluator - INFO - Evaluated program d829eef0-6e3e-403c-a10a-7847013e424b in 0.02s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 14:25:50,480 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 14:25:50,481 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 14:28:17,896 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:07:08,541 - skydiscover.evaluation.evaluator - INFO - Evaluated program bad2358c-7515-4103-8917-d61bf33ea460 in 2330.64s: combined_score=1.0025, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6728.7094, cacti_node_nm=22.0000
+2026-09-24 15:07:08,541 - skydiscover.search.gepa_native.controller - INFO - Iteration 38: REJECTED child (child_score=1.0025 <= parent_score=1.0039)
+2026-09-24 15:08:26,521 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:08:27,479 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0b96a129-fa71-48b7-b41a-5bc9c668b1e5 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:08:27,480 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:08:27,480 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:10:16,778 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:10:17,313 - skydiscover.evaluation.evaluator - INFO - Evaluated program c869563b-366c-4a29-89f5-bb62c2a91b46 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:10:17,313 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:10:17,314 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 15:10:48,355 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:10:48,370 - skydiscover.evaluation.evaluator - INFO - Evaluated program f7bf92cf-9c8a-4d04-ab2e-1def3ef909ab in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:10:48,370 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:10:48,370 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:10:48,370 - skydiscover.search.gepa_native.controller - WARNING - Iteration 39 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:12:46,520 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:12:47,342 - skydiscover.evaluation.evaluator - INFO - Evaluated program bc23a4c1-edf4-41c3-a607-47b22b208605 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:12:47,342 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:12:47,343 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:12:47,835 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:12:47,836 - openai._base_client - INFO - Retrying request to /chat/completions in 0.459274 seconds
+2026-09-24 15:12:48,820 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:12:48,821 - openai._base_client - INFO - Retrying request to /chat/completions in 0.934162 seconds
+2026-09-24 15:12:50,500 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:12:50,501 - skydiscover.llm - WARNING - Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+2026-09-24 15:12:52,959 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:12:52,961 - openai._base_client - INFO - Retrying request to /chat/completions in 0.481002 seconds
+2026-09-24 15:12:54,275 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:12:54,277 - openai._base_client - INFO - Retrying request to /chat/completions in 0.854051 seconds
+2026-09-24 15:14:53,749 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:14:53,870 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0e02c294-935d-4ae0-a471-338fb314508e in 0.01s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'my_policy_name'...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'my_policy_name'...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 15:14:53,870 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'my_policy_name'...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'my_policy_name'...t changed and why...\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 15:14:53,871 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 15:16:28,195 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:16:29,135 - skydiscover.evaluation.evaluator - INFO - Evaluated program aa7646ae-d516-4961-b8af-51e856f9f53f in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML here, no placeholders>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:16:29,135 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML here, no placeholders>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:16:29,135 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML here, no placeholders>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:16:29,136 - skydiscover.search.gepa_native.controller - WARNING - Iteration 40 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<your complete YAML here, no placeholders>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:16:29,698 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:16:29,699 - openai._base_client - INFO - Retrying request to /chat/completions in 0.475677 seconds
+2026-09-24 15:16:30,760 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:16:30,761 - openai._base_client - INFO - Retrying request to /chat/completions in 0.792054 seconds
+2026-09-24 15:16:32,034 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:16:32,035 - skydiscover.llm - WARNING - Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+2026-09-24 15:18:00,528 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:18:01,468 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5b469bb2-07e8-433d-a292-8920591b85b9 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:18:01,468 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:18:01,469 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:18:52,710 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:18:52,794 - skydiscover.evaluation.evaluator - INFO - Evaluated program 48ee31da-435e-4e21-b817-76707b709f90 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:18:52,794 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:18:52,795 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 15:20:54,968 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:20:55,929 - skydiscover.evaluation.evaluator - INFO - Evaluated program 04fdbc4d-70d9-41d7-8f6e-de81b79b61f3 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:20:55,929 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:20:55,929 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:20:55,929 - skydiscover.search.gepa_native.controller - WARNING - Iteration 41 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:20:56,620 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:20:56,621 - openai._base_client - INFO - Retrying request to /chat/completions in 0.458890 seconds
+2026-09-24 15:20:57,560 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:20:57,561 - openai._base_client - INFO - Retrying request to /chat/completions in 0.852413 seconds
+2026-09-24 15:20:59,070 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:20:59,071 - skydiscover.llm - WARNING - Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+2026-09-24 15:22:32,069 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:22:33,017 - skydiscover.evaluation.evaluator - INFO - Evaluated program b5d82526-001a-418d-84e4-6d99e281cfa3 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:22:33,017 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:22:33,018 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:22:33,927 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:22:33,928 - openai._base_client - INFO - Retrying request to /chat/completions in 0.383172 seconds
+2026-09-24 15:22:34,931 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:22:34,932 - openai._base_client - INFO - Retrying request to /chat/completions in 0.904485 seconds
+2026-09-24 15:22:36,430 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:22:36,431 - skydiscover.llm - WARNING - Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+2026-09-24 15:24:56,324 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:24:56,412 - skydiscover.evaluation.evaluator - INFO - Evaluated program dfead056-ce10-405d-80df-87b95c593d83 in 0.01s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...why.\n', 'state': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 15:24:56,412 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=2 validation errors for StructureDescription
+state
+  Input should be a valid list [type=list_type, input_value='...', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Field required [type=missing, input_value={'name': 'your_policy_nam...why.\n', 'state': '...'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+2026-09-24 15:24:56,413 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 15:25:57,195 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-09-24 15:25:57,196 - openai._base_client - INFO - Retrying request to /chat/completions in 0.384846 seconds
+2026-09-24 15:27:47,731 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:27:47,851 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5eed4542-f5f3-4862-97c6-6abb65a6ca51 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:27:47,851 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:27:47,851 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:27:47,852 - skydiscover.search.gepa_native.controller - WARNING - Iteration 42 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:27:48,441 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:27:48,442 - openai._base_client - INFO - Retrying request to /chat/completions in 0.381005 seconds
+2026-09-24 15:27:49,281 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:27:49,282 - openai._base_client - INFO - Retrying request to /chat/completions in 0.763678 seconds
+2026-09-24 15:27:50,538 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 15:27:50,540 - skydiscover.llm - WARNING - Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+2026-09-24 15:29:32,566 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:29:33,501 - skydiscover.evaluation.evaluator - INFO - Evaluated program c79b92ff-8a02-4d73-ac29-def346881758 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:29:33,501 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:29:33,502 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:32:03,018 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:32:03,987 - skydiscover.evaluation.evaluator - INFO - Evaluated program 07166212-f322-4c91-b044-d33783891643 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:32:03,987 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:32:03,988 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 15:34:09,283 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:34:09,366 - skydiscover.evaluation.evaluator - INFO - Evaluated program 10ee746b-e7c4-4ce3-bd50-6cc567aa6d8e in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:34:09,366 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:34:09,366 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:34:09,367 - skydiscover.search.gepa_native.controller - WARNING - Iteration 43 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:35:40,237 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:35:41,176 - skydiscover.evaluation.evaluator - INFO - Evaluated program 2fa71be1-ce8a-4ecc-97c8-1af9cd31fa0c in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:35:41,176 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:35:41,177 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:37:04,967 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:37:05,054 - skydiscover.evaluation.evaluator - INFO - Evaluated program dbdec679-14fb-4cf0-8305-fa9725151aa4 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:37:05,054 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:37:05,055 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 15:38:39,836 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:38:39,919 - skydiscover.evaluation.evaluator - INFO - Evaluated program 87c30007-8c3c-470b-8d68-69556a0554ab in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:38:39,919 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:38:39,919 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:38:39,919 - skydiscover.search.gepa_native.controller - WARNING - Iteration 44 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 15:41:14,874 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 15:41:15,822 - skydiscover.evaluation.evaluator - INFO - Evaluated program def884bc-e16e-4e5a-b234-9711c15f9422 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:41:15,822 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 15:41:15,823 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 15:43:35,099 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 16:20:37,928 - skydiscover.evaluation.evaluator - INFO - Evaluated program c0b926d3-c4d6-4483-96ea-d6ec49773d3c in 2222.82s: combined_score=1.0022, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6734.9495, cacti_node_nm=22.0000
+2026-09-24 16:20:37,928 - skydiscover.search.gepa_native.controller - INFO - Iteration 45: REJECTED child (child_score=1.0022 <= parent_score=1.0039)
+2026-09-24 16:21:36,474 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 16:21:36,475 - openai._base_client - INFO - Retrying request to /chat/completions in 0.425801 seconds
+2026-09-24 16:23:06,761 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 16:23:06,776 - skydiscover.evaluation.evaluator - INFO - Evaluated program 88acd0cd-8d50-4290-81ca-cd083ffe8767 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 16:23:06,776 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 16:23:06,776 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 16:24:39,251 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 16:24:40,192 - skydiscover.evaluation.evaluator - INFO - Evaluated program ea1b38a9-f695-4004-8fc5-37840a467914 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 16:24:40,192 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 16:24:40,193 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 16:27:40,640 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:03:12,294 - skydiscover.evaluation.evaluator - INFO - Evaluated program fc752c22-9e29-4a9d-8f4f-b66f581f1162 in 2131.65s: combined_score=1.0001, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0382, metadata_energy_uj=6735.9649, cacti_node_nm=22.0000
+2026-09-24 17:03:12,295 - skydiscover.search.gepa_native.controller - INFO - Iteration 46: REJECTED child (child_score=1.0001 <= parent_score=1.0039)
+2026-09-24 17:04:26,602 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:04:27,526 - skydiscover.evaluation.evaluator - INFO - Evaluated program 659cb78e-ceca-4d0f-a479-f8019b53b192 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:04:27,526 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:04:27,527 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 17:04:28,984 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 17:04:28,985 - openai._base_client - INFO - Retrying request to /chat/completions in 0.380889 seconds
+2026-09-24 17:06:05,578 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:06:06,529 - skydiscover.evaluation.evaluator - INFO - Evaluated program b11ed12c-1319-4d32-9c22-6f72c4e89699 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:06:06,530 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:06:06,530 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 17:07:45,361 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:07:45,447 - skydiscover.evaluation.evaluator - INFO - Evaluated program e862ba4c-5715-49e0-82cd-d755fc07bd52 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:07:45,447 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:07:45,447 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:07:45,448 - skydiscover.search.gepa_native.controller - WARNING - Iteration 47 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:09:35,539 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:09:36,514 - skydiscover.evaluation.evaluator - INFO - Evaluated program d054cb39-8764-4b9b-b0f2-57ee2dc6b9ec in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:09:36,514 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:09:36,515 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 17:12:34,573 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:12:35,080 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0023f1c4-4141-4431-ad4f-45cd079650c2 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:12:35,080 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:12:35,081 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 17:14:56,996 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:14:57,073 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4f4e1301-80e0-4200-9c9c-ce5330a0bbc4 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:14:57,073 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:14:57,073 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:14:57,073 - skydiscover.search.gepa_native.controller - WARNING - Iteration 48 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:17:22,815 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:17:23,410 - skydiscover.evaluation.evaluator - INFO - Evaluated program 612c5d85-917e-461b-ab2d-8f03225c2198 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:17:23,410 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:17:23,411 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 17:19:40,057 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:19:40,132 - skydiscover.evaluation.evaluator - INFO - Evaluated program ecf2a344-2ab6-47fe-b2ad-a33391335992 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:19:40,132 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:19:40,133 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 17:24:15,125 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-24 17:24:15,126 - openai._base_client - INFO - Retrying request to /chat/completions in 0.414519 seconds
+2026-09-24 17:26:08,924 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:26:09,015 - skydiscover.evaluation.evaluator - INFO - Evaluated program adf4e3f1-bd9f-44cf-a9bd-122071cd5a28 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:26:09,015 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:26:09,015 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:26:09,015 - skydiscover.search.gepa_native.controller - WARNING - Iteration 49 failed: Evaluator failed after 3 attempts: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:27:39,200 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:27:40,146 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9feb87a7-215f-48f7-acb3-74da51704527 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:27:40,146 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:27:40,147 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 17:29:41,866 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:29:41,942 - skydiscover.evaluation.evaluator - INFO - Evaluated program 96ff7334-f4aa-4086-aa7c-8f8df9f699e5 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:29:41,942 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 17:29:41,943 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 17:31:09,773 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:31:09,896 - skydiscover.evaluation.evaluator - INFO - Evaluated program fbc40b8d-cfe3-4053-9f2c-a779b6367185 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:31:09,896 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 3/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:31:09,896 - skydiscover.search.default_discovery_controller - ERROR - All 3 retry attempts failed. Final error: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:31:09,896 - skydiscover.search.gepa_native.controller - WARNING - Iteration 50 failed: Evaluator failed after 3 attempts: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:33:18,331 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 17:33:19,293 - skydiscover.evaluation.evaluator - INFO - Evaluated program 372483f4-01df-42c2-bdd9-bee5d3ec3b47 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:33:19,293 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 17:33:19,294 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 17:35:36,062 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 18:11:44,309 - skydiscover.evaluation.evaluator - INFO - Evaluated program 61ca5915-07f4-4bb6-a450-5e83d1b9822d in 2168.24s: combined_score=1.0029, status=ok, metadata_kb=46.0000, metadata_flipflop_bits=7.0000, metadata_bits_per_line=7.6667, metadata_area_mm2=0.0399, metadata_energy_uj=6489.3252, cacti_node_nm=22.0000
+2026-09-24 18:11:44,310 - skydiscover.search.gepa_native.controller - INFO - Iteration 51: REJECTED child (child_score=1.0029 <= parent_score=1.0039)
+2026-09-24 18:14:29,037 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 18:14:29,991 - skydiscover.evaluation.evaluator - INFO - Evaluated program db0e28fc-eaa3-4fdb-9cf4-038b2e45894b in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 18:14:29,991 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 1/3): validity=None, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-09-24 18:14:29,992 - skydiscover.search.default_discovery_controller - INFO - Retry 2/3: rebuilding prompt with 1 failed attempt(s)
+2026-09-24 18:16:09,839 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 18:16:09,924 - skydiscover.evaluation.evaluator - INFO - Evaluated program 811e8907-990e-40c4-a15a-54e41b70cec4 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 18:16:09,925 - skydiscover.search.default_discovery_controller - WARNING - Evaluation failed (attempt 2/3): validity=None, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+2026-09-24 18:16:09,925 - skydiscover.search.default_discovery_controller - INFO - Retry 3/3: rebuilding prompt with 2 failed attempt(s)
+2026-09-24 18:18:21,777 - httpx - INFO - HTTP Request: POST https://aiplatform.googleapis.com/v1/projects/project-bf06ec8f-158e-49cc-ae2/locations/global/endpoints/openapi/chat/completions "HTTP/1.1 200 OK"

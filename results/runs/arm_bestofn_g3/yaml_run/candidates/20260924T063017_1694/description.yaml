@@ -1,0 +1,15 @@
+name: my_policy
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: my_state
+    scope: per_line
+    kind: counter
+    width: 2
+    init: 0
+victim:
+  key: my_state
+  extremum: max
+  tie_break: first
+on_fill:
+  - set: {my_state: {const: 0}}

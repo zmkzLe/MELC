@@ -1,0 +1,15 @@
+name: your_policy_name
+doc: >
+  Your prose description here.
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+  # ... fully define all other state fields ...
+victim:
+  key: example_state
+  extremum: max
+  # ... fully define all other victim fields ...
+# ... fully define all other sections (signatures, tables, samplers, procedures, etc.) ...

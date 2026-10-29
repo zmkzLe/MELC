@@ -1,0 +1,29 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <policy_name>
+doc: >
+  <Explanation of what changed, why, and how it addresses MIN headroom/mistakes>
+
+state:
+  ...
+victim:
+  ...
+signatures:
+  ...
+tables:
+  ...
+samplers:
+  ...
+procedures:
+  ...
+on_hit:
+  ...
+on_fill:
+  ...
+===== NEW_WORDS =====
+
+- name: bypass_is_safe
+  place: condition
+  params: {reject_table: table, sig: signature}
+  means: >
+    Reads the entry of the reject_table at the index sig. Returns true if the entry's value is less
+    than 2, and false otherwise. Nothing is written.

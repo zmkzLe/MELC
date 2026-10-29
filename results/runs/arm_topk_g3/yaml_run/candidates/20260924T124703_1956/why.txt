@@ -1,0 +1,17 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 5 validation errors for StructureDescription
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<your_policy_name>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+state.0.name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<field_name>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+state.0.width
+  Field required [type=missing, input_value={'name': '<field_name>'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+state.0.scope
+  Field required [type=missing, input_value={'name': '<field_name>'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': '<your_policy_na...name': '<field_name>'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your detailed explanation of the policy changes...
+state:
+  - name: your_state_field
+    # YOUR ACTUAL STATE FIELDS HERE
+victim:
+  key: your_key
+  # YOUR ACTUAL VICTIM SELECTION LOGIC HERE
+# ... YOUR ACTUAL COMPLETE YAML FOR THE REST OF THE POLICY ...
+===== NEW_WORDS =====
+
+# YOUR ACTUAL NEW WORDS (OR EMPTY IF NONE)

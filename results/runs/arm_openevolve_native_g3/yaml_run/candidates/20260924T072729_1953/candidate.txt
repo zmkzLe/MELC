@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOU MUST WRITE THE FULL, COMPLETE YAML POLICY HERE.
+# DO NOT USE PLACEHOLDERS. DO NOT TRUNCATE.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

@@ -1,0 +1,17 @@
+# Write the COMPLETE, valid YAML structure description here.
+# DO NOT output placeholder text.
+# You MUST include 'name', 'doc', 'state', and 'victim' at the top level.
+name: my_policy
+doc: >
+  Explanation of what changed and why...
+state:
+  - name: example_state
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_state
+  extremum: max
+  tie_break: first
+# ... (rest of your actual valid YAML configuration, replacing Mockingjay's parts as needed) ...

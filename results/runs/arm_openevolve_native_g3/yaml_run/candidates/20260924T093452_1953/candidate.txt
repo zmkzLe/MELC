@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, complete, and valid YAML structure description here.
+# You must write out all required sections (name, doc, state, victim, on_hit, on_fill, etc.).
+# DO NOT USE PLACEHOLDERS OR ABBREVIATIONS.
+===== NEW_WORDS =====
+
+# Write a YAML list of the new words the description uses, or leave empty if none.

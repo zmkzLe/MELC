@@ -1,0 +1,53 @@
+Guidance version 27, written after 279 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 4 scored design(s); best 1.00187 (+0.19% against the seed)
+- name: confident_bypass
+  place: condition
+  params:
+    conf: table
+    conf_thresh:
+      int: [0, 3]
+    index: signature
+    rdp: table
+    rdp_thresh:
+      int: [0, 127]
+  means: 'Reads the entry of the rdp table at the index. If it is absent, returns false. Otherwise, reads
+    the entry of the conf table at the index (treating an absent entry as 0). Returns true if the rdp
+    entry is greater than rdp_thresh and the conf entry is greater than or equal to conf_thresh.
+
+    '
+# used by 4 scored design(s); best 1.00187 (+0.19% against the seed)
+- name: train_ema
+  place: step
+  params:
+    index: signature
+    sample: state
+    scale:
+      int: [1, 4]
+    shift:
+      int: [0, 7]
+    table: table
+  means: 'Calculates a target value as the sample multiplied by the scale, clamped to the table''s maximum.
+    Reads the entry of the table at the index. If it is absent, sets it to the target value. If present,
+    computes the signed difference (target - entry), divides it by 2 to the power of shift (integer division
+    rounding towards zero), and adds the result to the entry. The final value is clamped to the table''s
+    minimum (0) and maximum.
+
+    '
+# used by 4 scored design(s); best 1.00187 (+0.19% against the seed)
+- name: train_penalty
+  place: step
+  params:
+    index: signature
+    penalty:
+      int: [1, 127]
+    table: table
+  means: Reads the entry of the table at the index. If it is absent, sets it to the table's maximum. If
+    present, adds the penalty to the entry, clamping the result to the table's maximum.
+Names also taken (declared by a design not scored yet, or not shown above): penalize_wrong_bypass
+
+Refused among the last 10 candidates, and why: malformed 2 (candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS). schema_rejected 7 (state Field required (written: {'name': 'your_policy_nam...hat changed and why.\n'}) victim Field required (written: {'name': 'your_policy_nam...hat changed and why.\n'}); Input should be a valid dictionary or instance of StructureDescription (written: None); Input should be a valid dictionary or instance of StructureDescription (written: '<the structure description, YAML>'))
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 10 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<Write the FULL, COMPLET...must be fully defined.>'); 10 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 3 times (schema_rejected): state Field required (written: {'name': 'your_policy_nam...hat changed and why.\n'}) victim Field required (written: {'name': 'your_policy_nam...hat changed and why.\n'})
+
+Changes to samplers, tables, victim.bypass_when, and new_words paid off, while modifications to victim.tie_break, state, victim.key, victim.on_search, on_fill, on_hit, victim.extremum, procedures, signatures, and procedures.access lost. Stop submitting malformed candidates that omit the STRUCTURE_DESCRIPTION and NEW_WORDS sections, and stop causing schema rejections by outputting placeholder text like '<the structure description, YAML>' instead of the actual YAML or by omitting required fields like state and victim. The trace with the most headroom is 627.cam4_s-573B at 52.4 percent, where the largest mistake is should_bypass, so the policy should remember which signatures see no reuse and decide to bypass them. On 605.mcf_s-1644B, 619.lbm_s-2677B, 459.GemsFDTD-1491B, and 433.milc-127B, the largest mistake is wrong_bypass, meaning the policy must remember when bypassed lines are prematurely requested and decide to insert them instead. On 657.xz_s-2302B, the primary mistake is kept_dead, requiring the policy to remember long-term reuse patterns to decide to evict dead lines sooner. To address the severe wrong_bypass mistakes, declare a new word to express a step that dynamically penalizes bypassing when a signature causes premature requests, which the existing vocabulary cannot currently express.

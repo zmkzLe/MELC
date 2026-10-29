@@ -1,0 +1,15 @@
+name: your_policy_name
+doc: >
+  A clear explanation of your policy and what changed.
+state:
+  - name: example_field
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+# ... (rest of the complete YAML, NO placeholders!)
+victim:
+  key: example_field
+  extremum: max_magnitude
+  tie_break: prefer_negative
+# ... (rest of the complete YAML, NO placeholders!)

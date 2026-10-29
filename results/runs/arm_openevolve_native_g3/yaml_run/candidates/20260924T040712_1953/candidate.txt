@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_design
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+# ... (continue writing the rest of your FULL, valid YAML dictionary)
+===== NEW_WORDS =====
+
+# ... (write your YAML list of new words here, or leave empty if none)

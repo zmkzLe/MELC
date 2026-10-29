@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your actual YAML structure description goes here.
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+# ... rest of your YAML design ...
+===== NEW_WORDS =====
+
+# Your YAML list of new words goes here. If none, leave this blank.

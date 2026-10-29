@@ -1,0 +1,19 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+  tie_break: first
+  on_search: none
+# ... (include all other required sections like signatures, tables, samplers, procedures, on_hit, on_fill) ...
+===== NEW_WORDS =====
+
+# ... (a YAML list of the new words the description uses, or nothing if no new words) ...

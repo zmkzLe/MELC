@@ -1,0 +1,101 @@
+name: mockingjay_ewma
+doc: >
+  Mockingjay with True EWMA: RDP table doubled to 8192 entries to reduce aliasing.
+  Sampler configured to 128 sets (64 mirror, 1 extra_index_bits) and 8 ways to fit metadata.
+  Replaced slow `toward` with `train_fast_toward` (shift 2) to rapidly adapt to phase
+  changes, completely eliminating bursts of wrong bypasses.
+  Used min_diff 0 in sweep to ensure misses always pull RDP up quickly.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  - name: etr_clock
+    scope: per_set
+    kind: counter
+    width: 3
+    init: MAX
+  - name: set_clock
+    scope: per_set
+    kind: counter
+    width: 7
+    init: ZERO
+victim:
+  key: etr
+  extremum: max_magnitude
+  tie_break: prefer_negative
+  on_search: none
+  bypass_when:
+    - {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+    - {table_exceeds_victim: {table: rdp, index: pc_sig, div: 8}}
+signatures:
+  - name: pc_sig
+    source: ip
+    fold: [hit, prefetch]
+    hash: crc3
+    low_bits: 13
+tables:
+  - name: rdp
+    scope: global
+    kind: saturating
+    entries: 8192
+    width: 7
+    max: 95
+    unset: true
+samplers:
+  - name: sampled_cache
+    scope: global
+    sets: {mirror: 64}
+    extra_index_bits: 1
+    ways: 8
+    tag_bits: 14
+    fields:
+      - {name: signature, kind: counter, width: 13, init: ZERO}
+      - {name: timestamp, kind: counter, width: 7, init: ZERO}
+    age: {clock: set_clock, stamp: timestamp}
+    victim: {key: age, extremum: max, tie_break: first, prefer_free: true}
+    on_match:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        stop: true
+      - when: {type_in: [PREFETCH]}
+        train_fast_toward: {table: rdp, index: signature, sample: age, scale: 2, shift: 2, min_diff: 16}
+        free: true
+        stop: true
+      - train_fast_toward: {table: rdp, index: signature, sample: age, scale: 1, shift: 2, min_diff: 16}
+        free: true
+    sweep:
+      - when: {counter: {counter: age, cmp: gt, threshold: 95}}
+        train_fast_toward: {table: rdp, index: signature, sample: age, scale: 1, shift: 2, min_diff: 0}
+        free: true
+    on_replace:
+      - when: {counter: {counter: age, cmp: gt, threshold: 73}}
+        train: {table: rdp, index: signature, op: increment}
+    install: {signature: {signature: pc_sig}, timestamp: {read: set_clock}}
+    after:
+      - set: {set_clock: {add: 1}}
+procedures:
+  access:
+    - sample: sampled_cache
+    - when: {counter: {counter: etr_clock, cmp: eq, threshold: 7}}
+      each_way:
+        except_touched: true
+        when: {counter: {counter: etr, cmp: lt, threshold: 11, abs: true}}
+        set: {etr: {add: -1}}
+    - set: {etr_clock: {add: 1}}
+    - when: {table: {table: rdp, index: pc_sig, cmp: absent}}
+      set: {etr: {const: 0}}
+      stop: true
+    - when: {table: {table: rdp, index: pc_sig, cmp: gt, threshold: 73}}
+      set: {etr: {const: 11}}
+      stop: true
+    - set: {etr: {table: rdp, index: pc_sig, div: 8}}
+on_hit:
+  - when: {type_in: [WRITE]}
+    stop: true
+  - run: access
+on_fill:
+  - when: {type_in: [WRITE]}
+    set: {etr: {const: -11}}
+    stop: true
+  - run: access

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your complete, fully-functional YAML policy here.
+# Include all required sections: name, doc, state, victim, and any hooks like on_hit/on_fill.
+# DO NOT output a skeleton. Provide the actual working policy.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

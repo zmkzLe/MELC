@@ -1,0 +1,2 @@
+Candidate 1aa620f84e2e FAILED at words_refused; it was not scored.
+Reason: apply_penalty: already declared in this run with another definition; a word is never changed, so declare a new name

@@ -1,0 +1,9 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation here.
+# Include ALL required sections: state, victim, signatures, tables, etc.
+# Write the FULL configuration. Do not use placeholders or omit anything.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or leave empty.

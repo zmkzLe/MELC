@@ -1,0 +1,1 @@
+===== STRUCTURE_DESCRIPTION =====` followed by complete YAML, and `===== NEW_WORDS =====

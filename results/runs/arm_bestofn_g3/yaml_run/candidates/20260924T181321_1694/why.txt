@@ -1,0 +1,2 @@
+Candidate 217a8bbc20a7 FAILED at words_refused; it was not scored.
+Reason: bypass_is_safe: already declared in this run with another definition; a word is never changed, so declare a new name

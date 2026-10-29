@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <your_design_name>
+doc: >
+  <one line saying what changed and why>
+state:
+  - name: ...
+# ... complete, valid YAML definition of the policy ...
+===== NEW_WORDS =====
+
+# <a YAML list of the new words the description uses, or nothing>

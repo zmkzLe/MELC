@@ -1,0 +1,2 @@
+===== STRUCTURE_DESCRIPTION =====`. Do not omit state, victim, signatures, tables, samplers, procedures, on_hit, or on_fill.
+4. If declaring custom primitives or using existing ones (`confident_bypass`, `train_ema`, `train_penalty`), list them verbatim with their parameters and exact operational semantics under `===== NEW_WORDS =====

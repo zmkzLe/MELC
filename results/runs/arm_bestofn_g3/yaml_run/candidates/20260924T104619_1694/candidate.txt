@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOUR COMPLETE YAML DICTIONARY HERE
+# DO NOT USE PLACEHOLDERS LIKE "<the structure description, YAML>"
+# Ensure `state` and `victim` are fully defined and not null.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing

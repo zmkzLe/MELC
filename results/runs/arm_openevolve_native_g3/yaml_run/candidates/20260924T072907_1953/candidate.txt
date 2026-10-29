@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Your COMPLETE, valid YAML structure description goes here.
+# NO PLACEHOLDERS. NO TRUNCATION.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

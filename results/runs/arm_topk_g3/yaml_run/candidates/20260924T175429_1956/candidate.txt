@@ -1,0 +1,19 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Your explanation here.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+# ... COMPLETE state definitions (NO PLACEHOLDERS) ...
+victim:
+  key: example_field
+  extremum: max
+# ... COMPLETE victim definitions (NO PLACEHOLDERS) ...
+# ... ALL OTHER REQUIRED SECTIONS (signatures, tables, samplers, procedures, etc.) ...
+===== NEW_WORDS =====
+
+# a YAML list of the new words the description uses, or empty if none

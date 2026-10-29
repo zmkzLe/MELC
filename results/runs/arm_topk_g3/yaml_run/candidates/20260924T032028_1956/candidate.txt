@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+# Replace this comment with the COMPLETE structure description in valid YAML.
+# Do NOT output placeholders like "<the structure description, YAML>".
+# The YAML MUST contain fully defined `name`, `doc`, `state`, and `victim` keys.
+# `state` MUST be a valid list of fields. `victim` MUST be a valid dictionary.
+===== NEW_WORDS =====
+
+# Replace this comment with a YAML list of new words, or leave empty if none.

@@ -1,0 +1,27 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Summary of architectural innovation and targeted error mode.
+state:
+  ...
+victim:
+  ...
+signatures:
+  ...
+tables:
+  ...
+samplers:
+  ...
+procedures:
+  ...
+on_hit:
+  ...
+on_fill:
+  ...
+===== NEW_WORDS =====
+
+- name: custom_word_name
+  place: condition  # or value, step
+  params: { ... }
+  means: >
+    Exact operational micro-semantics: exact bitwidths, clamping, and logic.

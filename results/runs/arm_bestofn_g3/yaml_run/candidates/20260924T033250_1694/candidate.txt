@@ -1,0 +1,22 @@
+===== STRUCTURE_DESCRIPTION =====
+# WRITE YOUR COMPLETE, FULLY EXPANDED YAML DICTIONARY HERE.
+# DO NOT USE PLACEHOLDERS LIKE "<the structure description>".
+# MUST include a valid `victim` field.
+# All state fields MUST have `width` and `scope` defined.
+name: your_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  - name: example
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example
+  extremum: max
+  tie_break: first
+# ... (write the FULL, valid YAML configuration here, NO PLACEHOLDERS) ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or leave empty if none

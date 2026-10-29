@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the COMPLETE YAML structure description here.
+# CRITICAL: Do NOT use placeholders. The state and victim fields MUST be fully defined.
+===== NEW_WORDS =====
+
+# Provide a YAML list of the new words the description uses, or nothing.

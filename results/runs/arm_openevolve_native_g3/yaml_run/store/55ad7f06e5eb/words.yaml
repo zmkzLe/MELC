@@ -1,0 +1,15 @@
+- name: penalize_wrong_bypass
+  place: step
+  params: {table: table, index: signature, sample: state, threshold: {int: [0, 127]}, penalty: {int: [1, 127]}}
+  means: >
+    Reads the entry of the table at the index. If it is present, greater than the
+    threshold, and the sample is less than or equal to the threshold, subtracts
+    the penalty from the entry, clamping the result to 0. Otherwise, does nothing.
+
+- name: train_penalty
+  place: step
+  params: {table: table, index: signature, penalty: {int: [1, 127]}}
+  means: >
+    Reads the entry of the table at the index. If it is absent, sets it to the
+    table's maximum. If present, adds the penalty to the entry, clamping the
+    result to the table's maximum.

@@ -1,0 +1,17 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  One line saying what changed and why.
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: example_field
+  extremum: max
+# ... (rest of your valid YAML configuration) ...
+===== NEW_WORDS =====
+
+# ... (your YAML list of new words, or nothing if no new words)

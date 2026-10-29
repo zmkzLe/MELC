@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, VALID YAML here. Do NOT use placeholders.
+name: your_policy_name
+doc: >
+  Start with one line saying what changed and why.
+state:
+# ... (continue with the FULL policy description) ...
+===== NEW_WORDS =====
+
+# Write your NEW_WORDS YAML list here. If none, leave empty.

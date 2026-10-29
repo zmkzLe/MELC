@@ -1,0 +1,21 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your complete, valid YAML design here. Do NOT use placeholders.
+name: your_policy_name
+doc: >
+  Brief explanation of what changed and why.
+state:
+  # MUST define state fields here (do not use None or leave empty)
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  # MUST define victim selection here (do not use None or leave empty)
+  key: example_field
+  extremum: max
+  tie_break: first
+# ... (other sections like on_fill, on_hit, etc.) ...
+===== NEW_WORDS =====
+
+# Write your YAML list of new words here, or leave empty if none.

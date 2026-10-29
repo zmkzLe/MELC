@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of your policy and changes.
+state:
+  # (fully defined state fields)
+victim:
+  # (fully defined victim selector)
+# (rest of the complete YAML: signatures, tables, samplers, procedures, on_hit, on_fill, etc.)
+===== NEW_WORDS =====
+
+# (a YAML list of the new words the description uses, or nothing if none)

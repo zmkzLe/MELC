@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+2. Next, your ENTIRE, fully functional YAML design.
+3. Then, the exact line: ===== NEW_WORDS =====

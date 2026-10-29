@@ -1,0 +1,13 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the FULL, complete, and valid YAML description here.
+name: your_policy_name
+doc: >
+  Explanation of what changed and why.
+state:
+  # ... full state declaration
+victim:
+  # ... full victim declaration
+# ... all other required sections (signatures, tables, samplers, procedures, etc.)
+===== NEW_WORDS =====
+
+# Provide a YAML list of new words. If none, output an empty list: []

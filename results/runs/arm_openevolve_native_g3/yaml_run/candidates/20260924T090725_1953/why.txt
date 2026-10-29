@@ -1,0 +1,2 @@
+Candidate 22aa4594f503 FAILED at words_refused; it was not scored.
+Reason: confident_bypass: already declared in this run with another definition; a word is never changed, so declare a new name

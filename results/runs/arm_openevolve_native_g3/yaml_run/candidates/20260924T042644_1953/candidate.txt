@@ -1,0 +1,3 @@
+===== STRUCTURE_DESCRIPTION =====
+<the COMPLETE structure description, YAML - NO PLACEHOLDERS! Write the full, actual policy.>
+===== NEW_WORDS =====

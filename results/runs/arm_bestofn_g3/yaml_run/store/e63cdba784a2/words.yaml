@@ -1,0 +1,6 @@
+- name: allows_bypass
+  place: condition
+  params: {target_table: table, sig: signature}
+  means: >
+    Reads the entry of target_table at the index sig. Returns true if the
+    entry's value is greater than or equal to 2, and false otherwise. Nothing is written.

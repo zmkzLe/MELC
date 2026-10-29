@@ -1,0 +1,14 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  Explain what changed...
+state:
+  - name: my_state
+    ... (FULL valid YAML, never None or empty)
+victim:
+  key: my_state
+  ... (FULL valid YAML)
+... (rest of the complete policy)
+===== NEW_WORDS =====
+
+- name: my_new_word

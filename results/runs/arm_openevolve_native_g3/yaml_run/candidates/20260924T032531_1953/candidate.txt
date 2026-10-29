@@ -1,0 +1,10 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOU MUST WRITE THE FULL, COMPLETE YAML HERE.
+# DO NOT USE PLACEHOLDERS. DO NOT OMIT SECTIONS.
+name: your_policy_name
+doc: >
+  Your detailed explanation of what changed and why.
+# WRITE ALL SECTIONS FULLY: state, victim, signatures, tables, samplers, procedures, on_hit, on_fill, etc.
+===== NEW_WORDS =====
+
+# [A YAML list of the new words the description uses, or nothing. Both marker lines must appear exactly as spelled.]

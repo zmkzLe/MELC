@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  One line saying what changed and why.
+state:
+  # FULL DEFINITION REQUIRED - NO PLACEHOLDERS
+victim:
+  # FULL DEFINITION REQUIRED - NO PLACEHOLDERS
+# ... all other required sections fully defined ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or leave blank, but the marker MUST remain

@@ -1,0 +1,2 @@
+Candidate a5e20e24858d FAILED at words_refused; it was not scored.
+Reason: duel_bypass, update_bypass_duel: already declared in this run with another definition; a word is never changed, so declare a new name

@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+  ===== NEW_WORDS =====
+
+- NEVER use placeholders, ellipsis (`...`), stub implementations, or comment blocks standing in for code (e.g., `<the structure description>`, `# rest of design here`). The policy YAML must be 100% complete, fully articulated, and syntactically valid YAML.
+- Write valid YAML structure description only (no C++).
+- A policy must NEVER bypass a fill of type WRITE.
+- The description must be <= 582 canonical lines.
+- Limit change size to <= 600 canonical lines against the baseline/parent.

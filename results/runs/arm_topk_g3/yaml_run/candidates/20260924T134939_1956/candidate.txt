@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Explanation of changes...
+state:
+... (YOUR FULL YAML HERE) ...
+===== NEW_WORDS =====

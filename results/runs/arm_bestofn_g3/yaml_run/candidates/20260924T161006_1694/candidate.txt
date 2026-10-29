@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your complete YAML structure description here.
+# Do NOT output placeholders like "<the structure description, YAML>".
+# Ensure `state` and `victim` are fully defined and not null.
+name: your_policy_name
+doc: >
+  What changed and why.
+# ... rest of your YAML ...
+===== NEW_WORDS =====
+
+# Write your YAML list of the new words the description uses, or leave empty if none.
+# Do NOT output placeholders.

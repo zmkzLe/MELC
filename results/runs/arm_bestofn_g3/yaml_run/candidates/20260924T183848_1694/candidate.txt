@@ -1,0 +1,8 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_policy_name
+doc: >
+  Explanation of what changed and why...
+# (Include ALL required fields: state, victim, signatures, tables, etc., fully defined)
+===== NEW_WORDS =====
+
+# (A YAML list of the new words the description uses, or nothing. Do not omit this marker line.)

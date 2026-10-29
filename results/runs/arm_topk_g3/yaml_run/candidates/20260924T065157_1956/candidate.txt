@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+# YOU MUST PROVIDE THE COMPLETE, VALID YAML HERE.
+# DO NOT USE PLACEHOLDERS LIKE "<the structure description, YAML>".
+# ALL REQUIRED SECTIONS (state, victim, etc.) MUST BE FULLY DEFINED.
+name: your_policy_name
+doc: >
+  Describe your changes here...
+# ... [REST OF YOUR COMPLETE YAML] ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.
+# DO NOT USE PLACEHOLDERS.

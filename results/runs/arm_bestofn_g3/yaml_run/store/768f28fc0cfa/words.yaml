@@ -1,0 +1,13 @@
+- name: is_dead
+  place: condition
+  params: {dead_table: table, sig: signature}
+  means: >
+    Reads the entry of dead_table at the index sig. Returns true if the entry's
+    value is greater than or equal to 2. False otherwise. Nothing is written.
+
+- name: is_reused
+  place: condition
+  params: {dead_table: table, sig: signature}
+  means: >
+    Reads the entry of dead_table at the index sig. Returns true if the entry's
+    value is less than 2. False otherwise. Nothing is written.

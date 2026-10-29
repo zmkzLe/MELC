@@ -1,0 +1,37 @@
+# Memory-intensive traces: LLC MPKI above 1 under LRU (ArchAgent's rule), 50M + 100M, DPC4 single core
+# one trace per benchmark, the one with the highest MPKI; second column is the set it belongs to
+# training = search and selection happen here; held-out = only for validating a promoted design
+# the split is by program family, so both suites of one program stay on the same side
+401.bzip2-277B	held-out
+403.gcc-17B	held-out
+410.bwaves-1963B	training
+429.mcf-192B	training
+433.milc-127B	training
+434.zeusmp-10B	training
+436.cactusADM-1804B	held-out
+437.leslie3d-149B	training
+445.gobmk-30B	held-out
+450.soplex-247B	training
+459.GemsFDTD-1491B	training
+462.libquantum-714B	held-out
+470.lbm-1274B	training
+471.omnetpp-188B	held-out
+473.astar-359B	held-out
+481.wrf-816B	held-out
+482.sphinx3-417B	held-out
+483.xalancbmk-127B	training
+600.perlbench_s-570B	held-out
+602.gcc_s-2226B	held-out
+603.bwaves_s-1740B	training
+605.mcf_s-1644B	training
+607.cactuBSSN_s-2421B	held-out
+619.lbm_s-2677B	training
+620.omnetpp_s-141B	held-out
+621.wrf_s-6673B	held-out
+623.xalancbmk_s-10B	training
+625.x264_s-20B	training
+627.cam4_s-573B	training
+628.pop2_s-17B	held-out
+649.fotonik3d_s-7084B	held-out
+654.roms_s-1390B	training
+657.xz_s-2302B	training

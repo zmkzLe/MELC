@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Explain what changed and why.
+state:
+  # ... fully specified state ...
+victim:
+  # ... fully specified victim ...
+# ... all other required sections ...
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or [] if none.

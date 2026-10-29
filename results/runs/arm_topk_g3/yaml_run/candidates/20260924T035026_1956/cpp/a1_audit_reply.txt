@@ -1,0 +1,76 @@
+```cpp
+===== HEADER =====
+#ifndef REPLACEMENT_@MODULE@_H
+#define REPLACEMENT_@MODULE@_H
+
+#include <cstdint>
+#include <map>
+#include <vector>
+
+#include "cache.h"
+#include "modules.h"
+
+class @MODULE@ : public champsim::modules::replacement
+{
+private:
+  // State
+  std::vector<int8_t> etr;
+  std::vector<uint8_t> etr_clock;
+
+public:
+  long NUM_SET;
+  long NUM_WAY;
+
+  explicit @MODULE@(CACHE* cache);
+
+  long find_victim(uint32_t triggering_cpu, uint64_t instr_id, long set, const champsim::cache_block* current_set, champsim::address ip,
+                   champsim::address full_addr, access_type type);
+  void update_replacement_state(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip, champsim::address victim_addr,
+                                access_type type, uint8_t hit);
+  void replacement_cache_fill(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip, champsim::address victim_addr,
+                              access_type type);
+};
+
+#endif
+===== SOURCE =====
+#include "@MODULE@.h"
+
+#include <algorithm>
+#include <cmath>
+
+#include "champsim.h"
+#include "msl/bits.h"
+
+@MODULE@::@MODULE@(CACHE* cache)
+: champsim::modules::replacement(cache), etr(cache->NUM_SET * cache->NUM_WAY, 0), etr_clock(cache->NUM_SET, 8), NUM_SET(cache->NUM_SET), NUM_WAY(cache->NUM_WAY)
+{
+}
+
+long @MODULE@::find_victim(uint32_t triggering_cpu, uint64_t instr_id, long set, const champsim::cache_block* current_set, champsim::address ip,
+                           champsim::address full_addr, access_type type)
+{
+  long victim_way = 0;
+  uint8_t max_val = 0;
+
+  for (long w = 0; w < NUM_WAY; ++w) {
+    int8_t current_val = etr.at(set * NUM_WAY + w);
+    uint8_t current_mag = std::abs(current_val);
+    if (current_mag > max_val || (current_mag == max_val && current_val < 0)) {
+      max_val = current_mag;
+      victim_way = w;
+    }
+  }
+
+  return victim_way;
+}
+
+void @MODULE@::update_replacement_state(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip,
+                                        champsim::address victim_addr, access_type type, uint8_t hit)
+{
+}
+
+void @MODULE@::replacement_cache_fill(uint32_t triggering_cpu, long set, long way, champsim::address full_addr, champsim::address ip,
+                                      champsim::address victim_addr, access_type type)
+{
+}
+```

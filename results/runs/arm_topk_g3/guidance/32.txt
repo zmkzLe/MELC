@@ -1,0 +1,17 @@
+Guidance version 32, written after 330 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 1 scored design(s); best 0.99666 (-0.33% against the seed)
+- name: check_conf
+  place: condition
+  params:
+    index: signature
+    limit:
+      int: [0, 3]
+    table: table
+  means: True when the entry of the table at the index is greater than or equal to the limit.
+
+Refused among the last 10 candidates, and why: malformed 5 (candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS). schema_rejected 3 (victim Field required (written: {'name': 'mockingjay_v2',...'width': 5, 'init': 0}]}); Input should be a valid dictionary or instance of StructureDescription (written: None); Input should be a valid dictionary or instance of StructureDescription (written: '<valid YAML structure de...teral placeholder text>')). words_refused 1 (place Field required (written: {'name': 'dynamic_bypass_confidence'}) means Field required (written: {'name': 'dynamic_bypass_confidence'}))
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 16 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 8 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<YAML structure description>')
+
+No changes have paid off yet, leaving the seed Mockingjay as the best design with a score of 1.00000, while attempts to modify the state, victim.tie_break, victim.key, victim.on_search, new_words, victim.extremum, on_fill, victim.bypass_when, on_hit, samplers, tables, procedures, and signatures all lost. You must stop submitting malformed candidates that omit the STRUCTURE_DESCRIPTION and NEW_WORDS sections, and stop triggering schema rejections by submitting placeholder text like '<the structure description, YAML>' instead of the actual YAML dictionary. The trace with the most headroom is 627.cam4_s-573B at 52.4%, where the largest mistake is should_bypass, requiring the policy to remember which lines see no reuse and decide to bypass them on fill. Conversely, wrong_bypass is the largest mistake on 605.mcf_s-1644B (44.4% headroom), 619.lbm_s-2677B (43.9%), 459.GemsFDTD-1491B (33.3%), and 433.milc-127B (28.4%), meaning the policy must remember accurate reuse histories to decide against bypassing lines that will be reused before resident ones. On 657.xz_s-2302B, the 32.2% headroom is driven by kept_dead mistakes, requiring the state to track aging to decide to evict lines that will never be reused again. To balance these conflicting bypass decisions, you should declare a new word to express an adaptive bypass probability based on recent hit rates, which the current vocabulary cannot natively express.

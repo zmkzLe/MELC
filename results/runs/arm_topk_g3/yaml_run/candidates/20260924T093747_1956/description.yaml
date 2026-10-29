@@ -1,0 +1,15 @@
+name: your_policy_name
+doc: >
+  Your explanation here...
+state:
+  - name: example_field
+    scope: per_line
+    kind: counter
+    width: 1
+    init: ZERO
+victim:
+  key: example_field
+  extremum: min
+  tie_break: first
+  on_search: none
+# ... (rest of the complete valid YAML description)

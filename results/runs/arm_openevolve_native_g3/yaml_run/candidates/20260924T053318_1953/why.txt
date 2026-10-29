@@ -1,0 +1,14 @@
+Candidate ? FAILED at schema_rejected; it was not scored.
+Reason: 4 validation errors for StructureDescription
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<policy_name>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+state
+  Input should be a valid list [type=list_type, input_value='<list of state fields>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+victim
+  Input should be a valid dictionary or instance of VictimSelector [type=model_type, input_value='<victim selector definition>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+<other required sections
+  Extra inputs are not permitted [type=extra_forbidden, input_value='signatures, tables, samp... on_hit, on_fill, etc.>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden

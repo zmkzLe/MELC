@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  Explanation of your changes...
+state:
+  # ... (Complete state list)
+victim:
+  # ... (Complete victim configuration)
+# ... (Complete procedures, tables, samplers, signatures, on_fill, on_hit as needed)
+===== NEW_WORDS =====
+
+# Provide a YAML list of new words here, or leave empty if none.

@@ -1,0 +1,5 @@
+===== STRUCTURE_DESCRIPTION =====
+  ===== NEW_WORDS =====
+
+- NEVER output placeholder text like "<the structure description, YAML>", ellipses, or comments in place of complete rules. Output the full YAML specification.
+- Every state, signature, table, sampler, and procedure must be fully declared.

@@ -1,0 +1,7 @@
+===== STRUCTURE_DESCRIPTION =====
+# Write your FULL, COMPLETE, AND VALID YAML description here.
+# Include all required fields (e.g., name, doc, state, victim, on_hit, on_fill).
+# Start from the Mockingjay seed design (or another complete design) and apply your full changes.
+===== NEW_WORDS =====
+
+# A YAML list of the new words the description uses, or nothing.

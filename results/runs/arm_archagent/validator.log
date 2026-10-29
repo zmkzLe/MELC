@@ -1,0 +1,9 @@
+validator: /home/user/oe_out/arm_archagent/ae_run
+  tree /home/user/champsim_validate module validate_policy
+  33 traces at 50000000 + 100000000, 8 workers, sim timeout 18000 s
+  search stop 2026-09-25T00:00:00Z, deadline 2026-09-25T04:59:00Z, drain False, fake None
+waiting for /home/user/oe_out/arm_archagent/ae_run/store
+[2026-09-24T16:18:58Z] started {"id": "55082f1b30f4", "score": 1.0}
+[2026-09-24T16:59:00Z] below_min_gain {"id": "275236fbb057", "score": 1.0006151040817157}
+[2026-09-24T18:33:05Z] superseded {"id": "6e3ecbc47d7e", "score": 1.0021841516474357, "by": "4b2bc28a4843"}
+[2026-09-24T19:00:56Z] failed {"id": "55082f1b30f4", "stage": "run", "seconds": 9718.2, "error": "1 of 33 traces did not finish: 602.gcc_s-2226B"}

@@ -1,0 +1,2 @@
+Candidate ? FAILED at words_refused; it was not scored.
+Reason: 'my_new_word': a meaning of 7 words cannot say exactly what the code does; write at least 8

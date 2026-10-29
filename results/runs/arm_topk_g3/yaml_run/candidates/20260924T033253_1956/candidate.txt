@@ -1,0 +1,11 @@
+===== STRUCTURE_DESCRIPTION =====
+name: <your_design_name>
+doc: >
+  <1-line summary of what changed and why>
+  <Detailed prose description>
+state:
+  - name: ...
+# ... (FULL YAML DEFINITION - DO NOT LEAVE EMPTY OR OMIT SECTIONS) ...
+===== NEW_WORDS =====
+
+# <A YAML list of the new words the description uses, or nothing>

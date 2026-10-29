@@ -1,0 +1,2 @@
+===== STRUCTURE_DESCRIPTION =====`, write the entire YAML specification (all required keys: name, doc, state, victim, etc.).
+   - Under `===== NEW_WORDS =====

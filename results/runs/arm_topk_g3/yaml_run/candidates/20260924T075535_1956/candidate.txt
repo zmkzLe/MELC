@@ -1,0 +1,16 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_new_design
+doc: >
+  Added a dynamic bypass confidence threshold to balance wrong_bypass and should_bypass.
+state:
+  - name: etr
+    scope: per_line
+    kind: signed
+    width: 5
+    init: 0
+  # ... (ALL other state, victim, signatures, tables, samplers, etc. fully defined here)
+===== NEW_WORDS =====
+
+- name: dynamic_bypass_threshold
+  place: condition
+  # ... (definition of new word if any, otherwise leave this section empty below the marker)

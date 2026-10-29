@@ -1,0 +1,67 @@
+Guidance version 47, written after 480 candidates.
+
+New words of scored designs this run, best first, each with the declaration to repeat verbatim to reuse it and how the designs using it scored (the same name with another definition is refused; for another meaning choose a name none of these use):
+# used by 3 scored design(s); best 1.00093 (+0.09% against the seed)
+- name: bypass_is_safe
+  place: condition
+  params: {reject_table: table, sig: signature}
+  means: Reads the entry of the reject_table at the index sig. Returns true if the entry's value is less
+    than 2, and false otherwise. Nothing is written.
+# used by 1 scored design(s); best 0.99715 (-0.28% against the seed)
+- name: trust_allows_bypass
+  place: condition
+  params: {sig: signature, trust_table: table}
+  means: Reads the entry of trust_table at the index sig. Returns true if the entry's value is less than
+    6. False otherwise. Nothing is written.
+# used by 1 scored design(s); best 0.99699 (-0.30% against the seed)
+- name: allows_bypass
+  place: condition
+  params: {sig: signature, target_table: table}
+  means: Reads the entry of target_table at the index sig. Returns true if the entry's value is greater
+    than or equal to 2, and false otherwise. Nothing is written.
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: line_addr
+  place: SignatureSource
+  params: {}
+  means: 'The line address of the current access (the address without its 6 offset bits), as a 64-bit
+    unsigned integer.
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: is_bypassed
+  place: condition
+  params: {}
+  means: 'True if the current event is a fill and the fill was bypassed (i.e., way equals NUM_WAY).
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: is_not_bypassed
+  place: condition
+  params: {}
+  means: 'True if the current event is a fill and the fill was NOT bypassed (i.e., way is less than NUM_WAY).
+
+    '
+# used by 1 scored design(s); best 0.99686 (-0.31% against the seed)
+- name: filter_allows_bypass
+  place: condition
+  params: {filter_table: table, line_idx: signature}
+  means: True when the entry in filter_table at line_idx is equal to 0. False otherwise.
+# used by 1 scored design(s); best 0.98872 (-1.13% against the seed)
+- name: is_dead
+  place: condition
+  params: {dead_table: table, sig: signature}
+  means: 'Reads the entry of dead_table at the index sig. Returns true if the entry''s value is greater
+    than or equal to 2. False otherwise. Nothing is written.
+
+    '
+# used by 1 scored design(s); best 0.98872 (-1.13% against the seed)
+- name: is_reused
+  place: condition
+  params: {dead_table: table, sig: signature}
+  means: Reads the entry of dead_table at the index sig. Returns true if the entry's value is less than
+    2. False otherwise. Nothing is written.
+
+Refused among the last 10 candidates, and why: malformed 5 (candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS). schema_rejected 2 (expected '<document start>', but found '<scalar>' in "<unicode string>", line 8, column 5: ... (rest of the YAML) ^; Input should be a valid dictionary or instance of StructureDescription (written: None)). words_refused 1 (name String should match pattern '^[a-z][a-z0-9_]{0,30}$' (written: '<declared_word_if_any>') place Input should be 'condition', 'value', 'step', 'Extremum', 'TieBreak', 'SearchSideEffect', 'SignatureSource', 'FoldBit' or 'SignatureHash' (w)
+Refusal kinds seen more than once among the last 30 candidates, a pattern to stop: 16 times (malformed): candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS; 4 times (schema_rejected): Input should be a valid dictionary or instance of StructureDescription (written: '<valid, concrete YAML st...tion - NO PLACEHOLDERS>'); 2 times (schema_rejected): state Field required (written: {'name': 'your_policy_nam...d what was improved.\n'}) victim Field required (written: {'name': 'your_policy_nam...d what was improved.\n'})
+
+Changes to victim.bypass_when, tables, samplers, state, new_words, and procedures.access paid off, while modifying victim.key, victim.on_search, victim.tie_break, on_fill, signatures, victim.extremum, on_hit, and procedures lost. You must stop submitting malformed candidates that omit the STRUCTURE_DESCRIPTION and NEW_WORDS sections, and stop causing schema rejections by outputting placeholder text like '<the structure description, YAML>' or providing None for state and victim. On the traces with the most headroom, the largest mistake is wrong_bypass for 605.mcf_s-1644B, 619.lbm_s-2677B, 459.GemsFDTD-1491B, and 433.milc-127B, whereas 627.cam4_s-573B suffers most from should_bypass and 657.xz_s-2302B from kept_dead. To address wrong_bypass, the policy should remember which signatures correlate with lines that are reused after being bypassed, using this history to decide in victim.bypass_when to insert rather than bypass them. To fix should_bypass and kept_dead, the policy must track which signatures belong to dead lines to bypass them or evict them sooner. You could declare a new word to express a custom table update step that penalizes a signature specifically when a bypassed line is subsequently requested, which the current vocabulary cannot natively describe.

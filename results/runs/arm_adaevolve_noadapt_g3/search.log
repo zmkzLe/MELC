@@ -1,0 +1,1116 @@
+LLM: google/gemini-3.1-pro-preview (weight 0.7), google/gemini-3.8-flash (weight 0.3) via Vertex (a3-chia-hack26ath-7727, global); usage bills that project's credit, token refreshed per request
+seed written to /home/user/oe_out/arm_adaevolve_noadapt_g3/seed_candidate.txt (4139 B); evaluator design_evaluator.py
+candidate taken from its markers in: utils.code_utils, search.default_discovery_controller, adaevolve.controller, gepa_native.controller
+effective config: search adaevolve (adaptive multi-island evolution, intensity per island), iterations 100000, evaluator timeout 10800s, parallel 2, diff_based_generation False, cascade False, temperature 0.7, max_tokens 64000, llm timeout 900s, retries 2, proposers [('google/gemini-3.1-pro-preview', 0.7), ('google/gemini-3.8-flash', 0.3)], database AdaEvolveDatabaseConfig{'fitness_key': 'combined_score', 'higher_is_better': {'combined_score': True}, 'population_size': 40, 'num_islands': 2, 'migration_interval': 50}
+running adaevolve for 100000 iterations
+05:23:22 [search.utils] Logging to /home/user/oe_out/arm_adaevolve_noadapt_g3/logs/adaevolve_20260923_052322.log
+05:23:22 [search.adaevolve] AdaEvolveDatabase initialized: num_islands=2, decay=0.9, intensity=[0.15, 0.5], migration=True (interval=50), unified_archive=True, adaptive_search=True, ucb_selection=True, dynamic_islands=True, paradigm_breakthrough=True, multiobjective=False
+05:23:22 [runner] Runner ready: search=adaevolve, program=/home/user/oe_out/arm_adaevolve_noadapt_g3/seed_candidate.txt
+05:23:22 [llm] OpenAI LLM: google/gemini-3.1-pro-preview
+05:23:22 [llm] OpenAI LLM: google/gemini-3.8-flash
+05:23:22 [llm] Pool weights: google/gemini-3.1-pro-preview=0.70, google/gemini-3.8-flash=0.30
+05:23:22 [evaluator] Initialized evaluator with /home/user/chia_native/design_evaluator.py
+05:23:22 [default_discovery_controller] DiscoveryController initialized: num_context_programs=4
+05:23:22 [search.adaevolve] Paradigm LLM: using guide_models [google/gemini-3.1-pro-preview, google/gemini-3.8-flash]
+05:23:22 [search.adaevolve] AdaEvolveController initialized (language=text, paradigm_breakthrough=True)
+05:23:22 [runner] Adding initial program to database
+05:57:05 [evaluator] Evaluated program 0b5edcad-0ef5-4f3c-b73a-43ee415ca6b6 in 2023.18s: combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+05:57:05 [base_database] Database has 1 programs, best program score is combined_score=1.0000, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6604.4185, cacti_node_nm=22.0000
+05:57:05 [search.adaevolve] AdaEvolve: Running 100000 iterations across 2 islands
+05:57:05 [search.adaevolve] AdaEvolve iteration stats will be logged to: /home/user/oe_out/arm_adaevolve_noadapt_g3/adaevolve_iteration_stats_20260923_055705.jsonl
+05:57:05 [search.adaevolve] Seeded island 1
+05:57:05 [search.adaevolve] AdaEvolve parallel: up to 2 iterations in flight (1..100000)
+05:57:54 [evaluator] Evaluated program dd75d937-3994-4bda-bb94-5d768b290ba5 in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+05:58:58 [evaluator] Evaluated program 36f2de6b-c1d3-4996-aef4-cc723bffb7ce in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+05:59:14 [evaluator] Evaluated program dba9b70a-2402-4caa-9f16-957c52734fa0 in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:01:11 [evaluator] Evaluated program 6f67a68b-f647-4425-a188-7e1ed71889e1 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:01:11 WARNING [search.adaevolve] Iteration 1: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+06:02:00 [evaluator] Evaluated program 16e9ab7d-6752-4a17-b46a-5b52257b9224 in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:44:04 [evaluator] Evaluated program 8cf8919d-f015-43ca-bc64-9ce04c892aec in 2613.12s: combined_score=0.9978, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6617.5870, cacti_node_nm=22.0000
+06:44:04 [search.adaevolve] Iteration 2: Program 8cf8919d (parent: 0b5edcad) completed in 2706.16s (llm: 93.04s, eval: 2613.12s)
+06:44:04 [search.adaevolve] Metrics: combined_score=0.9978, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6617.5870, cacti_node_nm=22
+06:46:00 [evaluator] Evaluated program 14edb7ea-b8d9-4b94-b0ab-90ea0a81792f in 2512.87s: combined_score=1.0012, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6602.2980, cacti_node_nm=22.0000
+06:46:00 [search.adaevolve] Iteration 3: Program 14edb7ea (parent: 0b5edcad) completed in 2640.06s (llm: 127.18s, eval: 2512.87s)
+06:46:00 [search.adaevolve] Metrics: combined_score=1.0012, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6602.2980, cacti_node_nm=22
+06:46:00 [search.adaevolve] New best solution found at iteration 3
+06:48:07 [evaluator] Evaluated program 4e26584e-57f6-4d34-a718-87795435d42e in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:49:39 [evaluator] Evaluated program 43957944-177e-4b70-a2d4-be7f41e8ddd0 in 0.00s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+06:50:12 [evaluator] Evaluated program 3dd76cad-690b-4bb0-922f-30c7854ed5ba in 0.00s: combined_score=0.0000, status=schema_rejected, error=3 validation errors for StructureDescription
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<policy_name>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+state
+  Field required [type=missing, input_value={'name': '<policy_name>',...doc': '<explanation>\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': '<policy_name>',...doc': '<explanation>\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+06:50:12 WARNING [search.adaevolve] Iteration 4: All 3 attempts failed: Eval failure: 3 validation errors for StructureDescription
+name
+  String should match pattern '^[a-z][a-z0-9_]{0,30}$' [type=string_pattern_mismatch, input_value='<policy_name>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+state
+  Field required [type=missing, input_value={'name': '<policy_name>',...doc': '<explanation>\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': '<policy_name>',...doc': '<explanation>\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+06:53:37 [evaluator] Evaluated program a456b120-1e4c-4b5f-bccd-79e09fa6e390 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:55:25 [evaluator] Evaluated program 7eeb0b6b-91e7-4f46-afbf-374576429dd8 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:57:34 [evaluator] Evaluated program 4a6e6371-efb5-4a65-9467-01444ff9a805 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+06:57:34 WARNING [search.adaevolve] Iteration 6: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+07:00:53 [evaluator] Evaluated program 37952a02-55ac-4a22-9a42-40fea74a7571 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:04:01 [evaluator] Evaluated program 056b9ff1-4268-40c8-9ef8-05b642e7b9f3 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:04:42 [evaluator] Evaluated program f81a6b29-39a5-41ae-8370-6ba22b2fa957 in 0.16s: combined_score=1.0012, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6602.2980, cacti_node_nm=22.0000
+07:04:42 [search.adaevolve] Iteration 7: Program f81a6b29 (parent: 14edb7ea) completed in 40.55s (llm: 40.39s, eval: 0.16s)
+07:04:42 [search.adaevolve] Metrics: combined_score=1.0012, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6602.2980, cacti_node_nm=22
+07:06:35 [evaluator] Evaluated program 3ca65120-3562-49a1-afd9-b0f5f1d6fdc6 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:27:26 [evaluator] Evaluated program 8a9b1ac9-243e-4b7a-8396-a79dbb8779ad in 2280.38s: combined_score=1.0018, status=ok, metadata_kb=47.1875, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8646, metadata_area_mm2=0.0384, metadata_energy_uj=6661.5468, cacti_node_nm=22.0000
+07:27:26 [search.adaevolve] Iteration 5: Program 8a9b1ac9 (parent: 0b5edcad) completed in 2486.26s (llm: 205.88s, eval: 2280.38s)
+07:27:26 [search.adaevolve] Metrics: combined_score=1.0018, status=ok, metadata_kb=47.1875, metadata_flipflop_bits=0, metadata_bits_per_line=7.8646, metadata_area_mm2=0.0384, metadata_energy_uj=6661.5468, cacti_node_nm=22
+07:27:26 [search.adaevolve] New best solution found at iteration 5
+07:30:02 [evaluator] Evaluated program 849d234a-cc35-4495-a48b-00c818a04458 in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:45:28 [evaluator] Evaluated program 5ad06ad3-1a7e-43a3-9da5-7a8137f27b15 in 2279.28s: combined_score=1.0012, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6602.2980, cacti_node_nm=22.0000
+07:45:28 [search.adaevolve] Iteration 8: Program 5ad06ad3 (parent: 0b5edcad) completed in 2333.36s (llm: 54.07s, eval: 2279.28s)
+07:45:28 [search.adaevolve] Metrics: combined_score=1.0012, status=ok, metadata_kb=47.3750, metadata_flipflop_bits=0, metadata_bits_per_line=7.8958, metadata_area_mm2=0.0379, metadata_energy_uj=6602.2980, cacti_node_nm=22
+07:48:28 [evaluator] Evaluated program 2e80bdc5-6f12-4490-a230-3c200ecad48f in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:50:03 [evaluator] Evaluated program 39a62c31-c16c-48b1-833a-2fcdd9dd99d4 in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:50:35 [evaluator] Evaluated program 2885c529-b4af-4d41-b627-ec26fffde4e2 in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:50:35 WARNING [search.adaevolve] Iteration 10: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+07:51:50 [evaluator] Evaluated program 0d20ae10-7d93-4866-83d3-45f5c70e1b06 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+07:54:43 [evaluator] Evaluated program 4b24b7de-abc2-4fbe-8cf2-e90c52fbebf2 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+07:58:14 [evaluator] Evaluated program bbefd1e8-6928-4f17-a397-4676a2ab9b69 in 0.00s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+07:58:14 WARNING [search.adaevolve] Iteration 11: All 3 attempts failed: Eval failure: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+07:59:49 [evaluator] Evaluated program ac516729-7f73-4ef8-8350-75eca845f8ff in 0.00s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+08:11:29 [evaluator] Evaluated program 8f314353-7f26-4238-a0e2-122c60216c5d in 2366.38s: combined_score=1.0025, status=ok, metadata_kb=47.8125, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9688, metadata_area_mm2=0.0387, metadata_energy_uj=6721.8390, cacti_node_nm=22.0000
+08:11:29 [search.adaevolve] Iteration 9: Program 8f314353 (parent: 14edb7ea) completed in 2486.65s (llm: 120.26s, eval: 2366.39s)
+08:11:29 [search.adaevolve] Metrics: combined_score=1.0025, status=ok, metadata_kb=47.8125, metadata_flipflop_bits=0, metadata_bits_per_line=7.9688, metadata_area_mm2=0.0387, metadata_energy_uj=6721.8390, cacti_node_nm=22
+08:11:29 [search.adaevolve] New best solution found at iteration 9
+08:14:49 [evaluator] Evaluated program 03681965-7fec-43ff-9a8e-83e6752ee71e in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+08:37:27 [evaluator] Evaluated program 05400196-2f8f-4ed5-a8e9-de9ce1825b0d in 2170.54s: combined_score=1.0016, status=ok, metadata_kb=47.1875, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.8646, metadata_area_mm2=0.0384, metadata_energy_uj=6662.8824, cacti_node_nm=22.0000
+08:37:27 [search.adaevolve] Iteration 12: Program 05400196 (parent: 8a9b1ac9) completed in 2258.46s (llm: 87.92s, eval: 2170.54s)
+08:37:27 [search.adaevolve] Metrics: combined_score=1.0016, status=ok, metadata_kb=47.1875, metadata_flipflop_bits=0, metadata_bits_per_line=7.8646, metadata_area_mm2=0.0384, metadata_energy_uj=6662.8824, cacti_node_nm=22
+08:39:52 [evaluator] Evaluated program d9c24256-5340-433c-b104-766c63fbe608 in 0.35s: combined_score=0.0000, status=words_refused, error=safe_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+08:51:17 [evaluator] Evaluated program 1edf716d-9877-4163-bda6-67e5f636eb45 in 2135.76s: combined_score=1.0023, status=ok, metadata_kb=47.8125, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9688, metadata_area_mm2=0.0387, metadata_energy_uj=6723.0531, cacti_node_nm=22.0000
+08:51:17 [search.adaevolve] Iteration 13: Program 1edf716d (parent: 8a9b1ac9) completed in 2188.01s (llm: 52.25s, eval: 2135.76s)
+08:51:17 [search.adaevolve] Metrics: combined_score=1.0023, status=ok, metadata_kb=47.8125, metadata_flipflop_bits=0, metadata_bits_per_line=7.9688, metadata_area_mm2=0.0387, metadata_energy_uj=6723.0531, cacti_node_nm=22
+08:52:48 [evaluator] Evaluated program 4bce5538-7359-47bb-b011-1111aa2f06b2 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+08:55:02 [evaluator] Evaluated program d72b845b-2ce9-40f2-9d01-842b627d43ac in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+09:17:29 [evaluator] Evaluated program 61abeba8-0682-4076-9716-4da7ca37c785 in 2201.92s: combined_score=0.9994, status=ok, metadata_kb=47.8125, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9688, metadata_area_mm2=0.0387, metadata_energy_uj=6742.7486, cacti_node_nm=22.0000
+09:17:29 [search.adaevolve] Iteration 14: Program 61abeba8 (parent: 14edb7ea) completed in 2257.20s (llm: 55.28s, eval: 2201.92s)
+09:17:29 [search.adaevolve] Metrics: combined_score=0.9994, status=ok, metadata_kb=47.8125, metadata_flipflop_bits=0, metadata_bits_per_line=7.9688, metadata_area_mm2=0.0387, metadata_energy_uj=6742.7486, cacti_node_nm=22
+09:37:19 [evaluator] Evaluated program c5aea107-535a-48a2-a492-7e7ac1187070 in 2436.52s: combined_score=1.0026, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6785.2542, cacti_node_nm=22.0000
+09:37:19 [search.adaevolve] Iteration 15: Program c5aea107 (parent: 8cf8919d) completed in 2536.70s (llm: 100.18s, eval: 2436.52s)
+09:37:19 [search.adaevolve] Metrics: combined_score=1.0026, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6785.2542, cacti_node_nm=22
+09:37:19 [search.adaevolve] New best solution found at iteration 15
+09:38:36 [evaluator] Evaluated program 137cc76b-8baa-44c1-81a5-07a360c737d7 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+09:41:29 [evaluator] Evaluated program c1de94aa-2b1d-42d0-871c-29a19126540d in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+09:43:35 [evaluator] Evaluated program 205873d5-0578-4fea-a2e2-286e48ebfeb5 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+09:43:35 WARNING [search.adaevolve] Iteration 17: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+09:45:56 [evaluator] Evaluated program c44850a7-a7a3-4753-900c-1fb825416a98 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+10:00:45 [evaluator] Evaluated program cc552f9b-1ebc-4186-a94f-9fb81abf4e36 in 2418.30s: combined_score=1.0018, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0385, metadata_energy_uj=6800.2910, cacti_node_nm=22.0000
+10:00:45 [search.adaevolve] Iteration 16: Program cc552f9b (parent: 1edf716d) completed in 2595.41s (llm: 177.11s, eval: 2418.30s)
+10:00:45 [search.adaevolve] Metrics: combined_score=1.0018, status=ok, metadata_kb=47.7500, metadata_flipflop_bits=0, metadata_bits_per_line=7.9583, metadata_area_mm2=0.0385, metadata_energy_uj=6800.2910, cacti_node_nm=22
+10:03:38 [evaluator] Evaluated program 120bced4-9a2b-4efb-8f4c-efe999a1de5f in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+10:06:51 [evaluator] Evaluated program cf405af5-7a13-401c-a60d-036cd9efb506 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+10:10:11 [evaluator] Evaluated program b77a818c-7d4e-413d-8dbf-1ea200603db2 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+10:10:11 WARNING [search.adaevolve] Iteration 19: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+10:12:31 [evaluator] Evaluated program d340de31-25ea-48c3-9f7c-26ed10475c70 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+10:14:41 [evaluator] Evaluated program 195218b4-c0bb-4c66-a46a-d4f2d7ad3ce9 in 0.47s: combined_score=0.0000, status=words_refused, error=safe_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+10:28:14 [evaluator] Evaluated program 6eb53b59-29cf-4bd9-9ea8-7de52b3b853e in 2433.83s: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22.0000
+10:28:14 [search.adaevolve] Iteration 18: Program 6eb53b59 (parent: 61abeba8) completed in 2538.72s (llm: 104.89s, eval: 2433.83s)
+10:28:14 [search.adaevolve] Metrics: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22
+10:28:14 [search.adaevolve] New best solution found at iteration 18
+11:01:33 [evaluator] Evaluated program eb5c7203-ac80-4cd4-bde3-677f497903b5 in 2567.29s: combined_score=1.0014, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6807.5409, cacti_node_nm=22.0000
+11:01:33 [search.adaevolve] Iteration 20: Program eb5c7203 (parent: c5aea107) completed in 2811.97s (llm: 244.68s, eval: 2567.29s)
+11:01:33 [search.adaevolve] Metrics: combined_score=1.0014, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6807.5409, cacti_node_nm=22
+11:01:33 [search.adaevolve] Checkpoint interval reached at iteration 20
+11:01:33 [base_database] Database has 15 programs, best program score is combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22.0000
+11:01:33 [search.utils] [CHECKPOINT] Saved database with 15 programs to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_20
+11:01:33 [search.adaevolve] Saved AdaEvolve state to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_20
+11:01:33 [runner] Checkpoint 20: best=combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22.0000
+11:01:33 [runner] Checkpoint saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_20
+11:02:09 [evaluator] Evaluated program db72d578-5898-43be-a969-5857ac564946 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:03:28 [evaluator] Evaluated program 2b2b65d4-e752-4a31-b09d-87bbc12f048b in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+11:05:42 [evaluator] Evaluated program 8a858688-6480-4674-ad3a-9bda13243973 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:05:42 WARNING [search.adaevolve] Iteration 22: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+11:07:55 [evaluator] Evaluated program c6a63c2a-456c-435e-80ea-c160cfd10f79 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:10:12 [evaluator] Evaluated program bdadd04f-7d73-405d-ae13-758fb987a672 in 2420.60s: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6788.0997, cacti_node_nm=22.0000
+11:10:12 [search.adaevolve] Iteration 21: Program bdadd04f (parent: 0b5edcad) completed in 2517.26s (llm: 96.65s, eval: 2420.60s)
+11:10:12 [search.adaevolve] Metrics: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6788.0997, cacti_node_nm=22
+11:10:52 [evaluator] Evaluated program 0e73da74-871e-459b-b830-e5a03f643eb1 in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+11:12:53 [evaluator] Evaluated program 3a3913d2-4ee6-4161-91ab-00ec11855888 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:14:07 [evaluator] Evaluated program 9c1e57aa-90f9-4517-afc4-b79539ec2139 in 0.51s: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22.0000
+11:14:07 [search.adaevolve] Iteration 24: Program 9c1e57aa (parent: 8cf8919d) completed in 73.70s (llm: 73.18s, eval: 0.51s)
+11:14:07 [search.adaevolve] Metrics: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22
+11:16:31 [evaluator] Evaluated program a8c6178f-1c22-4c35-8fe4-2ed50673eea3 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:18:43 [evaluator] Evaluated program d96c6647-5ddd-44bb-b813-8de956e880d2 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:20:33 [evaluator] Evaluated program 519cf68b-a26c-48e4-b804-a743bbcac273 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:20:33 WARNING [search.adaevolve] Iteration 25: All 3 attempts failed: Eval failure: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+11:22:49 [evaluator] Evaluated program ad764a51-16b6-4951-bd1e-0a81c020b456 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:24:35 [evaluator] Evaluated program 0cb15ee5-96a3-4751-9803-80ab14b6e977 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:47:33 [evaluator] Evaluated program 39d5768a-1efc-4342-82ad-4e7d5d7b8f97 in 2146.85s: combined_score=1.0024, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6787.0668, cacti_node_nm=22.0000
+11:47:33 [search.adaevolve] Iteration 23: Program 39d5768a (parent: 8f314353) completed in 2200.57s (llm: 53.71s, eval: 2146.85s)
+11:47:33 [search.adaevolve] Metrics: combined_score=1.0024, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6787.0668, cacti_node_nm=22
+11:51:25 [evaluator] Evaluated program 8e03ccb2-2d7a-45f0-914b-69f8bf9de06f in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+11:52:33 [evaluator] Evaluated program 9228b203-9336-4090-8fbe-adcde20fa1e6 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:03:18 [evaluator] Evaluated program fa8240fe-5bff-48fa-83e4-da062fc941a3 in 2188.41s: combined_score=1.0026, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6785.2542, cacti_node_nm=22.0000
+12:03:18 [search.adaevolve] Iteration 26: Program fa8240fe (parent: 6eb53b59) completed in 2322.45s (llm: 134.04s, eval: 2188.41s)
+12:03:18 [search.adaevolve] Metrics: combined_score=1.0026, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6785.2542, cacti_node_nm=22
+12:30:13 [evaluator] Evaluated program 1b430e4a-189b-4357-8ab0-c038796ae4b4 in 2139.49s: combined_score=1.0026, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.3643, cacti_node_nm=22.0000
+12:30:13 [search.adaevolve] Iteration 27: Program 1b430e4a (parent: 61abeba8) completed in 2259.62s (llm: 120.13s, eval: 2139.49s)
+12:30:13 [search.adaevolve] Metrics: combined_score=1.0026, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.3643, cacti_node_nm=22
+12:30:16 WARNING [llm] Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+12:32:46 [evaluator] Evaluated program f3814156-2155-4655-a7e0-c60bf3644f2d in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:35:15 [evaluator] Evaluated program e942d8ec-5239-48ec-ab8f-5acd4dc4b809 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:37:31 [evaluator] Evaluated program 29def558-1bf7-4d5a-871c-c42252fbf664 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:37:31 WARNING [search.adaevolve] Iteration 29: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+12:39:40 [evaluator] Evaluated program 6f74412f-4cc0-4fef-8200-432580eb6928 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+12:42:03 [evaluator] Evaluated program 89c33f57-0cde-4aeb-a01d-a82f4860dd01 in 2216.24s: combined_score=1.0018, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6788.4105, cacti_node_nm=22.0000
+12:42:03 [search.adaevolve] Iteration 28: Program 89c33f57 (parent: d0845f21) completed in 2325.20s (llm: 108.96s, eval: 2216.24s)
+12:42:03 [search.adaevolve] Metrics: combined_score=1.0018, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6788.4105, cacti_node_nm=22
+gemini-3.1-pro-preview: rate limited (429), trying again in 60 s
+gemini-3.1-pro-preview: rate limited (429), trying again in 120 s
+12:44:28 [evaluator] Evaluated program d51d1f4a-bf3a-41b3-adf5-8e596764e859 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+gemini-3.1-pro-preview: rate limited (429), trying again in 240 s
+12:45:42 [evaluator] Evaluated program b96653ec-0a40-476f-84ad-235c67046a33 in 0.57s: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22.0000
+12:45:42 [search.adaevolve] Iteration 31: Program b96653ec (parent: 14edb7ea) completed in 74.21s (llm: 73.63s, eval: 0.57s)
+12:45:42 [search.adaevolve] Metrics: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22
+12:45:42 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+12:46:46 [search.adaevolve] Generated 3 paradigms:
+12:46:46 [search.adaevolve]   [1] Chain-of-Thought for Adaptive Set Dueling Design (approach: chain-of-thought)
+12:46:46 [search.adaevolve]   [2] Few-Shot Demonstration of Probabilistic Insertion (approach: few-shot)
+12:46:46 [search.adaevolve]   [3] Explicit Constraint for Multidimensional Signatures (approach: format-constraint)
+12:46:46 [search.adaevolve] Set 3 new paradigms (best score: 1.002667)
+12:46:46 [search.adaevolve] Generated 3 breakthrough paradigms
+12:46:46 [search.adaevolve] Using paradigm 1/3 (1/2): Chain-of-Thought for Adaptive Set Dueling Design
+12:48:38 [evaluator] Evaluated program 276faf79-7589-41f2-ad5d-843e8e17b005 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:48:38 [search.adaevolve] Using paradigm 2/3 (1/2): Few-Shot Demonstration of Probabilistic Insertion
+12:50:40 [evaluator] Evaluated program e163bf24-05ee-456e-bd99-86893a486d65 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:50:40 [search.adaevolve] Using paradigm 3/3 (1/2): Explicit Constraint for Multidimensional Signatures
+12:53:27 [evaluator] Evaluated program 7df10622-da2a-4c9b-9c11-c126294dc0f7 in 0.76s: combined_score=0.0000, status=words_refused, error=safe_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+12:53:27 WARNING [search.adaevolve] Iteration 32: All 3 attempts failed: Eval failure: safe_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+12:53:27 [search.adaevolve] Using paradigm 1/3 (2/2): Chain-of-Thought for Adaptive Set Dueling Design
+12:55:54 [evaluator] Evaluated program 455b5d6b-4705-4fb7-918a-565322762771 in 0.60s: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22.0000
+12:55:54 [search.adaevolve] Iteration 33: Program 455b5d6b (parent: 6eb53b59) completed in 146.65s (llm: 146.02s, eval: 0.61s)
+12:55:54 [search.adaevolve] Metrics: combined_score=1.0027, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6784.1565, cacti_node_nm=22
+12:55:54 [search.adaevolve] Using paradigm 2/3 (2/2): Few-Shot Demonstration of Probabilistic Insertion
+12:58:12 [evaluator] Evaluated program 572a4883-d4e3-4cde-bdcf-81c14a00e8f4 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+12:58:12 [search.adaevolve] Using paradigm 3/3 (2/2): Explicit Constraint for Multidimensional Signatures
+12:58:12 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:00:05 [evaluator] Evaluated program 07690e2a-f400-4c9e-a73a-b25c7bf0f172 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+13:00:05 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:02:10 [evaluator] Evaluated program affb2bca-0cc6-4539-a3d3-9691da064bf1 in 0.01s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:02:10 WARNING [search.adaevolve] Iteration 34: All 3 attempts failed: Eval failure: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+13:02:10 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:02:10 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:02:10 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:02:10 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:02:10 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:02:10 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+13:03:09 [search.adaevolve] Generated 3 paradigms:
+13:03:09 [search.adaevolve]   [1] Confidence-Gated Bypassing Predictor (approach: confidence-gating)
+13:03:09 [search.adaevolve]   [2] Absolute Expected Reuse Timestamps (approach: absolute-timestamp-prediction)
+13:03:09 [search.adaevolve]   [3] Dynamic Bypass Arbitration via Set Dueling (approach: set-dueling-adaptation)
+13:03:09 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+13:03:09 [search.adaevolve]   [FAILED] Chain-of-Thought for Adaptive Set Dueling Design (uses: 2)
+13:03:09 [search.adaevolve]   [FAILED] Few-Shot Demonstration of Probabilistic Insertion (uses: 2)
+13:03:09 [search.adaevolve]   [FAILED] Explicit Constraint for Multidimensional Signatures (uses: 2)
+13:03:09 [search.adaevolve] Set 3 new paradigms (best score: 1.002667)
+13:03:09 [search.adaevolve] Generated 3 breakthrough paradigms
+13:03:09 [search.adaevolve] Using paradigm 1/3 (1/2): Confidence-Gated Bypassing Predictor
+13:04:53 [evaluator] Evaluated program 77a246d1-2ec0-4342-8ef8-0f70b2b6892b in 0.70s: combined_score=0.0000, status=words_refused, error=safe_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+13:04:53 [search.adaevolve] Using paradigm 2/3 (1/2): Absolute Expected Reuse Timestamps
+13:07:20 [evaluator] Evaluated program fddbbb83-af7f-40b7-8187-3855c6fea305 in 0.04s: combined_score=0.0000, status=words_refused, error='max_distance': a member of Extremum takes no parameters
+13:07:20 [search.adaevolve] Using paradigm 3/3 (1/2): Dynamic Bypass Arbitration via Set Dueling
+13:26:21 [evaluator] Evaluated program 2ce250f5-737f-4e8f-8d3c-c84e311de9b6 in 2735.20s: combined_score=1.0028, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.0718, cacti_node_nm=22.0000
+13:26:21 [search.adaevolve] Iteration 30: Program 2ce250f5 (parent: fa8240fe) completed in 2801.42s (llm: 66.22s, eval: 2735.20s)
+13:26:21 [search.adaevolve] Metrics: combined_score=1.0028, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.0718, cacti_node_nm=22
+13:26:21 [search.adaevolve] New best solution found at iteration 30
+13:26:21 [search.adaevolve] Checkpoint interval reached at iteration 30
+13:26:21 [base_database] Database has 24 programs, best program score is combined_score=1.0028, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.0718, cacti_node_nm=22.0000
+13:26:21 [search.utils] [CHECKPOINT] Saved database with 24 programs to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_30
+13:26:21 [search.adaevolve] Saved AdaEvolve state to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_30
+13:26:21 [runner] Checkpoint 30: best=combined_score=1.0028, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.0718, cacti_node_nm=22.0000
+13:26:21 [runner] Checkpoint saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_30
+13:26:22 [search.adaevolve] Using paradigm 1/3 (2/2): Confidence-Gated Bypassing Predictor
+13:29:12 [evaluator] Evaluated program 11b8ba51-7f00-4f5f-97bd-d1fcddf0c01c in 0.73s: combined_score=0.0000, status=too_much_storage, error=this design declares 48.1 KB of replacement metadata at this LLC; the budget is 48 KB (the seed declares 47.4 KB): pay for new state by narrowing or removing state elsewhere
+13:29:12 [search.adaevolve] Using paradigm 2/3 (2/2): Absolute Expected Reuse Timestamps
+13:47:00 [evaluator] Evaluated program fceba213-1c2b-4a84-8d7b-289844655de2 in 2278.00s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22.0000
+13:47:00 [search.adaevolve] Iteration 35: Program fceba213 (parent: 6eb53b59) completed in 2379.74s (llm: 101.73s, eval: 2278.00s)
+13:47:00 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22
+13:47:00 [search.adaevolve] New best solution found at iteration 35
+13:47:00 [search.adaevolve] Using paradigm 3/3 (2/2): Dynamic Bypass Arbitration via Set Dueling
+13:47:00 [search.adaevolve] All paradigms exhausted, will archive on next check
+13:48:07 [evaluator] Evaluated program 68807aed-e13a-4141-8a67-426befc26a48 in 0.73s: combined_score=0.0000, status=words_refused, error=duel_bypass: already declared in this run with another definition; a word is never changed, so declare a new name
+13:48:07 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:09:52 [evaluator] Evaluated program e6981aa3-e60a-4b44-b6ca-3b3a16d1b3c6 in 2289.77s: combined_score=1.0017, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6804.1411, cacti_node_nm=22.0000
+14:09:52 [search.adaevolve] Iteration 36: Program e6981aa3 (parent: 2ce250f5) completed in 2439.91s (llm: 150.14s, eval: 2289.77s)
+14:09:52 [search.adaevolve] Metrics: combined_score=1.0017, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=0, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6804.1411, cacti_node_nm=22
+14:09:52 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:09:52 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:09:52 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:09:52 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:09:52 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:11:32 [evaluator] Evaluated program 5f50578d-e694-49ad-bccc-a3c59b5e96d4 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+14:11:32 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:13:25 [evaluator] Evaluated program aa676329-e7e4-493d-9797-542f2da52bac in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+14:13:26 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:14:54 [evaluator] Evaluated program 322a515b-44a3-4f93-9709-caa2cc3fbfd3 in 0.67s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22.0000
+14:14:54 [search.adaevolve] Iteration 38: Program 322a515b (parent: cc552f9b) completed in 88.90s (llm: 88.23s, eval: 0.67s)
+14:14:54 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22
+14:14:55 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:14:55 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:14:55 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:14:55 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:14:55 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:19:20 [evaluator] Evaluated program a5f1da54-7b28-413a-b69c-fe8031049ec6 in 0.01s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+14:19:20 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:21:13 [evaluator] Evaluated program 0f03be98-62ce-45f6-8e77-0c0f9f85bf63 in 0.82s: combined_score=0.0000, status=words_refused, error=duel_bypass, update_bypass_duel: already declared in this run with another definition; a word is never changed, so declare a new name
+14:21:13 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:24:57 [evaluator] Evaluated program 61e2b571-656e-43be-b4e6-f7ffdc12103e in 2112.59s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22.0000
+14:24:57 [search.adaevolve] Iteration 37: Program 61e2b571 (parent: 5ad06ad3) completed in 2209.55s (llm: 96.95s, eval: 2112.59s)
+14:24:57 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22
+14:24:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:24:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:24:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:24:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:24:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+14:58:27 [evaluator] Evaluated program fd4104c6-dbc5-45f6-9ed4-a65913e06f97 in 2136.22s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22.0000
+14:58:27 [search.adaevolve] Iteration 39: Program fd4104c6 (parent: f81a6b29) completed in 2234.09s (llm: 97.87s, eval: 2136.22s)
+14:58:27 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22
+14:58:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:58:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:58:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:58:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+14:58:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:03:42 [evaluator] Evaluated program 25bf88a3-c9a5-46b7-b3d1-e864e1a2a664 in 2237.32s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+15:03:42 [search.adaevolve] Iteration 40: Program 25bf88a3 (parent: 8a9b1ac9) completed in 2325.58s (llm: 88.26s, eval: 2237.32s)
+15:03:42 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22
+15:03:42 [search.adaevolve] New best solution found at iteration 40
+15:03:42 [search.adaevolve] Checkpoint interval reached at iteration 40
+15:03:42 [base_database] Database has 30 programs, best program score is combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+15:03:42 [search.utils] [CHECKPOINT] Saved database with 30 programs to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_40
+15:03:42 [search.adaevolve] Saved AdaEvolve state to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_40
+15:03:42 [runner] Checkpoint 40: best=combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+15:03:42 [runner] Checkpoint saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_40
+15:03:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:03:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:03:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:03:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:03:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:06:00 [evaluator] Evaluated program b472530e-6f79-4a9a-ad98-3c22f3aefa13 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+15:06:00 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:06:45 [evaluator] Evaluated program 4de7e77b-4566-4afe-a533-e9911b611e8b in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): NEW_WORDS
+15:06:45 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:41:53 [evaluator] Evaluated program 41ae1405-4d29-4ddd-9fc8-3a9019fa062d in 2422.31s: combined_score=1.0019, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6782.7596, cacti_node_nm=22.0000
+15:41:53 [search.adaevolve] Iteration 41: Program 41ae1405 (parent: 2ce250f5) completed in 2606.21s (llm: 183.89s, eval: 2422.31s)
+15:41:53 [search.adaevolve] Metrics: combined_score=1.0019, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6782.7596, cacti_node_nm=22
+15:41:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:41:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:41:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:41:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:41:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:42:36 [evaluator] Evaluated program 1b3d1c26-da79-4f3d-8bba-229c480f7e9c in 0.01s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+15:42:36 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:43:37 [evaluator] Evaluated program 7a37cdf6-f399-4357-b068-e4eeec9d3c0f in 2156.42s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22.0000
+15:43:37 [search.adaevolve] Iteration 42: Program 7a37cdf6 (parent: fd4104c6) completed in 2212.41s (llm: 55.99s, eval: 2156.42s)
+15:43:37 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.6345, cacti_node_nm=22
+15:43:38 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:43:38 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:43:38 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:43:38 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:43:38 [search.adaevolve] All paradigms exhausted, will archive on next check
+15:47:10 [evaluator] Evaluated program 39704d9a-eae0-49a2-ae32-10d7a1e8b373 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+15:47:10 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:19:26 [evaluator] Evaluated program e2af905d-9ed6-4e23-aa9c-c8495deb8b4c in 2171.80s: combined_score=1.0029, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.0923, cacti_node_nm=22.0000
+16:19:26 [search.adaevolve] Iteration 43: Program e2af905d (parent: 25bf88a3) completed in 2210.13s (llm: 38.33s, eval: 2171.80s)
+16:19:26 [search.adaevolve] Metrics: combined_score=1.0029, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.0923, cacti_node_nm=22
+16:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:20:34 [evaluator] Evaluated program 72e5a8a4-5326-4870-85a8-f74798f9ae97 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+16:20:34 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:23:22 [evaluator] Evaluated program a87fce5b-f075-483f-a2bf-3bb34f6e4284 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+16:23:22 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:29:39 [evaluator] Evaluated program 0f2bca05-6c51-4b80-bfa8-21afbf3a6857 in 2376.35s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+16:29:39 [search.adaevolve] Iteration 44: Program 0f2bca05 (parent: fd4104c6) completed in 2549.53s (llm: 173.18s, eval: 2376.35s)
+16:29:39 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22
+16:29:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:29:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:29:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:29:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:29:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:33:13 [evaluator] Evaluated program 847f2e1d-fa12-434c-8d40-0c37b16833f6 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+16:33:13 [search.adaevolve] All paradigms exhausted, will archive on next check
+16:36:18 [evaluator] Evaluated program ed21f116-9075-44ee-9abe-64d67730d7e8 in 1.05s: combined_score=0.0000, status=words_refused, error=dynamic_bypass_eval, dynamic_bypass_update: already declared in this run with another definition; a word is never changed, so declare a new name
+16:36:18 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:02:47 [evaluator] Evaluated program a7b17914-d630-4a84-b646-fa6ffc143466 in 2239.31s: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.9317, cacti_node_nm=22.0000
+17:02:47 [search.adaevolve] Iteration 45: Program a7b17914 (parent: f81a6b29) completed in 2364.85s (llm: 125.54s, eval: 2239.31s)
+17:02:47 [search.adaevolve] Metrics: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.9317, cacti_node_nm=22
+17:02:48 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:02:48 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:02:48 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:02:48 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:02:48 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:02:48 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+17:03:32 [search.adaevolve] Generated 3 paradigms:
+17:03:32 [search.adaevolve]   [1] Pseudocode-to-DSL Intermediate Representation (approach: intermediate-representation)
+17:03:32 [search.adaevolve]   [2] Adversarial Red-Teaming and Self-Correction (approach: adversarial-critique)
+17:03:32 [search.adaevolve]   [3] Information-Gap Analysis for Feature Engineering (approach: information-gap-analysis)
+17:03:32 [search.adaevolve] Archived 3 paradigms (improvement: +0.000336):
+17:03:32 [search.adaevolve]   [FAILED] Confidence-Gated Bypassing Predictor (uses: 2)
+17:03:32 [search.adaevolve]   [FAILED] Absolute Expected Reuse Timestamps (uses: 2)
+17:03:32 [search.adaevolve]   [FAILED] Dynamic Bypass Arbitration via Set Dueling (uses: 2)
+17:03:32 [search.adaevolve] Set 3 new paradigms (best score: 1.003003)
+17:03:32 [search.adaevolve] Generated 3 breakthrough paradigms
+17:03:32 [search.adaevolve] Using paradigm 1/3 (1/2): Pseudocode-to-DSL Intermediate Representation
+17:05:27 [evaluator] Evaluated program 0714d8e8-4019-4e60-90c3-711bc359a74d in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:05:27 [search.adaevolve] Using paradigm 2/3 (1/2): Adversarial Red-Teaming and Self-Correction
+17:06:46 [evaluator] Evaluated program 0178d105-d2c3-49cd-abc9-7b851266c3f0 in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:06:46 [search.adaevolve] Using paradigm 3/3 (1/2): Information-Gap Analysis for Feature Engineering
+17:08:25 [evaluator] Evaluated program 08504c50-7362-4a21-856e-ab3e445af889 in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:08:25 WARNING [search.adaevolve] Iteration 47: All 3 attempts failed: Eval failure: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:08:25 [search.adaevolve] Using paradigm 1/3 (2/2): Pseudocode-to-DSL Intermediate Representation
+17:10:11 [evaluator] Evaluated program b3d59475-fddc-43fc-aff6-cb4278f20916 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:10:11 [search.adaevolve] Using paradigm 2/3 (2/2): Adversarial Red-Teaming and Self-Correction
+17:12:05 [evaluator] Evaluated program dad85a39-ac7c-43ca-8440-353e8ee607bd in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:12:05 [search.adaevolve] Using paradigm 3/3 (2/2): Information-Gap Analysis for Feature Engineering
+17:12:05 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:14:18 [evaluator] Evaluated program 917dcb23-5ef7-48e1-9423-a106f694bec5 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:14:18 WARNING [search.adaevolve] Iteration 48: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+17:14:18 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:14:18 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:14:18 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:14:18 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:14:18 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:14:18 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+17:14:42 [search.adaevolve] Generated 3 paradigms:
+17:14:42 [search.adaevolve]   [1] Diagnostic Error-Distribution Grounded Decomposition (approach: diagnostic-decomposition)
+17:14:42 [search.adaevolve]   [2] Dual-Trace Adversarial Trade-off Calibration (approach: adversarial-calibration)
+17:14:42 [search.adaevolve]   [3] Strict Hardware Contract and Formal Invariant Prompting (approach: contract-invariant-enforcement)
+17:14:42 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+17:14:42 [search.adaevolve]   [FAILED] Pseudocode-to-DSL Intermediate Representation (uses: 2)
+17:14:42 [search.adaevolve]   [FAILED] Adversarial Red-Teaming and Self-Correction (uses: 2)
+17:14:42 [search.adaevolve]   [FAILED] Information-Gap Analysis for Feature Engineering (uses: 2)
+17:14:42 [search.adaevolve] Set 3 new paradigms (best score: 1.003003)
+17:14:42 [search.adaevolve] Generated 3 breakthrough paradigms
+17:14:42 [search.adaevolve] Using paradigm 1/3 (1/2): Diagnostic Error-Distribution Grounded Decomposition
+17:16:54 [evaluator] Evaluated program 988e1c5b-1b43-4215-b337-c95079aa70a4 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:16:54 [search.adaevolve] Using paradigm 2/3 (1/2): Dual-Trace Adversarial Trade-off Calibration
+17:17:13 [evaluator] Evaluated program 1d872f86-ebe5-4368-a772-a91ebe3a574a in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:17:13 [search.adaevolve] Using paradigm 3/3 (1/2): Strict Hardware Contract and Formal Invariant Prompting
+17:19:09 [evaluator] Evaluated program 4afcfa6a-8912-4689-a9af-20060dbb2b87 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:19:09 WARNING [search.adaevolve] Iteration 49: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+17:19:09 [search.adaevolve] Using paradigm 1/3 (2/2): Diagnostic Error-Distribution Grounded Decomposition
+17:20:05 [evaluator] Evaluated program 22a2e828-3fb2-41e6-bda5-24c7f9789a84 in 2096.37s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+17:20:05 [search.adaevolve] Iteration 46: Program 22a2e828 (parent: 322a515b) completed in 2627.00s (llm: 530.64s, eval: 2096.37s)
+17:20:05 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22
+17:20:05 [search.adaevolve] Using paradigm 2/3 (2/2): Dual-Trace Adversarial Trade-off Calibration
+17:21:08 [evaluator] Evaluated program 8e746792-0dee-4bd5-a945-5a4e1a141c97 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:21:08 [search.adaevolve] Using paradigm 3/3 (2/2): Strict Hardware Contract and Formal Invariant Prompting
+17:21:08 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:21:52 [evaluator] Evaluated program 178fa885-5d50-4909-99b2-50937b2e1792 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:21:52 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:23:43 [evaluator] Evaluated program b1ea036a-a50c-453d-8809-7caed2ec9173 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:23:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:24:23 [evaluator] Evaluated program 6bbf14aa-d71b-4d73-897b-36b3d4301868 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:24:23 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:25:22 [evaluator] Evaluated program 8d8f4e0c-ac1b-4cc8-8eb3-5c00b9337345 in 0.94s: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+17:25:22 [search.adaevolve] Iteration 50: Program 8d8f4e0c (parent: e2af905d) completed in 59.40s (llm: 58.46s, eval: 0.94s)
+17:25:22 [search.adaevolve] Metrics: combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22
+17:25:22 [search.adaevolve] Checkpoint interval reached at iteration 50
+17:25:22 [base_database] Database has 37 programs, best program score is combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+17:25:22 [search.utils] [CHECKPOINT] Saved database with 37 programs to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_50
+17:25:22 [search.adaevolve] Saved AdaEvolve state to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_50
+17:25:22 [runner] Checkpoint 50: best=combined_score=1.0030, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6781.4928, cacti_node_nm=22.0000
+17:25:22 [runner] Checkpoint saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_50
+17:25:23 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:25:23 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:25:23 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:25:23 [search.adaevolve] Migration completed at iteration 50
+17:25:23 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:25:23 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:25:23 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+17:25:49 [search.adaevolve] Generated 3 paradigms:
+17:25:49 [search.adaevolve]   [1] Explicit Causal Mapping of MIN Mistakes to State (approach: explicit-causal-mapping)
+17:25:49 [search.adaevolve]   [2] Zero-Based Hardware Budgeting and Pruning (approach: resource-budget-pruning)
+17:25:49 [search.adaevolve]   [3] Micro-Architectural Persona Committee Debate (approach: persona-committee-debate)
+17:25:49 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+17:25:49 [search.adaevolve]   [FAILED] Diagnostic Error-Distribution Grounded Decomposition (uses: 2)
+17:25:49 [search.adaevolve]   [FAILED] Dual-Trace Adversarial Trade-off Calibration (uses: 2)
+17:25:49 [search.adaevolve]   [FAILED] Strict Hardware Contract and Formal Invariant Prompting (uses: 2)
+17:25:49 [search.adaevolve] Set 3 new paradigms (best score: 1.003003)
+17:25:49 [search.adaevolve] Generated 3 breakthrough paradigms
+17:25:50 [search.adaevolve] Using paradigm 1/3 (1/2): Explicit Causal Mapping of MIN Mistakes to State
+17:26:55 [evaluator] Evaluated program d2b8abfd-8b36-48d9-b21a-f454c3480d66 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:26:55 WARNING [search.adaevolve] Iteration 51: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+17:26:56 [search.adaevolve] Using paradigm 2/3 (1/2): Zero-Based Hardware Budgeting and Pruning
+17:27:19 [evaluator] Evaluated program bc6a384a-ccf3-41a7-9bb9-14ec1a30d5ab in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+17:27:19 [search.adaevolve] Using paradigm 3/3 (1/2): Micro-Architectural Persona Committee Debate
+17:29:18 [evaluator] Evaluated program aefcbd3a-776f-4c3b-80e2-40288766b1ca in 1.15s: combined_score=0.0000, status=too_much_storage, error=this design declares 48.6 KB of replacement metadata at this LLC; the budget is 48 KB (the seed declares 47.4 KB): pay for new state by narrowing or removing state elsewhere
+17:29:18 [search.adaevolve] Using paradigm 1/3 (2/2): Explicit Causal Mapping of MIN Mistakes to State
+17:31:30 [evaluator] Evaluated program d299727e-4f5a-443a-88bb-0f1666890995 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:31:30 [search.adaevolve] Using paradigm 2/3 (2/2): Zero-Based Hardware Budgeting and Pruning
+17:32:45 [evaluator] Evaluated program 0f44f851-512e-4242-8f82-4d49bbb37082 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:32:45 WARNING [search.adaevolve] Iteration 53: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+17:32:45 [search.adaevolve] Using paradigm 3/3 (2/2): Micro-Architectural Persona Committee Debate
+17:32:45 [search.adaevolve] All paradigms exhausted, will archive on next check
+17:34:33 [evaluator] Evaluated program bf54be65-af44-4739-b839-05970081afac in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+17:34:33 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:08:42 [evaluator] Evaluated program c2278b2b-28c4-4f75-91e7-68f18a08a0b0 in 2371.21s: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+18:08:42 [search.adaevolve] Iteration 52: Program c2278b2b (parent: 25bf88a3) completed in 2482.94s (llm: 111.73s, eval: 2371.21s)
+18:08:42 [search.adaevolve] Metrics: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22
+18:08:42 [search.adaevolve] New best solution found at iteration 52
+18:08:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:08:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:08:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:08:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:08:43 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:08:43 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+18:09:51 [search.adaevolve] Generated 3 paradigms:
+18:09:51 [search.adaevolve]   [1] Diagnostic Metric-to-Mechanism Mapping (approach: metric-driven-diagnostic)
+18:09:51 [search.adaevolve]   [2] Architectural Sub-Policy Decomposition (approach: sub-problem-decomposition)
+18:09:51 [search.adaevolve]   [3] Contrastive Anti-Pattern Verification (approach: contrastive-verification)
+18:09:51 [search.adaevolve] Archived 3 paradigms (improvement: +0.001669):
+18:09:51 [search.adaevolve]   [SUCCESS] Explicit Causal Mapping of MIN Mistakes to State (uses: 2)
+18:09:51 [search.adaevolve]   [SUCCESS] Zero-Based Hardware Budgeting and Pruning (uses: 2)
+18:09:51 [search.adaevolve]   [SUCCESS] Micro-Architectural Persona Committee Debate (uses: 2)
+18:09:51 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+18:09:51 [search.adaevolve] Generated 3 breakthrough paradigms
+18:09:51 [search.adaevolve] Using paradigm 1/3 (1/2): Diagnostic Metric-to-Mechanism Mapping
+18:11:46 [evaluator] Evaluated program 25fdf002-aaaa-4362-8f92-8773c4f16180 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:11:46 [search.adaevolve] Using paradigm 2/3 (1/2): Architectural Sub-Policy Decomposition
+18:13:56 [evaluator] Evaluated program 1572034c-f420-48d6-acda-0ec083560fcb in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:13:56 [search.adaevolve] Using paradigm 3/3 (1/2): Contrastive Anti-Pattern Verification
+18:14:17 [evaluator] Evaluated program 95911094-3e90-4152-9be6-be3d0460c5de in 2259.34s: combined_score=1.0017, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6786.0307, cacti_node_nm=22.0000
+18:14:17 [search.adaevolve] Iteration 54: Program 95911094 (parent: 3d08ed71) completed in 2384.16s (llm: 124.82s, eval: 2259.34s)
+18:14:17 [search.adaevolve] Metrics: combined_score=1.0017, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6786.0307, cacti_node_nm=22
+18:14:18 [search.adaevolve] Using paradigm 1/3 (2/2): Diagnostic Metric-to-Mechanism Mapping
+18:15:24 [evaluator] Evaluated program 8a296270-8dbf-4f4c-80ca-5dde92fc56c8 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:15:24 WARNING [search.adaevolve] Iteration 55: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+18:15:24 [search.adaevolve] Using paradigm 2/3 (2/2): Architectural Sub-Policy Decomposition
+18:16:09 [evaluator] Evaluated program d7c7ccdb-3318-49dc-b519-5bd7bec11611 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:16:09 [search.adaevolve] Using paradigm 3/3 (2/2): Contrastive Anti-Pattern Verification
+18:16:09 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:17:20 [evaluator] Evaluated program 2e822240-cbc9-4d0f-910e-3bfa64585434 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:17:20 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:05 [evaluator] Evaluated program e6889299-8ed5-46b0-be32-ad64b632b366 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:18:05 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:53 [evaluator] Evaluated program 9e89c20d-6c8e-42a6-82bb-2c741b22750d in 1.00s: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+18:18:53 [search.adaevolve] Iteration 56: Program 9e89c20d (parent: cc8d2c5c) completed in 48.90s (llm: 47.89s, eval: 1.00s)
+18:18:53 [search.adaevolve] Metrics: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22
+18:18:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:18:54 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+18:19:58 [search.adaevolve] Generated 3 paradigms:
+18:19:58 [search.adaevolve]   [1] Edge-Case Execution Tracing (approach: execution-tracing-cot)
+18:19:58 [search.adaevolve]   [2] Dynamic Confidence Gating (approach: architectural-design-pattern)
+18:19:58 [search.adaevolve]   [3] Multi-Dimensional Feature Crossing (approach: feature-engineering)
+18:19:58 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+18:19:58 [search.adaevolve]   [FAILED] Diagnostic Metric-to-Mechanism Mapping (uses: 2)
+18:19:58 [search.adaevolve]   [FAILED] Architectural Sub-Policy Decomposition (uses: 2)
+18:19:58 [search.adaevolve]   [FAILED] Contrastive Anti-Pattern Verification (uses: 2)
+18:19:58 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+18:19:58 [search.adaevolve] Generated 3 breakthrough paradigms
+18:19:58 [search.adaevolve] Using paradigm 1/3 (1/2): Edge-Case Execution Tracing
+18:21:48 [evaluator] Evaluated program 29f71c97-64bf-492d-a921-b299faddc43d in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:21:48 [search.adaevolve] Using paradigm 2/3 (1/2): Dynamic Confidence Gating
+18:23:54 [evaluator] Evaluated program 19a3a05c-d553-48a6-8f05-de26716b4c52 in 0.05s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:23:54 [search.adaevolve] Using paradigm 3/3 (1/2): Multi-Dimensional Feature Crossing
+18:25:41 [evaluator] Evaluated program 298e4409-93e5-4013-b527-cb2c74a01b5c in 0.04s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:25:41 WARNING [search.adaevolve] Iteration 58: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+18:25:41 [search.adaevolve] Using paradigm 1/3 (2/2): Edge-Case Execution Tracing
+18:27:38 [evaluator] Evaluated program 567a0ebd-8e4e-4173-9eec-d2976d765e20 in 0.04s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:27:38 [search.adaevolve] Using paradigm 2/3 (2/2): Dynamic Confidence Gating
+18:29:11 [evaluator] Evaluated program 3135befc-a6ec-4c3a-995d-ade60d6e205c in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:29:11 [search.adaevolve] Using paradigm 3/3 (2/2): Multi-Dimensional Feature Crossing
+18:29:11 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:31:25 [evaluator] Evaluated program 92a0610d-83e3-4e03-9180-ea319df95dd9 in 0.02s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:31:25 WARNING [search.adaevolve] Iteration 59: All 3 attempts failed: Eval failure: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+18:31:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:31:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:31:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:31:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:31:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:31:25 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+18:32:57 [search.adaevolve] Generated 3 paradigms:
+18:32:57 [search.adaevolve]   [1] Few-Shot Exemplar Prompting with Validated Hardware Primitives (approach: few-shot)
+18:32:57 [search.adaevolve]   [2] Pareto Seesaw-Damping Chain-of-Thought for Eviction Balancing (approach: chain-of-thought)
+18:32:57 [search.adaevolve]   [3] Confidence-Gated State Reallocation Format Constraint (approach: format-constraint)
+18:32:57 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+18:32:57 [search.adaevolve]   [FAILED] Edge-Case Execution Tracing (uses: 2)
+18:32:57 [search.adaevolve]   [FAILED] Dynamic Confidence Gating (uses: 2)
+18:32:57 [search.adaevolve]   [FAILED] Multi-Dimensional Feature Crossing (uses: 2)
+18:32:57 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+18:32:57 [search.adaevolve] Generated 3 breakthrough paradigms
+18:32:57 [search.adaevolve] Using paradigm 1/3 (1/2): Few-Shot Exemplar Prompting with Validated Hardware Primitives
+18:35:08 [evaluator] Evaluated program 89bed48b-63f1-4aa9-8524-82d8473e2e9c in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:35:08 [search.adaevolve] Using paradigm 2/3 (1/2): Pareto Seesaw-Damping Chain-of-Thought for Eviction Balancing
+18:35:36 [evaluator] Evaluated program 8100906a-1c31-48ef-827b-aa49b411853c in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:35:36 [search.adaevolve] Using paradigm 3/3 (1/2): Confidence-Gated State Reallocation Format Constraint
+18:37:23 [evaluator] Evaluated program 698b95ed-a69f-4e5f-a936-1f32df77cfd7 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:37:23 WARNING [search.adaevolve] Iteration 60: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+18:37:23 [search.adaevolve] Using paradigm 1/3 (2/2): Few-Shot Exemplar Prompting with Validated Hardware Primitives
+18:38:52 [evaluator] Evaluated program 828872fc-32ef-4dbb-b301-e30c6e311df4 in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+18:38:52 [search.adaevolve] Using paradigm 2/3 (2/2): Pareto Seesaw-Damping Chain-of-Thought for Eviction Balancing
+18:57:26 [evaluator] Evaluated program 77673a82-e988-4787-b7d2-aa4dd2668488 in 2232.49s: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+18:57:26 [search.adaevolve] Iteration 57: Program 77673a82 (parent: c2278b2b) completed in 2406.20s (llm: 173.70s, eval: 2232.49s)
+18:57:26 [search.adaevolve] Metrics: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22
+18:57:27 [search.adaevolve] Using paradigm 3/3 (2/2): Confidence-Gated State Reallocation Format Constraint
+18:57:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+18:59:25 [evaluator] Evaluated program a57ac180-0f5d-49c9-b6a5-cf7738942e1f in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+18:59:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:00:10 [evaluator] Evaluated program 53c74bc2-e612-4d40-8376-17749d2345e2 in 1.09s: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+19:00:10 [search.adaevolve] Iteration 62: Program 53c74bc2 (parent: 5ad06ad3) completed in 45.38s (llm: 44.28s, eval: 1.10s)
+19:00:10 [search.adaevolve] Metrics: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22
+19:00:11 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:00:11 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:00:11 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:00:11 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:00:11 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:00:11 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+19:00:48 [search.adaevolve] Generated 3 paradigms:
+19:00:48 [search.adaevolve]   [1] Pareto Trade-off Decoupling (approach: trade-off-decoupling)
+19:00:48 [search.adaevolve]   [2] Adversarial Scenario Defense (approach: adversarial-scenario-defense)
+19:00:48 [search.adaevolve]   [3] Chronological Cache Line Lifecycle State-Machine (approach: lifecycle-state-machine)
+19:00:48 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+19:00:48 [search.adaevolve]   [FAILED] Few-Shot Exemplar Prompting with Validated Hardware Primitives (uses: 2)
+19:00:48 [search.adaevolve]   [FAILED] Pareto Seesaw-Damping Chain-of-Thought for Eviction Balancing (uses: 2)
+19:00:48 [search.adaevolve]   [FAILED] Confidence-Gated State Reallocation Format Constraint (uses: 2)
+19:00:48 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+19:00:48 [search.adaevolve] Generated 3 breakthrough paradigms
+19:00:48 [search.adaevolve] Using paradigm 1/3 (1/2): Pareto Trade-off Decoupling
+19:03:56 [evaluator] Evaluated program a4303cb6-099c-43bf-a18a-394cd8259c02 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:03:56 [search.adaevolve] Using paradigm 2/3 (1/2): Adversarial Scenario Defense
+19:05:40 [evaluator] Evaluated program 30ece477-1842-45cb-87e1-41b6e5739e3d in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:05:40 [search.adaevolve] Using paradigm 3/3 (1/2): Chronological Cache Line Lifecycle State-Machine
+19:08:07 [evaluator] Evaluated program 541cea13-68d9-4d69-9850-a6bdf1afa943 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:08:07 WARNING [search.adaevolve] Iteration 63: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:08:07 [search.adaevolve] Using paradigm 1/3 (2/2): Pareto Trade-off Decoupling
+19:09:03 [evaluator] Evaluated program e20d4e1c-0bc1-4820-b673-80046f1b0296 in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+19:09:03 [search.adaevolve] Using paradigm 2/3 (2/2): Adversarial Scenario Defense
+19:10:58 [evaluator] Evaluated program 0436e872-abeb-4cea-bb7d-70c7b8a06571 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:10:58 [search.adaevolve] Using paradigm 3/3 (2/2): Chronological Cache Line Lifecycle State-Machine
+19:10:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:12:58 [evaluator] Evaluated program 5d9ece78-946f-452a-a4ec-3409710157eb in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:12:58 WARNING [search.adaevolve] Iteration 64: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:12:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:12:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:12:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:12:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:12:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:12:58 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+19:13:29 [search.adaevolve] Generated 3 paradigms:
+19:13:29 [search.adaevolve]   [1] Information-Theoretic State Compression (approach: resource-constrained-perspective)
+19:13:29 [search.adaevolve]   [2] Bottom-Up Grammar-Constrained Synthesis (approach: syntax-driven-assembly)
+19:13:29 [search.adaevolve]   [3] Causal Pipeline Invariant Enforcement (approach: temporal-invariant-structuring)
+19:13:29 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+19:13:29 [search.adaevolve]   [FAILED] Pareto Trade-off Decoupling (uses: 2)
+19:13:29 [search.adaevolve]   [FAILED] Adversarial Scenario Defense (uses: 2)
+19:13:29 [search.adaevolve]   [FAILED] Chronological Cache Line Lifecycle State-Machine (uses: 2)
+19:13:29 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+19:13:29 [search.adaevolve] Generated 3 breakthrough paradigms
+19:13:29 [search.adaevolve] Using paradigm 1/3 (1/2): Information-Theoretic State Compression
+19:15:41 [evaluator] Evaluated program 61d41d6f-51b7-45e2-9fcd-ee209d005b89 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:15:41 [search.adaevolve] Using paradigm 2/3 (1/2): Bottom-Up Grammar-Constrained Synthesis
+19:16:53 [evaluator] Evaluated program 1074515b-bfef-4507-af56-d0eed9ec33db in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:16:53 [search.adaevolve] Using paradigm 3/3 (1/2): Causal Pipeline Invariant Enforcement
+19:17:33 [evaluator] Evaluated program 934dd527-2921-4bd8-bf61-42d1c0e802ef in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:17:33 WARNING [search.adaevolve] Iteration 65: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:17:33 [search.adaevolve] Using paradigm 1/3 (2/2): Information-Theoretic State Compression
+19:19:31 [evaluator] Evaluated program 0024abf1-1ea9-4536-8f97-93e16d82c312 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:19:31 [search.adaevolve] Using paradigm 2/3 (2/2): Bottom-Up Grammar-Constrained Synthesis
+19:20:23 [evaluator] Evaluated program ec52e7ea-1ac6-404a-9b12-860789adfbc6 in 2402.54s: combined_score=0.9821, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6985.3437, cacti_node_nm=22.0000
+19:20:23 [search.adaevolve] Iteration 61: Program ec52e7ea (parent: c2278b2b) completed in 2491.01s (llm: 88.47s, eval: 2402.54s)
+19:20:23 [search.adaevolve] Metrics: combined_score=0.9821, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6985.3437, cacti_node_nm=22
+19:20:24 [search.adaevolve] Using paradigm 3/3 (2/2): Causal Pipeline Invariant Enforcement
+19:20:24 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:21:30 [evaluator] Evaluated program e8ef2d21-eaaa-4306-9104-eacc95f065ed in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:21:31 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:22:26 [evaluator] Evaluated program f9610e4b-a563-4986-9ff3-0ea3bc153884 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:22:26 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:23:50 [evaluator] Evaluated program 353a5e08-b53b-4201-8c67-91d8501d0a14 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:23:50 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:25:08 [evaluator] Evaluated program c63f1604-f238-4fc1-a3cb-6ee98434bd1c in 1.16s: combined_score=0.0000, status=words_refused, error=clamped_dec, dynamic_bypass_update: already declared in this run with another definition; a word is never changed, so declare a new name
+19:25:08 WARNING [search.adaevolve] Iteration 67: All 3 attempts failed: Eval failure: clamped_dec, dynamic_bypass_update: already declared in this run with another definition; a word is never changed, so declare a new name
+19:25:08 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:25:08 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:25:08 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:25:08 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:25:08 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:25:08 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+19:25:33 [search.adaevolve] Generated 3 paradigms:
+19:25:33 [search.adaevolve]   [1] Diagnostic-Attribution Headroom-Guided Prompting (approach: feedback-conditioned)
+19:25:33 [search.adaevolve]   [2] Orthogonal Modular Recombination and Scope Isolation Prompting (approach: modular-decomposition)
+19:25:33 [search.adaevolve]   [3] Contract-Driven Invariant Verification Prompting (approach: contract-specification)
+19:25:33 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+19:25:33 [search.adaevolve]   [FAILED] Information-Theoretic State Compression (uses: 2)
+19:25:33 [search.adaevolve]   [FAILED] Bottom-Up Grammar-Constrained Synthesis (uses: 2)
+19:25:33 [search.adaevolve]   [FAILED] Causal Pipeline Invariant Enforcement (uses: 2)
+19:25:33 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+19:25:33 [search.adaevolve] Generated 3 breakthrough paradigms
+19:25:33 [search.adaevolve] Using paradigm 1/3 (1/2): Diagnostic-Attribution Headroom-Guided Prompting
+19:25:36 WARNING [llm] Error attempt 1/3: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}], retrying...
+19:27:49 [evaluator] Evaluated program bd1803c8-5c24-49f7-813f-bdc1d50ac9e5 in 0.05s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:27:49 [search.adaevolve] Using paradigm 2/3 (1/2): Orthogonal Modular Recombination and Scope Isolation Prompting
+19:28:02 [evaluator] Evaluated program 0cb1b8b6-5f2a-41a1-ad28-e2e5842c5767 in 0.04s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:28:02 [search.adaevolve] Using paradigm 3/3 (1/2): Contract-Driven Invariant Verification Prompting
+19:30:24 [evaluator] Evaluated program 75adee4b-6ab7-47f6-bee0-1f2ca6447b74 in 0.04s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:30:24 WARNING [search.adaevolve] Iteration 68: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:30:24 [search.adaevolve] Using paradigm 1/3 (2/2): Diagnostic-Attribution Headroom-Guided Prompting
+19:32:32 [evaluator] Evaluated program 7a807216-c6d3-4e08-8cdc-cfd72846daea in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:32:32 [search.adaevolve] Using paradigm 2/3 (2/2): Orthogonal Modular Recombination and Scope Isolation Prompting
+19:34:25 [evaluator] Evaluated program dc886e9c-8630-4fce-8914-b11e175432ad in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:34:25 [search.adaevolve] Using paradigm 3/3 (2/2): Contract-Driven Invariant Verification Prompting
+19:34:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:36:17 [evaluator] Evaluated program ef1c014a-a570-41a8-ab1c-15fa328b0d31 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:36:17 WARNING [search.adaevolve] Iteration 69: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:36:17 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:36:17 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:36:17 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:36:17 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:36:17 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:36:17 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+19:36:45 [search.adaevolve] Generated 3 paradigms:
+19:36:45 [search.adaevolve]   [1] Dialectical Persona Synthesis with Asymmetric Consensus (approach: multi-agent-debate)
+19:36:45 [search.adaevolve]   [2] Counterfactual Trace-Mistake Inversion Prompting (approach: counterfactual-error-analysis)
+19:36:45 [search.adaevolve]   [3] Synthesizability-First Spec-Driven Metacognitive Prompting (approach: metacognitive-refinement)
+19:36:45 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+19:36:45 [search.adaevolve]   [FAILED] Diagnostic-Attribution Headroom-Guided Prompting (uses: 2)
+19:36:45 [search.adaevolve]   [FAILED] Orthogonal Modular Recombination and Scope Isolation Prompting (uses: 2)
+19:36:45 [search.adaevolve]   [FAILED] Contract-Driven Invariant Verification Prompting (uses: 2)
+19:36:45 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+19:36:45 [search.adaevolve] Generated 3 breakthrough paradigms
+19:36:45 [search.adaevolve] Using paradigm 1/3 (1/2): Dialectical Persona Synthesis with Asymmetric Consensus
+19:37:10 [evaluator] Evaluated program bd6596d0-2c0a-41ff-9317-4d7d06538156 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:37:10 [search.adaevolve] Using paradigm 2/3 (1/2): Counterfactual Trace-Mistake Inversion Prompting
+19:39:20 [evaluator] Evaluated program 9eb51a70-1820-421b-a162-88b1a6a7896b in 0.02s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+19:39:20 [search.adaevolve] Using paradigm 3/3 (1/2): Synthesizability-First Spec-Driven Metacognitive Prompting
+19:39:56 [evaluator] Evaluated program 46533d37-8d30-478e-ac89-ce6cb4f7ef93 in 0.02s: combined_score=0.0000, status=words_refused, error=3 validation errors for NewWord
+params.`...`.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+params.`...`.IntRange
+  Input should be a valid dictionary or instance of IntRange [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+params.`...`.SymbolOf
+  Input should be a valid dictionary or instance of SymbolOf [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+19:39:56 WARNING [search.adaevolve] Iteration 70: All 3 attempts failed: Eval failure: 3 validation errors for NewWord
+params.`...`.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+params.`...`.IntRange
+  Input should be a valid dictionary or instance of IntRange [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+params.`...`.SymbolOf
+  Input should be a valid dictionary or instance of SymbolOf [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+19:39:56 [search.adaevolve] Using paradigm 1/3 (2/2): Dialectical Persona Synthesis with Asymmetric Consensus
+19:41:53 [evaluator] Evaluated program 3e94e05e-22c8-41f5-8b83-50fff5aee2d4 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:41:53 [search.adaevolve] Using paradigm 2/3 (2/2): Counterfactual Trace-Mistake Inversion Prompting
+19:45:14 [evaluator] Evaluated program 0bcbc5ce-487a-4b7b-a6ea-f32a12f58507 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:45:14 [search.adaevolve] Using paradigm 3/3 (2/2): Synthesizability-First Spec-Driven Metacognitive Prompting
+19:45:14 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:47:25 [evaluator] Evaluated program bb261efc-a09e-42b4-808f-1f9bb8216080 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:47:25 WARNING [search.adaevolve] Iteration 71: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:47:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:47:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:47:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:47:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:47:25 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:47:25 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+19:48:17 [search.adaevolve] Generated 3 paradigms:
+19:48:17 [search.adaevolve]   [1] Algorithmic Decision Tree Explicit Mapping (approach: chain-of-thought / pseudocode-mapping)
+19:48:17 [search.adaevolve]   [2] SPEC CPU Benchmark-Anchored Access Pattern Specialization (approach: domain-knowledge-retrieval)
+19:48:17 [search.adaevolve]   [3] Cross-Domain Hardware Predictor Analogy Mapping (approach: cross-domain-analogy)
+19:48:17 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+19:48:17 [search.adaevolve]   [FAILED] Dialectical Persona Synthesis with Asymmetric Consensus (uses: 2)
+19:48:17 [search.adaevolve]   [FAILED] Counterfactual Trace-Mistake Inversion Prompting (uses: 2)
+19:48:17 [search.adaevolve]   [FAILED] Synthesizability-First Spec-Driven Metacognitive Prompting (uses: 2)
+19:48:17 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+19:48:17 [search.adaevolve] Generated 3 breakthrough paradigms
+19:48:17 [search.adaevolve] Using paradigm 1/3 (1/2): Algorithmic Decision Tree Explicit Mapping
+19:48:39 [evaluator] Evaluated program 78c8389f-91e9-4d42-a1a5-7baa761c05a8 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:48:39 [search.adaevolve] Using paradigm 2/3 (1/2): SPEC CPU Benchmark-Anchored Access Pattern Specialization
+19:50:35 [evaluator] Evaluated program fbe0c359-1621-4661-a5f8-d1cf18a93171 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:50:35 [search.adaevolve] Using paradigm 3/3 (1/2): Cross-Domain Hardware Predictor Analogy Mapping
+19:52:23 [evaluator] Evaluated program 687b2095-1de9-4179-bce6-03866e760ee9 in 0.02s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+19:52:23 WARNING [search.adaevolve] Iteration 72: All 3 attempts failed: Eval failure: 1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+19:52:23 [search.adaevolve] Using paradigm 1/3 (2/2): Algorithmic Decision Tree Explicit Mapping
+19:54:23 [evaluator] Evaluated program e5430686-fb20-4159-936b-8095b1023b7f in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:54:23 [search.adaevolve] Using paradigm 2/3 (2/2): SPEC CPU Benchmark-Anchored Access Pattern Specialization
+19:55:05 [evaluator] Evaluated program 0be7081f-7453-4dc4-ade0-31cd55828cf5 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:55:05 [search.adaevolve] Using paradigm 3/3 (2/2): Cross-Domain Hardware Predictor Analogy Mapping
+19:55:05 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:56:44 [evaluator] Evaluated program bd48e2fb-3398-4696-9948-5f4c3eccc6e9 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:56:44 WARNING [search.adaevolve] Iteration 73: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+19:56:44 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:56:44 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:56:44 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:56:44 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:56:44 [search.adaevolve] All paradigms exhausted, will archive on next check
+19:56:44 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+19:57:05 [search.adaevolve] Generated 3 paradigms:
+19:57:05 [search.adaevolve]   [1] Delta-Centric Micro-Patch Prompting with Explicit Bit-Budget Accounting (approach: format-constraint)
+19:57:05 [search.adaevolve]   [2] Empirical Belady Oracle Alignment with Diagnostic Inversion Demonstrations (approach: few-shot)
+19:57:05 [search.adaevolve]   [3] Contrastive Hypothesis-Testing with Cross-Trace Regression Defense (approach: contrastive-reasoning)
+19:57:05 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+19:57:05 [search.adaevolve]   [FAILED] Algorithmic Decision Tree Explicit Mapping (uses: 2)
+19:57:05 [search.adaevolve]   [FAILED] SPEC CPU Benchmark-Anchored Access Pattern Specialization (uses: 2)
+19:57:05 [search.adaevolve]   [FAILED] Cross-Domain Hardware Predictor Analogy Mapping (uses: 2)
+19:57:05 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+19:57:05 [search.adaevolve] Generated 3 breakthrough paradigms
+19:57:05 [search.adaevolve] Using paradigm 1/3 (1/2): Delta-Centric Micro-Patch Prompting with Explicit Bit-Budget Accounting
+19:59:17 [evaluator] Evaluated program 3d1f9e97-26e8-4158-850e-7bd88514a38e in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+19:59:17 [search.adaevolve] Using paradigm 2/3 (1/2): Empirical Belady Oracle Alignment with Diagnostic Inversion Demonstrations
+20:01:28 [evaluator] Evaluated program 3f38b48e-e059-4bb9-8814-2d9523884261 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:01:28 [search.adaevolve] Using paradigm 3/3 (1/2): Contrastive Hypothesis-Testing with Cross-Trace Regression Defense
+20:02:35 [evaluator] Evaluated program 495b7774-a70b-4908-b180-76aabd52675d in 2310.25s: combined_score=1.0037, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6780.9060, cacti_node_nm=22.0000
+20:02:35 [search.adaevolve] Iteration 66: Program 495b7774 (parent: 53c74bc2) completed in 2464.85s (llm: 154.60s, eval: 2310.25s)
+20:02:35 [search.adaevolve] Metrics: combined_score=1.0037, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6780.9060, cacti_node_nm=22
+20:02:36 [search.adaevolve] Using paradigm 1/3 (2/2): Delta-Centric Micro-Patch Prompting with Explicit Bit-Budget Accounting
+20:03:19 [evaluator] Evaluated program 8ee9f21b-8588-4ad2-b2f2-725a3dcc3bbf in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:03:19 WARNING [search.adaevolve] Iteration 74: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+20:03:19 [search.adaevolve] Using paradigm 2/3 (2/2): Empirical Belady Oracle Alignment with Diagnostic Inversion Demonstrations
+20:03:54 [evaluator] Evaluated program 5e78405e-0458-4838-9869-3107366c042b in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+20:03:54 [search.adaevolve] Using paradigm 3/3 (2/2): Contrastive Hypothesis-Testing with Cross-Trace Regression Defense
+20:03:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:04:42 [evaluator] Evaluated program f965ddf9-542a-499e-9709-c0cd749373d4 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:04:42 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:05:51 [evaluator] Evaluated program e44f85ca-fb49-4644-bad0-59d49fd42fb5 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:05:51 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:06:37 [evaluator] Evaluated program b517ba64-14e5-458f-ba65-b29506f83870 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:06:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:08:57 [evaluator] Evaluated program 4f7dc855-dc02-454b-bd2c-b79b7fdea3de in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:08:57 WARNING [search.adaevolve] Iteration 75: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+20:08:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:08:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:08:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:08:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:08:57 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:08:57 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+20:09:01 [evaluator] Evaluated program a4130ba9-7987-4b67-b282-aa8820afa584 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:09:01 WARNING [search.adaevolve] Iteration 76: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+20:09:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:09:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:09:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:09:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:09:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:09:01 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+20:09:27 [search.adaevolve] Generated 3 paradigms:
+20:09:27 [search.adaevolve]   [1] Mechanistic Cache-Line Lifecycle Tracing (approach: step-by-step mechanistic reasoning)
+20:09:27 [search.adaevolve]   [2] Zero-New-Words Primitive Recombination (approach: strict format constraint)
+20:09:27 [search.adaevolve]   [3] Headroom-Weighted ROI Prioritization (approach: data-driven context weighting)
+20:09:27 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+20:09:27 [search.adaevolve]   [FAILED] Delta-Centric Micro-Patch Prompting with Explicit Bit-Budget Accounting (uses: 2)
+20:09:27 [search.adaevolve]   [FAILED] Empirical Belady Oracle Alignment with Diagnostic Inversion Demonstrations (uses: 2)
+20:09:27 [search.adaevolve]   [FAILED] Contrastive Hypothesis-Testing with Cross-Trace Regression Defense (uses: 2)
+20:09:27 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+20:09:27 [search.adaevolve] Generated 3 breakthrough paradigms
+20:09:27 [search.adaevolve] Using paradigm 1/3 (1/2): Mechanistic Cache-Line Lifecycle Tracing
+20:10:09 [search.adaevolve] Generated 3 paradigms:
+20:10:09 [search.adaevolve]   [1] Downstream LLM Control via Strict C++ Injection (approach: downstream-agent-control)
+20:10:09 [search.adaevolve]   [2] Anti-Pattern Negative Constraint List (approach: negative-space-pruning)
+20:10:09 [search.adaevolve]   [3] Zero-Sum Budget Trading Framework (approach: economic-resource-constraint)
+20:10:09 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+20:10:09 [search.adaevolve]   [FAILED] Mechanistic Cache-Line Lifecycle Tracing (uses: 1)
+20:10:09 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+20:10:09 [search.adaevolve] Generated 3 breakthrough paradigms
+20:10:09 [search.adaevolve] Using paradigm 1/3 (1/2): Downstream LLM Control via Strict C++ Injection
+20:11:27 [evaluator] Evaluated program 6e2d57fa-e0b4-4a55-8123-72572cdd639a in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:11:27 [search.adaevolve] Using paradigm 2/3 (1/2): Anti-Pattern Negative Constraint List
+20:12:16 [evaluator] Evaluated program 6edc35a2-6dce-4df6-b5f9-8901c25f24f1 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:12:16 [search.adaevolve] Using paradigm 3/3 (1/2): Zero-Sum Budget Trading Framework
+20:14:24 [evaluator] Evaluated program 602eef19-5b16-4ab4-8de1-d6362f24dc36 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:14:24 [search.adaevolve] Using paradigm 1/3 (2/2): Downstream LLM Control via Strict C++ Injection
+20:15:07 [evaluator] Evaluated program 92dc0a67-5bbf-41a4-b056-ef68bc1f6f3e in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:15:07 WARNING [search.adaevolve] Iteration 77: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+20:15:07 [search.adaevolve] Using paradigm 2/3 (2/2): Anti-Pattern Negative Constraint List
+20:17:12 [evaluator] Evaluated program 3bfb7378-56c4-42a5-98c3-175a7402e6ef in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:17:12 [search.adaevolve] Using paradigm 3/3 (2/2): Zero-Sum Budget Trading Framework
+20:17:12 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:01 [evaluator] Evaluated program 03e76653-a398-4e0b-be24-4cc9b19d4ddf in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:19:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:27 [evaluator] Evaluated program a296892d-4978-4021-ac6d-6c8f51417c5e in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+20:19:27 WARNING [search.adaevolve] Iteration 79: All 3 attempts failed: Eval failure: candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+20:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:27 [search.adaevolve] All paradigms exhausted, will archive on next check
+20:19:27 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+20:20:11 [search.adaevolve] Generated 3 paradigms:
+20:20:11 [search.adaevolve]   [1] State Machine Liveness Invariants (approach: state-machine-invariants)
+20:20:11 [search.adaevolve]   [2] Workload-Specific Trace Clustering (approach: data-driven-clustering)
+20:20:11 [search.adaevolve]   [3] Value-Semantic Boundary Mapping (approach: value-semantic-mapping)
+20:20:11 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+20:20:11 [search.adaevolve]   [FAILED] Downstream LLM Control via Strict C++ Injection (uses: 2)
+20:20:11 [search.adaevolve]   [FAILED] Anti-Pattern Negative Constraint List (uses: 2)
+20:20:11 [search.adaevolve]   [FAILED] Zero-Sum Budget Trading Framework (uses: 2)
+20:20:11 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+20:20:11 [search.adaevolve] Generated 3 breakthrough paradigms
+20:20:11 [search.adaevolve] Using paradigm 1/3 (1/2): State Machine Liveness Invariants
+gemini-3.1-pro-preview: rate limited (429), trying again in 30 s
+20:53:48 [evaluator] Evaluated program 9de59b8e-cbca-4378-84b7-3efa38f5d629 in 2402.05s: combined_score=1.0034, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6795.2631, cacti_node_nm=22.0000
+20:53:48 [search.adaevolve] Iteration 78: Program 9de59b8e (parent: c2278b2b) completed in 2540.82s (llm: 138.76s, eval: 2402.05s)
+20:53:48 [search.adaevolve] Metrics: combined_score=1.0034, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6795.2631, cacti_node_nm=22
+20:53:49 [search.adaevolve] Using paradigm 2/3 (1/2): Workload-Specific Trace Clustering
+20:55:33 [evaluator] Evaluated program 2289beca-1ceb-4206-9c3a-0b6d82443ad1 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:55:33 [search.adaevolve] Using paradigm 3/3 (1/2): Value-Semantic Boundary Mapping
+20:57:22 [evaluator] Evaluated program ab9445a8-1694-4691-83c5-914ac5938b30 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:57:22 [search.adaevolve] Using paradigm 1/3 (2/2): State Machine Liveness Invariants
+20:59:04 [evaluator] Evaluated program a2861bde-607b-42fc-a13d-d5f208e1f521 in 2256.92s: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.6378, cacti_node_nm=22.0000
+20:59:04 [search.adaevolve] Iteration 80: Program a2861bde (parent: c2278b2b) completed in 2332.85s (llm: 75.93s, eval: 2256.92s)
+20:59:04 [search.adaevolve] Metrics: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.6378, cacti_node_nm=22
+20:59:04 [search.adaevolve] Checkpoint interval reached at iteration 80
+20:59:04 [base_database] Database has 55 programs, best program score is combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+20:59:04 [search.utils] [CHECKPOINT] Saved database with 55 programs to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_80
+20:59:04 [search.adaevolve] Saved AdaEvolve state to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_80
+20:59:04 [runner] Checkpoint 80: best=combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+20:59:04 [runner] Checkpoint saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_80
+20:59:05 [search.adaevolve] Using paradigm 2/3 (2/2): Workload-Specific Trace Clustering
+20:59:14 [evaluator] Evaluated program 750eeec8-4018-46c8-9d39-4e667e48af8e in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+20:59:14 WARNING [search.adaevolve] Iteration 81: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+20:59:14 [search.adaevolve] Using paradigm 3/3 (2/2): Value-Semantic Boundary Mapping
+20:59:14 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:01:05 [evaluator] Evaluated program 07848ad9-dcfe-493f-abdc-3e38367c19c3 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:01:05 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:02:20 [evaluator] Evaluated program 12f2bfd1-790d-424c-96f7-8e9ab073a757 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:02:20 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:03:37 [evaluator] Evaluated program f7592eeb-fc1c-40e5-bed9-8d63c1af1a57 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:03:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:03:46 [evaluator] Evaluated program d33c28f6-a5cf-4386-b0ab-229d7de57103 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:03:46 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:06:40 [evaluator] Evaluated program 4fd8c6f9-3877-43a1-9443-bc06308111a4 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:06:40 WARNING [search.adaevolve] Iteration 82: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:06:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:06:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:06:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:06:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:06:40 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:06:40 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+21:06:56 [search.adaevolve] Generated 3 paradigms:
+21:06:56 [search.adaevolve]   [1] Data-Driven Metric Prioritization Matrix (approach: quantitative-reasoning)
+21:06:56 [search.adaevolve]   [2] State Machine Transition Mapping (approach: structural-decomposition)
+21:06:56 [search.adaevolve]   [3] Modular Component Isolation and Ablation (approach: task-decomposition)
+21:06:56 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+21:06:56 [search.adaevolve]   [FAILED] State Machine Liveness Invariants (uses: 2)
+21:06:56 [search.adaevolve]   [FAILED] Workload-Specific Trace Clustering (uses: 2)
+21:06:56 [search.adaevolve]   [FAILED] Value-Semantic Boundary Mapping (uses: 2)
+21:06:56 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+21:06:56 [search.adaevolve] Generated 3 breakthrough paradigms
+21:06:56 [search.adaevolve] Using paradigm 1/3 (1/2): Data-Driven Metric Prioritization Matrix
+21:07:37 [evaluator] Evaluated program ad10fb65-3a7b-463c-beca-520fa4ae493f in 0.05s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:07:37 [search.adaevolve] Using paradigm 2/3 (1/2): State Machine Transition Mapping
+21:09:25 [evaluator] Evaluated program c2b1e83d-93bb-4705-9d9f-c09a3b0252df in 0.05s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:09:25 [search.adaevolve] Using paradigm 3/3 (1/2): Modular Component Isolation and Ablation
+21:11:41 [evaluator] Evaluated program 91de55ab-00be-4404-8ae9-41e3980ebd52 in 0.05s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:11:41 WARNING [search.adaevolve] Iteration 84: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:11:41 [search.adaevolve] Using paradigm 1/3 (2/2): Data-Driven Metric Prioritization Matrix
+21:13:38 [evaluator] Evaluated program c56a12dc-88db-4cf5-95e1-3a0415671034 in 0.05s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:13:38 [search.adaevolve] Using paradigm 2/3 (2/2): State Machine Transition Mapping
+21:14:01 [evaluator] Evaluated program c4194ee7-976c-431a-92e9-ed173ca509fc in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+21:14:01 [search.adaevolve] Using paradigm 3/3 (2/2): Modular Component Isolation and Ablation
+21:14:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:16:36 [evaluator] Evaluated program 5af6a3d1-38db-4f28-a02e-fa2aa88c22fd in 1.15s: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.6378, cacti_node_nm=22.0000
+21:16:36 [search.adaevolve] Iteration 85: Program 5af6a3d1 (parent: c2278b2b) completed in 155.16s (llm: 154.01s, eval: 1.15s)
+21:16:36 [search.adaevolve] Metrics: combined_score=1.0023, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6783.6378, cacti_node_nm=22
+21:16:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:16:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:16:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:16:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:16:37 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:16:37 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+21:16:58 [search.adaevolve] Generated 3 paradigms:
+21:16:58 [search.adaevolve]   [1] Diagnostic-Attribution and Collateral-Damage Reflection Prompting (approach: self-reflection)
+21:16:58 [search.adaevolve]   [2] Control-Theoretic Hysteresis and Leaky-Bucket Analogy Prompting (approach: analogical-reasoning)
+21:16:58 [search.adaevolve]   [3] Syntactic Minimization and Branch-Free Hardware Synthesis Prompting (approach: syntactic-simplification)
+21:16:58 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+21:16:58 [search.adaevolve]   [FAILED] Data-Driven Metric Prioritization Matrix (uses: 2)
+21:16:58 [search.adaevolve]   [FAILED] State Machine Transition Mapping (uses: 2)
+21:16:58 [search.adaevolve]   [FAILED] Modular Component Isolation and Ablation (uses: 2)
+21:16:58 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+21:16:58 [search.adaevolve] Generated 3 breakthrough paradigms
+21:16:58 [search.adaevolve] Using paradigm 1/3 (1/2): Diagnostic-Attribution and Collateral-Damage Reflection Prompting
+21:19:00 [evaluator] Evaluated program 8a7722a6-1811-4057-900d-b418db0d3c9c in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:19:00 [search.adaevolve] Using paradigm 2/3 (1/2): Control-Theoretic Hysteresis and Leaky-Bucket Analogy Prompting
+21:19:53 [evaluator] Evaluated program e026f37f-db7c-4b5f-9db0-13922100acd6 in 0.02s: combined_score=0.0000, status=malformed, error=candidate is missing section(s): STRUCTURE_DESCRIPTION, NEW_WORDS
+21:19:53 [search.adaevolve] Using paradigm 3/3 (1/2): Syntactic Minimization and Branch-Free Hardware Synthesis Prompting
+21:21:37 [evaluator] Evaluated program 4cd1933d-c80f-428f-86a3-5a2044c8386b in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:21:37 WARNING [search.adaevolve] Iteration 86: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:21:37 [search.adaevolve] Using paradigm 1/3 (2/2): Diagnostic-Attribution and Collateral-Damage Reflection Prompting
+21:23:32 [evaluator] Evaluated program 6e6ffff5-2ea0-4264-b124-625fbf6629cd in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:23:32 [search.adaevolve] Using paradigm 2/3 (2/2): Control-Theoretic Hysteresis and Leaky-Bucket Analogy Prompting
+21:25:19 [evaluator] Evaluated program b0576373-00c1-448d-a873-0fc1a4b14719 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:25:19 [search.adaevolve] Using paradigm 3/3 (2/2): Syntactic Minimization and Branch-Free Hardware Synthesis Prompting
+21:25:19 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:26:32 [evaluator] Evaluated program 24119110-5263-466d-bf40-46be000f1c24 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:26:32 WARNING [search.adaevolve] Iteration 87: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:26:32 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:26:32 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:26:32 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:26:32 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:26:32 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:26:32 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+21:27:15 [search.adaevolve] Generated 3 paradigms:
+21:27:15 [search.adaevolve]   [1] Analogical Cross-Pollination from Reference Designs (approach: analogical-reasoning)
+21:27:15 [search.adaevolve]   [2] Adversarial Self-Critique and Patching (Red-Teaming) (approach: self-correction)
+21:27:15 [search.adaevolve]   [3] Sequential Decision-Tree Logic Mapping (approach: intermediate-representation)
+21:27:15 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+21:27:15 [search.adaevolve]   [FAILED] Diagnostic-Attribution and Collateral-Damage Reflection Prompting (uses: 2)
+21:27:15 [search.adaevolve]   [FAILED] Control-Theoretic Hysteresis and Leaky-Bucket Analogy Prompting (uses: 2)
+21:27:15 [search.adaevolve]   [FAILED] Syntactic Minimization and Branch-Free Hardware Synthesis Prompting (uses: 2)
+21:27:15 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+21:27:15 [search.adaevolve] Generated 3 breakthrough paradigms
+21:27:15 [search.adaevolve] Using paradigm 1/3 (1/2): Analogical Cross-Pollination from Reference Designs
+21:28:30 [evaluator] Evaluated program d361ad34-1cb1-4b09-b9d4-be86c1561602 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:28:30 [search.adaevolve] Using paradigm 2/3 (1/2): Adversarial Self-Critique and Patching (Red-Teaming)
+21:30:19 [evaluator] Evaluated program 8e83b146-9b8d-4b73-be0d-6c08353a9620 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:30:19 [search.adaevolve] Using paradigm 3/3 (1/2): Sequential Decision-Tree Logic Mapping
+21:32:20 [evaluator] Evaluated program 7da25e63-564f-41c8-a229-ed146c6a9023 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:32:20 WARNING [search.adaevolve] Iteration 88: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:32:20 [search.adaevolve] Using paradigm 1/3 (2/2): Analogical Cross-Pollination from Reference Designs
+21:34:13 [evaluator] Evaluated program bc9a84f1-514b-4ea7-a4fd-31ee0ff04fa1 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:34:13 [search.adaevolve] Using paradigm 2/3 (2/2): Adversarial Self-Critique and Patching (Red-Teaming)
+21:35:54 [evaluator] Evaluated program fbe7d0ee-4327-4046-b0cb-e9653d5a46f7 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:35:54 [search.adaevolve] Using paradigm 3/3 (2/2): Sequential Decision-Tree Logic Mapping
+21:35:54 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:37:58 [evaluator] Evaluated program 6a063ed6-f201-41bd-a417-013479c445b8 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:37:58 WARNING [search.adaevolve] Iteration 89: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:37:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:37:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:37:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:37:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:37:58 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:37:58 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+21:38:15 [search.adaevolve] Generated 3 paradigms:
+21:38:15 [search.adaevolve]   [1] Belady-MIN Oracle Discrepancy Attribution Prompting (approach: contrastive-reasoning)
+21:38:15 [search.adaevolve]   [2] Adversarial Micro-Architecture Red-Teaming and Liveness Verification (approach: adversarial-red-teaming)
+21:38:15 [search.adaevolve]   [3] Two-Phase Hypothesis-Experimentation Delta Prompting (approach: task-decomposition)
+21:38:15 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+21:38:15 [search.adaevolve]   [FAILED] Analogical Cross-Pollination from Reference Designs (uses: 2)
+21:38:15 [search.adaevolve]   [FAILED] Adversarial Self-Critique and Patching (Red-Teaming) (uses: 2)
+21:38:15 [search.adaevolve]   [FAILED] Sequential Decision-Tree Logic Mapping (uses: 2)
+21:38:15 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+21:38:15 [search.adaevolve] Generated 3 breakthrough paradigms
+21:38:15 [search.adaevolve] Using paradigm 1/3 (1/2): Belady-MIN Oracle Discrepancy Attribution Prompting
+21:40:25 [evaluator] Evaluated program 52ebeb27-0575-49e5-a869-c45ccd0a5d1c in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:40:25 [search.adaevolve] Using paradigm 2/3 (1/2): Adversarial Micro-Architecture Red-Teaming and Liveness Verification
+21:41:00 [evaluator] Evaluated program 8e033e2d-f5ca-4442-b52b-d5ae08fdce9d in 2153.01s: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+21:41:00 [search.adaevolve] Iteration 83: Program 8e033e2d (parent: 8d8f4e0c) completed in 2242.81s (llm: 89.80s, eval: 2153.01s)
+21:41:00 [search.adaevolve] Metrics: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22
+21:41:01 [search.adaevolve] Using paradigm 3/3 (1/2): Two-Phase Hypothesis-Experimentation Delta Prompting
+21:43:47 [evaluator] Evaluated program 9fa4d694-5b13-4a2a-b15a-3a964ce7f7d4 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:43:47 [search.adaevolve] Using paradigm 1/3 (2/2): Belady-MIN Oracle Discrepancy Attribution Prompting
+21:43:47 [evaluator] Evaluated program 01bbbe16-1d55-40df-89be-17d6a49a9975 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:43:47 [search.adaevolve] Using paradigm 2/3 (2/2): Adversarial Micro-Architecture Red-Teaming and Liveness Verification
+21:45:46 [evaluator] Evaluated program 3084ca9b-021a-4258-b142-d1fcde239729 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:45:46 WARNING [search.adaevolve] Iteration 90: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:45:46 [search.adaevolve] Using paradigm 3/3 (2/2): Two-Phase Hypothesis-Experimentation Delta Prompting
+21:45:46 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:48:01 [evaluator] Evaluated program 26f89813-c9e7-4711-936e-82df35578515 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:48:01 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:51:34 [evaluator] Evaluated program f735922f-04e0-41ff-a62b-cb64f3f38b9a in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:51:34 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:52:06 [evaluator] Evaluated program a4b6ea1b-b2eb-4d80-b86a-b7886d2f5201 in 0.02s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:52:06 WARNING [search.adaevolve] Iteration 92: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:52:06 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:52:06 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:52:06 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:52:06 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:52:06 [search.adaevolve] All paradigms exhausted, will archive on next check
+21:52:06 [search.adaevolve] Global paradigm stagnation detected, generating breakthrough ideas...
+21:52:33 [search.adaevolve] Generated 3 paradigms:
+21:52:33 [search.adaevolve]   [1] Data-Driven Trace Clustering & Multi-Modal Routing (approach: contextual-clustering-and-routing)
+21:52:33 [search.adaevolve]   [2] Formal Invariant and Boundary Specification (approach: formal-constraint-reasoning)
+21:52:33 [search.adaevolve]   [3] Orthogonal Signature & Feature Engineering (approach: feature-engineering-focus)
+21:52:33 [search.adaevolve] Archived 3 paradigms (improvement: +0.000000):
+21:52:33 [search.adaevolve]   [FAILED] Belady-MIN Oracle Discrepancy Attribution Prompting (uses: 2)
+21:52:33 [search.adaevolve]   [FAILED] Adversarial Micro-Architecture Red-Teaming and Liveness Verification (uses: 2)
+21:52:33 [search.adaevolve]   [FAILED] Two-Phase Hypothesis-Experimentation Delta Prompting (uses: 2)
+21:52:33 [search.adaevolve] Set 3 new paradigms (best score: 1.004671)
+21:52:33 [search.adaevolve] Generated 3 breakthrough paradigms
+21:52:33 [search.adaevolve] Using paradigm 1/3 (1/2): Data-Driven Trace Clustering & Multi-Modal Routing
+21:54:18 [evaluator] Evaluated program 0fef2bbc-486a-4f6d-9526-3cda409f6f76 in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:54:18 [search.adaevolve] Using paradigm 2/3 (1/2): Formal Invariant and Boundary Specification
+21:55:57 [evaluator] Evaluated program 5d81693a-744c-4855-b1e4-fe5fe196483e in 0.04s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:55:57 [search.adaevolve] Using paradigm 3/3 (1/2): Orthogonal Signature & Feature Engineering
+21:56:20 [evaluator] Evaluated program 16c8acd1-5d1e-4661-a6b5-58355d5e3144 in 0.04s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:56:20 WARNING [search.adaevolve] Iteration 93: All 3 attempts failed: Eval failure: the new words must be a YAML list of words
+21:56:20 [search.adaevolve] Using paradigm 1/3 (2/2): Data-Driven Trace Clustering & Multi-Modal Routing
+21:58:11 [evaluator] Evaluated program 88272d92-0b23-4683-963c-75034c37faca in 0.03s: combined_score=0.0000, status=words_refused, error=the new words must be a YAML list of words
+21:58:11 [search.adaevolve] Using paradigm 2/3 (2/2): Formal Invariant and Boundary Specification
+22:00:01 [runner] Signal 15 received, shutting down...
+22:00:01 [default_discovery_controller] Graceful shutdown requested...
+22:00:04 [evaluator] Evaluated program 96278b5c-0499-4fb6-8c72-47d646827dec in 0.02s: combined_score=0.0000, status=schema_rejected, error=1 validation error for StructureDescription
+  Input should be a valid dictionary or instance of StructureDescription [type=model_type, input_value='<the structure description, YAML>', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+22:00:04 [search.adaevolve] Using paradigm 3/3 (2/2): Orthogonal Signature & Feature Engineering
+22:00:04 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:02:00 [evaluator] Evaluated program 21a9e264-502e-4d7a-b3cc-4ab948061065 in 0.02s: combined_score=0.0000, status=schema_rejected, error=2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...ddress the feedback.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...ddress the feedback.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+22:02:00 WARNING [search.adaevolve] Iteration 94: All 3 attempts failed: Eval failure: 2 validation errors for StructureDescription
+state
+  Field required [type=missing, input_value={'name': 'your_design_nam...ddress the feedback.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+victim
+  Field required [type=missing, input_value={'name': 'your_design_nam...ddress the feedback.\n'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+22:02:00 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:02:00 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:02:00 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:29:41 [evaluator] Evaluated program a84065d6-d648-4563-a551-580d69f3f6db in 2600.95s: combined_score=1.0033, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6792.7239, cacti_node_nm=22.0000
+22:29:41 [search.adaevolve] Iteration 91: Program a84065d6 (parent: c2278b2b) completed in 2754.06s (llm: 153.10s, eval: 2600.95s)
+22:29:41 [search.adaevolve] Metrics: combined_score=1.0033, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6792.7239, cacti_node_nm=22
+22:29:42 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:29:42 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:29:42 [search.adaevolve] All paradigms exhausted, will archive on next check
+22:29:42 [search.adaevolve] AdaEvolve completed
+22:29:42 [base_database] Database has 58 programs, best program score is combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+22:29:42 [search.adaevolve] AdaEvolve iteration stats saved to: /home/user/oe_out/arm_adaevolve_noadapt_g3/adaevolve_iteration_stats_20260923_055705.jsonl
+22:29:42 [search.utils] [CHECKPOINT] Saved database with 58 programs to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_100000
+22:29:42 [search.adaevolve] Saved AdaEvolve state to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_100000
+22:29:42 [runner] Checkpoint 100000: best=combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+22:29:42 [runner] Checkpoint saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/checkpoints/checkpoint_100000
+22:29:44 [evaluator] Evaluated program c2278b2b-28c4-4f75-91e7-68f18a08a0b0 in 1.25s: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+22:29:44 [runner] Test evaluation for best program: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000
+22:29:44 [runner] Best program saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/best
+22:29:44 [runner] Discovery completed. Best: combined_score=1.0047, status=ok, metadata_kb=47.9375, metadata_flipflop_bits=10.0000, metadata_bits_per_line=7.9896, metadata_area_mm2=0.0391, metadata_energy_uj=6772.2822, cacti_node_nm=22.0000, test_combined_score=1.0047, test_status=ok, test_metadata_kb=47.9375, test_metadata_flipflop_bits=10.0000, test_metadata_bits_per_line=7.9896, test_metadata_area_mm2=0.0391, test_metadata_energy_uj=6772.2822, test_cacti_node_nm=22.0000
+22:29:44 [runner] Best program saved to /home/user/oe_out/arm_adaevolve_noadapt_g3/best
+
+=== result ===
+DiscoveryResult(best_score=1.0047, initial_score=1.0000)

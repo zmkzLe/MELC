@@ -1,0 +1,16 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  A concise description of the policy mechanism and rationale.
+state:
+  ... (complete state list)
+victim:
+  ... (complete victim configuration)
+... (procedures, tables, samplers, signatures, on_fill, on_hit as needed)
+===== NEW_WORDS =====
+
+- name: my_condition
+  place: condition
+  params: {table: table, index: signature}
+  means: >
+    Returns true if table at index is present and greater than 0; otherwise false.

@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+<the structure description in YAML>
+===== NEW_WORDS =====
+
+<a YAML list of the new words used, or empty list>
+```

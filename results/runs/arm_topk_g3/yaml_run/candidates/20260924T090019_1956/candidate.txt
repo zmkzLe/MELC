@@ -1,0 +1,13 @@
+===== STRUCTURE_DESCRIPTION =====
+# Provide the COMPLETE, valid YAML specification here. 
+# DO NOT use placeholders like "<the structure description, YAML>".
+# DO NOT leave required fields like 'state' or 'victim' empty or as 'None'.
+name: my_design_name
+doc: >
+  Explanation of what changed and why...
+state:
+  ...
+===== NEW_WORDS =====
+
+# Provide a valid YAML list of the new words the description uses, or leave blank if none.
+# DO NOT use placeholders here either.

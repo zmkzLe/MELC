@@ -1,0 +1,19 @@
+- name: dyn_bypass
+  place: condition
+  params: {table: table, index: signature, div: {int: [1, 16]}, field: state, min_rd: {int: [0, 127]}, force_rd: {int: [0, 127]}, selector: state}
+  means: >
+    True if the table entry at the index is present AND either (its value >=
+    force_rd) OR (its value >= min_rd AND its value / div > the current value of
+    the per_line state field at the victim way AND that field's value >= 0).
+    If ChampSim's get_set_sample_category(set) == 1, returns false.
+    If it is 2, returns the condition.
+    Otherwise, returns the condition only if the selector state field >= its midpoint.
+    Only valid inside victim.bypass_when.
+
+- name: update_duel
+  place: step
+  params: {selector: state}
+  means: >
+    If ChampSim's get_set_sample_category(set) == 1, increments the selector state field.
+    If it is 2, decrements the selector field.
+    Otherwise, does nothing.

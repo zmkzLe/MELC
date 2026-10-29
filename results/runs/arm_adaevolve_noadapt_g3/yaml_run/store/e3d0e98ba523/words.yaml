@@ -1,0 +1,16 @@
+- name: bypass_duel_enabled
+  place: condition
+  params: {selector: state}
+  means: >
+    Reads ChampSim's get_set_sample_category(set) c.
+    Returns true if c == 2.
+    Returns false if c == 1.
+    Otherwise, returns true if the global saturating selector state field is greater than or equal to its midpoint (e.g., 512 for a 10-bit counter), and false otherwise.
+- name: update_bypass_duel
+  place: step
+  params: {selector: state}
+  means: >
+    Reads ChampSim's get_set_sample_category(set) c.
+    If c == 1, increments the global saturating selector state field (clamped at max).
+    If c == 2, decrements the selector field (clamped at 0).
+    Otherwise, does nothing.

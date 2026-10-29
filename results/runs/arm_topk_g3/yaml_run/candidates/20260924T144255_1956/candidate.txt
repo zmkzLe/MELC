@@ -1,0 +1,12 @@
+===== STRUCTURE_DESCRIPTION =====
+name: your_design_name
+doc: >
+  State what changed and why...
+state:
+  # (Provide the complete state definition here. DO NOT use placeholders.)
+victim:
+  # (Provide the complete victim definition here. DO NOT leave empty.)
+# (Provide the rest of the complete valid YAML matching the grammar below.)
+===== NEW_WORDS =====
+
+# (Provide a YAML list of the new words the description uses, or leave empty if none. DO NOT use placeholders.)

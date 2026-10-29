@@ -1,0 +1,6 @@
+===== STRUCTURE_DESCRIPTION =====
+# WRITE THE FULL YAML DICTIONARY HERE. NO PLACEHOLDERS!
+# Must include name, doc, state, victim, etc.
+===== NEW_WORDS =====
+
+# WRITE A YAML LIST OF NEW WORDS HERE, OR LEAVE BLANK.

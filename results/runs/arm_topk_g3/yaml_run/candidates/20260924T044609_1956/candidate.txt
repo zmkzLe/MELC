@@ -1,0 +1,16 @@
+===== STRUCTURE_DESCRIPTION =====
+name: my_policy
+doc: >
+  Explanation of my policy.
+state:
+  - name: my_field
+    scope: per_line
+    kind: counter
+    width: 2
+    init: ZERO
+victim:
+  key: my_field
+  extremum: max
+  tie_break: first
+<... rest of your complete YAML policy ...>
+===== NEW_WORDS =====
